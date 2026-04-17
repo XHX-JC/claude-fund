@@ -25,8 +25,8 @@ const STORAGE_KEY = "fund_journal_v2";
 // ═══════════════════════════════════════════════════════════════════
 
 const INITIAL_STATE = {
-  "lastUpdated": "2026-04-16",
-  "sessionNumber": 21,
+  "lastUpdated": "2026-04-17",
+  "sessionNumber": 22,
   "fund": {
     "account": "U24936508",
     "netLiquidity": 103300,
@@ -39,13 +39,13 @@ const INITIAL_STATE = {
     "baseCurrency": "USD",
     "location": "UAE",
     "ibkrEuropeanAccess": "APPROVED — March 26 2026",
-    "cashUSD": 34080,
+    "cashUSD": 31075,
     "cashEUR": -937,
     "cashGBP": -3488,
-    "cashBase": 28234,
+    "cashBase": 25229,
     "cashFloorRule": "10% of NL = $10,330 minimum. NEVER go below. 25% figure is stale — permanently retired.",
-    "lastUpdated": "2026-04-16 SESSION 21 CLOSE — JOURNAL v31",
-    "note": "JOURNAL v31 — SESSION 21 CLOSE. LLY 3 shares ENTERED $905.01 stop $850 — SI-39 triggered -20.2%, tranche 1 deployed per two-stage protocol. Tranche 2 option: 1 share $862 limit (~$1,285 remaining SI-39 room). Stop adjustments confirmed via IBKR screenshots: MSFT $375.56→$395.03 (profit lock upgrade), ABVX $118.36→$114.31 (intentional below cost — M&A optionality, max loss $158 accepted), AMPX $13.00→$14.30 (tightened), ITM 84p/82.5p→89.9p/88p (SI-21 trigger met — closed >95p S20). APH $138 BUY ORDER CANCELLED — 6.5% above limit, earnings Apr 29, reassess post-earnings. NEW SI-44: Two-Stage Research Protocol — scan generates candidates only, deep verification mandatory before capital deployed per S11 LESSONS_LEARNED.md. NEW WATCHLIST: TLN (nuclear/Amazon PPA, May 5 earnings — deep verify required), CEG (nuclear Meta/MSFT PPAs — deep verify required), DELL (AI server 14x fwd PE — deep verify required), ALAB (AI connectivity chips, post-earnings only — deep verify required), CRWV (GPU cloud $66B backlog, speculative — deep verify required). All 5 require S11 Stage 2 before entry. TSMC Q1 $35.71B beat (+35.1% YoY) — Q2 guidance from Apr 16 call TBC, watch $372-376 entry zone. Apr 21 ceasefire binary remains dominant risk. ABVX: stop now below cost $117.913 — accepted risk for M&A optionality. LLY TLN assessment corrected: 7 errors documented in S11/LESSONS_LEARNED.md."
+    "lastUpdated": "2026-04-17 SESSION 22 CLOSE — JOURNAL v31",
+    "note": "JOURNAL v31 — SESSION 22 CLOSE. CGCT 292 shares ENTERED $10.29 ($3,005 total) — Factorial Energy pre-IPO SPAC play. NO STOP (trust floor ~$10.27). Post-listing rules WRITTEN: open >$12 sell 50%, $10-12 hold stop $8.00, <$10 exit entirely. Tranche 2 dry powder: $1,500 at $7.50-9.00 post-listing. Max exposure: $4,500. Deal close ~May 2026 (CGCT→FAC). Deadline Nov 12 2026. FULL INVESTMENT CASE: Factorial_Energy_Investment_Case.docx. WATCHLIST ADDED: LCII ($105-110 entry on pullback), PZZA ($30-32 only), PAYO (bid required). SESSION 22 SUMMARY: S22 scan complete. M&A scan PZZA/PAYO/LCII done — all Stage 1 only. CGCT order confirmed. Stop changes confirmed IBKR: AMPX $15.79, RR.L 1150p/1130p SL, ITM 100p/98p SL (raised from 89.9p). ITM trim: 1,100 shares @ 124.60p +£654.50. MSFT stop raised $400.43. Trade tracker rebuilt from IBKR actuals — corrected realised P&L ~-$2,910. ORIGINAL SESSION 21 NOTE: JOURNAL v31 — SESSION 21 CLOSE. LLY 3 shares ENTERED $905.01 stop $850 — SI-39 triggered -20.2%, tranche 1 deployed per two-stage protocol. Tranche 2 option: 1 share $862 limit (~$1,285 remaining SI-39 room). Stop adjustments confirmed via IBKR screenshots: MSFT $375.56→$395.03 (profit lock upgrade), ABVX $118.36→$114.31 (intentional below cost — M&A optionality, max loss $158 accepted), AMPX $13.00→$14.30 (tightened), ITM 84p/82.5p→89.9p/88p (SI-21 trigger met — closed >95p S20). APH $138 BUY ORDER CANCELLED — 6.5% above limit, earnings Apr 29, reassess post-earnings. NEW SI-44: Two-Stage Research Protocol — scan generates candidates only, deep verification mandatory before capital deployed per S11 LESSONS_LEARNED.md. NEW WATCHLIST: TLN (nuclear/Amazon PPA, May 5 earnings — deep verify required), CEG (nuclear Meta/MSFT PPAs — deep verify required), DELL (AI server 14x fwd PE — deep verify required), ALAB (AI connectivity chips, post-earnings only — deep verify required), CRWV (GPU cloud $66B backlog, speculative — deep verify required). All 5 require S11 Stage 2 before entry. TSMC Q1 $35.71B beat (+35.1% YoY) — Q2 guidance from Apr 16 call TBC, watch $372-376 entry zone. Apr 21 ceasefire binary remains dominant risk. ABVX: stop now below cost $117.913 — accepted risk for M&A optionality. LLY TLN assessment corrected: 7 errors documented in S11/LESSONS_LEARNED.md."
   },
   "thesis": {
     "title": "US NAVAL BLOCKADE OF IRANIAN PORTS ACTIVE — SI-25 OIL CONDITION MET — FORMAL REOPENING PENDING",
@@ -57,7 +57,9 @@ const INITIAL_STATE = {
     "ceasefireFilter": "SI-25 ALERT POSTURE ELEVATED — OIL CONDITION MET. WTI ~$93, peak $111.54, trigger $100.38 — MET. Formal Hormuz reopening NOT confirmed. Both conditions required simultaneously. IF peace deal + formal reopening → SI-25 triggers immediately. CEASEFIRE EXPIRY: APR 21.",
     "blockadeStatus": "US CENTCOM blockade active. Commerce 'completely halted' per CENTCOM. Applies to vessels to/from Iranian ports only. Iran commander: will block ALL Persian Gulf/Gulf of Oman/Red Sea if blockade continues. Iran lost track of mines. USN mine clearance active. Some Iranian tankers transiting Strait per Fars News Agency.",
     "keyDates": [
-      {"date": "16 Apr (TODAY — S21)", "event": "SESSION 21 COMPLETE. LLY entered $905.01. Stops adjusted: MSFT $395.03, ABVX $114.31, AMPX $14.30, ITM 89.9p/88p. APH cancelled. SI-44 added. Watchlist expanded: TLN/CEG/DELL/ALAB/CRWV. TSMC Q1 $35.71B beat — Q2 guidance from 10AM UAE call pending.", "priority": "RESOLVED — SESSION 21 COMPLETE"},
+      {"date": "17 Apr (TODAY — S22)", "event": "SESSION 22 COMPLETE. CGCT 292 shares @ $10.29 ENTERED. M&A scan done. LCII/PZZA/PAYO watchlist added. MSFT stop $400.43. ITM 100p/98p. RR.L 1150p/1130p. AMPX $15.79. ITM trim +£654.50.", "priority": "RESOLVED — SESSION 22 COMPLETE"},
+      {"date": "~May 2026", "event": "CGCT BUSINESS COMBINATION CLOSE → FAC LISTING. APPLY POST-LISTING RULES IMMEDIATELY ON DAY ONE: (1) FAC opens >$12 → SELL 50% at market. (2) FAC opens $10-12 → HOLD, set stop $8.00. (3) FAC opens <$10 → EXIT ENTIRELY at market. NO DISCRETION. Rules are pre-committed.", "priority": "CRITICAL"},
+      {"date": "16 Apr (RESOLVED — S21)", "event": "SESSION 21 COMPLETE. LLY entered $905.01. Stops adjusted: MSFT $395.03, ABVX $114.31, AMPX $14.30, ITM 89.9p/88p. APH cancelled. SI-44 added. Watchlist expanded: TLN/CEG/DELL/ALAB/CRWV. TSMC Q1 $35.71B beat.", "priority": "RESOLVED — SESSION 21 COMPLETE"},
       {"date": "19 Apr", "event": "US Iranian oil sanctions waiver expires 12:01 AM ET — secondary sanctions back in force", "priority": "HIGH"},
       {"date": "21 Apr", "event": "CEASEFIRE EXPIRY BINARY. SI-25 dual-condition could trigger same day if formal reopening announced. Tranche 2 review: OXY, BKR post-resolution. SLV primary catalyst. RR.L: no stop before Apr 23.", "priority": "CRITICAL"},
       {"date": "21 Apr", "event": "ISRG Q1 2026 Earnings AMC — Stop $443.86. Watch: China placements, gross margin vs 67-68%, procedure vol. Do NOT tighten stop pre-earnings.", "priority": "CRITICAL"},
@@ -88,6 +90,13 @@ const INITIAL_STATE = {
     ]
   },
   "positions": [
+    {
+      "ticker": "CGCT", "name": "Cartesian Growth Corp III (Factorial Energy SPAC)", "shares": 292,
+      "avgPrice": 10.29, "costBasis": 3005, "last": 10.29, "marketVal": 3005,
+      "unrealPnL": 0, "unrealPct": 0.0, "stop": null, "target": null,
+      "status": "HOLD — NO STOP (TRUST FLOOR ~$10.27) — PRE-CLOSE SPAC",
+      "note": "Factorial Energy pre-IPO entry via SPAC vehicle. Trust Account = $283.4M ($10.27/share floor). Deal close ~May 2026 — CGCT becomes FAC on NASDAQ. Deadline Nov 12 2026. POST-LISTING RULES (non-negotiable): (1) FAC opens >$12 → SELL 50% immediately. (2) FAC opens $10-$12 → HOLD, set stop $8.00. (3) FAC opens <$10 → EXIT ENTIRELY. Tranche 2: $1,500 at $7.50-9.00 post-listing dip. Max total exposure: $4,500. Conviction add catalysts: Stellantis demo fleet confirmed, OEM production award, S-4 declared effective. Exit triggers: deal fails by Nov 12 2026 (redeems ~$10), Stellantis/Mercedes walks back validation, FAC triggers $8.00 post-listing stop. Full investment case: Factorial_Energy_Investment_Case.docx. S22 ENTRY confirmed. Brother is early investor (not insider). Going concern on standalone basis resolved by deal close — post-close cash $113.6M (max redemptions) = ~36 months runway."
+    },
     {
       "ticker": "CCJ", "name": "Cameco Corp", "shares": 49,
       "avgPrice": 104.021, "costBasis": 5097, "last": 119.78, "marketVal": 5869,
@@ -241,8 +250,10 @@ const INITIAL_STATE = {
      "note": "Bracket stop. Max loss $375 at 75 shares."},
     {"ticker": "LLY", "action": "SELL", "type": "Stop", "qty": 3, "limitPrice": null, "stopPrice": 850, "tif": "GTC", "status": "ACTIVE — NEW S21",
      "note": "Stop $850 GTC. SI-39 tranche 1. Max loss $165.03 ($55.01/share × 3). Tranche 2 option: 1 share limit $862 — decision pending."},
-    {"ticker": "CRML", "action": "SELL", "type": "Stop", "qty": 110, "limitPrice": null, "stopPrice": 7.5, "tif": "GTC", "status": "ACTIVE",
-     "note": "Max loss $173 on 110 shares."}
+    {"ticker": "CRML", "action": "BUY", "type": "Limit", "qty": 40, "limitPrice": 10.50, "stopPrice": null, "tif": "GTC", "status": "ACTIVE — NEW S22",
+     "note": "Post-catalyst tranche 1. Greenland 92.5% ownership confirmed Apr 17. Entry $10.50 = post-spike pullback zone. ON FILL: raise CRML stop to $10.00 for ALL 150 shares. Total CRML exposure on fill: 110 × $9.08 + 40 × $10.50 = ~$1,419. Within revised speculative cap $2,500."},
+    {"ticker": "CRML", "action": "SELL", "type": "Stop", "qty": 110, "limitPrice": null, "stopPrice": 7.5, "tif": "GTC", "status": "ACTIVE — RAISE TO $10.00 ON CRML BUY FILL",
+     "note": "Current stop $7.50 on 110 shares. Raise to $10.00 for all 150 shares when 40-share buy fills. Pending user action at time of fill."}
   ],
   "si39TierOneWatchlist": {
     "lastBatchPull": "2026-04-16",

@@ -332,3 +332,19 @@ SESSION CLOSE CHECKLIST — SESSION 22 (template)
 - EODHD lastTradePrice for current session (may be 4-6 days stale)
 - Journal-only sourcing for key external event dates without primary news verification
 - Scan-phase figures used as recommendation figures without Stage 2 verification (S11)
+
+---
+
+## NEW LESSONS — S22 (17 April 2026)
+
+### T16 — Hormuz Partial vs Formal Reopening (CRITICAL — S22)
+Iran declared Hormuz open “for the remaining ceasefire period” on Apr 17. Market surged +2.4%, oil dropped, RR.L fell -4.86%. Pressure to act on SI-25 was significant. The correct response: DO NOT ACT. SI-25 requires “formal Hormuz reopening CONFIRMED” as part of a peace deal, not a temporary ceasefire-period declaration expiring in 4 days. A declaration without a signed peace agreement is NOT a formal reopening. Hold thesis-correlated positions until SI-25 is formally triggered by a permanent deal. LNG stop executing on the same day was the correct and precise mechanical response to the oil price move — it did the job the stop was designed to do.
+
+### T17 — LNG Stop Was Correct, Not a Regret
+LNG stopped out at $248 on the exact day oil dropped on the Hormuz partial opening declaration. Do not second-guess a stop that executed correctly. The stop was doing the job it was placed to do. The position had a good run (+$0 net from $268 entry vs $248 stop = expected loss). Re-entry conditions: Hormuz fails to reopen + blockade escalates + oil back above $100. Not on peace optimism.
+
+### T18 — CRML Binary Catalyst Execution (+39% in One Session)
+CRML +39.48% on Greenland government approving 92.5% Tanbreez ownership. The SI-37 cap ($1,500 max on speculative positions) was exactly right — it limited the position to $999 cost, gained $425. The binary catalyst was knowable and tracked. Lesson: when a small speculative position has a clear government/regulatory approval pending, that is a conviction add trigger BEFORE the announcement, IF thesis is intact and SI-44 Stage 2 complete. Do not add after the move.
+
+### E15 — SPAC Order Type
+CGCT entered as DAY order, not GTC. It filled same day, so no issue materialised. But if markets had been closed or stock had moved, the order would not have persisted. For SPAC pre-close entries where the trust floor creates asymmetric risk/reward, always use GTC.
