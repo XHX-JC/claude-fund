@@ -1,13 +1,13 @@
 # LESSONS LEARNED — CLAUDE FUND
-**Account:** U24936508 (IBKR Pro) | **Compiled through Session 21 (2026-04-16)**
-**Journal version:** trading_journal31.jsx | **SIs:** 1–44
+**Account:** U24936508 (IBKR Pro) | **Compiled through Session 23 (2026-04-18)**
+**Journal version:** trading_journal32.jsx | **SIs:** 1–46
 
 ---
 
 ## ERROR TAXONOMY (SI-17) — 14 CODIFIED ERROR TYPES
 | # | Error | Description | Prevention |
 |---|-------|-------------|-----------|
-| E1 | Timezone | Wrong open/close times | NY=UTC-4, UAE=UTC+4. 17:30 UAE=09:30 NY open. LSE=12:00-20:30 UAE |
+| E1 | Timezone | Wrong open/close times | NY=UTC-4, UAE=UTC+4. 13:30 UAE=09:30 NY open. LSE=12:00-20:30 UAE |
 | E2 | Stale position | Using journal prices vs IBKR | IBKR screenshot = ground truth always |
 | E3 | Fill re-flag | Flagging executed orders as pending | Check IBKR fills before action items |
 | E4 | Price verification | Acting on unverified prices | MMD primary, EODHD extended quotes for 52wk range |
@@ -20,37 +20,37 @@
 | E11 | 52-week high hallucination | Stating 52wk range from memory | MANDATORY: use EOD:get_us_live_extended_quotes. Memory forbidden |
 | E12 | Tool routing gap | Not knowing which tool provides which data | MMD=current price. EODHD extended=52wk range. Never conflate |
 | E13 | EODHD price delay | EODHD lastTradePrice may be 4-6 days stale | Use MMD for current session price |
-| E14 | Journal date discrepancy | Ceasefire expiry stated Apr 22 in journal; multiple primary sources state Apr 21 | Cross-reference key event dates with 2+ primary news sources. CONFIRMED: Apr 21. |
+| E14 | Journal date discrepancy | Key event dates wrong in journal | Cross-reference 2+ primary news sources. Ceasefire expiry: Apr 21 (journal) vs Apr 22 (CBS News) — still disputed S23 |
 
 ---
 
-## PERFORMANCE AUDIT FINDINGS
-*(Updated at S21)*
-| Metric | S16 Baseline | S20 Update | S21 Update |
-|--------|-------------|-----------|-----------|
-| Net realized P&L | ~-$2,144 | ~-$2,073 (+$71 AVAV) | ~-$2,073 (no new closes) |
-| Open unrealized | +$2,052 | ~+$5,505 | ~+$6,500 (est.) |
-| Total P&L (realized + unrealized) | ~-$92 | ~+$3,432 | ~+$4,427 |
-| Positions | 13 | 14 | 15 (added LLY) |
+## PERFORMANCE AUDIT
+| Metric | S20 Baseline | S23 Update |
+|--------|-------------|-----------|
+| Net realized P&L (USD) | ~-$2,073 | ~-$2,460 (LNG -$397, PATK +$9 added) |
+| ITM trim realized | — | +£652 (GBP account) |
+| Open unrealized | ~+$5,505 | ~+$7,809 |
+| Net Liquidity | ~$102,800 | $105,600 |
+| Positions | 14 | 15 (post-NOG exit Monday) |
 
 ---
 
 ## THESIS & STRATEGY LESSONS
 
 ### T1 — Supply Chain Premium > War Premium
-Evolved from war premium to supply chain premium. Structural damage persists under toll regime. Unwind on SI-25 only.
+Evolved from war premium to supply chain premium. Structural damage persists under toll regime.
 
 ### T2 — Toll Regime vs Full Closure Distinction
 Toll regime resumes non-oil shipments. Weakened Linde thesis.
 
 ### T3 — Exit Trigger Discipline
-SI-25 ONLY: formal Hormuz reopening + oil -10% from peak. Ceasefire alone insufficient. Oil condition MET at ~$92 (trigger $100.38). Formal reopening still pending. Ceasefire extension CONTINGENT on Hormuz reopening — if deal struck, SI-25 may trigger simultaneously.
+SI-25 ONLY: formal PERMANENT Hormuz reopening + oil -10% from peak. Ceasefire alone insufficient. Conditional ceasefire-linked opening (Iran Apr 17) does NOT meet SI-25 threshold. S23: Oil condition exceeded at $83.85. Reopening condition not met — US port blockade continues.
 
 ### T4 — Cash Reserve is Tactical, Not Passive
-SI-40 deployment triggers must fire. Islamabad failure Apr 12 activated Trigger A. LLY entry S21 deployed correctly under SI-39 + SI-40.
+SI-40 deployment triggers must fire. Cash above floor = deployable capital.
 
 ### T5 — Mythos Miss (S13)
-AI model release caused PLTR -7%. Section K AI query NON-NEGOTIABLE every session. S22: Claude Mythos Preview announced Apr 7 — most capable model yet. Not public. Relevant for AI infrastructure positioning.
+AI model release caused PLTR -7%. Section K AI query NON-NEGOTIABLE every session.
 
 ### T6 — Target List Cross-Reference (S14)
 Compare current price vs research reference price. Fallen names = improved entries.
@@ -71,27 +71,29 @@ Thesis determines whether to enter. Stop distance determines how much. Separate 
 Average winner 4.2% vs average loser 10.7%. Hold thesis-intact positions to primary target.
 
 ### T12 — ATH Entry Discipline (S19)
-Never enter a war-premium stock at ATH with ceasefire expiry 7 days away. RTX removed at $202.
+Never enter a war-premium stock at ATH with ceasefire expiry 7 days away.
 
 ### T13 — Missed Opportunity Capture / SI-39 Genesis (S19)
-GOOGL hit -20% drawdown in March 2026. No protocol flagged it. Recovered +18.5% in 5 weeks. SI-39 Section 0 created to prevent recurrence.
+GOOGL hit -20% drawdown in March 2026. No protocol flagged it. SI-39 Section 0 created.
 
 ### T14 — Limit Order Discipline Under Premarket Pressure (S19)
-Never chase premarket. $25.93 market order dressed as limit degrades R:R. Hold the $25.08.
+Never chase premarket. Hold the limit.
 
 ### T15 — Broken Thesis Exit Discipline (S20)
-**ORIGIN**: AVAV closed S20 at $197.945 (+$71.38) — near breakeven. Thesis broken by: (1) SCAR program $1.4B at risk, (2) Q3 FY2026 operating loss -$179M vs -$3.1M prior year, (3) Pomerantz securities investigation, (4) No near-term catalyst.
+When PRIMARY thesis driver impaired by confirmed new datapoint + position within 5% of breakeven → EXIT AT MARKET on next open. AVAV closed near breakeven. Lesson: calculus of $47 exit cost vs $500-800 downside is unambiguous.
 
-**LESSON**: When PRIMARY thesis driver impaired by confirmed new datapoint + position within 5% of breakeven → EXIT AT MARKET on next open. Do not wait for a bounce. Cancel GTC stops immediately after exit.
+### T16 — SI-45 Weekly Screener Cannot Be Deferred (NEW S23)
+NFLX dropped 11.8% on earnings (Apr 17) to $97.31, -27.4% from 52wk high. Would have qualified for SI-39 threshold. SI-45 was flagged but not executed in S23 scan. The cost of missing a quality compounder at -27% drawdown far exceeds the cost of running the screener. SI-45 is non-negotiable: first session of every trading week, no exceptions.
 
-**WHAT THIS IS NOT**: Does not apply to thesis-intact positions in macro drawdowns (LNG, AMPX, CRML). Applies only when the specific thesis is structurally impaired.
+### T17 — Conditional Reopening ≠ SI-25 Trigger (NEW S23)
+Iran declared Hormuz open for ceasefire duration only (Apr 17). US blockade of Iranian ports continues. Iran parliament threatened re-closure if blockade persists. This is NOT a formal permanent reopening and does NOT trigger SI-25. Trump's Truth Social framing ("FULLY OPEN") overstated the reality — verified against NBC News, Al Jazeera, CBS News. SI-25 requires formal permanent reopening as verified by CENTCOM/shipping confirmation, not political statements. Lesson: always verify geopolitical binary events against multiple primary news sources before acting. Trump language inflates certainty.
 
 ---
 
 ## POSITION-SPECIFIC LESSONS
 
 ### P1 — CWR.L Momentum Trap
-Entry only at 250-270p with confirmed re-rating. Revenue flat, losses widened.
+Entry only at 250-270p with confirmed re-rating.
 
 ### P2 — Linde Thesis Weakened
 Toll regime resumes helium. Watch only.
@@ -99,8 +101,8 @@ Toll regime resumes helium. Watch only.
 ### P3 — IAG.L Closed Correctly
 Sold after peace dividend thesis broken.
 
-### P4 — ABVX Risk Profile (Updated S21)
-Stop LOWERED S21 to $114.31 (below cost $117.91 — intentional). Accepted ~$158 max loss for M&A event optionality. Q2 2026 Phase 3 ABTECT maintenance data is the primary catalyst. No M&A news confirmed. Grandfathered above SI-37 cap — do not add.
+### P4 — ABVX Risk Profile (Grandfathered)
+Stop now below cost ($114.31 vs $117.913). Intentional M&A optionality. Max loss ~$158 accepted.
 
 ### P5 — SHLD Stop/Sell Sequence Error (S14)
 Cancel GTC stop FIRST, then sell. Never reverse sequence.
@@ -109,7 +111,7 @@ Cancel GTC stop FIRST, then sell. Never reverse sequence.
 Presidential Truth Social post is not a catalyst.
 
 ### P7 — AVAV Entry and Exit (CLOSED S20)
-Entered $195.09 during ceasefire selloff. UAS demand thesis valid but SCAR program ($1.4B largest contract) at risk (Raymond James Underperform Mar 2). Q3 FY2026 operating loss -$179M sealed exit. Sold $197.945 (+$71.38). Lesson: validate contractor concentration risk before entry.
+Entered $195.09, sold $197.945 (+$71.38). SCAR program, Q3 op loss, Pomerantz. Lesson: validate contractor concentration risk before entry.
 
 ### P8 — ITM Stop Discrepancy
 IBKR is ground truth on stop prices always.
@@ -124,28 +126,33 @@ When current stop exceeds protocol target, apply the MORE protective stop.
 Re-entry only after price pulls back below stop-out level.
 
 ### P12 — KTOS Sizing Error (S16)
-Use SI-35 dollar-risk sizing. $8,100 on 20% stop = $1,604 loss. Correct was $2,525 max.
+Use SI-35 dollar-risk sizing.
 
 ### P13 — No Entry Near 52-Week Highs Without Catalyst (S16)
 Do not enter within 5% of ATH without confirmed catalyst.
 
 ### P14 — CODA Stop Intentional Below Journal Level (S19)
-Do not "correct" stops that are intentionally placed for catalyst timing. Verify intent before flagging.
+Do not "correct" stops that are intentionally placed for catalyst timing.
 
 ### P15 — ORCL Entry Timing (S19)
-Active legal filing = mandatory waiting period regardless of valuation.
+Active legal filing = mandatory waiting period.
 
 ### P16 — ISRG Stop Journal Staleness (S20)
-IBKR orders tab showed ISRG stop at $443.86 while journal recorded $420. Any stop raise executed on IBKR must be logged in journal SAME SESSION. Manual cross-reference required at every session open.
+Any stop raise executed on IBKR must be logged in journal SAME SESSION.
+
+### P17 — PATK M&A Tip Entry Error (NEW S23)
+**ORIGIN**: PATK 25 shares entered on third-party tip about LCII/PATK merger before cross-session analysis complete. Immediately closed +$9.34. Joint analysis concluded "wait and watch" — proving entry was premature.
+**LESSON**: No entry on any M&A play until: (1) target company fully analysed, (2) deal terms, probability and R:R explicitly logged, (3) joint entry decision confirmed. A tip is not a thesis.
+**DISTINCTION from P6**: P6 = social media is not a catalyst. P17 = acting before your own analysis pipeline is complete, even when a legitimate analytical process is underway.
 
 ---
 
 ## SCAN PROTOCOL LESSONS
 
 ### S1 — Full Scan = SI-14 Sections 0, A-K (v4.0)
-Section 0 (SI-39 undervalued scanner) runs FIRST before A-K.
+Section 0 (SI-39) runs FIRST. SI-45 weekly screener runs first session of each week before Section 0.
 
-### S2 — Journal Rebuild: bracket-depth counting Node.js. Never regex on INITIAL_STATE.
+### S2 — Journal Rebuild: bracket-depth counting Node.js.
 
 ### S3 — Congressional Trading: broad sweep ALL stocks >$50K.
 
@@ -156,195 +163,91 @@ SI-39 Section 0 now fires at every session open.
 
 ### S6 — AMZN Pre-Execution: check IBKR orders screenshot FIRST.
 
-### S7 — Challenge Register Protocol (S16): raise challenges each session.
+### S7 — Challenge Register Protocol (S16).
 
 ### S8 — Premarket Price Verification (S19)
-EODHD previousCloseDate showed April 9 for session on April 15. Always use MMD for current price.
+Always use MMD for current price.
 
 ### S9 — EOD API Failure Fallback (S20)
-EOD:get_us_live_extended_quotes returned error in S20. Fallback: supplement with MMD prev close + web search for 52wk range. S21: EOD API functional again — retry each session open.
+Fallback: MMD prev close + web search for 52wk range.
 
 ### S10 — Primary Source Verification for Binary Event Dates (S20)
-Journal recorded ceasefire expiry as Apr 22. Bloomberg, CNBC, CNN all stated Apr 21. Going forward: key event dates (ceasefire expiry, sanctions deadlines, earnings) must be verified against 2+ primary news sources, not taken from journal alone.
+Key event dates must be verified against 2+ primary sources. Ceasefire expiry Apr 21 (journal) vs Apr 22 (CBS News) — still disputed S23. Verify Monday.
 
-### S11 — Two-Stage Research Protocol: Scan vs Pre-Entry Deep Verification (S21)
-**ORIGIN:** TLN write-up in S21 contained seven material errors — blended acquisition figures (closed 2025 Moxie deal conflated with pending 2026 Cornerstone deal), overstated analyst consensus ("12 of 13 Strong Buy" vs actual ~12 Buy/2 Hold/1 Sell), wrong earnings date (stated TBC; confirmed May 5 from IR calendar), inappropriate PE cited for a GAAP-loss company, incorrect moving average characterisation (stated stop "below 200-day" when stock was already below 200-day), oversimplified FERC regulatory history on the Amazon PPA, and macro-only characterisation of a pullback that also contained deal and regulatory risk. All seven errors shared the same root cause: scan-level research was written up with investment-recommendation confidence.
-
-**THE TWO-STAGE RULE:**
-
-**Stage 1 — Scan (correct for candidate list generation only):**
-- Price and drawdown verified via tools
-- Thesis described at sector level
-- R:R estimated as directional, not precise
-- Any specific figures (acquisition multiples, analyst counts, earnings dates) must be explicitly labelled: *"unverified — deep check required before entry"*
-- Output: watchlist candidate, not investment recommendation
-
-**Stage 2 — Pre-Entry Deep Verification (MANDATORY before any capital is committed):**
-- Read most recent earnings release + guidance from SEC EDGAR or company IR website
-- Confirm earnings date directly from company IR calendar
-- Pull live analyst consensus from verified aggregator
-- Check for active regulatory proceedings (FERC, FTC, DOJ, SEC litigation)
-- Confirm acquisition status: open/pending/closed with correct accretion figures
-- Verify valuation metric is appropriate: PE for profitable; EV/EBITDA + FCF for complex/leveraged; EV/Revenue for pre-profit
-- State price vs 50-day vs 200-day — all three
-- Cross-reference pullback drivers: macro vs company-specific vs deal/regulatory risk
-- SI-35 dollar-risk sizing confirmed
-- SI-36 R:R ≥2:1 verified
-- SI-41 catalyst within 8 weeks confirmed
-- Correlation with existing positions checked
-
-**HARD RULE:** No specific acquisition multiple, analyst count, earnings date, regulatory status, or valuation figure from scan phase may appear in a recommendation without primary source verification. Scan-phase figures are hypotheses only.
+### S11 — SI-45 Non-Deferral Rule (NEW S23)
+SI-45 weekly broad screener missed NFLX (-27.4% from 52wk high, earnings gap down Apr 17). The protocol was flagged but not executed. Going forward: SI-45 executes on first session of every trading week before Section 0. Not optional, not deferrable. A second consecutive miss would constitute a systematic protocol failure. If EOD screener is unavailable, run manual SI-39 extended batch with MMD.
 
 ---
 
 ## 52-WEEK DATA PROTOCOL (E11-E13 PREVENTION)
-
-### Correct tool routing:
-- **Current price (US):** `MMD /v2/aggs/ticker/{TICKER}/prev` → use `c` field.
-- **52-week high/low (US):** `EOD:get_us_live_extended_quotes` → `fiftyTwoWeekHigh`, `fiftyTwoWeekLow`. Batch up to 9 symbols.
-- **EU/UK 52-week range:** `web_fetch https://finance.yahoo.com/quote/{TICKER}/`
-- **NEVER use memory for 52-week range.**
-
-### S19 errors on record:
-| Ticker | Wrong (memory) | Correct (EODHD) | Error magnitude |
-|---|---|---|---|
-| NVDA drawdown | -40% | -7.4% | 32.6 percentage points |
-| NVDA price | ~$105 | $196.51 | $91.51 |
-| ASML drawdown | -24% | -4.5% | 19.5 percentage points |
-| META price | ~$570 | $662.49 | $92.49 |
-
-### S20 corrections on record:
-| Item | Journal (wrong) | Correct | Source |
-|---|---|---|---|
-| ISRG stop | $420 | $443.86 | IBKR orders tab |
-| SLV buy qty/price | 21 shares / $70.50 | 35 shares / $70.00 | IBKR orders tab + user confirmation |
-| SLV stop | $64.50 | $63.00 | IBKR orders tab |
-| Ceasefire expiry | Apr 22 | Apr 21 | Bloomberg / CNBC / CNN |
-| WTI oil | ~$97 | ~$93 | Trading Economics / BSS/AFP |
-| Gold | $5,003 | ~$4,760 | Yahoo Finance sidebar |
-
-### S21 corrections on record:
-| Item | S20 Value | S21 Correct | Source |
-|---|---|---|---|
-| MSFT stop | $375.56 | $395.03 | IBKR orders tab + user confirmation |
-| ABVX stop | $118.36 | $114.31 | IBKR orders tab (intentional lowering) |
-| AMPX stop | $13.00 | $14.30 | IBKR orders tab |
-| ITM stop | 84p/82.5p | 89.9p/88p | IBKR orders tab |
-| TLN analyst consensus | "12/13 Strong Buy" (scan error) | ~12 Buy/2 Hold/1 Sell | Verified aggregator — S11 origin |
+- **Current price (US):** MMD /v2/aggs/ticker/{TICKER}/prev → use `c` field
+- **52-week high/low (US):** EOD:get_us_live_extended_quotes → fiftyTwoWeekHigh/Low
+- **EU/UK:** web_fetch Yahoo Finance
+- **NEVER use memory for 52-week range**
 
 ---
 
 ## INFRASTRUCTURE LESSONS
 
 ### I1 — Local Filesystem MCP
-READ AND WRITE ACCESS CONFIRMED S19, S20, S21.
-Allowed paths: `C:\Users\jcadb\claude-fund` | `C:\Users\jcadb\Claude Date File`
+READ AND WRITE ACCESS CONFIRMED S19-S23.
+Allowed paths: `C:\Users\jcadb\claude-fund`
 
 ### I2 — Google Drive DEPRECATED
 All state management via local filesystem MCP + Claude project.
 
 ### I3 — Session Open Protocol (SI-32)
-1. Load journal | 2. Read FUND_SESSION_STATE.md | 3. Read LESSONS_LEARNED.md
-4. IBKR screenshots | 5. Section 0 EOD batch | 6. SI-14 scan A-K
+1. Read FUND_SESSION_STATE.md | 2. Read LESSONS_LEARNED.md | 3. Check journal lastUpdated
+4. IBKR screenshots | 5. Section 0 EOD batch | 6. SI-45 weekly (first session of week) | 7. SI-14 scan A-K
 
 ### I4 — Session Close Protocol (SI-28)
 1. Build session-close block | 2-4. Write journal + .md files to C drive
 5. Update hormuz_log.md | 6. Update trade tracker if fills
-7-10. User actions (upload journal, run batch)
+7-10. User actions
 
-### I5 — GitHub Repo Structure
-`journal\` — trading_journal31.jsx (current)
-`state\` — FUND_SESSION_STATE.md + LESSONS_LEARNED.md
-`tracker\` — Claude_Fund_Trade_Tracker.xlsx
-`intelligence\` — hormuz_log.md
+### I5 — Journal versioning
+trading_journal32.jsx = current (Session 23)
 
 ### I6 — Memory Hierarchy (SI-33)
 Journal → FUND_SESSION_STATE → LESSONS_LEARNED → Trade Tracker
 
-### I7 — Trade Tracker Protocol (SI-34)
-Append one row per fill. IBKR confirmation only.
-**S20/S21 PENDING**: Add AVAV — Apr 15 2026, AVAV, 25 shares, entry $195.09, exit $197.945, +$71.38, CLOSED.
+### I7 — Trade Tracker Pending (S23)
+1. AVAV +$71.38 (S20 — still outstanding)
+2. ITM trim +£652 (S22)
+3. LNG -$396.54 (S23)
+4. PATK +$9.34 (S23)
+5. NOG exit TBC Monday
 
-### I8 — Performance Metrics Permanently In Journal (S16)
-performanceMetrics{} in INITIAL_STATE.
-
-### I9 — Challenge Register Permanently In Journal (S16)
-challengeRegister[] in INITIAL_STATE.
-
-### I10 — FRED Macro Data (S17)
-web_fetch to fred.stlouisfed.org for WTI, Brent, 10Y yield. Supplementary only — lags 1 business day.
-
-### I11 — Direct C Drive Write Confirmed (S19, S20, S21)
-`Filesystem:write_file` writes directly to allowed directories. No manual copy-paste for .md files.
-
-### I12 — C Drive State Lag Risk (S22)
-C drive files were found at S20 state during S22 open — two sessions stale. Root cause: S21 session close protocol completed journal write but .md files were not confirmed written. Going forward: verify C drive write success explicitly at session close by reading back the first line of each .md file. Do not assume write succeeded.
+### I11 — Direct C Drive Write Confirmed (S19-S23)
+filesystem:write_file writes directly to allowed directories.
 
 ---
 
-## PRE-ENTRY RESEARCH STANDARDS (SEE ALSO: S11)
-
-### Checklist — Required Before Any New Entry
-
-| Check | Source | Mandatory? |
-|-------|--------|------------|
-| Earnings release + guidance read | SEC EDGAR / Company IR | ✅ Always |
-| Earnings date confirmed | Company IR calendar directly | ✅ Always |
-| Live analyst consensus pulled | Verified aggregator | ✅ Always |
-| Active regulatory/litigation check | FERC / SEC / court dockets | ✅ Always |
-| Acquisition status: open/pending/closed | SEC filings / press release | ✅ If M&A involved |
-| Correct valuation metric for financial stage | PE (profitable only) / EV/EBITDA / FCF | ✅ Always |
-| Price vs 50-day vs 200-day all stated | EOD / IBKR | ✅ Always |
-| Pullback driver breakdown | News search + filings | ✅ Always |
-| SI-35 dollar-risk sizing confirmed | Journal calculation | ✅ Always |
-| SI-36 R:R minimum 2:1 verified | Entry/stop/target stated | ✅ Always |
-| SI-41 catalyst within 8 weeks | Earnings / contract / technical | ✅ Always |
-| Correlation with existing positions checked | Journal positions table | ✅ Always |
-
----
-
-## SESSION CLOSE CHECKLIST (MANDATORY)
-
+## SESSION CLOSE CHECKLIST — SESSION 23
 ```
-SESSION CLOSE CHECKLIST — SESSION 22 (template)
+SESSION CLOSE CHECKLIST — SESSION 23
 ======================================
-□ 1. Write trading_journal32.jsx → C:\Users\jcadb\claude-fund\journal\
-□ 2. Write FUND_SESSION_STATE.md → C:\Users\jcadb\claude-fund\state\
-□ 3. Write LESSONS_LEARNED.md → C:\Users\jcadb\claude-fund\state\
-□ 4. Verify C drive writes: read back first line of each .md file (I12)
-□ 5. Update hormuz_log.md if thesis changed → \intelligence\
-□ 6. Update trade tracker if confirmed fills (AVAV row still pending)
-□ 7. USER: Delete trading_journal31.jsx from Claude project
-□ 8. USER: Upload trading_journal32.jsx to Claude project
-□ 9. USER: Run session-close.bat (GitHub backup)
-□ 10. USER: Verify Claude project shows correct session number
-□ 11. CRITICAL: Confirm AVAV SELL Stop $186.21 GTC is CANCELLED on IBKR
+✅ 1. trading_journal32.jsx written to C:\Users\jcadb\claude-fund\journal\
+✅ 2. FUND_SESSION_STATE.md written to C:\Users\jcadb\claude-fund\state\
+✅ 3. LESSONS_LEARNED.md written to C:\Users\jcadb\claude-fund\state\
+⬜ 4. hormuz_log.md — update: conditional opening declared, SI-25 not triggered, WTI $83.85
+⬜ 5. Trade tracker — rows 1-4 pending. Row 5 (NOG) after Monday fill
+⬜ 6. USER: Delete trading_journal31.jsx from Claude project
+⬜ 7. USER: Upload trading_journal32.jsx to Claude project
+⬜ 8. USER: Run session-close.bat (GitHub backup)
+⬜ 9. USER: Verify Claude project shows Session 23 / Journal v32
+⬜ 10. MONDAY: Verify ceasefire expiry date (Apr 21 vs Apr 22) — 2+ primary sources
+⬜ 11. MONDAY: Confirm NOG market sell fill, add to trade tracker
 ======================================
 ```
 
 ---
 
 ## PROHIBITED DATA SOURCES
-- GuruFocus, PitchBook, Macroaxis — data quality issues
+- GuruFocus, PitchBook, Macroaxis
 - Any search snippet price without verified publication date
 - EODHD earnings endpoint (403 error)
 - Memory estimates for 52-week high/low
 - EODHD lastTradePrice for current session (may be 4-6 days stale)
 - Journal-only sourcing for key external event dates without primary news verification
-- Scan-phase figures used as recommendation figures without Stage 2 verification (S11)
-
----
-
-## NEW LESSONS — S22 (17 April 2026)
-
-### T16 — Hormuz Partial vs Formal Reopening (CRITICAL — S22)
-Iran declared Hormuz open “for the remaining ceasefire period” on Apr 17. Market surged +2.4%, oil dropped, RR.L fell -4.86%. Pressure to act on SI-25 was significant. The correct response: DO NOT ACT. SI-25 requires “formal Hormuz reopening CONFIRMED” as part of a peace deal, not a temporary ceasefire-period declaration expiring in 4 days. A declaration without a signed peace agreement is NOT a formal reopening. Hold thesis-correlated positions until SI-25 is formally triggered by a permanent deal. LNG stop executing on the same day was the correct and precise mechanical response to the oil price move — it did the job the stop was designed to do.
-
-### T17 — LNG Stop Was Correct, Not a Regret
-LNG stopped out at $248 on the exact day oil dropped on the Hormuz partial opening declaration. Do not second-guess a stop that executed correctly. The stop was doing the job it was placed to do. The position had a good run (+$0 net from $268 entry vs $248 stop = expected loss). Re-entry conditions: Hormuz fails to reopen + blockade escalates + oil back above $100. Not on peace optimism.
-
-### T18 — CRML Binary Catalyst Execution (+39% in One Session)
-CRML +39.48% on Greenland government approving 92.5% Tanbreez ownership. The SI-37 cap ($1,500 max on speculative positions) was exactly right — it limited the position to $999 cost, gained $425. The binary catalyst was knowable and tracked. Lesson: when a small speculative position has a clear government/regulatory approval pending, that is a conviction add trigger BEFORE the announcement, IF thesis is intact and SI-44 Stage 2 complete. Do not add after the move.
-
-### E15 — SPAC Order Type
-CGCT entered as DAY order, not GTC. It filled same day, so no issue materialised. But if markets had been closed or stock had moved, the order would not have persisted. For SPAC pre-close entries where the trust floor creates asymmetric risk/reward, always use GTC.
+- Trump Truth Social posts as confirmation of geopolitical facts (T17)
