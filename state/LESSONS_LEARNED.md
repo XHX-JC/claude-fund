@@ -1,6 +1,6 @@
 # LESSONS LEARNED — CLAUDE FUND
 **Account:** U24936508 (IBKR Pro) | **Compiled through Session 24 (2026-04-19)**
-**Journal version:** trading_journal33.jsx | **SIs:** 1–48
+**Journal version:** trading_journal35.jsx | **SIs:** 1–49
 
 ---
 
@@ -18,7 +18,7 @@
 | E9 | GTC orphan | GTC stop persists after market sell — unintended short | Cancel stop BEFORE market sell or IMMEDIATELY on fill confirmation |
 | E10 | Closed position scan | Closed position in live scan with active stop | Cross-reference SI-19 + positions[] before any scan table |
 | E11 | 52-week high hallucination | Stating 52wk range from memory | MANDATORY: use EOD:get_us_live_extended_quotes. Memory forbidden |
-| E12 | Tool routing gap | Not knowing which tool provides which data | MMD=current price. EODHD extended=52wk range. Never conflate |
+| E12 | Tool routing gap | Not knowing which tool provides which data | MMD=current price. EODHD extended=52wk range. Never conflate. SI-49 is authoritative routing guide |
 | E13 | EODHD price delay | EODHD lastTradePrice may be 4-6 days stale | Use MMD for current session price |
 | E14 | Journal date discrepancy | Key event dates wrong in journal | Cross-reference 2+ primary news sources before acting |
 
@@ -44,7 +44,7 @@ Structural damage persists under toll regime.
 Toll regime resumes non-oil shipments.
 
 ### T3 — Exit Trigger Discipline
-SI-25 ONLY: formal PERMANENT Hormuz reopening + oil -10% from peak. Ceasefire alone insufficient. Iran opened Hormuz conditionally Friday Apr 17, then re-closed Saturday Apr 18. This confirmed the opening was never permanent and did not meet SI-25 threshold.
+SI-25 ONLY: formal PERMANENT Hormuz reopening + oil -10% from peak. Ceasefire alone insufficient.
 
 ### T4 — Cash Reserve is Tactical, Not Passive
 Deployment triggers must fire. Cash above floor = deployable capital.
@@ -80,30 +80,22 @@ GOOGL hit -20% drawdown with no protocol. SI-39 created.
 Never chase premarket. Hold the limit.
 
 ### T15 — Broken Thesis Exit Discipline (S20)
-When PRIMARY thesis driver impaired by confirmed new datapoint + position within 5% of breakeven → EXIT AT MARKET on next open.
+When PRIMARY thesis driver impaired + position within 5% of breakeven → EXIT AT MARKET on next open.
 
 ### T16 — SI-45 Weekly Screener Cannot Be Deferred (S23)
 NFLX missed at -27.4% drawdown. SI-45 first session of every week, no exceptions.
 
 ### T17 — Conditional Reopening ≠ SI-25 Trigger (S23)
-Iran opened Hormuz conditionally Friday Apr 17 — closed again Saturday Apr 18. Confirmed: ceasefire-linked opening is not a permanent reopening. Trump language inflates certainty. Verify against MarineTraffic data and IRGC statements, not political statements.
+Iran opened Hormuz conditionally Friday Apr 17 — closed again Saturday Apr 18.
 
 ### T18 — Geopolitical Position Management: Verify Before Exiting (S24)
-**ORIGIN**: NOG sell submitted Saturday on Hormuz opening news. Iran re-closed Hormuz Saturday evening. The exit rationale evaporated before markets even opened. NOG sell cancelled Sunday.
-**LESSON**: When exiting a position on geopolitical news, verify the news is stable before the order executes — particularly for DAY orders submitted after hours. A DAY market order for a geopolitical thesis exit should be reviewed at session open before fill to confirm the thesis driver is still intact. The 12-hour period between after-hours order submission and market open is enough for the entire situation to reverse.
-**APPLICATION**: For any geopolitical-driven DAY market order, build in a review step at session open (pre-13:30 UAE for NYSE) to confirm the triggering event has not reversed overnight.
+For any geopolitical-driven DAY market order, build in a review step at session open to confirm the triggering event has not reversed overnight.
 
-### T19 — ATH RULE IS THESIS-DEPENDENT (NEW S24)
-**ORIGIN**: Session 24 AI infrastructure deep dive. User clarification that within the AI thesis, ATH alone should not disqualify — further analysis of upside potential must override. But the PLTR lesson (P6 — entry on narrative/multiple expansion, resulted in -$1,307 realised loss) remains the guardrail.
-**LESSON**: P13 (no entry within 5% of 52wk high without catalyst) is the DEFAULT rule for position entry. But for specific theses where valuation multiple anchors are defensible — cheap-fwd-PE-at-ATH situations like HPE at fwd PE 10.7 — blanket application of P13 would cause missed opportunities. The discipline is to differentiate:
-- ATH + expensive multiple + thesis requires multiple expansion → PLTR trap → REJECT (P6 lesson)
-- ATH + cheap multiple + earnings growth path clear + contracted backlog → potentially VALID entry with reduced sizing
-**APPLICATION**: See SI-48 for the full AI-thesis-specific rule. SI-48 is narrow in scope — it does NOT override P13 for any other thesis.
+### T19 — ATH RULE IS THESIS-DEPENDENT (S24)
+P13 (no entry within 5% of ATH without catalyst) is the DEFAULT rule. See SI-48 for the narrow AI-thesis exception.
 
-### T20 — "NEXT NVIDIA" FRAMING CORRECTION (NEW S24)
-**ORIGIN**: Session 24 user clarification. Initial framing asked to "find the next Nvidia in scope and scale." Corrected framing: find companies with modest valuation AND genuine IP/tech that will become instrumental for AI rollout, not replacing NVIDIA or even necessarily in the chip sector.
-**LESSON**: "Next Nvidia" as a literal search criterion is not possible from public markets at the fund's scale — a company capable of compounding 20x from $50B+ market cap is not the same as a $10B company with transformative IP. The correct frame is asymmetric optionality on genuine IP at reasonable valuation. Examples: POET (silicon photonics interposer, speculative), HPE (Juniper networking + AI server at cheap multiple), MU (HBM memory structural bottleneck at anomalous forward PE).
-**APPLICATION**: When searching speculative positions, the question is not "will this become Nvidia" but "does this company have IP that becomes instrumental AND is the market currently mispricing the optionality?"
+### T20 — "NEXT NVIDIA" FRAMING CORRECTION (S24)
+Correct frame: find companies with modest valuation AND genuine IP/tech that will become instrumental for AI rollout. Not about replacing Nvidia.
 
 ---
 
@@ -128,7 +120,7 @@ Cancel GTC stop FIRST, then sell. Never reverse sequence.
 Presidential Truth Social post is not a catalyst. Realised loss -$1,307. This lesson governs all entries where thesis depends on narrative momentum or multiple expansion rather than earnings growth.
 
 ### P7 — AVAV Entry and Exit (CLOSED S20)
-Entered $195.09, sold $197.945 (+$71.38). Validate contractor concentration risk before entry.
+Entered $195.09, sold $197.945 (+$71.38).
 
 ### P8 — ITM Stop Discrepancy
 IBKR is ground truth on stop prices always.
@@ -146,7 +138,7 @@ Re-entry only after price pulls back below stop-out level.
 Use SI-35 dollar-risk sizing.
 
 ### P13 — No Entry Near 52-Week Highs Without Catalyst (S16)
-Do not enter within 5% of ATH without confirmed catalyst. **AMENDMENT per SI-48:** This default rule applies to all theses EXCEPT where SI-48 exemption triggers within the AI infrastructure thesis. See SI-48 for the narrow exception.
+Do not enter within 5% of ATH without confirmed catalyst. **AMENDMENT per SI-48:** This default rule applies to all theses EXCEPT where SI-48 exemption triggers within the AI infrastructure thesis.
 
 ### P14 — CODA Stop Intentional Below Journal Level (S19)
 Do not "correct" stops that are intentionally placed for catalyst timing.
@@ -158,17 +150,13 @@ Active legal filing = mandatory waiting period.
 Any stop raise executed on IBKR must be logged in journal SAME SESSION.
 
 ### P17 — PATK M&A Tip Entry Error (S23)
-No entry on any M&A play until: (1) target fully analysed, (2) deal terms/probability/R:R logged, (3) joint entry decision confirmed. A tip is not a thesis.
+No entry on any M&A play until: (1) target fully analysed, (2) deal terms/probability/R:R logged, (3) joint entry decision confirmed.
 
 ### P18 — Orphaned Buy Order Risk (S24)
-**ORIGIN**: SLV BUY $70 GTC was left "Pending" in IBKR when SLV SELL Stop $63 was cancelled S23. The decision was to cancel both legs. Only one was confirmed cancelled.
-**LESSON**: When cancelling a bracket order (buy + stop), explicitly confirm BOTH legs are cancelled. Do not assume. Check IBKR orders tab for each leg individually. An order showing "Pending" is not cancelled — it is queued. Confirm "Cancelled" status for each order separately.
-**APPLICATION**: Session open orders review must cross-check that cancelled orders show "Cancelled" status, not "Pending."
+When cancelling a bracket order, explicitly confirm BOTH legs cancelled. "Pending" ≠ "Cancelled."
 
-### P19 — AI THESIS CROWDED TRADE OBSERVATION (NEW S24)
-**ORIGIN**: Session 24 AI infrastructure deep dive. Scan of ~40 AI-exposed names showed roughly half at or within 5% of 52-week highs. VRT, ETN, GEV, ANET, MRVL, POWL, CLS, JBL, FN, COHR, LITE, MTSI all at or above ATH.
-**LESSON**: The obvious picks-and-shovels names in AI infrastructure are crowded. The edge for the fund comes from structurally critical names trading at anomalous valuations (MU fwd PE 7.9), drawn-down specialists with intact thesis (CRDO -25%, SNPS -31%), and pure-speculation sized per SI-37. Chasing the obvious quality names at ATH without SI-48 justification repeats the P6 mistake.
-**APPLICATION**: Before adding any AI infrastructure position, explicitly document (a) whether SI-48 applies (b) whether position is thesis-central or correlation-stacking with existing MSFT/AMZN exposure (c) what the realistic upside is without multiple expansion.
+### P19 — AI THESIS CROWDED TRADE OBSERVATION (S24)
+Roughly half of AI-exposed names at or near ATH. Edge comes from anomalous valuations (MU), drawn-down specialists (SNPS -31%), and spec-sized options (POET). Chasing ATH without SI-48 justification repeats P6.
 
 ---
 
@@ -194,18 +182,18 @@ Section 0 (SI-39) runs FIRST. SI-45 weekly screener runs first session of each w
 ### S9 — EOD API Failure Fallback (S20). MMD prev close + web search for 52wk range.
 
 ### S10 — Primary Source Verification for Binary Event Dates (S20).
-Key event dates must be verified against 2+ primary sources. Ceasefire expiry confirmed Tuesday Apr 21.
+Key event dates must be verified against 2+ primary sources.
 
 ### S11 — SI-45 Non-Deferral Rule (S23).
 SI-45 executes first session of every trading week. Not optional.
 
-### S12 — THESIS-DEDICATED RESEARCH FILES (NEW S24)
-**ORIGIN**: Session 24 AI infrastructure deep dive produced a 40+ ticker candidate list that would bloat the journal if stored inline. Separate thesis research files allow depth without cluttering core state.
-**LESSON**: For any multi-session research thesis with 10+ candidate names, create a dedicated file at `C:\Users\jcadb\claude-fund\research\<THESIS>_THESIS.md` linked from the journal. Review at session open when relevant thesis is active.
-**APPLICATION**: 
-- `research/AI_INFRASTRUCTURE_THESIS.md` created S24 (40+ candidates)
-- Future thesis research follows same pattern
-- Journal references the file path; candidate list lives in the thesis file to avoid journal bloat
+### S12 — THESIS-DEDICATED RESEARCH FILES (S24)
+For any multi-session research thesis with 10+ candidate names, create a dedicated file at `C:\Users\jcadb\claude-fund\research\<THESIS>_THESIS.md`.
+
+### S13 — AUDIT CONNECTED TOOLS BEFORE PROPOSING NEW ONES (S24)
+**ORIGIN:** Session 24 OpenBB discussion. A full audit of connected tools (EOD, MMD/Polygon, Alpha Vantage, Coupler.io) revealed that Alpha Vantage — already connected — provides income statements, balance sheets, cash flows, earnings estimates with revision history, earnings call transcripts (15+ years, US companies), institutional ownership (13F), insider transactions, and news sentiment. None of these had been systematically used in Stage 1 or Stage 2 research. Additionally, the SEC EDGAR API is completely free, no key required, and provides all XBRL-tagged financial facts for every US-listed company.
+**LESSON:** Before proposing an external tool install, audit what is already connected. The routing gap (E12) is more common than the data gap. SI-49 is the authoritative tool routing guide — consult it before every Stage 2 session.
+**APPLICATION:** Any Stage 2 research session must begin by routing data needs through SI-49, not by defaulting to web search or proposing new tools.
 
 ---
 
@@ -220,19 +208,27 @@ New subdirectory S24: `C:\Users\jcadb\claude-fund\research\`
 All state management via local filesystem MCP + Claude project.
 
 ### I3 — Session Open Protocol (SI-32)
-1. Read FUND_SESSION_STATE.md | 2. Read LESSONS_LEARNED.md | 3. Check journal lastUpdated
-4. **SI-47: State today's date explicitly** | 5. IBKR screenshots | 6. Section 0 EOD batch | 7. SI-45 weekly (first session of week) | 8. SI-14 scan A-K
-9. **NEW S24: If any active thesis file in `research/` directory, check for pending Stage 2 tasks**
+1. Read FUND_SESSION_STATE.md
+2. Read LESSONS_LEARNED.md
+3. Check journal lastUpdated
+4. **SI-47: State today's date explicitly** — STEP ZERO
+5. IBKR screenshots
+6. Section 0 EOD batch (SI-39 Tier 1 + AI Tier 2 watchlist)
+7. SI-45 weekly (first session of week only)
+8. SI-14 scan A-K
+9. If any active thesis file in `research/` directory, check for pending Stage 2 tasks
+10. **NEW S24: For any Stage 2 research task, route data needs through SI-49 before pulling any data**
 
 ### I4 — Session Close Protocol (SI-28)
 1. Build session-close block | 2-4. Write journal + .md files to C drive
 5. Update hormuz_log.md | 6. Update trade tracker if fills | 7-10. User actions.
 
 ### I5 — Journal versioning
-trading_journal33.jsx = current (Session 24 — updated with AI thesis candidate list and SI-48)
+trading_journal35.jsx = current (Session 24 supplementary — SI-49 added)
 
 ### I6 — Memory Hierarchy (SI-33)
 Journal → FUND_SESSION_STATE → LESSONS_LEARNED → research/*.md → Trade Tracker
+**Data routing:** SI-49 (authoritative tool routing guide) is the reference for all data source decisions.
 
 ### I7 — Trade Tracker Pending (S24)
 1. AVAV +$71.38 (S20 — outstanding)
@@ -242,92 +238,223 @@ Journal → FUND_SESSION_STATE → LESSONS_LEARNED → research/*.md → Trade T
 5. NOG — market sell cancelled, position held
 
 ### I8 — Date Verification Is Step Zero, Not a Reminder (S24)
-**ORIGIN**: S24 error — stated "cancel before 13:30 UAE today" on a Sunday. Date was inferred from session context rather than read from the authoritative source (system prompt).
-**FIX — SI-47**: System prompt date is the ONLY authoritative source. State the date explicitly at the start of every session before any analysis.
-**NON-NEGOTIABLE**: This is step zero. It runs before IBKR screenshots, before price pulls, before thesis review.
+System prompt date is the ONLY authoritative source. State explicitly at session start before any analysis.
 
 ### I9 — DAY Orders Require Pre-Open Review (S24)
-DAY market orders submitted after hours must be reviewed at session open — before fill — to confirm the triggering thesis is still intact. See T18.
+DAY market orders submitted after hours must be reviewed at session open before fill.
 
-### I10 — AI THESIS RESEARCH FILE LOCATION (NEW S24)
-`C:\Users\jcadb\claude-fund\research\AI_INFRASTRUCTURE_THESIS.md` contains full Stage 1 candidate list (40+ names), ranked priorities, explicit open questions for Stage 2, and SI-48 rule definition. Consult this file before any AI-thesis-related trade decision.
+### I10 — AI THESIS RESEARCH FILE LOCATION (S24)
+`C:\Users\jcadb\claude-fund\research\AI_INFRASTRUCTURE_THESIS.md` contains full Stage 1 candidate list. Consult before any AI-thesis trade decision.
 
 ### I11 — Direct C Drive Write Confirmed (S19-S24)
 filesystem:write_file writes directly to allowed directories.
 
+### I12 — SEC EDGAR DIRECT API — FREE, NO KEY REQUIRED (NEW S24)
+**The most underutilised free data source available.** Provides every financial metric a US-listed company has filed in structured XBRL format. No API key. No cost. Goes back 10+ years.
+
+**Primary endpoints:**
+- All filings for a company: `https://data.sec.gov/submissions/CIK{10-digit-zero-padded}.json`
+- All financial facts (revenue, EPS, assets, etc.): `https://data.sec.gov/api/xbrl/companyfacts/CIK{10-digit-zero-padded}.json`
+- Full-text filing search: `https://efts.sec.gov/LATEST/search-index?q={query}&dateRange=custom&startdt={YYYY-MM-DD}&enddt={YYYY-MM-DD}`
+- CIK lookup: `https://www.sec.gov/cgi-bin/browse-edgar?company={name}&action=getcompany&output=atom`
+
+**Example CIK numbers (common Stage 2 targets):**
+- MU (Micron): 0000723125
+- HPE: 0001645590
+- SNPS (Synopsys): 0000883241
+- CRDO (Credo): varies — look up via CIK lookup endpoint
+
+**Use for:** Verifying management guidance, confirming LTA language in 10-Q, checking actual gross margins and revenue by segment, validating forward PE calculations from first principles.
+**This replaces manual web_fetch on SEC.gov pages for US companies.** See SI-49 for full routing.
+
 ---
 
-## STANDING INSTRUCTION REFERENCE — SI-48 (NEW S24)
+## STANDING INSTRUCTION REFERENCE — SI-48 (S24)
 
 ### SI-48 — AI THESIS ATH RULE AMENDMENT
+**SCOPE:** AI infrastructure thesis candidates ONLY.
 
-**SCOPE:** AI infrastructure thesis candidates ONLY. Does not modify P13 for any other thesis.
+**RULE:** Entry at ATH permitted if ALL FOUR pass in Stage 2:
+1. Valuation reasonable (fwd PE below sector median OR PEG < 1.5)
+2. Structural catalyst path (multi-year backlog, LTAs, order book visibility)
+3. No multiple expansion required (upside from earnings growth alone)
+4. PLTR P6 test: if "narrative will continue" is the case → REJECT
 
-**RULE:** For an AI-thesis-tagged candidate at or near 52wk high, entry may proceed without SI-39 drawdown trigger if ALL FOUR tests pass in Stage 2:
+**CONSTRAINTS:** SI-41, SI-37, SI-35 all apply. Position size REDUCED vs drawdown entry.
+**DOCUMENTATION:** Four tests logged in journal before any SI-48 entry.
 
-1. **Valuation reasonable:** Forward PE below sector median OR PEG < 1.5
-2. **Structural catalyst path:** Multi-year contracted backlog, LTAs, or order book visibility extending beyond next earnings print
-3. **No multiple expansion required:** Upside case works from earnings growth alone; does not depend on market re-rating
-4. **PLTR P6 test:** Explicit check — if primary case is "narrative will continue," REJECT
-
-**ADDITIONAL CONSTRAINTS:**
-- SI-41 catalyst window (8 weeks) still applies
-- SI-37 speculative cap ($1,500) still applies to speculative names
-- SI-35 dollar-risk sizing still applies ($500 max loss per trade)
-- **Position size should be REDUCED vs a drawdown entry** to account for lower margin of safety at ATH
-
-**DOCUMENTATION REQUIREMENT:** Before any SI-48 entry, the four tests must be explicitly logged in the trade tracker or journal entry. No unverified SI-48 entries.
-
-**CURRENT SI-48 CANDIDATES (as of S24):**
-- HPE ($26.44, at ATH, fwd PE 10.7) — passes all four tests on scan; awaits Stage 2
-- MU ($454.20, -3.6% from ATH, anomalous fwd PE) — passes on scan; July 1 earnings catalyst
-- ETN, AVGO — borderline, require Stage 2 fwd PE/growth analysis
-
-**EXPLICITLY FAILS SI-48:**
-- VRT (fwd PE 51.8) — thesis requires multiple expansion
-- PRY.MI (+157% YoY, fwd PE 27.5) — multiple-expansion driven
-- ALAB (fwd PE 72.5 even after -34% drawdown) — PLTR trap risk
-- GEV (fwd PE 67 at ATH) — stretched
+**CURRENT PASSES:** HPE (fwd PE 10.74, Juniper + $5B backlog), MU (fwd PE 7.86, HBM LTAs)
+**EXPLICIT FAILS:** VRT (PE 51.8), PRY.MI (+157% YoY), ALAB (PE 72.5), GEV (PE 67)
 
 ---
 
-## SESSION CLOSE CHECKLIST — SESSION 24 (UPDATED)
+## STANDING INSTRUCTION REFERENCE — SI-49 (NEW S24)
+
+### SI-49 — STAGE 2 DATA STACK ROUTING PROTOCOL
+
+**PURPOSE:** Claude has multiple connected data tools. This SI is the authoritative routing guide. Consult before every Stage 2 session. Prevents E12 (tool routing gap) and eliminates unnecessary web_fetch for data already available via connected APIs.
+
+**CONNECTED TOOLS AND THEIR ROLES:**
+
+#### PRICE DATA — US
+| Need | Tool | Notes |
+|------|------|-------|
+| Current price | `MMD: /v2/aggs/ticker/{TICKER}/prev` field `c` | Primary. Up to date. |
+| 52wk high/low | `EOD:get_us_live_extended_quotes` | fiftyTwoWeekHigh/Low. ONLY authorised source. |
+| Historical OHLCV | `EOD:get_historical_stock_prices` or `Alpha:TIME_SERIES_DAILY_ADJUSTED` | Adjusted for splits/dividends |
+| Intraday | `MMD:call_api` or `Alpha:TIME_SERIES_INTRADAY` | MMD preferred for recency |
+| Batch current prices | `EOD:get_us_live_extended_quotes` (comma-separated) | Up to 100 tickers per call |
+
+#### PRICE DATA — EU / UK
+| Need | Tool | Notes |
+|------|------|-------|
+| Current price + 52wk | `web_fetch https://finance.yahoo.com/quote/{TICKER}/` | MEMORY FORBIDDEN |
+| Historical | `web_fetch https://stockanalysis.com/stocks/{ticker}/` | Clean and reliable |
+
+#### FUNDAMENTALS — US (STAGE 2)
+| Need | Tool | Notes |
+|------|------|-------|
+| Income statement history | `Alpha:INCOME_STATEMENT` | Annual + quarterly, GAAP normalised |
+| Balance sheet history | `Alpha:BALANCE_SHEET` | Annual + quarterly |
+| Cash flow history | `Alpha:CASH_FLOW` | Annual + quarterly |
+| Company overview + key ratios | `Alpha:COMPANY_OVERVIEW` | PE, fwd PE, PEG, EPS, market cap |
+| Earnings history + surprise | `Alpha:EARNINGS` | Actual vs estimate, quarterly + annual |
+| EPS estimates + revisions | `Alpha:EARNINGS_ESTIMATES` | Consensus, analyst count, revision history |
+| Earnings call transcript | `Alpha:EARNINGS_CALL_TRANSCRIPT` | 15+ years US coverage — USE THIS for Stage 2 |
+| Institutional holders (13F) | `Alpha:INSTITUTIONAL_HOLDINGS` | Top holders, % float |
+| Insider transactions | `Alpha:INSIDER_TRANSACTIONS` or `EOD:get_insider_transactions` | |
+| News + sentiment scored | `Alpha:NEWS_SENTIMENT` | Per ticker, filterable by date |
+| Analyst ratings summary | `EOD:get_fundamentals_data` sections=["AnalystRatings"] | |
+| Full fundamentals pack | `EOD:get_fundamentals_data` | Slower but comprehensive fallback |
+
+#### SEC FILINGS — US (FREE, NO KEY)
+| Need | Tool | Notes |
+|------|------|-------|
+| All XBRL financial facts | `web_fetch https://data.sec.gov/api/xbrl/companyfacts/CIK{10-digit}.json` | Revenue, EPS, margins, assets — structured |
+| Recent filings list | `web_fetch https://data.sec.gov/submissions/CIK{10-digit}.json` | Lists all 10-K, 10-Q, 8-K etc. |
+| Full-text search | `web_fetch https://efts.sec.gov/LATEST/search-index?q={term}` | Search across all filings |
+| Specific filing document | `web_fetch https://www.sec.gov/Archives/edgar/data/{CIK}/{accession}/{filename}.htm` | |
+
+**CIK lookup:** `web_fetch https://www.sec.gov/cgi-bin/browse-edgar?company={name}&action=getcompany&output=atom`
+
+**Known CIKs:**
+- MU (Micron): 0000723125
+- HPE: 0001645590
+- SNPS (Synopsys): 0000883241
+- AMZN: 0001018724
+- MSFT: 0000789019
+- NVDA: 0001045810
+
+#### FUNDAMENTALS — EU / UK (STAGE 2)
+| Need | Tool | Notes |
+|------|------|-------|
+| Income statement / ratios | `web_fetch https://stockanalysis.com/stocks/{ticker}/financials/` | Best free EU/UK source |
+| Historical PE / margins | `web_fetch https://www.macrotrends.net/stocks/charts/{ticker}/{name}/price-earnings-ratio` | 20-year ratio history |
+| Analyst estimates | `web_fetch https://finance.yahoo.com/quote/{ticker}/analysis/` | Consensus estimates |
+| Recent news | `web_search {ticker} earnings Q1 2026` | |
+
+#### SCREENING
+| Need | Tool | Notes |
+|------|------|-------|
+| US broad screen | `EOD:stock_screener` | Multiple filters |
+| Drawdown + fundamentals batch | `EOD:get_us_live_extended_quotes` | Batch up to 100 tickers |
+| SQL on price data | `MMD:call_api store_as=` + `MMD:query_data` | For custom analysis |
+| Top gainers/losers | `Alpha:TOP_GAINERS_LOSERS` | Daily US market |
+
+#### CHARTING
+**RULE: Offer a price chart for EVERY Stage 2 candidate. No exceptions.**
+
+| Need | Tool | Notes |
+|------|------|-------|
+| Build inline chart | Pull `Alpha:TIME_SERIES_DAILY_ADJUSTED` then render with Visualizer | 1-year min, show 50d/200d MA |
+| Quick reference | `web_fetch https://finance.yahoo.com/quote/{ticker}/chart` | Fallback if Visualizer not needed |
+
+#### MACRO DATA — US
+| Need | Tool | Notes |
+|------|------|-------|
+| GDP | `Alpha:REAL_GDP` | Quarterly, annual |
+| CPI / Inflation | `Alpha:CPI`, `Alpha:INFLATION` | Monthly, semiannual |
+| Federal funds rate | `Alpha:FEDERAL_FUNDS_RATE` | Daily/weekly/monthly |
+| Treasury yields | `Alpha:TREASURY_YIELD` | By maturity (2y, 5y, 10y, 30y) |
+| Unemployment | `Alpha:UNEMPLOYMENT` | Monthly |
+| Nonfarm payrolls | `Alpha:NONFARM_PAYROLL` | Monthly |
+| Country macro (non-US) | `EOD:get_macro_indicator` | GDP, inflation etc. for any country |
+
+#### COMMODITIES / FX
+| Need | Tool | Notes |
+|------|------|-------|
+| WTI oil live | `Alpha:WTI` | Daily/weekly/monthly |
+| Brent oil live | `Alpha:BRENT` | Daily/weekly/monthly |
+| Gold / Silver | `Alpha:GOLD_SILVER_SPOT` (live), `Alpha:GOLD_SILVER_HISTORY` (historical) | |
+| FX rate (any pair) | `Alpha:CURRENCY_EXCHANGE_RATE` | Real-time |
+| BTC/crypto | `Alpha:DIGITAL_CURRENCY_DAILY` | |
+
+#### OPTIONS
+| Need | Tool | Notes |
+|------|------|-------|
+| US options chain (live) | `Alpha:REALTIME_OPTIONS` | Full chain by expiry |
+| Put/call ratio | `Alpha:REALTIME_PUT_CALL_RATIO` | Bullish/bearish signal |
+| Historical options + Greeks | `Alpha:HISTORICAL_OPTIONS` | 15+ years, IV, delta, gamma |
+
+#### MISCELLANEOUS
+| Need | Tool | Notes |
+|------|------|-------|
+| Short interest | `web_fetch https://www.finra.org/investors/learn-to-invest/advanced-investing/short-selling` | FINRA bi-monthly, free |
+| IPO calendar | `Alpha:IPO_CALENDAR` | Next 3 months |
+| Earnings calendar (US) | `Alpha:EARNINGS_CALENDAR` | Next 3/6/12 months |
+| Market status | `Alpha:MARKET_STATUS` | Is NYSE open right now |
+| Index data (SPX, NDX, VIX) | `Alpha:INDEX_DATA` | 200+ indices |
+
+**WHAT SI-49 DOES NOT COVER (genuine remaining gaps):**
+- EU/UK earnings call transcripts — use web_fetch Motley Fool or company IR pages
+- EU/UK institutional ownership — use web_fetch Reuters or company AR documents
+- Real-time options flow / unusual activity — no good free source; not relevant to current strategy
+- Credit market data (CDS spreads, bond yields per issuer) — Bloomberg only; not needed currently
+
+---
+
+## SESSION CLOSE CHECKLIST — SESSION 24 (UPDATED v35)
 ```
-SESSION CLOSE CHECKLIST — SESSION 24 POST-SUPPLEMENTARY
+SESSION CLOSE CHECKLIST — SESSION 24 + SI-49 ADDED
 ======================================
-✅ 1. trading_journal33.jsx written to C:\Users\jcadb\claude-fund\journal\
+✅ 1. trading_journal35.jsx written to C:\Users\jcadb\claude-fund\journal\
 ✅ 2. FUND_SESSION_STATE.md written to C:\Users\jcadb\claude-fund\state\
-✅ 3. LESSONS_LEARNED.md UPDATED with T19, T20, P19, S12, I10, SI-48
-✅ 4. AI_INFRASTRUCTURE_THESIS.md created at C:\Users\jcadb\claude-fund\research\
-⬜ 5. trading_journal33.jsx to be updated with AI thesis watchlist and SI-48
-⬜ 6. hormuz_log.md — update: re-closure confirmed Saturday Apr 18
-⬜ 7. Trade tracker — rows 1-4 still pending
-⬜ 8. USER: Delete old journal from Claude project if replaced
-⬜ 9. USER: Upload updated trading_journal33.jsx to Claude project
-⬜ 10. USER: Run session-close.bat (GitHub backup)
-⬜ 11. MONDAY APR 20: Resubmit NOG stop $22.50 GTC — FIRST ACTION before 13:30 UAE
-⬜ 12. MONDAY APR 20: Confirm NOG sell + SLV buy cancellations show "Cancelled"
-⬜ 13. SESSION 25: Begin Stage 2 research on MU, HPE, SNPS per AI_INFRASTRUCTURE_THESIS.md
+✅ 3. LESSONS_LEARNED.md UPDATED — SI-49 added, S13, I12
+✅ 4. AI_INFRASTRUCTURE_THESIS.md exists at C:\Users\jcadb\claude-fund\research\
+⬜ 5. hormuz_log.md — update: re-closure confirmed Saturday Apr 18
+⬜ 6. Trade tracker — rows 1-4 still pending
+⬜ 7. USER: Delete trading_journal34.jsx from Claude project
+⬜ 8. USER: Upload trading_journal35.jsx to Claude project
+⬜ 9. USER: Run session-close.bat (GitHub backup)
+⬜ 10. MONDAY APR 20: Resubmit NOG stop $22.50 GTC — FIRST ACTION before 13:30 UAE
+⬜ 11. MONDAY APR 20: Confirm NOG sell + SLV buy cancellations show "Cancelled"
+⬜ 12. SESSION 25: Begin Stage 2 on MU — use SI-49 routing (EDGAR CIK 0000723125, Alpha transcripts, Alpha earnings estimates)
 ======================================
 ```
 
 ---
 
-## 52-WEEK DATA PROTOCOL (E11-E13 PREVENTION)
-- **Current price (US):** MMD /v2/aggs/ticker/{TICKER}/prev → use `c` field
-- **52-week high/low (US):** EOD:get_us_live_extended_quotes → fiftyTwoWeekHigh/Low
-- **EU/UK:** web_fetch Yahoo Finance
-- **NEVER use memory for 52-week range**
+## TOOL ROUTING QUICK REFERENCE (see SI-49 for full detail)
+- **Current price US:** MMD prev close
+- **52wk high/low US:** EOD:get_us_live_extended_quotes
+- **Current price EU/UK:** web_fetch Yahoo Finance
+- **Income statement / earnings:** Alpha:INCOME_STATEMENT, Alpha:EARNINGS
+- **Earnings call transcript:** Alpha:EARNINGS_CALL_TRANSCRIPT
+- **Institutional holders:** Alpha:INSTITUTIONAL_HOLDINGS
+- **US SEC filings (structured):** data.sec.gov/api/xbrl/companyfacts/CIK{}.json (FREE)
+- **EU/UK fundamentals:** stockanalysis.com, macrotrends.net via web_fetch
+- **Inline price chart:** Alpha:TIME_SERIES_DAILY_ADJUSTED → Visualizer
+- **NEVER:** Use EODHD earnings endpoint (403), use memory for 52wk range, use scan-phase figures without Stage 2 verification
 
 ---
 
 ## PROHIBITED DATA SOURCES
 - GuruFocus, PitchBook, Macroaxis
 - Any search snippet price without verified publication date
-- EODHD earnings endpoint (403 error — confirmed again S24)
+- EODHD earnings endpoint (403 error — confirmed S24)
 - Memory estimates for 52-week high/low
 - EODHD lastTradePrice for current session (may be 4-6 days stale)
-- Journal-only sourcing for key external event dates without primary news verification
+- Journal-only sourcing for key event dates without primary news verification
 - Trump Truth Social posts as confirmation of geopolitical facts (T17)
-- Session number, IBKR screenshots, or conversation context as source for current date (I8, SI-47)
-- **NEW S24:** Scan-phase forward PE or growth numbers in AI thesis recommendations without Stage 2 primary-source verification (SI-44 reaffirmed)
+- Session number / conversation context as source for current date (I8, SI-47)
+- Scan-phase forward PE or growth numbers in recommendations without Stage 2 verification (SI-44)
