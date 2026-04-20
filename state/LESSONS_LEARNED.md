@@ -1,6 +1,6 @@
 # LESSONS LEARNED — CLAUDE FUND
-**Account:** U24936508 (IBKR Pro) | **Compiled through Session 24 (2026-04-19)**
-**Journal version:** trading_journal35.jsx | **SIs:** 1–49
+**Account:** U24936508 (IBKR Pro) | **Compiled through Session 25 (2026-04-20)**
+**Journal version:** trading_journal36.jsx | **SIs:** 1–50
 
 ---
 
@@ -21,6 +21,7 @@
 | E12 | Tool routing gap | Not knowing which tool provides which data | MMD=current price. EODHD extended=52wk range. Never conflate. SI-49 is authoritative routing guide |
 | E13 | EODHD price delay | EODHD lastTradePrice may be 4-6 days stale | Use MMD for current session price |
 | E14 | Journal date discrepancy | Key event dates wrong in journal | Cross-reference 2+ primary news sources before acting |
+| E15 | AIM stop limitation | IBKR does not support stop/stop-limit order types for AIM-listed securities | Before any AIM entry: document that only Limit/Market/MoC/LoC are available. Set manual price alert. Log in position note. IES.L confirmed S25. |
 
 ---
 
@@ -410,6 +411,78 @@ filesystem:write_file writes directly to allowed directories.
 - EU/UK institutional ownership — use web_fetch Reuters or company AR documents
 - Real-time options flow / unusual activity — no good free source; not relevant to current strategy
 - Credit market data (CDS spreads, bond yields per issuer) — Bloomberg only; not needed currently
+
+---
+
+## NEW LESSONS — SESSION 25 (2026-04-20)
+
+### T21 — TWICE-WEEKLY SCAN AS STRUCTURAL DISCIPLINE (NEW S25)
+**ORIGIN**: S25. Fund entering deployment phase. User identified that catching quality stocks at discounted entry points requires faster scan cadence than weekly-only.
+**LESSON**: Best entries come in the first 24-48 hours of a macro-driven selloff, before the market recovers. A weekly scan misses mid-week dislocations entirely. Thursday brief scan exists specifically to catch these windows.
+**APPLICATION**: SI-50 formalises Monday full + Thursday brief scan. Critical discipline: dip classification rule — before flagging any drawdown as buy candidate, classify it as MACRO-DRIVEN DIP (fundamentals intact) vs BROKEN THESIS (guidance cut, earnings miss — avoid). Speed of classification is the edge; accuracy is the discipline.
+
+### T22 — ANALYST CONSENSUS AS SI-48 KILL SWITCH (NEW S25)
+**ORIGIN**: HPE Stage 2 S25. Stage 1 appeared compelling (fwd PE 10.74, AI backlog). Stage 2 found analyst target $26.43 vs current $26.44 — zero upside modelled.
+**LESSON**: When analyst consensus target equals or is below current price, SI-48 Test 3 (no multiple expansion required) fails. If the entire sell-side sees no upside from current levels, the market has already priced in the thesis. Entering is buying at fair value with no margin of safety.
+**APPLICATION**: In any Stage 2 review, if analystTarget <= currentPrice → stop analysis. Fails SI-48 regardless of Stage 1 thesis quality. HPE is the proof case.
+
+### P20 — PRIMARY SOURCE CONFIRMATION BEFORE AI THESIS ENTRY (NEW S25)
+**ORIGIN**: MU Stage 2 S25. Stage 1 claimed "HBM sold out" and "LTA-style agreements." Stage 2 primary source (Q2 FY26 earnings transcript) confirmed: five-year SCA signed, HBM4 in volume production, supply tightness "beyond calendar 2026."
+**LESSON**: Stage 1 theses are built from secondary sources — often accurate but occasionally oversimplified. The specific claim for SI-48 Test 2 (structural catalyst) must be verified in a primary source. Without the SCA finding from the MU transcript, this would have remained Stage 1 only.
+**APPLICATION**: SI-49 mandates Alpha:EARNINGS_CALL_TRANSCRIPT before SI-48 entry approval. Transcript must confirm: (1) contract structure and duration, (2) supply commitments, (3) management confidence language.
+
+### P21 — STAGE 2 CAN AND SHOULD KILL STAGE 1 THESES (NEW S25)
+**ORIGIN**: HPE killed by Stage 2. Stage 1 showed compelling metrics. Stage 2 revealed analyst target = current price, negative trailing EPS, -30% quarterly earnings growth, 12 holds vs 9 buys.
+**LESSON**: Stage 1 identifies candidates. Stage 2 is where the work happens. When Stage 2 kills a thesis, that is the system working correctly — not a failure.
+**APPLICATION**: No entry — even at SI-37 speculative cap — without Stage 2 primary source verification. HPE is the proof case.
+
+### S13 — THURSDAY BRIEF SCAN PROTOCOL (NEW S25)
+**ORIGIN**: SI-50. Monday full scan catches week-opening drawdowns. Earnings reactions and macro data releases happen Tuesday-Thursday. A mid-week dip in a quality name can represent the best entry of the week.
+**APPLICATION**: Every Thursday: pull prices for flagged names (currently MU, CDNS, CRDO, OXY, NOG). Classify any significant moves using three-question dip classification rule. Target time: 15-20 minutes maximum. First Thursday scan: April 24, 2026.
+
+### S14 — DIP CLASSIFICATION RULE (NEW S25)
+**ORIGIN**: SI-50 protocol. Core skill: distinguishing macro-driven dip from broken thesis.
+**RULE — three questions before any drawdown becomes a buy candidate:**
+(A) Negative company-specific fundamental news this week (miss, guidance cut, structural issue)?
+(B) Macro/geopolitical or company-specific drawdown?
+(C) Forward guidance cut or next print materially threatened?
+If answers are No / Macro / No → CANDIDATE for Stage 2 investigation.
+If any answer differs → BROKEN THESIS — wait or pass.
+**EXAMPLES**: SNPS -31% = China export shock (macro) → candidate. LNG exit = Hormuz thesis changed (company-specific trigger, P11 governs re-entry).
+
+### E15 — AIM STOP LIMITATION (NEW S25)
+**ORIGIN:** Session 25. IES.L (AIM-listed) entered. Attempt to place stop-limit order failed — IBKR threw error. Investigation confirmed IBKR does not support stop or stop-limit orders for any AIM-listed security.
+**CONFIRMED:** Available order types for AIM: Limit, Market, Market on Close, Limit on Close only.
+**PREVENTION:** Before entering any AIM-listed position:
+1. Note in pre-entry checklist: "AIM — no IBKR stop orders"
+2. Set IBKR price alert at intended stop level
+3. On alert trigger: immediately place Market Sell for full position size
+4. Document in journal position note as "Manual alert Xp (E15 — AIM no stop)"
+**CURRENT APPLICATIONS:** IES.L — 3,000sh, manual alert 12.5p. Max loss £150.
+**SCOPE:** Applies to all AIM-listed securities: IES.L, ITM.L, CWR.L and any future AIM entries.
+
+### I12 — SI-50 TWICE-WEEKLY SCAN IMPLEMENTATION (NEW S25)
+Monday full scan + Thursday brief scan confirmed as standing protocol. First Thursday scan: April 24, 2026. Thursday watchlist: MU, CDNS, CRDO, OXY, NOG.
+
+---
+
+## SESSION CLOSE CHECKLIST — SESSION 25 EOD (v37)
+```
+SESSION CLOSE CHECKLIST — SESSION 25 EOD
+==========================================
+✅ 1. trading_journal37.jsx written (EOD) → C:\Users\jcadb\claude-fund\journal\
+✅ 2. FUND_SESSION_STATE.md written → C:\Users\jcadb\claude-fund\state\
+✅ 3. LESSONS_LEARNED.md updated — E15 added
+✅ 4. IES.L: 3,000sh @ 17.39p, IBKR avg 17.49p, £525 cost, manual alert 12.5p
+✅ 5. E15 documented permanently in error taxonomy
+✅ 6. WTI EOD $88.36 +6.99% — ceasefire expires tomorrow
+⬜ 7. hormuz_log.md update pending
+⬜ 8. USER: Delete trading_journal36.jsx from Claude project
+⬜ 9. USER: Upload trading_journal37.jsx to Claude project
+⬜ 10. USER: Run session-close.bat
+⬜ 11. TONIGHT: ISRG earnings 00:30 UAE + ceasefire expiry watch
+==========================================
+```
 
 ---
 
