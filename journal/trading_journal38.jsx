@@ -25,7 +25,7 @@ const STORAGE_KEY = "fund_journal_v2";
 // ═══════════════════════════════════════════════════════════════════
 
 const INITIAL_STATE = {
-  "lastUpdated": "2026-04-21 SESSION 26 EOD CLOSE — JOURNAL v38",
+  "lastUpdated": "2026-04-21 SESSION 26 EOD CLOSE — JOURNAL v38 (SI-51 v2 FINAL)",
   "sessionNumber": 26,
   "fund": {
     "account": "U24936508",
@@ -46,34 +46,34 @@ const INITIAL_STATE = {
     "cashFloorRule": "10% of NL = $10,520 minimum. NEVER go below.",
     "deployableCash": 15177,
     "deployableCashNote": "cashBase $26,865 minus floor $10,520 minus FX deficit ~$1,168 = ~$15,177",
-    "lastUpdated": "2026-04-21 SESSION 26 EOD — JOURNAL v38. Net Liq $105.2K. Daily P&L +$751.34. ABVX STOPPED OUT $114.31 (-$158). LDO.MI FILLED €56.086 avg 35sh. ITM stop raised 100p→120p/118p (Rheinmetall Giga PtX NATO deal +46%). CRML add $10.50 CANCELLED — $60M placement at $10.00. GOOGL BUY $315 + BKR BUY $58.50 brackets placed. AMPX stop corrected $15.79→$16.89. ISRG + AMZN + LRCX earnings overnight/tomorrow AMC. WTI ~$87 — ceasefire expired no deal.",
-    "note": "JOURNAL v38 EOD SESSION 26 (Tuesday 21 Apr 2026). NET LIQ $105.2K. 17 positions (ABVX closed, LDO.MI opened). ABVX stopped out at $114.31 — P4 executed cleanly, loss -$158.53. ITM.L surged +46% on Rheinmetall Giga PtX NATO e-fuel deal — stop raised to 120p/118p SL, target revised to 175p/200p. LDO.MI 35sh filled €56.086 avg, stop €50 GTC. CRML add cancelled — dilution ($60M placement at $10.00). GOOGL $315 + BKR $58.50 brackets live. AMPX stop corrected to $16.89. SI-51 (Tier 3 fast-track) and SI-52 (Wide Net scan) formalised. Ceasefire expired with no extension — Hormuz still blocked — WTI ~$87. Three earnings overnight: ISRG Q1 (00:30 UAE), AMZN Q1 (Wed AMC), LRCX Q3 (Wed AMC)."
+    "lastUpdated": "2026-04-21 SESSION 26 EOD — JOURNAL v38 FINAL. Net Liq $105.2K. Daily P&L +$751.34. ABVX STOPPED OUT $114.31 (-$158). LDO.MI FILLED €56.086 avg 35sh. ITM stop raised 100p→120p/118p (Rheinmetall Giga PtX NATO deal). CRML add $10.50 CANCELLED — $60M placement at $10.00. GOOGL BUY $315 + BKR BUY $58.50 brackets placed. AMPX stop corrected $15.79→$16.89. SI-51 v2 WEIGHTED JUDGEMENT FRAMEWORK replaces binary T8 block. POET now qualifies for entry. Three earnings overnight/tomorrow.",
+    "note": "JOURNAL v38 FINAL SESSION 26 (Tuesday 21 Apr 2026). NET LIQ $105.2K. 17 positions. ABVX stopped out -$158.53 (P4 clean). LDO.MI filled. ITM stop 120p/118p target 175p/200p. CRML add cancelled (dilution). GOOGL+BKR live. SI-51 v2: binary T8 block replaced with weighted scoring framework for Tier 3. POET scores +7/7, now qualifies for entry on next pullback."
   },
   "thesis": {
     "title": "CEASEFIRE EXPIRED — NO DEAL — HORMUZ BLOCKED — WTI ~$87 — THREE EARNINGS OVERNIGHT",
     "summary": "EOD TUESDAY APR 21. Ceasefire expired with no extension and no second round of talks confirmed. Iran did not attend Islamabad talks. Hormuz remains largely blocked. WTI ~$87 — SI-25 NOT TRIGGERED (trigger $100.38). NOG thesis intact. CODA mine clearance thesis intact — kinetic naval action in Hormuz strengthens case. Three major earnings overnight and tomorrow: ISRG Q1 (00:30 UAE Wed), AMZN Q1 (Wed AMC), LRCX Q3 (Wed AMC). ITM.L Rheinmetall Giga PtX collaboration adds defence/NATO e-fuel layer to existing energy transition thesis.",
     "oilWTI": 87.0,
-    "oilWTINote": "WTI ~$87 at session close. Ceasefire expired Apr 21 with no deal. Hormuz blocked. SI-25 trigger $100.38 — not triggered. WTI slightly lower than Monday close $88.36 — market pricing residual talk-of-talks hope.",
+    "oilWTINote": "WTI ~$87 at session close. Ceasefire expired Apr 21 with no deal. Hormuz blocked. SI-25 trigger $100.38 — not triggered.",
     "oilBrent": 91.0,
-    "hormuzStatus": "CLOSED. Ceasefire expired April 21 with no extension. Iran did not attend Islamabad talks. US naval blockade active. Tanker traffic near standstill. Mine clearance multi-year thesis (CODA) intact.",
-    "ceasefireFilter": "SI-25 WATCH. Ceasefire expired APR 21 — no extension. WTI ~$87 (vs SI-25 trigger $100.38 — -15% away). SI-25 NOT TRIGGERED. Next watch: any new ceasefire framework OR WTI spike above $100.",
+    "hormuzStatus": "CLOSED. Ceasefire expired April 21 with no extension. Iran did not attend Islamabad talks. US naval blockade active. Mine clearance multi-year thesis (CODA) intact.",
+    "ceasefireFilter": "SI-25 WATCH. Ceasefire expired APR 21 — no extension. WTI ~$87 (vs SI-25 trigger $100.38). SI-25 NOT TRIGGERED.",
     "blockadeStatus": "US CENTCOM naval blockade continues. Iran blockading Hormuz. No second round of talks confirmed. Mine clearance multi-year (CODA). Iran rebuilding stockpiles confirmed.",
     "keyDates": [
-      {"date": "TONIGHT 00:30 UAE Wed", "event": "ISRG Q1 2026 earnings — consensus non-GAAP EPS $2.11, rev $2.62B. Beat → raise stop $455-460. Miss → let $443.86 execute.", "priority": "CRITICAL"},
+      {"date": "TONIGHT 00:30 UAE Wed", "event": "ISRG Q1 2026 earnings — non-GAAP consensus EPS $2.11, rev $2.62B. Beat → raise stop $455-460. Miss → let $443.86 execute.", "priority": "CRITICAL"},
       {"date": "Wed Apr 22 AMC", "event": "AMZN Q1 earnings — AWS + AI capex key. Beat → raise stop $242-245. Strong beat → consider +10sh add.", "priority": "CRITICAL"},
-      {"date": "Wed Apr 22 AMC", "event": "LRCX Q3 FY26 earnings — beat + dip -5%+ → BUY $245 limit / stop $220 / 10sh. Check analyst upgrades first.", "priority": "CRITICAL"},
-      {"date": "Wed Apr 22 AMO", "event": "VRT + GEV earnings — AI infra read-across for VST, thesis check.", "priority": "HIGH"},
+      {"date": "Wed Apr 22 AMC", "event": "LRCX Q3 FY26 — beat + dip -5%+ → BUY $245 / stop $220 / 10sh. Check analyst upgrades first.", "priority": "CRITICAL"},
+      {"date": "Wed Apr 22 AMO", "event": "VRT + GEV earnings — AI infra read-across.", "priority": "HIGH"},
       {"date": "Thu Apr 23 AMC", "event": "BKR earnings — BUY $58.50 GTC live. May fill pre-earnings.", "priority": "HIGH"},
       {"date": "Mon Apr 28 AMC", "event": "V Q2 earnings — BUY $307 GTC active.", "priority": "CRITICAL"},
-      {"date": "Tue Apr 29 AMC", "event": "MSFT Q3 FY2026 earnings — Azure growth %.", "priority": "CRITICAL"},
-      {"date": "Tue Apr 29 AMC", "event": "GOOGL Q1 earnings — BUY $315 GTC active. Cloud + AI capex.", "priority": "CRITICAL"},
-      {"date": "Wed Apr 30", "event": "NOG Q1 earnings at WTI war-premium levels.", "priority": "HIGH"},
-      {"date": "Spring 2026 (IMMINENT)", "event": "IES.L LDES Initial Decision List — Ofgem. 16.7 GWh Endurium bids eligible. Binary catalyst.", "priority": "CRITICAL"},
-      {"date": "May 5", "event": "LDO.MI Q1 earnings — first earnings print post-entry.", "priority": "CRITICAL"},
+      {"date": "Tue Apr 29 AMC", "event": "MSFT Q3 FY2026 — Azure growth %.", "priority": "CRITICAL"},
+      {"date": "Tue Apr 29 AMC", "event": "GOOGL Q1 — BUY $315 GTC active. Cloud + AI capex.", "priority": "CRITICAL"},
+      {"date": "Wed Apr 30", "event": "NOG Q1 at WTI war-premium levels.", "priority": "HIGH"},
+      {"date": "Spring 2026 (IMMINENT)", "event": "IES.L LDES Initial Decision List — binary catalyst.", "priority": "CRITICAL"},
+      {"date": "May 5", "event": "LDO.MI Q1 — first earnings post-entry.", "priority": "CRITICAL"},
       {"date": "May 6", "event": "R3NK Q1 — €200M deferred orders must appear.", "priority": "CRITICAL"},
-      {"date": "May 7", "event": "AMPX Q1 earnings. Stop $16.89 live.", "priority": "HIGH"},
-      {"date": "Mid-May", "event": "SNPS Q2 FY26 — margin recovery above 20% = entry signal.", "priority": "CRITICAL"},
-      {"date": "After May 17", "event": "MU SI-41 window opens — $440-445 limit, stop $420, 14sh.", "priority": "CRITICAL"},
+      {"date": "May 7", "event": "AMPX Q1. Stop $16.89 live.", "priority": "HIGH"},
+      {"date": "Mid-May", "event": "SNPS Q2 FY26 — margin recovery >20% = entry signal.", "priority": "CRITICAL"},
+      {"date": "After May 17", "event": "MU SI-41 window opens — $440-445 / stop $420 / 14sh.", "priority": "CRITICAL"},
       {"date": "~May 2026", "event": "CGCT business combination close → FAC listing.", "priority": "CRITICAL"},
       {"date": "Jul 1", "event": "MU Q3 FY26 earnings AMC.", "priority": "HIGH"}
     ]
@@ -84,204 +84,190 @@ const INITIAL_STATE = {
       "last": 138.90, "marketVal": 2778, "unrealPnL": 1472, "unrealPct": 113.1,
       "stop": 120, "stopType": "Stop Limit", "stopLimit": 118, "target": 175,
       "status": "HOLD — STOP LIMIT 120p/118p GTC (RAISED S26)", "cur": "GBP",
-      "note": "Rheinmetall Giga PtX NATO deal announced Apr 17 — +46% single day. Stop raised from 100p to 120p/118p SL per P10+P23. Target revised from 150p to 175p primary / 200p stretch. Giga PtX: Europe-wide network of decentralised synthetic fuel plants for NATO forces. Hundreds of plants, each up to 50MW. Repeatable deployment opportunity. At 150p: raise stop to 130p, hold to 175p."
+      "note": "Rheinmetall Giga PtX NATO deal Apr 17 — +46% single day. Stop raised 100p→120p/118p SL (P10+P23). Target revised 150p→175p/200p. Giga PtX: hundreds of plants across Europe, each up to 50MW, NATO sovereign e-fuel. Repeatable deployment. At 150p: raise stop to 130p, hold to 175p."
     },
     {
       "ticker": "CRML", "name": "Critical Metals Corp", "shares": 110, "avgPrice": 9.08, "costBasis": 999,
       "last": 11.39, "marketVal": 1253, "unrealPnL": 254, "unrealPct": 25.5,
-      "stop": 8.34, "target": 15,
-      "status": "HOLD — STOP $8.34 GTC — ADD CANCELLED S26",
-      "note": "S26: $60M private placement at $10.00/sh announced Apr 21 (close Apr 22). Add order $10.50 CANCELLED — buying above placement price into dilution. Existing 110sh at $9.08 HELD — below institutional entry. Watch $10.00 as near-term ceiling. Re-entry on pullback to $9.80-10.00 after overhang clears. China critical minerals thesis unchanged."
+      "stop": 8.34, "target": 15, "status": "HOLD — STOP $8.34 GTC — ADD CANCELLED S26",
+      "note": "$60M placement at $10.00 announced Apr 21. Add $10.50 cancelled — buying above placement price into dilution. Existing 110sh at $9.08 HELD — below institutional entry. Watch $10.00 as near-term ceiling. Re-entry at $9.80-10.00 after overhang clears. China critical minerals thesis intact."
     },
     {
       "ticker": "AMZN", "name": "Amazon.com Inc", "shares": 30, "avgPrice": 201.204, "costBasis": 6036,
       "last": 255.09, "marketVal": 7653, "unrealPnL": 1617, "unrealPct": 26.8,
       "stop": 234.39, "stopType": "Stop Limit", "stopLimit": 224, "target": 300,
-      "status": "HOLD — STOP LIMIT LIVE — EARNINGS TONIGHT AMC",
-      "note": "Stop $234.39/$224 GTC. Earnings TONIGHT Apr 22 AMC. Beat + AWS strong → raise stop $242-245. Strong beat → consider +10sh add at Wed open."
+      "status": "HOLD — EARNINGS TONIGHT AMC", "note": "Stop $234.39/$224 GTC. Earnings TONIGHT. Beat + AWS strong → raise stop $242-245."
     },
     {
       "ticker": "CCJ", "name": "Cameco Corp", "shares": 49, "avgPrice": 104.021, "costBasis": 5097,
       "last": 124.03, "marketVal": 6077, "unrealPnL": 980, "unrealPct": 19.2,
-      "stop": 108.37, "target": null, "status": "HOLD — STOP LIVE",
-      "note": "Nuclear thesis structural. Intact."
+      "stop": 108.37, "target": null, "status": "HOLD — STOP LIVE", "note": "Nuclear thesis structural."
     },
     {
       "ticker": "MSFT", "name": "Microsoft Corp", "shares": 25, "avgPrice": 372.77, "costBasis": 9319,
       "last": 419.48, "marketVal": 10487, "unrealPnL": 1168, "unrealPct": 12.5,
-      "stop": 400.43, "target": 430, "status": "HOLD — STOP $400.43 GTC — EARNINGS APR 29 AMC",
-      "note": "Azure + Copilot thesis intact."
+      "stop": 400.43, "target": 430, "status": "HOLD — EARNINGS APR 29 AMC", "note": "Azure + Copilot intact."
     },
     {
       "ticker": "AMPX", "name": "Amprius Technologies", "shares": 168, "avgPrice": 18.106, "costBasis": 3042,
       "last": 20.10, "marketVal": 3377, "unrealPnL": 335, "unrealPct": 11.0,
-      "stop": 16.89, "target": 32,
-      "status": "HOLD — STOP $16.89 GTC (CORRECTED S26)",
-      "note": "Stop raised to $16.89 during S25 on +6.70% day — journal corrected S26 per P16. Q1 earnings May 7."
+      "stop": 16.89, "target": 32, "status": "HOLD — STOP $16.89 GTC (CORRECTED S26)", "note": "Stop raised to $16.89 in S25 — journal corrected S26 (P16). Q1 May 7."
     },
     {
       "ticker": "CODA", "name": "Coda Octopus Group", "shares": 416, "avgPrice": 12.005, "costBasis": 4994,
       "last": 12.59, "marketVal": 5237, "unrealPnL": 243, "unrealPct": 4.9,
-      "stop": 11.51, "target": 22, "status": "HOLD — STOP INTENTIONAL — MINE CLEARANCE MULTI-YEAR",
-      "note": "Ceasefire expired Apr 21 — Hormuz still blocked. Mine clearance multi-year thesis intact. US kinetic naval action strengthens thesis."
+      "stop": 11.51, "target": 22, "status": "HOLD — MINE CLEARANCE MULTI-YEAR", "note": "Ceasefire expired — Hormuz blocked. Thesis intact."
     },
     {
       "ticker": "VST", "name": "Vistra Corp", "shares": 53, "avgPrice": 150.569, "costBasis": 7980,
       "last": 160.88, "marketVal": 8527, "unrealPnL": 547, "unrealPct": 6.9,
-      "stop": 151.5, "target": null, "status": "HOLD — STOP LIVE",
-      "note": "VRT earnings Wed AM — AI infra read-across. Stop $151.50."
+      "stop": 151.5, "target": null, "status": "HOLD — STOP LIVE", "note": "VRT earnings Wed AM — AI infra read-across."
     },
     {
       "ticker": "R3NK", "name": "RENK Group AG", "shares": 25, "avgPrice": 52.27, "costBasis": 1307,
       "last": 55.86, "marketVal": 1397, "unrealPnL": 90, "unrealPct": 6.9,
       "stop": 48, "stopType": "Stop Limit", "stopLimit": 47, "target": 76,
-      "status": "HOLD — STOP LIMIT €48/€47 GTC", "cur": "EUR",
-      "note": "Q1 earnings May 6. €200M deferred orders must appear."
+      "status": "HOLD — STOP LIMIT €48/€47 GTC", "cur": "EUR", "note": "Q1 May 6."
     },
     {
       "ticker": "PDYN", "name": "Palladyne AI Corp", "shares": 250, "avgPrice": 6.595, "costBasis": 1649,
       "last": 6.85, "marketVal": 1713, "unrealPnL": 64, "unrealPct": 3.9,
-      "stop": 5.75, "target": null, "status": "HOLD — STOP LIVE",
-      "note": "May 13 earnings."
+      "stop": 5.75, "target": null, "status": "HOLD — STOP LIVE", "note": "May 13 earnings."
     },
     {
       "ticker": "NOG", "name": "Northern Oil and Gas Inc", "shares": 80, "avgPrice": 24.38, "costBasis": 1950,
       "last": 24.99, "marketVal": 1999, "unrealPnL": 49, "unrealPct": 2.0,
-      "stop": 22.50, "target": null, "status": "HOLD — STOP $22.50 GTC (Order ID 133934373)",
-      "note": "Ceasefire expired Apr 21 — no deal. WTI ~$87. Thesis intact. Q1 earnings Apr 30."
+      "stop": 22.50, "target": null, "status": "HOLD — STOP $22.50 GTC (Order ID 133934373)", "note": "Ceasefire expired. WTI ~$87. Thesis intact. Q1 Apr 30."
     },
     {
       "ticker": "RR", "name": "Rolls-Royce Holdings", "shares": 150, "avgPrice": 1182.9, "costBasis": 1774,
       "last": 1200.90, "marketVal": 1801, "unrealPnL": 27, "unrealPct": 1.5,
       "stop": 1150, "stopType": "Stop Limit", "stopLimit": 1130, "target": 1600,
       "status": "HOLD — EX-DIV COMPLETE — HARD LOCK EXPIRED", "cur": "GBP",
-      "note": "Ex-dividend Apr 21 complete. -4.87% today = dividend stripping mechanics. Hard lock now expires. Thesis intact — £2.5bn buyback active. Can review stop level tomorrow."
+      "note": "Ex-div Apr 21 complete. Hard lock expires. £2.5bn buyback active. Can review stop tomorrow."
     },
     {
       "ticker": "ISRG", "name": "Intuitive Surgical Inc", "shares": 22, "avgPrice": 459.25, "costBasis": 10104,
       "last": 469.98, "marketVal": 10340, "unrealPnL": 236, "unrealPct": 2.3,
-      "stop": 443.86, "target": 510,
-      "status": "HOLD — STOP $443.86 — EARNINGS TONIGHT 00:30 UAE — DO NOT TOUCH",
-      "note": "Q1 earnings TONIGHT 1:30 PM PDT = 00:30 UAE Wed. NON-GAAP consensus EPS $2.11 / rev $2.62B (not $1.63 — that is GAAP). Beat → raise stop $455-460 at Wed open. Miss → let stop $443.86 execute. Beat + guidance cut → hold stop, reassess."
+      "stop": 443.86, "target": 510, "status": "HOLD — EARNINGS TONIGHT 00:30 UAE — DO NOT TOUCH",
+      "note": "Q1 TONIGHT. Non-GAAP consensus $2.11 (not $1.63 GAAP). Beat → raise stop $455-460. Miss → let $443.86 execute."
     },
     {
       "ticker": "LLY", "name": "Eli Lilly and Company", "shares": 3, "avgPrice": 905.34, "costBasis": 2716,
       "last": 920.10, "marketVal": 2760, "unrealPnL": 44, "unrealPct": 1.6,
-      "stop": 850, "target": 1028, "status": "HOLD — STOP $850 GTC — SI-39 POSITION",
-      "note": "GLP-1 thesis intact."
+      "stop": 850, "target": 1028, "status": "HOLD — STOP $850 GTC", "note": "GLP-1 intact."
     },
     {
       "ticker": "IES", "name": "Invinity Energy Systems PLC", "shares": 3000, "avgPrice": 17.49, "costBasis": 525,
       "last": 17.45, "marketVal": 524, "unrealPnL": -2, "unrealPct": -0.2,
       "stop": null, "stopType": "MANUAL ALERT 12.5p", "target": 45,
-      "status": "HOLD — MANUAL ALERT 12.5p (AIM — NO IBKR STOP — E15)", "cur": "GBP",
-      "note": "E15: AIM no IBKR stops. Manual alert 12.5p → immediate Market Sell. LDES Initial Decision List IMMINENT. 16.7 GWh bids eligible. Copwood H1 2026 first revenue. Target 61.81p analyst consensus."
+      "status": "HOLD — MANUAL ALERT 12.5p (AIM — E15)", "cur": "GBP",
+      "note": "E15: no IBKR stops for AIM. Manual alert 12.5p. LDES Initial Decision List IMMINENT."
     },
     {
       "ticker": "LDO", "name": "Leonardo SpA", "shares": 35, "avgPrice": 56.086, "costBasis": 1963,
       "last": 55.78, "marketVal": 1952, "unrealPnL": -11, "unrealPct": -0.6,
       "stop": 50, "target": 76, "status": "HOLD — NEW S26 — STOP €50 GTC", "cur": "EUR",
-      "note": "FILLED S26 @ €56.086 avg (limit €56 + commission). First day -3.99% = Italian market rotation, not company news. Defence thesis: European rearmament supercycle, Eurofighter, F-35, GCAP. Also: Leonardo-Rheinmetall Military Vehicles JV with R3NK partner. Q1 earnings May 5."
+      "note": "FILLED S26. -3.99% first day = Italian market rotation, not news. Defence: European rearmament, Eurofighter, F-35, GCAP, Leonardo-Rheinmetall Military Vehicles JV. Q1 May 5."
     },
     {
       "ticker": "CGCT", "name": "Cartesian Growth Corp III (Factorial Energy SPAC)", "shares": 291, "avgPrice": 10.295, "costBasis": 2994,
       "last": 10.30, "marketVal": 2997, "unrealPnL": 3, "unrealPct": 0.1,
-      "stop": null, "target": null, "status": "HOLD — NO STOP (TRUST FLOOR ~$10.27)",
-      "note": "Trust floor. Deal close ~May 2026."
+      "stop": null, "target": null, "status": "HOLD — NO STOP (TRUST FLOOR ~$10.27)", "note": "Trust floor. Deal close ~May 2026."
     }
   ],
   "pendingOrders": [
-    {"ticker": "GOOGL", "action": "BUY", "type": "Limit", "qty": 10, "limitPrice": 315, "tif": "GTC", "status": "ACTIVE — NEW S26", "note": "SI-39 trigger zone. Bracket: stop $285 OCA. Earnings Apr 29 AMC catalyst."},
-    {"ticker": "GOOGL", "action": "SELL", "type": "Stop", "qty": 10, "stopPrice": 285, "tif": "GTC", "status": "ACTIVE — OCA with BUY $315"},
-    {"ticker": "BKR", "action": "BUY", "type": "Limit", "qty": 8, "limitPrice": 58.50, "tif": "GTC", "status": "ACTIVE — NEW S26", "note": "Energy services Hormuz thesis. Earnings Thu Apr 23 AMC — may fill pre-earnings. Bracket: stop $53.50 OCA."},
-    {"ticker": "BKR", "action": "SELL", "type": "Stop", "qty": 8, "stopPrice": 53.50, "tif": "GTC", "status": "ACTIVE — OCA with BUY $58.50"},
-    {"ticker": "ITM", "action": "SELL", "type": "Stop Limit", "qty": 2000, "limitPrice": 118, "stopPrice": 120, "tif": "GTC", "status": "ACTIVE — RAISED S26 from 100p/98p", "note": "Raised per P10+P23. Rheinmetall re-rating. Locks in min £1,099 gain."},
-    {"ticker": "IES", "action": "SELL", "type": "MANUAL ALERT", "qty": 3000, "alertPrice": "12.5p", "tif": "N/A", "status": "MANUAL — PRICE ALERT 12.5p. E15: AIM STOPS NOT SUPPORTED.", "note": "Alert at 12.5p → immediate Market Sell 3,000 IES. Max loss £150."},
-    {"ticker": "V", "action": "BUY", "type": "Limit", "qty": 8, "limitPrice": 307, "tif": "GTC", "status": "ACTIVE", "note": "SI-39. Earnings Apr 28 AMC. Bracket stop $285 live."},
+    {"ticker": "GOOGL", "action": "BUY", "type": "Limit", "qty": 10, "limitPrice": 315, "tif": "GTC", "status": "ACTIVE — S26", "note": "SI-39. Stop $285 OCA. Earnings Apr 29."},
+    {"ticker": "GOOGL", "action": "SELL", "type": "Stop", "qty": 10, "stopPrice": 285, "tif": "GTC", "status": "ACTIVE — OCA"},
+    {"ticker": "BKR", "action": "BUY", "type": "Limit", "qty": 8, "limitPrice": 58.50, "tif": "GTC", "status": "ACTIVE — S26", "note": "Hormuz thesis. Earnings Thu Apr 23. Stop $53.50 OCA."},
+    {"ticker": "BKR", "action": "SELL", "type": "Stop", "qty": 8, "stopPrice": 53.50, "tif": "GTC", "status": "ACTIVE — OCA"},
+    {"ticker": "ITM", "action": "SELL", "type": "Stop Limit", "qty": 2000, "limitPrice": 118, "stopPrice": 120, "tif": "GTC", "status": "ACTIVE — RAISED S26", "note": "Locks in min £1,099 gain."},
+    {"ticker": "IES", "action": "SELL", "type": "MANUAL ALERT", "qty": 3000, "alertPrice": "12.5p", "tif": "N/A", "status": "MANUAL — E15", "note": "Alert 12.5p → immediate Market Sell. Max loss £150."},
+    {"ticker": "V", "action": "BUY", "type": "Limit", "qty": 8, "limitPrice": 307, "tif": "GTC", "status": "ACTIVE", "note": "SI-39. Earnings Apr 28. Stop $285 OCA."},
     {"ticker": "V", "action": "SELL", "type": "Stop", "qty": 8, "stopPrice": 285, "tif": "GTC", "status": "ACTIVE"},
-    {"ticker": "NOG", "action": "SELL", "type": "Stop", "qty": 80, "stopPrice": 22.50, "tif": "GTC", "status": "ACTIVE — Order ID 133934373"},
+    {"ticker": "NOG", "action": "SELL", "type": "Stop", "qty": 80, "stopPrice": 22.50, "tif": "GTC", "status": "ACTIVE — ID 133934373"},
     {"ticker": "CRML", "action": "SELL", "type": "Stop", "qty": 110, "stopPrice": 8.34, "tif": "GTC", "status": "ACTIVE"},
     {"ticker": "RR", "action": "SELL", "type": "Stop Limit", "qty": 150, "stopPrice": 1150, "limitPrice": 1130, "tif": "GTC", "status": "ACTIVE"},
     {"ticker": "LLY", "action": "SELL", "type": "Stop", "qty": 3, "stopPrice": 850, "tif": "GTC", "status": "ACTIVE"},
     {"ticker": "MP", "action": "BUY", "type": "Limit", "qty": 75, "limitPrice": 55, "tif": "GTC", "status": "ACTIVE"},
     {"ticker": "MP", "action": "SELL", "type": "Stop", "qty": 75, "stopPrice": 50, "tif": "GTC", "status": "ACTIVE"},
-    {"ticker": "LDO", "action": "SELL", "type": "Stop", "qty": 35, "stopPrice": 50, "tif": "GTC", "status": "ACTIVE — NEW S26"},
+    {"ticker": "LDO", "action": "SELL", "type": "Stop", "qty": 35, "stopPrice": 50, "tif": "GTC", "status": "ACTIVE — S26"},
     {"ticker": "CCJ", "action": "SELL", "type": "Stop", "qty": 49, "stopPrice": 108.37, "tif": "GTC", "status": "ACTIVE"},
     {"ticker": "PDYN", "action": "SELL", "type": "Stop", "qty": 250, "stopPrice": 5.75, "tif": "GTC", "status": "ACTIVE"},
-    {"ticker": "AMPX", "action": "SELL", "type": "Stop", "qty": 168, "stopPrice": 16.89, "tif": "GTC", "status": "ACTIVE — CORRECTED S26 from $15.79"},
+    {"ticker": "AMPX", "action": "SELL", "type": "Stop", "qty": 168, "stopPrice": 16.89, "tif": "GTC", "status": "ACTIVE — CORRECTED S26"},
     {"ticker": "AMPX", "action": "SELL", "type": "Limit", "qty": 168, "limitPrice": 32, "tif": "GTC", "status": "ACTIVE"},
     {"ticker": "VST", "action": "SELL", "type": "Stop", "qty": 53, "stopPrice": 151.5, "tif": "GTC", "status": "ACTIVE"},
-    {"ticker": "AMZN", "action": "SELL", "type": "Stop Limit", "qty": 30, "limitPrice": 224, "stopPrice": 234.39, "tif": "GTC", "status": "ACTIVE — EARNINGS TONIGHT AMC"},
+    {"ticker": "AMZN", "action": "SELL", "type": "Stop Limit", "qty": 30, "limitPrice": 224, "stopPrice": 234.39, "tif": "GTC", "status": "ACTIVE — EARNINGS TONIGHT"},
     {"ticker": "MSFT", "action": "SELL", "type": "Stop", "qty": 25, "stopPrice": 400.43, "tif": "GTC", "status": "ACTIVE"},
-    {"ticker": "ISRG", "action": "SELL", "type": "Stop", "qty": 22, "stopPrice": 443.86, "tif": "GTC", "status": "ACTIVE — EARNINGS TONIGHT 00:30 UAE"},
-    {"ticker": "CODA", "action": "SELL", "type": "Stop", "qty": 416, "stopPrice": 11.51, "tif": "GTC", "status": "ACTIVE — INTENTIONAL"},
+    {"ticker": "ISRG", "action": "SELL", "type": "Stop", "qty": 22, "stopPrice": 443.86, "tif": "GTC", "status": "ACTIVE — EARNINGS TONIGHT"},
+    {"ticker": "CODA", "action": "SELL", "type": "Stop", "qty": 416, "stopPrice": 11.51, "tif": "GTC", "status": "ACTIVE"},
     {"ticker": "R3NK", "action": "SELL", "type": "Stop Limit", "qty": 25, "limitPrice": 47, "stopPrice": 48, "tif": "GTC", "status": "ACTIVE"}
   ],
   "ukCleanEnergyBasket": {
-    "thesis": "UK energy transition — ITM (green hydrogen electrolyser + NATO Rheinmetall Giga PtX e-fuel) + IES (vanadium flow LDES). AIM-listed pair. Macro tailwind: EU energy independence, UK LDES policy, NATO sovereign fuel, grid decarbonisation.",
+    "thesis": "UK energy transition — ITM (PEM electrolyser + NATO Rheinmetall Giga PtX e-fuel) + IES (vanadium LDES). AIM pair. Macro: EU energy independence, NATO sovereign fuel, LDES policy.",
     "combinedCost": "ITM £1,302 + IES £525 = £1,827 (~1.7% NAV)",
-    "correlationNote": "Both AIM. E15: AIM stops not supported. IES manually monitored. ITM stop raised to 120p/118p SL after Rheinmetall deal.",
     "positions": [
-      {"ticker": "ITM.L", "technology": "PEM green hydrogen electrolyser + NATO Giga PtX e-fuel", "shares": 2000, "avgPrice": "65.1p", "last": "138.90p", "stop": "120p/118p SL GTC (raised S26)", "unrealPct": "+113.1%", "nextCatalyst": "Rheinmetall Giga PtX plant deployments — no single binary date. Ongoing.", "target": "175p primary / 200p stretch"},
-      {"ticker": "IES.L", "technology": "Vanadium flow battery LDES", "shares": 3000, "avgPrice": "17.49p", "last": "17.45p", "stop": "Manual alert 12.5p (E15: AIM no IBKR stop)", "unrealPct": "-0.2%", "nextCatalyst": "LDES Initial Decision List IMMINENT — binary", "target": "61.81p analyst consensus"}
+      {"ticker": "ITM.L", "technology": "PEM electrolyser + NATO Giga PtX e-fuel", "shares": 2000, "avgPrice": "65.1p", "last": "138.90p", "stop": "120p/118p SL GTC (raised S26)", "unrealPct": "+113.1%", "target": "175p/200p"},
+      {"ticker": "IES.L", "technology": "Vanadium flow LDES", "shares": 3000, "avgPrice": "17.49p", "last": "17.45p", "stop": "Manual 12.5p (E15)", "unrealPct": "-0.2%", "target": "61.81p"}
     ]
   },
   "watchlistUS": [
-    {"ticker": "GOOGL", "name": "Alphabet Inc", "exchange": "NASDAQ", "status": "ACTIVE — BUY $315 GTC — NEW S26", "note": "SI-39 drawdown ~-25% from ATH ~$420. Earnings Apr 29. Stop $285 OCA live."},
-    {"ticker": "BKR", "name": "Baker Hughes", "exchange": "NYSE", "status": "ACTIVE — BUY $58.50 GTC — NEW S26", "note": "Hormuz energy services thesis. Earnings Thu Apr 23 AMC. Stop $53.50 OCA live."},
-    {"ticker": "V", "name": "Visa Inc", "exchange": "NYSE", "status": "ACTIVE — BUY $307 GTC — SI-39 TRIGGERED", "currentPrice": 317.02, "52wkHigh": 375.51, "drawdown": -15.6, "note": "Earnings Apr 28 AMC. Bracket $285 live."},
-    {"ticker": "LRCX", "name": "Lam Research Corp", "exchange": "NASDAQ", "status": "STAGE 1 PASS — CONDITIONAL ENTRY TOMORROW", "currentPrice": 263.16, "52wkHigh": 273.50, "note": "Earnings Wed Apr 22 AMC. Beat + dip -5%+ → BUY $245 limit / stop $220 / 10sh. Check analyst upgrades before placing. Fwd PE 39.4, 8 consecutive beats."},
-    {"ticker": "MU", "name": "Micron Technology", "exchange": "NASDAQ", "status": "STAGE 2 CONFIRMED — WAIT SI-41 (after May 17)", "note": "Entry $440-445 limit, stop $420, 14sh. SCA confirmed in transcript."},
-    {"ticker": "SNPS", "name": "Synopsys", "exchange": "NASDAQ", "status": "MONITOR — WAIT MID-MAY EARNINGS", "52wkHigh": 651.73, "drawdown": -29.3, "note": "Q2 earnings mid-May. Entry only if margin recovery >20%."},
-    {"ticker": "CRDO", "name": "Credo Technology", "exchange": "NASDAQ", "status": "CONDITIONAL — WAIT $140-145", "52wkHigh": 213.80, "drawdown": -24.8},
-    {"ticker": "OXY", "name": "Occidental Petroleum", "exchange": "NYSE", "status": "CONDITIONAL — WTI $90+ THREE CONSECUTIVE DAYS", "note": "WTI ~$87 — below $90 threshold. Day count reset. Monitor daily."},
-    {"ticker": "CDNS", "name": "Cadence Design Systems", "exchange": "NASDAQ", "status": "MONITOR — TRIGGER $301.16 (-20%)", "52wkHigh": 376.45, "drawdown": -15.3},
+    {"ticker": "POET", "name": "POET Technologies", "exchange": "NASDAQ", "status": "SI-51 v2 QUALIFIED — ENTRY ON PULLBACK", "note": "Silicon photonics / CPO. Wolfpack short Apr 14 — company rebutted Apr 20 (PFIC clarification). SI-51 v2 score +7/7. Hard blocks all clear. +40% from identification price. Entry: limit on next pullback, stop -10% below entry, size $1,000-1,500 (SI-37 cap). Primary catalyst: production order shipments H2 2026, Q2 revenue ramp."},
+    {"ticker": "GOOGL", "name": "Alphabet Inc", "exchange": "NASDAQ", "status": "ACTIVE — BUY $315 GTC", "note": "SI-39 -25% from ATH. Earnings Apr 29. Stop $285 OCA live."},
+    {"ticker": "BKR", "name": "Baker Hughes", "exchange": "NYSE", "status": "ACTIVE — BUY $58.50 GTC", "note": "Hormuz energy services. Earnings Thu Apr 23. Stop $53.50 OCA."},
+    {"ticker": "V", "name": "Visa Inc", "exchange": "NYSE", "status": "ACTIVE — BUY $307 GTC", "note": "SI-39. Earnings Apr 28. Stop $285 OCA."},
+    {"ticker": "LRCX", "name": "Lam Research Corp", "exchange": "NASDAQ", "status": "STAGE 1 PASS — ENTRY CONDITIONAL TOMORROW", "note": "Earnings Wed Apr 22 AMC. Beat + dip -5%+ → $245 limit / $220 stop / 10sh. Check analyst upgrades first. Fwd PE 39.4, 8 consecutive beats."},
+    {"ticker": "MU", "name": "Micron Technology", "exchange": "NASDAQ", "status": "STAGE 2 CONFIRMED — WAIT SI-41 (after May 17)", "note": "SCA confirmed. Entry $440-445 / $420 stop / 14sh."},
+    {"ticker": "SNPS", "name": "Synopsys", "exchange": "NASDAQ", "status": "MONITOR — MID-MAY EARNINGS", "note": "Entry only if margin recovery >20%."},
+    {"ticker": "CRDO", "name": "Credo Technology", "exchange": "NASDAQ", "status": "CONDITIONAL — WAIT $140-145"},
+    {"ticker": "OXY", "name": "Occidental Petroleum", "exchange": "NYSE", "status": "CONDITIONAL — WTI $90+ THREE DAYS", "note": "WTI ~$87 — below threshold. Monitor."},
+    {"ticker": "CDNS", "name": "Cadence Design Systems", "exchange": "NASDAQ", "status": "MONITOR — TRIGGER $301.16"},
     {"ticker": "TLN", "name": "Talen Energy Corp", "exchange": "NASDAQ", "status": "WATCH — POST MAY 5 ONLY"},
-    {"ticker": "NFLX", "name": "Netflix Inc", "exchange": "NASDAQ", "status": "SI-41 FAIL until June", "52wkHigh": 134.12, "drawdown": -27.4}
+    {"ticker": "NFLX", "name": "Netflix Inc", "exchange": "NASDAQ", "status": "SI-41 FAIL until June"}
   ],
   "watchlistEU": [
-    {"ticker": "IES.L", "name": "Invinity Energy Systems PLC", "exchange": "AIM", "cur": "GBP", "status": "IN PORTFOLIO — 3,000sh @ 17.49p avg — E15 MANUAL ALERT 12.5p", "note": "LDES Initial Decision List imminent. E15 confirmed — no IBKR stop for AIM."},
-    {"ticker": "ITM.L", "name": "ITM Power PLC", "exchange": "LSE", "cur": "GBP", "status": "IN PORTFOLIO — 2,000sh. Stop 120p/118p SL.", "note": "Rheinmetall Giga PtX NATO deal. +113.1%. Target 175p."},
-    {"ticker": "RR.L", "name": "Rolls-Royce Holdings", "exchange": "LSE", "cur": "GBP", "status": "IN PORTFOLIO. Ex-div complete.", "note": "Hard lock expired. Stop 1150p/1130p."},
+    {"ticker": "IES.L", "name": "Invinity Energy Systems PLC", "exchange": "AIM", "cur": "GBP", "status": "IN PORTFOLIO — E15 MANUAL 12.5p", "note": "LDES decision imminent."},
+    {"ticker": "ITM.L", "name": "ITM Power PLC", "exchange": "LSE", "cur": "GBP", "status": "IN PORTFOLIO — Stop 120p/118p", "note": "Rheinmetall NATO. +113.1%. Target 175p."},
+    {"ticker": "RR.L", "name": "Rolls-Royce Holdings", "exchange": "LSE", "cur": "GBP", "status": "IN PORTFOLIO — Ex-div complete", "note": "Stop 1150p/1130p. Hard lock expired."},
     {"ticker": "R3NK", "name": "RENK Group AG", "exchange": "IBIS", "cur": "EUR", "status": "IN PORTFOLIO", "note": "Q1 May 6."},
-    {"ticker": "LDO.MI", "name": "Leonardo SpA", "exchange": "BVME", "cur": "EUR", "status": "IN PORTFOLIO — 35sh @ €56.086, stop €50 GTC", "note": "FILLED S26. May 5 earnings."},
+    {"ticker": "LDO.MI", "name": "Leonardo SpA", "exchange": "BVME", "cur": "EUR", "status": "IN PORTFOLIO — 35sh @ €56.086, stop €50", "note": "FILLED S26. May 5 earnings."},
     {"ticker": "CWR.L", "name": "Ceres Power", "exchange": "LSE", "cur": "GBP", "note": "Entry 250-270p only."},
     {"ticker": "ENR.DE", "name": "Siemens Energy AG", "exchange": "XETRA", "cur": "EUR", "note": "AI THESIS TIER 2 — Stage 2 pending."}
   ],
   "sessionNotes": [
-    {"date": "2026-04-18", "note": "SESSION 23 — LNG stopped -$396.54. NOG filled $24.37. ITM trim +£652 confirmed. Journal v32."},
-    {"date": "2026-04-19", "note": "SESSION 24 — HORMUZ RE-CLOSED Apr 18. NOG sell cancelled. SI-47/48/49 added. AI thesis Stage 1 (40+ candidates). Journal v35."},
-    {"date": "2026-04-20", "note": "SESSION 25 EOD — IES.L filled 17.39p, £525 cost. E15 confirmed. NOG stop $22.50 resubmitted. WTI $88.36 +6.99%. Journal v37."},
-    {"date": "2026-04-21", "note": "SESSION 26 EOD — ABVX stopped out $114.31, loss -$158.53 (P4 — clean execution). LDO.MI 35sh filled €56.086 avg, stop €50. ITM.L stop raised 100p→120p/118p SL — Rheinmetall Giga PtX NATO deal (+46% Apr 17). ITM target revised 150p→175p/200p. CRML $60M placement at $10.00 — add $10.50 CANCELLED. GOOGL BUY $315 + BKR BUY $58.50 brackets placed. AMPX stop corrected $15.79→$16.89 (P16). LRCX Stage 1 conditional pass — entry tomorrow if beat+dip. Ceasefire expired no deal. WTI ~$87. SI-51 (Tier 3 fast-track) + SI-52 (Wide Net surface scan) formalised. Journal v38."}
+    {"date": "2026-04-18", "note": "SESSION 23 — LNG stopped -$396.54. NOG filled $24.37. ITM trim +£652. Journal v32."},
+    {"date": "2026-04-19", "note": "SESSION 24 — Hormuz re-closed. NOG sell cancelled. SI-47/48/49. AI thesis Stage 1. Journal v35."},
+    {"date": "2026-04-20", "note": "SESSION 25 EOD — IES.L filled 17.39p £525. E15 confirmed. NOG stop $22.50 live. WTI $88.36. Journal v37."},
+    {"date": "2026-04-21", "note": "SESSION 26 EOD FINAL — ABVX stopped $114.31, loss -$158.53 (P4 clean). LDO.MI filled €56.086 35sh. ITM stop raised 100p→120p/118p, target →175p/200p (Rheinmetall). CRML add cancelled (dilution $60M at $10.00). GOOGL $315 + BKR $58.50 live. AMPX stop corrected →$16.89. POET +40% vs identification: SI-51 v2 written — weighted judgement replaces binary T8 block for Tier 3. POET scores +7/7, qualifies for entry on pullback. SI-52 Wide Net live. Journal v38 final."}
   ],
   "tradeTracker": {
     "pendingRows": [
-      {"id": 1, "ticker": "AVAV", "shares": 25, "entryPrice": 195.09, "exitPrice": 197.945, "pnl": "+$71.38", "session": "S20", "note": "outstanding"},
-      {"id": 2, "ticker": "ITM TRIM", "shares": 1100, "entryPrice": "65.1p", "exitPrice": "124.60p", "pnl": "+£652", "session": "S22", "note": "Proceeds recycled into IES.L S25"},
+      {"id": 1, "ticker": "AVAV", "shares": 25, "entryPrice": 195.09, "exitPrice": 197.945, "pnl": "+$71.38", "session": "S20"},
+      {"id": 2, "ticker": "ITM TRIM", "shares": 1100, "entryPrice": "65.1p", "exitPrice": "124.60p", "pnl": "+£652", "session": "S22"},
       {"id": 3, "ticker": "LNG", "shares": 19, "entryPrice": 268.76, "exitPrice": 248.00, "pnl": "-$396.54", "session": "S23"},
-      {"id": 4, "ticker": "PATK", "shares": 25, "entryPrice": 108.80, "exitPrice": 109.256, "pnl": "+$9.34", "session": "S23 P17"},
+      {"id": 4, "ticker": "PATK", "shares": 25, "entryPrice": 108.80, "exitPrice": 109.256, "pnl": "+$9.34", "session": "S23"},
       {"id": 5, "ticker": "NOG", "note": "Market sell cancelled S24 — position held", "session": "S24"},
-      {"id": 6, "ticker": "ABVX", "shares": 44, "entryPrice": 117.913, "exitPrice": 114.31, "pnl": "-$158.53", "session": "S26", "note": "Stop $114.31 executed. P4 — intentional stop below cost for M&A optionality. Max loss was defined and accepted. Clean execution."}
+      {"id": 6, "ticker": "ABVX", "shares": 44, "entryPrice": 117.913, "exitPrice": 114.31, "pnl": "-$158.53", "session": "S26", "note": "P4 stop executed cleanly. Intentional stop below cost for M&A optionality. Max loss defined and accepted."}
     ]
   },
   "standingInstructions": [
-    {"id": 1, "title": "FULL SCAN — SI-14 v4.0", "body": "Section 0 first: SI-39 Tier 1 + AI Tier 2 + SI-50 candidates. Section 0-B: SI-52 Wide Net (15 min). Then A-K."},
-    {"id": 17, "title": "ERROR TAXONOMY — 15 TYPES", "body": "E1: Timezone. E2: Stale position. E3: Fill re-flag. E4: Price verification. E5: Market timing. E6: Dividend capture. E7: Session discipline. E8: Stale quote. E9: GTC orphan. E10: Closed position scan. E11: 52wk hallucination. E12: Tool routing gap. E13: EODHD delay. E14: Date discrepancy. E15: AIM stop limitation — IBKR supports only Limit/Market/MoC/LoC for AIM. Manual alert + immediate Market Sell on trigger."},
-    {"id": 19, "title": "CLOSED POSITIONS — SI-19", "body": "ONDS -$601. KTOS -$1,601. CCL +$122. UEC -$127. IAG.L +£326. RCL -$132. LDO.MI entry (old, closed). LEU -$238. PLTR -$1,307. PDYN partial +$17.42. AVAV +$71.38. ITM TRIM +£652. LNG -$396.54. PATK +$9.34. NOG sell cancelled S24. ABVX -$158.53 (S26 — P4 stop executed)."},
-    {"id": 24, "title": "CASH FLOOR — 10% RULE", "body": "Floor = 10% of NL. At $105.2K NL, floor = $10,520. Deployable ~$15,177. FX deficits: EUR -€2,900, GBP -£2,645."},
-    {"id": 25, "title": "SI-25 EXIT TRIGGER", "body": "Formal PERMANENT Hormuz reopening + WTI -10% from $111.54 peak = trigger at $100.38. WTI ~$87. NOT TRIGGERED. Ceasefire expired Apr 21 with no extension."},
-    {"id": 37, "title": "SPECULATIVE CAP — $1,500 / ~£500 MAX", "body": "Current spec exposure: AMPX $3,377 + PDYN $1,713 + CRML $1,253 + CGCT $2,997 + IES £524 (~$664) = ~$10,004 (~9.5% NAV). No further spec entries without trim or SI-51 fast-track."},
-    {"id": 47, "title": "SI-47: DATE VERIFICATION — STEP ZERO", "body": "System prompt date is authoritative. State date at start of every session before any analysis."},
-    {"id": 48, "title": "SI-48: AI THESIS ATH RULE", "body": "Four tests: (1) valuation reasonable, (2) structural catalyst path, (3) no multiple expansion required, (4) PLTR P6 test. MU passes. HPE killed by T22 (analyst target = current price). SNPS N/A. LRCX: Stage 1 pass — entry conditional on post-earnings dip."},
-    {"id": 49, "title": "SI-49: STAGE 2 DATA ROUTING", "body": "Price: MMD. 52wk: EOD extended quotes. Fundamentals: Alpha COMPANY_OVERVIEW / EARNINGS / INCOME_STATEMENT. Transcripts: Alpha EARNINGS_CALL_TRANSCRIPT. Charts: MMD daily + Visualizer. EU/UK: web_fetch Yahoo Finance. NEVER use memory for price or fundamental data."},
-    {"id": 50, "title": "SI-50: TWICE-WEEKLY SCAN — MONDAY + THURSDAY", "body": "Monday: Full SI-39 + SI-45. Thursday: Brief refresh — MU, CDNS, CRDO, OXY, NOG, IES.L. First Thursday scan: April 24 2026."},
-    {"id": 51, "title": "SI-51: TIER 3 FAST-TRACK PROTOCOL (NEW S26)", "body": "For speculative names already in thesis file at SI-37 cap ($1,500 max). All four must pass: (1) T8 cleared — no named short report in last 30 days. (2) Binary catalyst identified, timing within 60 days. (3) Spec allocation ≤15% NAV. (4) Sizing at SI-37 cap. Document all four in journal before entry. POET recheck: May 14 2026 (30 days post Wolfpack Apr 14)."},
-    {"id": 52, "title": "SI-52: WIDE NET SURFACE SCAN (NEW S26)", "body": "Section 0-B daily, 15-min max. Step 1: Alpha TOP_GAINERS_LOSERS — flag >8% moves on >2x volume. Step 2: 30-sec news filter per name (fundamental/regulatory/technical). Step 3: 60-sec Stage 1 filter (market cap >$500M, not DO NOT ENTER list, has thesis relevance). Any pass → Stage 1 within 24hrs. HIMS retrospective: would have caught Apr 16 FDA peptide +11% on Step 1."}
+    {"id": 1, "title": "FULL SCAN — SI-14 v4.0", "body": "Section 0: SI-39 + AI Tier 2. Section 0-B: SI-52 Wide Net (15 min). Then A-K."},
+    {"id": 17, "title": "ERROR TAXONOMY — 15 TYPES", "body": "E1: Timezone. E2: Stale position. E3: Fill re-flag. E4: Price verification. E5: Market timing. E6: Dividend capture. E7: Session discipline. E8: Stale quote. E9: GTC orphan. E10: Closed position scan. E11: 52wk hallucination. E12: Tool routing gap. E13: EODHD delay. E14: Date discrepancy. E15: AIM stop limitation — manual alert only."},
+    {"id": 19, "title": "CLOSED POSITIONS — SI-19", "body": "ONDS -$601. KTOS -$1,601. CCL +$122. UEC -$127. IAG.L +£326. RCL -$132. LEU -$238. PLTR -$1,307. PDYN partial +$17.42. AVAV +$71.38. ITM TRIM +£652. LNG -$396.54. PATK +$9.34. NOG sell cancelled S24. ABVX -$158.53 (S26 P4)."},
+    {"id": 24, "title": "CASH FLOOR — 10% RULE", "body": "Floor = 10% NL. At $105.2K → $10,520. Deployable ~$15,177. FX deficits: EUR -€2,900, GBP -£2,645."},
+    {"id": 25, "title": "SI-25 EXIT TRIGGER", "body": "Permanent Hormuz reopening + WTI -10% from $111.54 peak = trigger at $100.38. WTI ~$87. NOT TRIGGERED."},
+    {"id": 37, "title": "SPECULATIVE CAP — $1,500 MAX", "body": "AMPX $3,377 + PDYN $1,713 + CRML $1,253 + CGCT $2,997 + IES ~$664 = ~$10,004 (~9.5% NAV). Any new Tier 3 entry via SI-51 v2 must stay within 15% NAV total."},
+    {"id": 47, "title": "SI-47: DATE VERIFICATION — STEP ZERO", "body": "System prompt date is authoritative. State date before any analysis."},
+    {"id": 48, "title": "SI-48: AI THESIS ATH RULE", "body": "Four tests: valuation, structural catalyst, no multiple expansion, PLTR P6 test. MU passes. LRCX Stage 1 pass — entry conditional post-earnings dip."},
+    {"id": 49, "title": "SI-49: STAGE 2 DATA ROUTING", "body": "Price: MMD. 52wk: EOD extended. Fundamentals: Alpha. Transcripts: Alpha EARNINGS_CALL_TRANSCRIPT. Charts: MMD + Visualizer. EU/UK: Yahoo Finance. NEVER use memory for price data."},
+    {"id": 50, "title": "SI-50: TWICE-WEEKLY SCAN", "body": "Monday full + Thursday brief. Thursday watch: MU, CDNS, CRDO, OXY, NOG, IES.L. First Thursday: April 24 2026."},
+    {"id": 51, "title": "SI-51 v2: TIER 3 ENTRY FRAMEWORK — WEIGHTED JUDGEMENT (REVISED S26 EOD)", "body": "CORE PRINCIPLE: For Tier 3 positions (SI-37 cap ≤$1,500, SI-35 stop ≤$500 loss), entry is a WEIGHTED JUDGEMENT, not a binary pass/fail. A single doubt does not block if multiple positives outweigh it and the stop bounds the downside.\n\nHARD BLOCKS (cannot be overridden by score):\n• No company rebuttal published yet on active short → BLOCK\n• Spec allocation at/above 15% NAV → BLOCK\n• P6: pure narrative momentum, no fundamental anchor → BLOCK\n• DO NOT ENTER list → BLOCK\n\nSCORING — Entry requires net ≥ +3 AND all hard blocks clear:\n(+1) Real IP/product/revenue path visible\n(+1) Specific factual rebuttal addresses core short claims\n(+1) Price stable/rising above pre-attack close ≥1 session\n(+1) Binary catalyst within 60 days\n(+1) Cash runway >12 months, no dilution overhang\n(+1) Upside >3× capped max loss\n(+1) Macro/structural tailwind behind thesis\n\nPOET SCORE (as of Apr 21 2026): +7/7. All hard blocks clear. Entry permitted on next pullback.\n\nDOCUMENT before entry: score table with evidence, hard block check, entry/stop/max loss, catalyst.\n\nT8 for Tier 1/2: hard block unchanged. Dollar exposure too large during active attack."},
+    {"id": 52, "title": "SI-52: WIDE NET SURFACE SCAN", "body": "Section 0-B daily, 15 min max. Step 1: Alpha TOP_GAINERS_LOSERS — flag >8% moves on >2x volume. Step 2: 30-sec news filter (fundamental/regulatory/technical). Step 3: 60-sec Stage 1 filter (mkt cap >$500M, not blocked, thesis relevance). Any pass → Stage 1 within 24hrs."}
   ],
   "priceVerificationProtocol": {
     "currentPriceUS": "MMD /v2/aggs/ticker/{TICKER}/prev — field 'c'",
     "52wkRangeUS": "EOD:get_us_live_extended_quotes",
-    "currentPriceEUUK": "web_fetch Yahoo Finance / Stockopedia",
+    "currentPriceEUUK": "web_fetch Yahoo Finance",
     "memoryForbidden": "MEMORY ESTIMATES FOR PRICE OR FUNDAMENTAL DATA ARE FORBIDDEN"
   },
   "cDriveProtocol": {
@@ -338,7 +324,7 @@ export default function TradingJournal() {
       <div style={{ marginBottom: 16 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 8 }}>
           <div>
-            <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.textBright }}>CLAUDE FUND — JOURNAL v38 EOD</div>
+            <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.textBright }}>CLAUDE FUND — JOURNAL v38 FINAL</div>
             <div style={{ fontSize: 11, color: COLORS.textDim, marginTop: 2 }}>Session {data.sessionNumber} | {data.fund.account} | {data.lastUpdated}</div>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -359,10 +345,10 @@ export default function TradingJournal() {
           ⚠️ ISRG EARNINGS 00:30 UAE — AMZN + LRCX EARNINGS WED AMC — CEASEFIRE EXPIRED NO DEAL
         </div>
         <div style={{ marginTop: 4, padding: "6px 10px", background: "rgba(63,185,80,0.1)", border: "1px solid rgba(63,185,80,0.3)", borderRadius: 4, fontSize: 11, color: COLORS.green }}>
-          ✅ ITM +113% stop 120p | ✅ LDO filled €56.09 | ✅ GOOGL $315 + BKR $58.50 live | ✅ ABVX P4 executed cleanly
+          ✅ ITM +113% stop 120p | ✅ LDO filled | ✅ GOOGL $315 + BKR $58.50 live | ✅ ABVX P4 clean | ✅ SI-51 v2 live — POET qualified
         </div>
         <div style={{ marginTop: 4, padding: "6px 10px", background: "rgba(210,153,34,0.1)", border: "1px solid rgba(210,153,34,0.3)", borderRadius: 4, fontSize: 11, color: COLORS.yellow }}>
-          ⚠️ CRML dilution — add cancelled | LRCX Stage 1 pass — entry conditional Wed | IES.L LDES IMMINENT
+          ⚠️ CRML dilution — add cancelled | LRCX entry conditional Wed | IES.L LDES IMMINENT | POET entry on next pullback
         </div>
       </div>
 
@@ -418,7 +404,7 @@ export default function TradingJournal() {
                 {o.limitPrice && <span style={{ fontSize: 11 }}>Limit: <b>{o.limitPrice}</b></span>}
                 {o.stopPrice && <span style={{ fontSize: 11 }}>Stop: <b>{o.stopPrice}</b></span>}
                 {o.alertPrice && <span style={{ fontSize: 11 }}>Alert: <b>{o.alertPrice}</b></span>}
-                <span className={`badge ${o.status?.includes("ACTIVE") || o.status?.includes("SUBMITTED") ? "badge-green" : o.status?.includes("MANUAL") ? "badge-amber" : "badge-grey"}`}>{o.status?.substring(0,40)}</span>
+                <span className={`badge ${o.status?.includes("ACTIVE") ? "badge-green" : o.status?.includes("MANUAL") ? "badge-amber" : "badge-grey"}`}>{o.status?.substring(0,40)}</span>
               </div>
               {o.note && <div style={{ fontSize: 10, color: COLORS.textDim }}>{o.note}</div>}
             </div>
@@ -459,11 +445,12 @@ export default function TradingJournal() {
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           <div style={{ fontWeight: 600, color: COLORS.accent, fontSize: 12, marginBottom: 4 }}>US WATCHLIST</div>
           {data.watchlistUS?.map((w) => (
-            <div key={w.ticker} className="card">
+            <div key={w.ticker} className="card" style={{ borderLeft: w.ticker === "POET" ? `3px solid ${COLORS.purple}` : undefined }}>
               <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginBottom: 4 }}>
                 <span style={{ fontWeight: 700 }}>{w.ticker}</span>
                 <span style={{ fontSize: 12, color: COLORS.textDim }}>{w.name}</span>
-                <span className={`badge ${w.status?.includes("ACTIVE") || w.status?.includes("CONFIRMED") ? "badge-green" : w.status?.includes("CONDITIONAL") || w.status?.includes("MONITOR") || w.status?.includes("STAGE") ? "badge-amber" : "badge-grey"}`}>{w.status?.substring(0,45)}</span>
+                {w.ticker === "POET" && <span className="badge badge-purple">SI-51 v2 QUALIFIED</span>}
+                <span className={`badge ${w.status?.includes("ACTIVE") || w.status?.includes("QUALIFIED") ? "badge-green" : w.status?.includes("CONDITIONAL") || w.status?.includes("MONITOR") || w.status?.includes("STAGE") ? "badge-amber" : "badge-grey"}`}>{w.status?.substring(0,40)}</span>
               </div>
               {w.note && <div style={{ fontSize: 11, color: COLORS.textDim }}>{w.note}</div>}
             </div>
@@ -487,10 +474,11 @@ export default function TradingJournal() {
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {data.standingInstructions?.map(ins => (
             <div key={ins.id} className="card" style={{ display: "flex", gap: 12,
-              borderLeft: ins.id === 51 || ins.id === 52 ? `3px solid ${COLORS.green}` :
+              borderLeft: ins.id === 51 ? `3px solid ${COLORS.purple}` :
+                          ins.id === 52 ? `3px solid ${COLORS.green}` :
                           ins.id === 17 ? `3px solid ${COLORS.red}` :
-                          ins.id === 48 ? `3px solid ${COLORS.purple}` : undefined }}>
-              <div style={{ fontSize: 11, color: ins.id === 51 || ins.id === 52 ? COLORS.green : ins.id === 17 ? COLORS.red : ins.id === 48 ? COLORS.purple : COLORS.accent, fontWeight: 700, minWidth: 28 }}>#{ins.id.toString().padStart(2,"0")}</div>
+                          ins.id === 48 ? `3px solid ${COLORS.blue}` : undefined }}>
+              <div style={{ fontSize: 11, color: ins.id === 51 ? COLORS.purple : ins.id === 52 ? COLORS.green : ins.id === 17 ? COLORS.red : ins.id === 48 ? COLORS.blue : COLORS.accent, fontWeight: 700, minWidth: 28 }}>#{ins.id.toString().padStart(2,"0")}</div>
               <div>
                 <div style={{ fontWeight: 600, color: COLORS.textBright, marginBottom: 4, fontSize: 12 }}>{ins.title}</div>
                 <div style={{ fontSize: 11, color: COLORS.textDim, lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{ins.body}</div>
@@ -519,15 +507,15 @@ export default function TradingJournal() {
       )}
 
       <div style={{ marginTop: 24, paddingTop: 12, borderTop: `1px solid ${COLORS.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
-        <span style={{ fontSize: 10, color: COLORS.textDim }}>JOURNAL v38 EOD // SESSION 26 // {data.fund.account} // NL $105.2K // 17 POSITIONS</span>
+        <span style={{ fontSize: 10, color: COLORS.textDim }}>JOURNAL v38 FINAL // SESSION 26 // {data.fund.account} // NL $105.2K // 17 POSITIONS // SI-51 v2</span>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <span className="badge badge-red">ISRG EARNINGS 00:30</span>
-          <span className="badge badge-red">AMZN + LRCX EARNINGS WED</span>
-          <span className="badge badge-green">ITM 120p STOP</span>
+          <span className="badge badge-red">ISRG 00:30</span>
+          <span className="badge badge-red">AMZN + LRCX WED</span>
+          <span className="badge badge-green">ITM 120p</span>
           <span className="badge badge-green">LDO FILLED</span>
+          <span className="badge badge-purple">POET QUALIFIED</span>
           <span className="badge badge-amber">IES LDES IMMINENT</span>
-          <span className="badge badge-amber">CRML DILUTION WATCH</span>
-          <span className="badge badge-green">SI-51 SI-52 LIVE</span>
+          <span className="badge badge-amber">CRML WATCH $10</span>
         </div>
       </div>
     </div>

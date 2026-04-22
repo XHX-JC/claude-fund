@@ -261,6 +261,53 @@ Add these with specific drawdown triggers based on current 2026-04-16 ATH levels
 
 ---
 
+---
+
+## ENERGY + NUCLEAR THESIS — ADDED S27 (April 22 2026)
+
+### Strategic rationale
+Two converging forces: (1) AI/Cloud/Data Centre electricity demand surge — nuclear is the only 24/7 carbon-free baseload at scale; (2) Iran war/Hormuz crisis accelerating EU energy diversification away from oil — nuclear is the primary structural solution. The fund is late to this thesis but still has entry opportunities at value prices.
+
+### PRIORITY NAMES FOR STAGE 2 (Monday Session 28)
+
+#### CEG (Constellation Energy) — HIGHEST PRIORITY
+- Price (Apr 21): $277.70 | 52wk: need to verify | Forward PE: 24.58x
+- Drawdown YTD: -18% (caused by Crane/TMI grid interconnection delay to 2031 — revenue deferred, NOT cancelled)
+- Analyst target: $401 average (14-15 Buy, 0 Sell) = +44.5% upside
+- Thesis: Largest US nuclear fleet operator (55 GW after Calpine acquisition Jan 2026). 20-year PPAs: Microsoft (Crane/TMI), Meta (1.1GW Clinton plant), CyrusOne (380MW Texas). US govt $1B+ 10-year deal. 13%+ adjusted operating earnings growth guided through 2030.
+- Key risk: Crane grid interconnection delay to 2031 (from 2027). PPA intact but revenue timeline extended.
+- Stage 2 required: Calpine FCF trajectory, Crane PPA structure confirmation, earnings date, SI-39 drawdown from ATH
+
+#### MRVL (Marvell Technology) — AI NETWORKING GAP
+- Price (Apr 21): $151.31 | Forward PE: TBD Stage 1
+- Thesis: Custom AI ASIC design for hyperscalers (Amazon Trainium/Inferentia, Google TPU) + 800G/1.6T Ethernet networking. TAM expands as hyperscalers move toward custom silicon.
+- Stage 1 required Monday: drawdown from ATH, forward PE, earnings date, customer concentration
+
+#### ENGIE.PA — EU NUCLEAR/ENERGY
+- Price: TBD (need Stage 1 pull) | Forward PE: ~12-14x est.
+- Thesis: Europe's largest utility. Operates Belgian nuclear fleet (extended post-2025). LNG infrastructure. Grid + energy services. Direct EU energy security beneficiary from Hormuz crisis. Iran war forcing EU to accelerate nuclear and LNG investment.
+- Stage 1 required Monday: price, PE, drawdown, earnings, IBKR routing confirmation
+
+#### TLN (Talen Energy) — ALREADY IN WATCHLIST
+- Price (Apr 21): $329.74 | Gate: Post May 5 only
+- Only nuclear operator with hyperscaler (Amazon) physically co-located at plant
+- Re-verify valuation vs original screen in Session 28
+
+#### UUUU (Energy Fuels) — URANIUM PROCESSING
+- Price (Apr 21): $20.52 | SI-37 speculative cap applies
+- Uranium processing + rare earth refining — different value chain layer vs CCJ (mining)
+- Stage 1 Monday: drawdown, PE, CCJ overlap, earnings
+
+### SKIP — GOOD THESIS, WRONG PRICE
+- ENR.DE (Siemens Energy): +200% in 1yr, now at analyst targets, forward PE 36x, GF Value €32 vs price €144. Wait for -20-25% correction. Add to SI-39 watchlist at -20% from current (~€115).
+- BWXT: Already ran. BofA target $220 vs current $216. Actual fwd PE ~51x at 2026 EPS $4.26. Revisit on -15%+ correction.
+
+### NEW SCAN PROTOCOLS ADDED S27
+- **Section 0-C** (weekly Monday): Nuclear/energy watchlist — CEG, TLN, ENGIE.PA, UUUU, RR.L fill status
+- **Section 0-D** (weekly Monday): AI networking — MRVL + existing AI thesis trigger checks
+
+---
+
 *File created: 2026-04-19 Session 24 supplementary research*
-*Last updated: 2026-04-19*
-*Next review: Session 25 Monday April 20 2026 AFTER core session actions (NOG stop resubmit, IBKR cancellation confirmations, SI-45 weekly, Section 0)*
+*Last updated: 2026-04-22 Session 27 — Energy/Nuclear thesis added, CEG/MRVL/ENGIE flagged for Stage 2 Monday*
+*Next review: Session 28 Monday April 27 2026 — Full Stage 2 on CEG, Stage 1 on MRVL + ENGIE.PA*
