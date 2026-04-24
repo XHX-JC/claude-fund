@@ -1,6 +1,7 @@
 # MARKET BRIEF ROUTINE — 05:30 UAE DAILY
-# Runs via Claude Code. Output: SESSION_BRIEF.md → C:\Users\jcadb\claude-fund\state\
-# Git: commit + push to main only. No custom branches.
+# Runs via Claude Code.
+# Output: SESSION_BRIEF.md → C:\Users\jcadb\claude-fund\state\
+# NO GIT OPERATIONS — file is written to C drive only. Git backup via session-close.bat.
 
 ---
 
@@ -18,10 +19,10 @@ You output data only, in the exact format specified below.
 
 ## EXECUTION RULES — READ BEFORE STARTING
 
-1. **PARALLEL ONLY**: All tool calls must be batched. You have THREE fetch rounds maximum:
+1. **PARALLEL ONLY**: All tool calls must be batched. You have THREE rounds maximum:
    - Round 1: All web searches simultaneously (max 5 searches in one batch)
    - Round 2: Any follow-up fetches simultaneously (max 3)
-   - Round 3: Write file + git commit. Stop.
+   - Round 3: Write file. Stop.
 
 2. **NO SEQUENTIAL CALLS**: Do not run one search, read the result, then run the next.
    Launch all searches in the same turn.
@@ -33,8 +34,8 @@ You output data only, in the exact format specified below.
 5. **NO JOURNAL LOAD**: Do not read the trading journal. Do not read LESSONS_LEARNED.md.
    Read only FUND_SESSION_STATE.md if you need the SI-25 WTI trigger level ($100.38).
 
-6. **STOP AFTER WRITING**: Once SESSION_BRIEF.md is written and committed, stop.
-   Do not summarise. Do not reflect. Do not make additional calls.
+6. **STOP AFTER WRITING THE FILE**: Once SESSION_BRIEF.md is written, stop immediately.
+   Do not run git commands. Do not summarise. Do not reflect. Do not make additional calls.
 
 ---
 
@@ -51,12 +52,7 @@ Search 5: "AI model release announcement this week 2026"
 ## ROUND 2 — FOLLOW-UP ONLY IF NEEDED
 
 Only run Round 2 if critical data is missing from Round 1 results.
-Maximum 3 searches. Examples of valid Round 2 queries:
-- Specific earnings result not found in Round 1
-- WTI price not confirmed
-- Hormuz status unclear
-
-Do not run Round 2 for completeness. Only run it if data is genuinely absent.
+Maximum 3 searches. Only run if data is genuinely absent — not for completeness.
 
 ---
 
@@ -83,12 +79,10 @@ Escalation: [ONE LINE — any overnight development or "No change"]
 
 ## EARNINGS RESULTS (past 24h — beats and misses only, >$5B market cap)
 [TICKER]  [beat/miss]  EPS [actual] vs [est]  Rev [actual] vs [est]  AH [+/-X%]
-[TICKER]  ...
 [none if no relevant results]
 
 ## EARNINGS THIS WEEK (upcoming — fund-relevant only)
 [DATE]  [TICKER]  [AMC/BMO]  [consensus EPS]  [note if held position]
-[DATE]  ...
 
 ## AI / TECH SIGNALS
 [ONE LINE per item — model releases, major infra announcements, regulatory moves]
@@ -103,25 +97,17 @@ Escalation: [ONE LINE — any overnight development or "No change"]
 [none if nothing material]
 
 ## OPEN ACTIONS FROM PRIOR SESSION
-[Read from FUND_SESSION_STATE.md — copy the SESSION PRIORITIES list verbatim, max 5 items]
+[Read FUND_SESSION_STATE.md — copy SESSION PRIORITIES list verbatim, max 5 items]
 ```
 
 ---
 
-## ROUND 3 — WRITE AND COMMIT
+## ROUND 3 — WRITE FILE THEN STOP
 
-After writing SESSION_BRIEF.md, run these git commands:
+Write SESSION_BRIEF.md to C:\Users\jcadb\claude-fund\state\SESSION_BRIEF.md
 
-```bash
-cd C:\Users\jcadb\claude-fund
-git add state/SESSION_BRIEF.md
-git commit -m "auto: market brief [DATE]"
-git push origin main
-```
-
-If git push fails, log the error in SESSION_BRIEF.md as a single line at the bottom:
-`## GIT: push failed — commit [hash] ready locally`
-Do not retry. Do not create branches. Push to main only.
+That is the final step. Do not run any git commands. Do not commit. Do not push.
+Do not create branches. The file on the C drive is the deliverable. Stop here.
 
 ---
 
