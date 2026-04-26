@@ -1,156 +1,135 @@
 # LESSONS LEARNED — CLAUDE FUND
-**Account:** U24936508 (IBKR Pro) | **Compiled through Session 29 Supp (2026-04-25)**
-**Journal version:** trading_journal42.jsx | **SIs:** 1–54
+**Account:** U24936508 (IBKR Pro) | **Compiled through Research Day 26 April 2026 FINAL**
+**Journal version:** trading_journal44.jsx | **SIs:** 1–58
 
 ---
 
-## ERROR TAXONOMY (SI-17) — 15 CODIFIED ERROR TYPES
+## ERROR TAXONOMY (SI-17) — 16 CODIFIED ERROR TYPES
 | # | Error | Description | Prevention |
 |---|-------|-------------|-----------|
-| E1 | Timezone — CRITICAL RECURRING FAILURE | Wrong market open/close times stated from memory without arithmetic check. | **MANDATORY:** Write UAE time now = X. NYSE closes 00:00 UAE. Is X before 00:00? LSE closes 19:30 UAE. Is X before 19:30? XETRA closes 19:00 UAE. COMPUTE — NEVER RECALL. NYSE opens 17:30 UAE / LSE 12:00 UAE / XETRA 11:00 UAE. Dubai = UTC+4 year-round. EDT = UTC-4 (Mar-Nov). |
-| E2 | Stale position | Using journal prices vs IBKR | IBKR screenshot = ground truth always |
+| E1 | Timezone | Wrong open/close times | NY=UTC-4, UAE=UTC+4. COMPUTE always. |
+| E2 | Stale position | Using journal prices vs IBKR | IBKR screenshot = ground truth |
 | E3 | Fill re-flag | Flagging executed orders as pending | Check IBKR fills before action items |
-| E4 | Price verification | Acting on unverified prices | MMD primary, EODHD extended quotes for 52wk range |
-| E5 | Market timing | Acting outside hours | NYSE closes 00:00 UAE (midnight). LSE 19:30. XETRA 19:00. Derive from arithmetic always. |
-| E6 | Dividend capture | Selling before ex-div | Check ex-div dates before any LSE sell |
+| E4 | Price verification | Acting on unverified prices | MMD primary, EODHD extended for 52wk |
+| E5 | Market timing | Acting outside hours | Compute, never recall |
+| E6 | Dividend capture | Selling before ex-div | Check ex-div dates before any sale |
 | E7 | Session discipline | Thesis drift in fatigue | Re-read SI-25 before late-session trades |
 | E8 | Stale quote | Using stale quote as live | Live price check mandatory before execution |
 | E9 | GTC orphan | GTC stop persists after market sell | Cancel stop BEFORE market sell |
-| E10 | Closed position scan | Closed position in live scan | Cross-reference SI-19 before scan |
-| E11 | 52-week high hallucination | Stating 52wk range from memory | MANDATORY: use EOD:get_us_live_extended_quotes |
-| E12 | Tool routing gap | Wrong tool for data type | SI-49 is authoritative routing guide |
-| E13 | EODHD price delay | EODHD lastTradePrice may be stale | Use MMD for current session price |
-| E14 | Journal date discrepancy | Key event dates wrong in journal | Cross-reference 2+ primary news sources. **S29 SUPP EXAMPLE: ABBV earnings stated as Tue Apr 28 AMC in journal — correct date is Wed Apr 29 BMO (confirmed Zacks, TradingView, TIKR).** Earnings dates must be verified against primary sources at the time of writing, not assumed from memory or prior session notes. |
-| E15 | AIM stop limitation | IBKR does not support stops for AIM securities | Manual price alert. IES.L confirmed. |
-
----
-
-## PERFORMANCE AUDIT
-| Metric | S20 Baseline | S29 Supp Update |
-|--------|-------------|-----------------|
-| Net realized P&L (USD) | ~-$2,073 | ~-$2,549 (LLY -$89.41 added) |
-| ITM trim realized | — | +£1,261 combined (trims 1+2) |
-| RR.L stop-out | — | -£49.35 (S27, re-entry S28) |
-| Open unrealized | ~+$5,505 | ~+$7,469 |
-| Net Liquidity | ~$102,800 | $105,700 |
-| Positions | 14 | 18 |
+| E10 | Closed position scan | Closed position in live scan | Cross-reference tracker before any scan |
+| E11 | 52-week high hallucination | 52wk range from memory | MANDATORY: use EOD:get_us_live_extended_quotes |
+| E12 | Tool routing gap | Wrong tool for data type | MMD=current price. EODHD=52wk range. |
+| E13 | EODHD price delay | EODHD lastTradePrice 4-6 days stale | Use MMD for current session price |
+| E14 | Journal date discrepancy | Key event dates wrong | Cross-reference 2+ primary sources |
+| E15 | AIM stop limitation | No IBKR GTC stops for AIM stocks | Manual alert only for IES.L |
+| E16 | Tracker-Journal drift | Position in journal but not tracker or vice versa | Cross-reference BOTH at session open AND close |
 
 ---
 
 ## THESIS & STRATEGY LESSONS
 
-### T1–T27 [unchanged from S28]
+### T1–T20 — [See prior sessions]
 
-### T28 — STOPS DRIFT BELOW COST BASIS ON WINNING POSITIONS (S28)
-At session start, flag any position where: (a) stop is below cost basis AND position is up >10%, OR (b) stop-to-current-price gap exceeds 20% on a position up >15%. Added to I3 session open protocol step 2A.
+### T21 — DISCOVERY SCAN METHODOLOGY
+**ORIGIN**: First structured weekend discovery scan across 6 sector angles.
+**LESSON**: Broad market scans use: (1) sector discount framework overlay, (2) 6 systematic angles, (3) P13/SI-39/T15/P11 applied immediately to every name. Results go to watchlist — no trades on discovery day.
+**APPLICATION**: SI-55 created.
 
-### T29 — WEEKEND RESEARCH SESSIONS PRESERVE SESSION TOKENS (NEW S29 SUPP)
-**ORIGIN:** Session 29 supplementary research on Saturday April 25 — full scan, 5 Stage 2 analyses, order reviews, and earnings prep completed with no time pressure and ample tokens.
-**LESSON:** When markets are closed and time is available, deep-dive research sessions are highly efficient. Stage 2 analyses that would consume a full trading session can be completed in advance, leaving Monday sessions free for execution and active monitoring rather than analysis under time pressure.
-**APPLICATION:** Use weekend sessions for: (a) all pending Stage 2 research, (b) pending order reviews, (c) earnings prep for the coming week, (d) watchlist reassessment. Keep Monday sessions lean — execute, scan, monitor.
+### T22 — DOGE FEAR VS FUNDAMENTAL IMPAIRMENT
+**ORIGIN**: LDOS Stage 2 confirmed: actual DOGE cancellation = $560K on $146 stock. Market destroyed $8B of market cap on $560K of real contract loss.
+**LESSON**: Before exiting or avoiding any defence/government IT name on DOGE narrative, verify: (1) book-to-bill ratio, (2) backlog level and trend, (3) whether affected contracts are mission-critical vs discretionary social programs. Mission-critical classified work cannot be unilaterally cancelled.
+**APPLICATION**: T22 check is mandatory for any DOGE-narrative selloff in government IT names.
+
+### T23 — GTC SIZING IS BASED ON WORST-CASE CASH FLOOR, NOT NET PENDING
+**ORIGIN**: LDOS Stage 2 — initially reduced 45sh to 30sh due to netting pending GTC orders as if they were already deployed cash. This was wrong.
+**LESSON**: GTC limit orders below current market price do NOT consume cash until filled. Cash floor check for sizing purposes = current cash base minus floor minimum. Pending GTC orders are theoretical, not real, until filled. If multiple GTC orders fill simultaneously on a large down day, review and cancel the least convicted name — but do not pre-shrink all positions based on this theoretical worst case. Size each position independently on its own merit and risk parameters.
+**APPLICATION**: Position sizing uses SI-35 ($500 max loss) and cash floor rule ($27,669 - $10,570 = $17,099 available). Period.
 
 ---
 
 ## POSITION-SPECIFIC LESSONS
 
-### P1–P24 [unchanged from S28]
+### P11 — Re-Entry Below Stop-Out Price [LEU active]
+Re-entry only after price pulls back below stop-out level.
+**LEU STATUS**: Stop-out $170.26 (Apr 7). Current $205.63 > $170.26. P11-compliant GTC $168, stop $150, 27sh.
 
-### P25 — WATCHLIST ENTRY PRICES BECOME STALE RAPIDLY IN MOMENTUM MARKETS (NEW S29 SUPP)
-**ORIGIN:** CRDO was researched at $159.70 (-25% from ATH) as a SI-39 drawdown entry. Between research date (April 16) and Saturday April 25, CRDO ran to $194.69 — a 22% move in 9 days. The SI-39 drawdown trigger was run through completely while the position was in the research queue.
-**LESSON:** When a name is in the Stage 2 research queue but entry has not yet been confirmed, the entry premise can expire quickly in high-momentum sectors. Watchlist prices require active monitoring even before a trade is placed. A name showing -25% drawdown one week may be at -9% the next.
-**APPLICATION:** At each session open, before reviewing research queue: check watchlist names for price movement >15% since last assessment. If a name has rallied through its entry thesis, reassess immediately rather than proceeding with stale analysis. For CRDO specifically: new SI-39 trigger set at $181.73 (-15% from current ATH of $213.80).
+### P21 — P11 Active Position Tracking
+Before any re-entry recommendation, check tracker for prior positions. Flag P11 status immediately.
 
 ---
 
 ## SCAN PROTOCOL LESSONS
 
-### S1–S12 [unchanged]
+### S13 — Tracker-Journal Drift Is E16
+LEU lost for 8 sessions. P11 nearly violated. Fix via SI-56.
+
+### S14 — ATH Table Staleness
+Update ATH reference levels whenever a name hits new 52wk high. VRT/ETN/GEV/ANET/AVGO all above S24 reference levels — update mandatory at S30 open.
+
+### S15 — Stage 2 Primary Source Discipline (NEW Research Day FINAL)
+**ORIGIN**: LDOS Stage 1 scan cited 1.3x book-to-bill. Stage 2 primary source research (SEC filings, earnings release) confirmed the actual figure is 1.02x. The -25% net bookings decline was also missed in Stage 1.
+**LESSON**: Stage 1 scan data from secondary sources (news aggregators, screeners) should never be treated as confirmed fundamental figures. Every key metric that drives a buy decision (book-to-bill, backlog growth rate, earnings beat rate, margins) must be sourced from primary documents in Stage 2 before entry is authorised. Stage 1 is hypothesis generation. Stage 2 is verification.
+**APPLICATION**: Stage 2 checklist must explicitly note the data source for each key metric. If a Stage 1 figure cannot be confirmed in Stage 2, it is WRONG until proven otherwise.
 
 ---
 
 ## INFRASTRUCTURE LESSONS
 
-### I3 — Session Open Protocol (SI-32) — UPDATED S27, S28, S29 SUPP
-1. Read FUND_SESSION_STATE.md
-2. Read LESSONS_LEARNED.md
-3. Check journal lastUpdated
-4. **SI-47: State today's date explicitly — STEP ZERO**
-5. **E1 CHECK: NYSE 17:30 UAE / LSE 12:00 UAE / XETRA 11:00 UAE. Compute — never recall.**
-6. IBKR screenshots (positions + orders)
-7. **2A: Cross-check all stops vs current prices. Flag: (a) stop below cost AND position up >10%, (b) stop-to-price gap >20% on position up >15% (T28)**
-8. **2B: Scan watchlist names for moves >15% since last assessment (P25)**
-9. Section 0 SI-39 drawdown batch
-10. Section 0-B Wide Net surface scan (SI-52) — 15 min max
-11. SI-45 weekly (first session of week only)
-12. SI-14 scan A-K
-13. Active thesis file checks (research/*.md)
-14. Route all data needs through SI-49
+### I17 — Tracker-Journal Sync Is Mandatory
+SI-56 — cross-reference at every session close.
 
-### I4–I13 [unchanged from S28]
+### I18 — C Drive Directory Structure Confirmed
+- `C:\Users\jcadb\Claude Date File` — original files, old journals v01-v31
+- `C:\Users\jcadb\claude-fund` — current: journal/, state/, tracker/, research/
 
-### I14 — WEEKEND RESEARCH PROTOCOL (NEW S29 SUPP)
-**ORIGIN:** Session 29 supplementary Saturday research session.
-**STANDARD:** When a weekend research session is conducted:
-- All Stage 2 research outputs are written to FUND_SESSION_STATE.md with full entry parameters
-- Pending orders (with exact prices, stops, share counts) are queued in state file
-- Monday session open begins with EXECUTION of pre-approved decisions, not new analysis
-- Research files (AI_INFRASTRUCTURE_THESIS.md etc.) updated with reassessment findings
-- Three core journal files written at end of weekend session same as regular session close
+### I19 — Research Day Protocol (NEW Research Day FINAL)
+**ORIGIN**: Sunday 26 Apr — 5 Stage 2s completed in single research day.
+**LESSON**: Structured research days (non-trading) are high-value sessions that should be treated with the same discipline as live trading sessions. Close protocol: (1) All Stage 2 verdicts logged in journal, (2) All watchlist entry triggers confirmed and priced, (3) Pending orders section updated with NOT YET PLACED entries, (4) All three files written to C Drive, (5) Tracker xlsx downloaded and saved manually. No work is "done" until the files are written.
 
 ---
 
 ## STANDING INSTRUCTIONS REFERENCE
 
-### SI-25 — EXIT TRIGGER
-WTI -10% from $111.54 peak = trigger at **$100.38**. WTI Fri close ~$94-95. Gap ~$5-6. NOT TRIGGERED. Weekend binary Pakistan talks: breakthrough = oil -$10-20, monitor. Ceasefire extension alone is NOT SI-25 trigger.
+### SI-55 — WEEKEND DISCOVERY SCAN PROTOCOL
+Run SI-45 + 6-angle discovery scan on non-trading days. Apply P13/SI-39/T15/P11. No trades on discovery day. Results to watchlist.
 
-### SI-47 — DATE VERIFICATION — STEP ZERO
-System prompt date is authoritative. State date before any analysis. Non-negotiable.
+### SI-56 — TRACKER-JOURNAL SYNC MANDATORY
+Every session close: verify tracker matches journal. Any change requires same-session tracker update. E16 if drift detected.
 
-### SI-48 — AI THESIS ATH RULE AMENDMENT
-Four tests: (1) fwd PE below sector or PEG<1.5, (2) structural catalyst path multi-year backlog, (3) no multiple expansion required, (4) PLTR P6 test. S29 SUPP: CEG passes all 4. SNPS borderline pass (PEG 2.07x but drawdown justifies). HPE passes (wait Jun 2). CRDO: entry missed — price ran through drawdown trigger.
+### SI-57 — P11 APPLICATION LOG
+**LEU**: stop-out $170.26 (Apr 7). P11-compliant GTC $168, stop $150, 27sh. Update when condition met (price below $170.26).
 
-### SI-51 v2 — TIER 3 WEIGHTED JUDGEMENT [Unchanged]
-### SI-52 — WIDE NET SURFACE SCAN [Unchanged]
-### SI-53 — ENERGY + NUCLEAR SCAN [Unchanged]
-### SI-54 — AI NETWORKING SCAN [Unchanged]
+### SI-58 — EXTERNAL CAPITAL DEPLOYMENT RULES (NEW)
+External capital into account only when ALL conditions met:
+1. **≥75% conviction** — not standard SI-39 entries
+2. **Verified primary thesis** — Stage 2 complete, no open questions
+3. **Catalyst within 4 weeks** — not speculative
+4. **Upside >30% to conservative (not consensus) target**
+5. **Meaningful at fund scale** — not marginal add
 
-**NOTE: SI-55 and SI-56 (Claude Code routine protocols) remain PENDING — add once routines confirmed working.**
-
----
-
-## STAGE 2 RESEARCH LOG (S29 SUPP)
-
-| Name | Date | Verdict | Entry | Stop | Shares | Catalyst |
-|------|------|---------|-------|------|--------|---------|
-| CEG | 2026-04-25 | ENTRY AUTHORISED | $308 GTC | $278 | 14 | May 11 Q1 |
-| HPE | 2026-04-25 | WAIT JUN 2 | $25-27 post-Q2 | $23 | 125-150 | Jun 2 Q2 |
-| SNPS | 2026-04-25 | ENTRY AUTHORISED | $495 GTC | $440 | 8 | May 20 Q2 |
-| CRDO | 2026-04-25 | NO ENTRY — PRICE RAN | n/a | n/a | n/a | New trigger $181.73 |
-| MRVL | 2026-04-25 | WATCHLIST | $152 GTC (verify Mon) | $135 | 10 | Late May Q1 FY27 |
+**Current pipeline**: No names meet the 75% bar as of Research Day 26 Apr. LDOS is ~65% conviction — account cash, standard sizing. Cash floor rule ($10,570 minimum) always applies regardless.
 
 ---
 
-## 52-WEEK DATA PROTOCOL (E11-E13 PREVENTION)
-- **Current price (US):** MMD /v2/aggs/ticker/{TICKER}/prev → use `c` field
-- **52-week high/low (US):** EOD:get_us_live_extended_quotes → fiftyTwoWeekHigh/Low
+## GTC POSITION SIZING RULES (SI-35 + T23)
+- SI-35: Maximum $500 loss per trade (stop distance × shares)
+- T23: GTC orders below market do not consume cash until filled. Size based on: (1) cash base minus floor ($17,099 available), (2) SI-35 loss limit. Do NOT reduce sizing due to theoretical simultaneous GTC fill.
+- Worst case all 4 Monday GTC fill = $16,227 deployed, $11,442 remaining — above $10,570 floor
+
+---
+
+## 52-WEEK DATA PROTOCOL (E11-E13)
+- **Current price (US):** MMD `/v2/aggs/ticker/{TICKER}/prev` → `c` field
+- **52-week high/low:** EOD:get_us_live_extended_quotes
 - **EU/UK:** web_fetch Yahoo Finance
-- **NEVER use memory for 52-week range**
+- **NEVER use memory for price, range, or ATH levels**
 
 ---
 
 ## PROHIBITED DATA SOURCES
-- GuruFocus, PitchBook, Macroaxis
-- Any search snippet price without verified publication date
-- EODHD earnings endpoint (403 confirmed)
-- Memory estimates for 52-week high/low
-- EODHD lastTradePrice for current session
-- Journal-only sourcing for key external event dates without primary news verification
-- Trump Truth Social posts as geopolitical confirmation (T17)
-- Session context as source for current date (I8, SI-47)
-- Scan-phase fundamentals without Stage 2 verification (SI-44)
-- **NEW S29 SUPP: Watchlist entry prices assumed valid without checking current price against last assessment date (P25)**
-
----
-
-*Updated: 2026-04-25 Session 29 Supplementary Research — T29, P25, I14 added. E14 ABBV example added. Stage 2 log table added.*
+- EODHD lastTradePrice for current session (may be 4-6 days stale)
+- Memory estimates for 52-week high/low or ATH levels
+- Trump Truth Social posts as confirmation of geopolitical facts (T17)
+- System prompt date from session context — system prompt only (SI-47)
+- Stage 1 scan data as confirmed fundamental figures without Stage 2 primary source verification (S15)
+- Prior journal version as ground truth for position state (IBKR is ground truth)
