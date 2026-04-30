@@ -1,93 +1,141 @@
 # LESSONS LEARNED — CLAUDE FUND
-**Account:** U24936508 (IBKR Pro) | **Compiled through Session 32 (2026-04-29)**
-**Journal version:** trading_journal48.jsx | **SIs:** 1-59
+**Account:** U24936508 (IBKR Pro) | **Compiled through Session 33 (2026-04-30)**
+**Journal version:** trading_journal48.jsx | **SIs:** 1-61
 
 ---
 
-## ERROR TAXONOMY (SI-17) — 17 CODIFIED ERROR TYPES
+## ERROR TAXONOMY (SI-17) — 20 CODIFIED ERROR TYPES
+
 | # | Error | Description | Prevention |
 |---|-------|-------------|-----------|
-| E1 | Timezone | Wrong open/close times | NYSE 17:30 UAE open. LSE 11:00 UAE (BST) / 12:00 UAE (GMT). XETRA 19:00 UAE close. |
-| E2 | Stale position | Using journal vs IBKR | IBKR screenshot = ground truth |
-| E3 | Fill re-flag | Flagging executed orders as pending | Check fills first |
-| E4 | Price verification | Acting on unverified prices | MMD primary |
-| E5 | Market timing | Acting outside hours | Verify exchange |
+| E1 | Timezone / US earnings timing | Wrong open/close times or earnings drop timing | NYSE 17:30 UAE open / 00:00 UAE close. LSE 11:00 UAE (BST) / 19:30 UAE. US AMC earnings AFTER 00:00 UAE — market CLOSED at print. ALWAYS read TIMEZONE REFERENCE block at journal top before stating any time. NEVER calculate from memory. Recurred S30 and S32. |
+| E2 | Stale position | Using journal price vs IBKR | IBKR screenshot = ground truth |
+| E3 | Fill re-flag | Flagging executed orders as pending | Check fills before flagging |
+| E4 | Price verification | Acting on unverified prices | MMD primary for prev close; IBKR for live |
+| E5 | Market timing | Acting outside hours | Verify exchange and hours |
 | E6 | Dividend capture | Selling before ex-div | Check calendar |
-| E7 | Session discipline | Thesis drift | Re-read SI-25 |
-| E8 | Stale quote | Using stale price as live | MMD mandatory |
-| E9 | GTC orphan | Stop persists after market sell | Cancel stop FIRST |
-| E10 | Closed position scan | Closed position in live scan | Cross-reference positions[] |
-| E11 | 52wk hallucination | Memory for 52wk range | EODHD extended quotes mandatory |
-| E12 | Tool routing gap | Wrong tool for data | MMD=current. EODHD=52wk |
-| E13 | EODHD delay | EODHD price stale 4-6 days | Use MMD |
-| E14 | Date discrepancy | Wrong event dates | 2+ primary sources |
-| E15 | AIM stop limitation | No IBKR stops on AIM | Manual alert protocol |
-| E16 | Tracker-Journal drift | Positions mismatch | Reconcile every session open |
-| E17 | Stop modification sequencing | Stop fires during discussion | Cancel FIRST, then debate |
+| E7 | Session discipline | Thesis drift in fatigue | Re-read SI-25 |
+| E8 | Stale quote | Using stale price as live | MMD mandatory for close data |
+| E9 | GTC orphan / accidental short | GTC stop persists after manual exit, fires into empty position | Cancel GTC BEFORE or IMMEDIATELY after manual exit. Verify FLAT in IBKR. Any negative quantity = SHORT = immediate review. Recurred S32: PDYN -250 short created, cover cost ~-$25. |
+| E10 | Closed position scan | Closed name appearing in live scan | Cross-reference positions[] and closed log |
+| E11 | 52wk hallucination | Stating 52wk range from memory | EODHD extended quotes mandatory. Memory forbidden. |
+| E12 | Tool routing gap | Wrong tool for data type | MMD=current price. EODHD=52wk range. |
+| E13 | EODHD delay | EODHD lastTradePrice 4-6 days stale | Use MMD for current session |
+| E14 | Date discrepancy | Key event dates wrong | 2+ primary sources minimum |
+| E15 | AIM stop limitation | IBKR cannot place stops on AIM stocks | Manual alert protocol |
+| E16 | Tracker-Journal drift | Position data mismatch | Reconcile every session open |
+| E17 | Stop modification sequencing | Stop fires while being debated | Cancel FIRST. Confirm Cancelled. Then debate. Then replace. |
+| E18 | Negative position not checked | Short created and not caught at close | At session close: visually confirm ALL IBKR quantities ≥ 0. Any negative = short = resolve before leaving. |
+| E19 | (Reserved) | Short without mandatory buy stop | Every short must have simultaneous GTC buy stop. Non-negotiable. |
+| E20 | **Stale web data presented as live price during active session** | Web search / financial sites return PREVIOUS SESSION data during live market hours. Claude contradicted IBKR live price with stale web data. | **During NYSE hours (17:30-00:00 UAE) or LSE hours (11:00-19:30 UAE): IBKR TWS is the ONLY authoritative live price source. Web search = stale. MMD /prev = previous day close only. NEVER contradict IBKR live prices. Accept IBKR as ground truth during session. If price seems unusual, ask user to confirm on IBKR — do not run web search to verify.** Occurred S33: IBKR showed MSFT $401-403 post-earnings open. Web search returned yesterday's $414-424. IBKR was correct throughout. |
 
 ---
 
-## THESIS & STRATEGY LESSONS (T1-T22 — see S31 for full text)
+## THESIS & STRATEGY LESSONS
 
-### T23 — DELIBERATE EXIT BEFORE EARNINGS BINARY (NEW S32)
-**ORIGIN:** CCJ at $119.27 pre-market with stop $116.96 (1.93% clearance) and May 5 earnings 6 days away. Decision to sell at market open ($119.97) and place re-entry bracket ($117/$110) rather than hold through the binary with inadequate clearance.
-**LESSON:** When a position has drifted to within 2% of its stop AND a significant earnings binary is within one week, the disciplined action is often a deliberate exit at market rather than relying on the stop. The stop does not protect against earnings gaps. Selling deliberately at $119.97 banked $780 cleanly. The re-entry bracket at $117 captures the same thesis at a better price if the stock dips on earnings disappointment. The cost of missing a rally is the opportunity cost — acceptable vs the asymmetric gap risk.
-**KEY DISTINCTION:** This is not stop-widening (which is prohibited) and not thesis-breaking (the nuclear thesis is intact). It is tactical position management to eliminate gap risk while preserving re-entry optionality.
-**APPLICATION:** When clearance falls below 2% AND an earnings binary is within 7 days, evaluate deliberate exit + re-entry bracket as preferred alternative to stop-dependent hold.
+### T1-T22 — See prior sessions (S31 and earlier)
 
-### T24 — STOP RAISE LOGIC FOR SAME-DAY EARNINGS (NEW S32)
-**ORIGIN:** MSFT discussion — user proposed raising stop before AMC earnings tonight. Analysis showed: (1) gap risk same at any stop level, (2) only scenario where higher stop helps is slow intraday drift before close, (3) raising too high creates pre-close stop-out risk on afternoon jitters.
-**LESSON:** Raising a stop on earnings day has a narrow window of usefulness. The correct ceiling for a same-day earnings stop raise is approximately 3-3.5% below current price — tight enough to capture intraday drift protection but loose enough to survive pre-earnings afternoon volatility. Going above that threshold on earnings day introduces more risk than it removes.
-**MSFT EXECUTION:** Stop raised $400.43 to $404.86 (3.3% below $419.75 pre-market). Locks $802 on 25sh. Within the defensible range.
+### T23 — DELIBERATE EXIT BEFORE EARNINGS BINARY (S32)
+When clearance falls below 2% AND earnings binary within 7 days: evaluate deliberate exit + re-entry bracket vs stop-dependent hold. Stop does not protect against gaps.
 
----
+### T24 — STOP RAISE LOGIC FOR SAME-DAY EARNINGS (S32)
+Correct ceiling for earnings-day stop raise: ~3-3.5% below current price. Loose enough to survive pre-earnings afternoon volatility, tight enough to capture intraday drift.
 
-## POSITION-SPECIFIC LESSONS (P1-P21 — see S31 for full text)
+### T25 — TRADING DOWN AS WELL AS UP: CORE FUND CAPABILITY (S33)
+Market at structurally high valuations (Shiller P/E >40). AI capex $400B vs $15-20B revenues. WTI $108 with market pricing benign resolution. AI/tech names at 50-100x fwd PE have no earnings floor. Fund formally adopts short/put capability. Discipline is identical to longs: specific thesis, defined risk, within rules. SI-60 and SI-61 govern. P23 one-sentence test is the gate.
 
-### P22 — SUPPLIER DRAG PERSISTENCE ON BUYER STOCK (NEW S32)
-**ORIGIN:** MRVL continued declining from $158 to $149 across S31-S32 on POET/Celestial AI overhang — two days of consecutive pressure despite no new negative MRVL-specific news.
-**LESSON:** When a stock declines on supplier relationship noise rather than fundamental news, the market often takes 3-5 sessions to fully digest and move on. The position may stay uncomfortable before recovering. The correct response is to verify the primary thesis remains intact (Google ASIC — confirmed), verify the stop is adequate (12% below current — confirmed), and hold without reacting to daily mark-to-market. Forced exits on sentiment noise rather than thesis breaks crystallise losses unnecessarily.
-**APPLICATION:** For any position declining on secondary news, explicitly ask: (1) is the PRIMARY entry thesis broken? (2) is the stop at risk today? If both answers are no, hold and do not adjust stop downward.
+### T26 — POST-EARNINGS SELL-OFF PATTERN: BUY THE REPEAT (S33)
+MSFT Q2 (Jan 28): beat on fundamentals, -10% on capex concern. Recovered to $424 by late April. MSFT Q3 (Apr 29): beat on fundamentals (Azure +40%), -5% on same capex concern ($190B). Pattern identical. Thesis intact. Stop protected the original position (+$940 profit). P11 re-entry at $403 captures the same recovery at lower cost. KEY: when a stock sells off on a repeated concern (not a new fundamental break), the sell-off is a mechanical re-entry opportunity, not a thesis review.
 
 ---
 
-## SCAN PROTOCOL LESSONS (S1-S13 — see S31 for full text)
+## POSITION-SPECIFIC LESSONS
 
-### S14 — PRE-EARNINGS GAP RISK CANNOT BE STOP-MANAGED (NEW S32)
-**ORIGIN:** CCJ and MSFT stop discussions S32. Multiple scenarios analysed where stops at different levels produce identical outcomes on earnings gaps.
-**LESSON:** Stop orders are not gap protection instruments. For earnings events, the choice is binary: hold through the print (accept gap risk at any stop level) or exit deliberately before the print (eliminate gap risk entirely). Any attempt to "manage" earnings gap risk through stop placement is a false sense of security. The correct question before earnings is not "where should I set my stop" but "do I want to hold through this print at all?"
-**APPLICATION:** Pre-earnings review for every position should explicitly state: (1) am I holding through the print? If yes, accept gap risk. If no, sell deliberately and set re-entry.
+### P1-P22 — See prior sessions
+
+### P23 — OPTIONS AND SHORT ENTRY: THE ONE-SENTENCE TEST (S33)
+Every short or put requires: specific company + specific valuation problem + specific catalyst — in one sentence. Index puts require 13-15% break-even on a diluted basket — poor R/R for this fund. Single-stock puts on overvalued names with imminent catalysts: correct vehicle. Math standard: minimum 2:1 upside on the expected scenario. QQQ Dec $600 put: risk $2,450 to earn $1,550 on -15% = FAIL. Declined correctly.
+
+### P24 — SI-35 EXCEPTION DOCUMENTATION (S33)
+MSFT re-entry: 25sh, stop $373, risk $750 vs $500 SI-35 rule. Exception documented because: (a) stop is at original cost basis floor $372.77, (b) 52-week low $356 provides further support, (c) trade #30 +$940 profit provides buffer. SI-35 exceptions must be explicitly documented in journal with rationale. Undocumented exceptions are protocol failures.
 
 ---
 
-## INFRASTRUCTURE LESSONS (I1-I12 — see S31 for full text)
+## SCAN PROTOCOL LESSONS
+
+### S1-S14 — See prior sessions
+
+### S15 — SCANS FEED THE SHORT WATCHLIST (S33)
+SI-39 (every session) secondary output: fwd PE ≥ 3× sector median + deteriorating fundamentals → flag for SI-61. SI-45 (weekly) secondary output: near 52wk HIGH + fwd PE >50x + decelerating growth → flag for SI-61. Same scan, inverse lens. Takes 30 seconds at scan time. No separate process required.
 
 ---
 
-## STANDING INSTRUCTIONS REFERENCE
+## INFRASTRUCTURE LESSONS
 
-### SI-25 — EXIT TRIGGER
-WTI ~$99. Trigger $100.38. Gap ~$1.40. NOT TRIGGERED. Condition: permanent Hormuz reopening + WTI -10% from $111.54.
+### I1-I12 — See prior sessions
+
+### I13 — LIVE PRICE SOURCE HIERARCHY (S33, E20)
+**During live market hours:**
+1. IBKR TWS — authoritative. Accept without verification.
+2. MMD /v2/snapshot — may provide live data (test before relying on)
+3. MMD /v2/aggs/ticker/{T}/prev — PREVIOUS DAY close only. Not intraday.
+4. Web search — STALE. Returns cached/previous session data. Do not use for live prices.
+5. Financial sites (Yahoo, Robinhood, Investing.com) — may show previous close. Do not trust intraday during active session.
+
+**If a price seems unusual during session:** ask user to confirm on IBKR. Do NOT run web search to verify. IBKR is always right during live session.
+
+---
+
+## STANDING INSTRUCTIONS
+
+### SI-25 — EXIT TRIGGER (UPDATED S33)
+WTI $107.94 (30 Apr 2026). 52-week high $117.63. Corrected SI-25 exit threshold: $105.87 (-10% from $117.63). WTI currently ABOVE threshold but dual condition still unmet: requires PERMANENT Hormuz reopening + WTI -10% from peak. WTI moving UP does NOT trigger. Thesis intact. UAE OPEC exit accelerates post-peace oil collapse — tightens NOG exit timing on any peace deal announcement.
 
 ### SI-47 — DATE VERIFICATION STEP ZERO
 System prompt date is authoritative. State before any analysis.
 
-### SI-57 — P11 LOG
-LEU: stopped $170.26, GTC $168/stop $150.
-CODA: stopped $11.42 actual, re-entry 250-300sh below $11.51, stop below $10.50. Reassess Thursday — 72hr elapsed.
-CCJ: stopped N/A — deliberate exit $119.97. Re-entry GTC $117/stop $110/50sh. Not P11 — thesis intact exit.
+### SI-57 — P11 LOG (UPDATED S33)
+CODA: stopped $11.42 (Apr 27). P11 met (low $11.07). Re-entry S33: 250sh @$11.10, stop $10.00.
+MSFT: stopped $410.38 (S33 open). P11 met immediately ($403.01 < $410.38). Re-entry S33: 25sh @$403.01, stop $373. SI-35 exception documented (P24).
+CCJ: deliberate exit $119.97 (Trade #27). Re-entry 50sh @$117.02, stop $110.
 
 ### SI-59 — STOP MODIFICATION SEQUENCING
-Cancel existing stop FIRST. Confirm Cancelled. Then debate. Then place new stop.
+Cancel existing stop FIRST. Confirm Cancelled status. Then debate. Then place new stop.
+
+### SI-60 — SHORT SELLING AND OPTIONS PROTOCOL (S33)
+Options Level 3 + US market confirmed active on IBKR Pro U24936508.
+Max premium per options position: 2.5% NAV (~$2,600). Premium = stop.
+Direct short max loss: SI-35 $500. Mandatory GTC buy stop before short order. Max short exposure: 5% NAV.
+Borrow cost: reject if >5% APR.
+Oil thesis correlation: acknowledge before entry.
+Five entry criteria: (1) fwd PE ≥ 3× sector median (2) specific catalyst where consensus is too optimistic (3) no imminent squeeze catalyst (4) short interest <15% float (5) specific articulable problem.
+
+### SI-61 — SHORT WATCHLIST (S33, scan-fed)
+| Ticker | Thesis | Fwd PE | Trigger | Correlation |
+|--------|--------|--------|---------|-------------|
+| PLTR | 108x fwd PE vs 18x median; compresses on guidance miss | 108x | May 4 AMC print | Low |
+| AAL | No fuel hedge, $36.5B debt, FY EPS -$0.40 to -$1.10 | Loss | Bounce $13-14 | HIGH — NOG |
+
+Review every session alongside SI-39 and SI-45. Max 5 entries. Remove when catalyst passes or thesis breaks.
 
 ---
 
-## SESSION CLOSE CHECKLIST — SESSION 32
-- trading_journal48.jsx written
-- FUND_SESSION_STATE.md written
-- LESSONS_LEARNED.md updated (T23, T24, P22, S14)
-- Trade 24 (ITM) and Trade 25 (CCJ) added to tracker
-- MSFT stop confirmed $404.86
-- CCJ re-entry bracket confirmed active
-- User action: run session-close.bat (GitHub backup)
-- Thursday: VST decision, NOG Q1, MSTR entry, post-earnings assessment
+## SESSION CLOSE CHECKLIST — SESSION 33 FINAL
+```
+SESSION CLOSE CHECKLIST — SESSION 33
+======================================
+✅ 1. trading_journal48.jsx written — v48 FINAL
+✅ 2. FUND_SESSION_STATE.md written — S33 final close
+✅ 3. LESSONS_LEARNED.md updated — E20 added, T26/P24/I13 added
+✅ 4. PDYN short cover confirmed — Trade #29 ~-$25
+✅ 5. MSFT stop-out confirmed — Trade #30 +$940. Re-entry $403.01 live.
+✅ 6. Stop raises confirmed: NOG $26.47, AMZN $249.88, V $312.82
+✅ 7. CODA 250sh @$11.10, stop $10.00 confirmed
+✅ 8. BAH GTC $76.50 + stop $69 submitted (bid $76.60 — imminent)
+✅ 9. TXT GTC $88.00 + stop $79 submitted (needs pullback from $93.46)
+✅ 10. BKR + GOOGL GTCs cancelled — confirmed in orders tab
+✅ 11. SI-60/SI-61/P23/T25/T26/E20/I13 codified
+⬜ 12. USER: run session-close.bat (GitHub backup)
+⬜ 13. S34 check: is May 1 a US market holiday? (May Day is not a US holiday — NYSE open)
+======================================
+```
