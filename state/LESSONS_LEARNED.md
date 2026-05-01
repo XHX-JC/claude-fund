@@ -1,141 +1,319 @@
 # LESSONS LEARNED — CLAUDE FUND
-**Account:** U24936508 (IBKR Pro) | **Compiled through Session 33 (2026-04-30)**
-**Journal version:** trading_journal48.jsx | **SIs:** 1-61
+**Account:** U24936508 (IBKR Pro) | **Compiled through Session 34 (2026-05-01)**
+**Journal version:** trading_journal49.jsx | **SIs:** 1–48
 
 ---
 
-## ERROR TAXONOMY (SI-17) — 20 CODIFIED ERROR TYPES
-
+## ERROR TAXONOMY (SI-17) — 21 CODIFIED ERROR TYPES
 | # | Error | Description | Prevention |
 |---|-------|-------------|-----------|
-| E1 | Timezone / US earnings timing | Wrong open/close times or earnings drop timing | NYSE 17:30 UAE open / 00:00 UAE close. LSE 11:00 UAE (BST) / 19:30 UAE. US AMC earnings AFTER 00:00 UAE — market CLOSED at print. ALWAYS read TIMEZONE REFERENCE block at journal top before stating any time. NEVER calculate from memory. Recurred S30 and S32. |
-| E2 | Stale position | Using journal price vs IBKR | IBKR screenshot = ground truth |
-| E3 | Fill re-flag | Flagging executed orders as pending | Check fills before flagging |
-| E4 | Price verification | Acting on unverified prices | MMD primary for prev close; IBKR for live |
-| E5 | Market timing | Acting outside hours | Verify exchange and hours |
-| E6 | Dividend capture | Selling before ex-div | Check calendar |
-| E7 | Session discipline | Thesis drift in fatigue | Re-read SI-25 |
-| E8 | Stale quote | Using stale price as live | MMD mandatory for close data |
-| E9 | GTC orphan / accidental short | GTC stop persists after manual exit, fires into empty position | Cancel GTC BEFORE or IMMEDIATELY after manual exit. Verify FLAT in IBKR. Any negative quantity = SHORT = immediate review. Recurred S32: PDYN -250 short created, cover cost ~-$25. |
-| E10 | Closed position scan | Closed name appearing in live scan | Cross-reference positions[] and closed log |
-| E11 | 52wk hallucination | Stating 52wk range from memory | EODHD extended quotes mandatory. Memory forbidden. |
-| E12 | Tool routing gap | Wrong tool for data type | MMD=current price. EODHD=52wk range. |
-| E13 | EODHD delay | EODHD lastTradePrice 4-6 days stale | Use MMD for current session |
-| E14 | Date discrepancy | Key event dates wrong | 2+ primary sources minimum |
-| E15 | AIM stop limitation | IBKR cannot place stops on AIM stocks | Manual alert protocol |
-| E16 | Tracker-Journal drift | Position data mismatch | Reconcile every session open |
-| E17 | Stop modification sequencing | Stop fires while being debated | Cancel FIRST. Confirm Cancelled. Then debate. Then replace. |
-| E18 | Negative position not checked | Short created and not caught at close | At session close: visually confirm ALL IBKR quantities ≥ 0. Any negative = short = resolve before leaving. |
-| E19 | (Reserved) | Short without mandatory buy stop | Every short must have simultaneous GTC buy stop. Non-negotiable. |
-| E20 | **Stale web data presented as live price during active session** | Web search / financial sites return PREVIOUS SESSION data during live market hours. Claude contradicted IBKR live price with stale web data. | **During NYSE hours (17:30-00:00 UAE) or LSE hours (11:00-19:30 UAE): IBKR TWS is the ONLY authoritative live price source. Web search = stale. MMD /prev = previous day close only. NEVER contradict IBKR live prices. Accept IBKR as ground truth during session. If price seems unusual, ask user to confirm on IBKR — do not run web search to verify.** Occurred S33: IBKR showed MSFT $401-403 post-earnings open. Web search returned yesterday's $414-424. IBKR was correct throughout. |
+| E1 | Timezone | Wrong open/close times | NY=UTC-4, UAE=UTC+4. 17:30 UAE=09:30 NY open. LSE=11:00-19:30 UAE (BST). AMC earnings print after 00:00 UAE — stop inactive until 17:30 UAE next session |
+| E2 | Stale position | Using journal prices vs IBKR | IBKR screenshot = ground truth always |
+| E3 | Fill re-flag | Flagging executed orders as pending | Check IBKR fills before action items |
+| E4 | Price verification | Acting on unverified prices | MMD primary, EODHD extended quotes for 52wk range |
+| E5 | Market timing | Acting outside hours | LSE closes 19:30 UAE, NYSE 00:00 UAE |
+| E6 | Dividend capture | Selling before ex-div | Hard lock on ex-div date confirmed from primary source |
+| E7 | Session discipline | Thesis drift in fatigue | Re-read SI-25 before late-session trades |
+| E8 | Stale quote | Using stale quote as live | Live price check mandatory before execution |
+| E9 | GTC orphan | GTC stop persists after market sell — unintended short | Cancel stop BEFORE market sell or IMMEDIATELY on fill confirmation |
+| E10 | Closed position scan | Closed position in live scan with active stop | Cross-reference SI-19 + positions[] before any scan table |
+| E11 | 52-week high hallucination | Stating 52wk range from memory | MANDATORY: use EOD:get_us_live_extended_quotes. Memory forbidden |
+| E12 | Tool routing gap | Not knowing which tool provides which data | MMD=current price. EODHD extended=52wk range. Never conflate |
+| E13 | EODHD price delay | EODHD lastTradePrice may be 4-6 days stale | Use MMD for current session price |
+| E14 | Journal date discrepancy | Key event dates wrong in journal | Cross-reference 2+ primary news sources before acting |
+| E15 | Exchange holiday blind spot | Assuming market open without checking calendar | Check exchange-specific holiday calendar before stating stops are active |
+| E16 | Stop staleness on winner | Stop not raised as position appreciates — drift below cost basis | Review all stops >2 sessions old when position >10% above cost. T28 |
+| E17 | Post-earnings entry implicit trade | Fill day before earnings creates earnings trade without explicit decision | Flag at fill — P24. Make explicit pre-earnings decision session close |
+| E18 | Congressional scan narrow | Only cross-referencing held names, missing large filings in other names | Three-layer scan: all large transactions → held-name sweeps → committee intelligence |
+| E19 | False CRITICAL flag | Flagging stopped-out position as live alert | Mandatory three-step reconciliation: check positions[], closed trades log, orders tab |
+| E20 | Live price contradiction | Using web search to contradict IBKR live price during market hours | IBKR TWS is ONLY authoritative source during NYSE/LSE hours. Web search = stale. No exceptions |
+| E21 | Commodity price staleness | Using memory or old data for commodity spot price in thesis analysis | Verify from primary source (Fastmarkets, Trading Economics, SMM, EIA) before stating. Memory forbidden for commodity prices |
+
+---
+
+## PERFORMANCE AUDIT
+| Metric | S20 Baseline | S34 Update |
+|--------|-------------|-----------|
+| Net realized P&L (USD) | ~-$2,073 | ~+$936 (IBKR 30-day tab) |
+| ITM programme realized | — | +$2,639 (3 trims) |
+| Open unrealized | ~+$5,505 | +$4,588 |
+| Net Liquidity | ~$102,800 | $105,600 |
+| Positions | 14 | 18 active + 3 pending GTCs |
+| Trades closed (S34) | — | 31 total (Trade #31: NOG +$169) |
 
 ---
 
 ## THESIS & STRATEGY LESSONS
 
-### T1-T22 — See prior sessions (S31 and earlier)
+### T1 — Supply Chain Premium > War Premium
+Structural damage persists under toll regime.
 
-### T23 — DELIBERATE EXIT BEFORE EARNINGS BINARY (S32)
-When clearance falls below 2% AND earnings binary within 7 days: evaluate deliberate exit + re-entry bracket vs stop-dependent hold. Stop does not protect against gaps.
+### T2 — Toll Regime vs Full Closure Distinction
+Toll regime resumes non-oil shipments.
 
-### T24 — STOP RAISE LOGIC FOR SAME-DAY EARNINGS (S32)
-Correct ceiling for earnings-day stop raise: ~3-3.5% below current price. Loose enough to survive pre-earnings afternoon volatility, tight enough to capture intraday drift.
+### T3 — Exit Trigger Discipline
+SI-25 ONLY: formal PERMANENT Hormuz reopening + oil -10% from peak. Ceasefire alone insufficient. Iran opened Hormuz conditionally Friday Apr 17, then re-closed Saturday Apr 18. This confirmed the opening was never permanent and did not meet SI-25 threshold.
 
-### T25 — TRADING DOWN AS WELL AS UP: CORE FUND CAPABILITY (S33)
-Market at structurally high valuations (Shiller P/E >40). AI capex $400B vs $15-20B revenues. WTI $108 with market pricing benign resolution. AI/tech names at 50-100x fwd PE have no earnings floor. Fund formally adopts short/put capability. Discipline is identical to longs: specific thesis, defined risk, within rules. SI-60 and SI-61 govern. P23 one-sentence test is the gate.
+### T4 — Cash Reserve is Tactical, Not Passive
+Deployment triggers must fire. Cash above floor = deployable capital.
 
-### T26 — POST-EARNINGS SELL-OFF PATTERN: BUY THE REPEAT (S33)
-MSFT Q2 (Jan 28): beat on fundamentals, -10% on capex concern. Recovered to $424 by late April. MSFT Q3 (Apr 29): beat on fundamentals (Azure +40%), -5% on same capex concern ($190B). Pattern identical. Thesis intact. Stop protected the original position (+$940 profit). P11 re-entry at $403 captures the same recovery at lower cost. KEY: when a stock sells off on a repeated concern (not a new fundamental break), the sell-off is a mechanical re-entry opportunity, not a thesis review.
+### T5 — Mythos Miss (S13)
+AI model release caused PLTR -7%. Section K AI query NON-NEGOTIABLE every session.
+
+### T6 — Target List Cross-Reference (S14)
+Compare current price vs research reference price.
+
+### T7 — Barbell Deployment Framework (S14)
+Pool A (thesis-correlated, event-gated). Pool B (quality compounders). Never conflate.
+
+### T8 — Short Attack Protocol (S16)
+Named short seller report: DO NOT ENTER if watchlist.
+
+### T9 — Leveraged BTC Proxy vs Spot (S16)
+Direct spot BTC via IBKR Paxos preferred.
+
+### T10 — Thesis Is Not a Position Sizing Input (S16)
+Thesis determines whether to enter. Stop distance determines how much.
+
+### T11 — Winners Need Room Equal to Losers (S16)
+Hold thesis-intact positions to primary target.
+
+### T12 — ATH Entry Discipline (S19)
+Never enter a war-premium stock at ATH with ceasefire expiry days away.
+
+### T13 — Missed Opportunity Capture / SI-39 Genesis (S19)
+GOOGL hit -20% drawdown with no protocol. SI-39 created.
+
+### T14 — Limit Order Discipline Under Premarket Pressure (S19)
+Never chase premarket. Hold the limit.
+
+### T15 — Broken Thesis Exit Discipline (S20)
+When PRIMARY thesis driver impaired by confirmed new datapoint + position within 5% of breakeven → EXIT AT MARKET on next open.
+
+### T16 — SI-45 Weekly Screener Cannot Be Deferred (S23)
+NFLX missed at -27.4% drawdown. SI-45 first session of every week, no exceptions.
+
+### T17 — Conditional Reopening ≠ SI-25 Trigger (S23)
+Iran opened Hormuz conditionally Friday Apr 17 — closed again Saturday Apr 18. Confirmed: ceasefire-linked opening is not a permanent reopening. Trump language inflates certainty. Verify against MarineTraffic data and IRGC statements, not political statements.
+
+### T18 — Geopolitical Position Management: Verify Before Exiting (S24)
+**ORIGIN**: NOG sell submitted Saturday on Hormuz opening news. Iran re-closed Hormuz Saturday evening. The exit rationale evaporated before markets even opened.
+**LESSON**: When exiting a position on geopolitical news, verify the news is stable before the order executes — particularly for DAY orders submitted after hours. The 12-hour period between after-hours submission and market open is enough for the entire situation to reverse.
+**APPLICATION**: For any geopolitical-driven DAY market order, review at session open before fill to confirm triggering event has not reversed overnight.
+
+### T19 — ATH RULE IS THESIS-DEPENDENT (S24)
+**ORIGIN**: AI infrastructure deep dive. ATH alone should not disqualify where valuation multiple anchors are defensible.
+**LESSON**: P13 is the DEFAULT rule. Differentiate: ATH + expensive multiple + multiple expansion required → REJECT (P6). ATH + cheap multiple + earnings growth path + contracted backlog → potentially valid with reduced sizing.
+**APPLICATION**: See SI-48 for the full AI-thesis-specific rule.
+
+### T20 — "NEXT NVIDIA" FRAMING CORRECTION (S24)
+**ORIGIN**: Correct frame is asymmetric optionality on genuine IP at reasonable valuation — not literal replacement of NVIDIA. Question: "Does this company have IP that becomes instrumental AND is the market mispricing the optionality?"
+
+### T21 — Stop Review Triggers (S33/S34)
+**ORIGIN**: V stop at $312.82 was protecting only 21% of the $212 unrealised gain. Was flagged by user as stale.
+**LESSON**: Stop staleness review is not just for losing positions (T28). Winning positions require active stop management as they appreciate. A stop that was adequate at entry becomes inadequate at +8% gain.
+**APPLICATION**: Any position with unrealised gain >8% and stop protecting <40% of that gain triggers a mandatory stop review. Raise to protect minimum 50% of unrealised gain while maintaining adequate clearance for normal volatility.
+
+### T22 — Thesis Concentration Ceiling (S34)
+**ORIGIN**: Critical minerals scan identified multiple attractive names (USAR, PPTA, ALB, LAC, UUUU) on top of existing CRML. Adding all would create correlated sector concentration.
+**LESSON**: When a single macro thesis (China critical minerals monopoly, Hormuz blockade, AI infrastructure) generates multiple attractive names, the correlation between them means adding all does NOT diversify — it amplifies. Set an explicit ceiling per thesis and enforce it.
+**APPLICATION**: Critical minerals ceiling: CRML + LAC + UUUU = maximum. Oil thesis: NOG + CODA = maximum at any time. AI thesis: MSFT + MRVL + SNPS + IBM = current holdings, no additions without exits first.
+
+### T23 — Pre-Earnings Stop Management
+T23 documented in journal. Do not widen stops in the 48-72 hours before earnings. Accept the binary outcome with existing protection.
+
+### T24 — Commercial Viability vs Strategic Necessity (S34)
+**ORIGIN**: LAC analysis initially concluded "state-propped only, financially unviable" based on $10-12/kg lithium price assumption. Lithium seaborne CJK was actually $18-20/kg — the project becomes commercially viable at $15/kg realised.
+**LESSON**: For commodity-linked thesis analysis, the difference between "commercially viable" and "state-propped" can be a single commodity price input. Never use memory for commodity spot prices — always verify from primary source before forming commercial viability conclusions. A wrong price input inverts the investment case.
+**APPLICATION**: E21 codified. For any speculative position where commercial viability is thesis-dependent, document the commodity price assumption and its source date explicitly in the journal entry.
 
 ---
 
 ## POSITION-SPECIFIC LESSONS
 
-### P1-P22 — See prior sessions
+### P1 — CWR.L Momentum Trap
+Entry only at 250-270p with confirmed re-rating.
 
-### P23 — OPTIONS AND SHORT ENTRY: THE ONE-SENTENCE TEST (S33)
-Every short or put requires: specific company + specific valuation problem + specific catalyst — in one sentence. Index puts require 13-15% break-even on a diluted basket — poor R/R for this fund. Single-stock puts on overvalued names with imminent catalysts: correct vehicle. Math standard: minimum 2:1 upside on the expected scenario. QQQ Dec $600 put: risk $2,450 to earn $1,550 on -15% = FAIL. Declined correctly.
+### P2 — Linde Thesis Weakened
+Toll regime resumes helium.
 
-### P24 — SI-35 EXCEPTION DOCUMENTATION (S33)
-MSFT re-entry: 25sh, stop $373, risk $750 vs $500 SI-35 rule. Exception documented because: (a) stop is at original cost basis floor $372.77, (b) 52-week low $356 provides further support, (c) trade #30 +$940 profit provides buffer. SI-35 exceptions must be explicitly documented in journal with rationale. Undocumented exceptions are protocol failures.
+### P3 — IAG.L Closed Correctly
+Sold after peace dividend thesis broken.
+
+### P4 — ABVX Risk Profile (Updated S34)
+Re-entered 50sh @$109.89 (S29). Stop $100. Current $118.10 (+7.5%). M&A optionality intact. Consider stop raise to $106 at S35 open.
+
+### P5 — SHLD Stop/Sell Sequence Error (S14)
+Cancel GTC stop FIRST, then sell. Never reverse sequence.
+
+### P6 — PLTR Entry Without Catalyst (S16)
+Presidential Truth Social post is not a catalyst. Realised loss -$1,307. This lesson governs all entries where thesis depends on narrative momentum or multiple expansion rather than earnings growth. PLTR now on SI-61 short watchlist.
+
+### P7 — AVAV Entry and Exit (CLOSED S20)
+Entered $195.09, sold $197.945 (+$71.38). Validate contractor concentration risk before entry.
+
+### P8 — ITM Stop Discrepancy
+IBKR is ground truth on stop prices always.
+
+### P9 — AMZN Stop Limit Gap Mechanics
+Limit price must be set appropriately below trigger for large-cap stocks. Stop Limit structure: trigger + limit floor $224 provides execution guarantee on gap opens.
+
+### P10 — ITM Breakout Protocol Supersession
+Apply the MORE protective stop when current exceeds protocol target.
+
+### P11 — Re-Entry Below Stop-Out Price
+Re-entry only after price pulls back below stop-out level. Active gates: NOG re-entry requires < $26.47.
+
+### P12 — KTOS Sizing Error (S16)
+Use SI-35 dollar-risk sizing.
+
+### P13 — No Entry Near 52-Week Highs Without Catalyst (S16)
+Do not enter within 5% of ATH without confirmed catalyst. **AMENDMENT per SI-48:** This default rule applies to all theses EXCEPT where SI-48 exemption triggers within the AI infrastructure thesis. See SI-48 for the narrow exception.
+
+### P14 — CODA Stop Intentional Below Journal Level (S19)
+Do not "correct" stops that are intentionally placed for catalyst timing.
+
+### P15 — ORCL Entry Timing (S19)
+Active legal filing = mandatory waiting period.
+
+### P16 — ISRG Stop Journal Staleness (S20)
+Any stop raise executed on IBKR must be logged in journal SAME SESSION.
+
+### P17 — PATK M&A Tip Entry Error (S23)
+No entry on any M&A play until: (1) target fully analysed, (2) deal terms/probability/R:R logged, (3) joint entry decision confirmed. A tip is not a thesis.
+
+### P18 — Orphaned Buy Order Risk (S24)
+When cancelling a bracket order (buy + stop), explicitly confirm BOTH legs are cancelled. An order showing "Pending" is not cancelled — confirm "Cancelled" status for each order separately.
+
+### P19 — AI THESIS CROWDED TRADE OBSERVATION (S24)
+Obvious picks-and-shovels AI names are crowded. Edge comes from anomalous valuations (MU fwd PE 7.9), drawn-down specialists with intact thesis (CRDO -25%, SNPS -31%), and pure-speculation sized per SI-37.
+
+### P20 — Stop Protection Percentage Review (S34)
+**ORIGIN**: V stop at $312.82 protecting only 21% of $212 unrealised gain. Raised to $321.83 protecting 56%.
+**LESSON**: A stop that was "profit-locking" at entry becomes inadequate as the position appreciates. The correct metric is not absolute stop level but percentage of unrealised gain protected. Target minimum 50% protection.
+**FORMULA**: Adequate stop = cost + ((current - cost) × 0.50) minimum. Review whenever unrealised gain exceeds 8%.
+
+### P21 — Critical Minerals Speculative Classification (S34)
+**ORIGIN**: LAC and UUUU research S34. Both are development/transformation stories with uncertain commercial timelines.
+**LESSON**: For pre-production or pre-transformation positions, classify explicitly as "National Security Infrastructure" — held for strategic asymmetry with a defined kill switch, not near-term EBITDA. This classification determines hold discipline: do not exit on an earnings miss if the thesis kill switch hasn't triggered.
+**KILL SWITCHES**: LAC = construction halt / DoE suspension / lithium sustained below $10/kg North American. UUUU = ASM deal failure / accelerated insider selling at board level.
 
 ---
 
 ## SCAN PROTOCOL LESSONS
 
-### S1-S14 — See prior sessions
+### S1 — Full Scan = SI-14 Sections 0, A-K (v4.0)
+Section 0 (SI-39) runs FIRST. SI-45 weekly screener runs first session of each week.
 
-### S15 — SCANS FEED THE SHORT WATCHLIST (S33)
-SI-39 (every session) secondary output: fwd PE ≥ 3× sector median + deteriorating fundamentals → flag for SI-61. SI-45 (weekly) secondary output: near 52wk HIGH + fwd PE >50x + decelerating growth → flag for SI-61. Same scan, inverse lens. Takes 30 seconds at scan time. No separate process required.
+### S2 — Journal Rebuild: bracket-depth counting Node.js.
+
+### S3 — Congressional Trading: broad sweep ALL stocks >$50K.
+
+### S4 — Source Quality: Apify + web search in parallel for geopolitical news.
+
+### S5 — GOOGL Missed at $280 (S19 origin). SI-39 Section 0 now fires every session.
+
+### S6 — AMZN Pre-Execution: check IBKR orders screenshot FIRST.
+
+### S7 — Challenge Register Protocol (S16).
+
+### S8 — Premarket Price Verification (S19). Always use MMD for current price.
+
+### S9 — EOD API Failure Fallback (S20). MMD prev close + web search for 52wk range.
+
+### S10 — Primary Source Verification for Binary Event Dates (S20).
+Key event dates must be verified against 2+ primary sources.
+
+### S11 — SI-45 Non-Deferral Rule (S23).
+SI-45 executes first session of every trading week. Not optional.
+
+### S12 — THESIS-DEDICATED RESEARCH FILES (S24)
+For any multi-session research thesis with 10+ candidate names, create a dedicated file at `C:\Users\jcadb\claude-fund\research\<THESIS>_THESIS.md`. Journal references the file path; candidate list lives in the thesis file.
+
+### S13 — COMMODITY PRICE VERIFICATION (S34)
+**ORIGIN**: E21. Lithium carbonate price used in S34 analysis was stale by 6+ months.
+**LESSON**: Before stating any commodity price in a thesis analysis, pull from primary source. Fastmarkets / Trading Economics / SMM for lithium. EIA / OilPrice.com for WTI. Never quote commodity prices from memory or undated search snippets.
+**APPLICATION**: When assessing commercial viability of any commodity-linked company, state the price, the source, and the date of that source explicitly in the analysis.
 
 ---
 
 ## INFRASTRUCTURE LESSONS
 
-### I1-I12 — See prior sessions
+### I1 — Local Filesystem MCP
+READ AND WRITE ACCESS CONFIRMED S19-S34.
+Allowed paths: `C:\Users\jcadb\claude-fund`
+Subdirectories: journal\, state\, research\
 
-### I13 — LIVE PRICE SOURCE HIERARCHY (S33, E20)
-**During live market hours:**
-1. IBKR TWS — authoritative. Accept without verification.
-2. MMD /v2/snapshot — may provide live data (test before relying on)
-3. MMD /v2/aggs/ticker/{T}/prev — PREVIOUS DAY close only. Not intraday.
-4. Web search — STALE. Returns cached/previous session data. Do not use for live prices.
-5. Financial sites (Yahoo, Robinhood, Investing.com) — may show previous close. Do not trust intraday during active session.
+### I2 — Google Drive DEPRECATED
+All state management via local filesystem MCP + Claude project.
 
-**If a price seems unusual during session:** ask user to confirm on IBKR. Do NOT run web search to verify. IBKR is always right during live session.
+### I3 — Session Open Protocol (SI-32)
+1. Read FUND_SESSION_STATE.md | 2. Read LESSONS_LEARNED.md | 3. Check journal lastUpdated
+4. **SI-47: State today's date explicitly** | 5. IBKR screenshots | 6. Section 0 EOD batch | 7. SI-45 weekly (first session of week) | 8. SI-14 scan A-K
+9. If any active thesis file in `research/` directory, check for pending Stage 2 tasks
 
----
+### I4 — Session Close Protocol (SI-28)
+1. Build session-close block | 2-4. Write journal + .md files to C drive
+5. Update hormuz_log.md | 6. Update trade tracker if fills | 7-10. User actions.
 
-## STANDING INSTRUCTIONS
+### I5 — Journal versioning
+trading_journal49.jsx = current (Session 34 — 1 May 2026)
 
-### SI-25 — EXIT TRIGGER (UPDATED S33)
-WTI $107.94 (30 Apr 2026). 52-week high $117.63. Corrected SI-25 exit threshold: $105.87 (-10% from $117.63). WTI currently ABOVE threshold but dual condition still unmet: requires PERMANENT Hormuz reopening + WTI -10% from peak. WTI moving UP does NOT trigger. Thesis intact. UAE OPEC exit accelerates post-peace oil collapse — tightens NOG exit timing on any peace deal announcement.
+### I6 — Memory Hierarchy (SI-33)
+Journal → FUND_SESSION_STATE → LESSONS_LEARNED → research/*.md → Trade Tracker
 
-### SI-47 — DATE VERIFICATION STEP ZERO
-System prompt date is authoritative. State before any analysis.
+### I7 — Trade Tracker Status (S34)
+All 31 trades captured in trading_journal49.jsx tradeTracker. Trade #31: NOG +$169.36 (S34).
 
-### SI-57 — P11 LOG (UPDATED S33)
-CODA: stopped $11.42 (Apr 27). P11 met (low $11.07). Re-entry S33: 250sh @$11.10, stop $10.00.
-MSFT: stopped $410.38 (S33 open). P11 met immediately ($403.01 < $410.38). Re-entry S33: 25sh @$403.01, stop $373. SI-35 exception documented (P24).
-CCJ: deliberate exit $119.97 (Trade #27). Re-entry 50sh @$117.02, stop $110.
+### I8 — Date Verification Is Step Zero, Not a Reminder (S24)
+System prompt date is the ONLY authoritative source. State the date explicitly at the start of every session before any analysis. NON-NEGOTIABLE.
 
-### SI-59 — STOP MODIFICATION SEQUENCING
-Cancel existing stop FIRST. Confirm Cancelled status. Then debate. Then place new stop.
+### I9 — DAY Orders Require Pre-Open Review (S24)
+DAY market orders submitted after hours must be reviewed at session open — before fill — to confirm the triggering thesis is still intact.
 
-### SI-60 — SHORT SELLING AND OPTIONS PROTOCOL (S33)
-Options Level 3 + US market confirmed active on IBKR Pro U24936508.
-Max premium per options position: 2.5% NAV (~$2,600). Premium = stop.
-Direct short max loss: SI-35 $500. Mandatory GTC buy stop before short order. Max short exposure: 5% NAV.
-Borrow cost: reject if >5% APR.
-Oil thesis correlation: acknowledge before entry.
-Five entry criteria: (1) fwd PE ≥ 3× sector median (2) specific catalyst where consensus is too optimistic (3) no imminent squeeze catalyst (4) short interest <15% float (5) specific articulable problem.
+### I10 — RESEARCH FILE LOCATIONS
+- `research/AI_INFRASTRUCTURE_THESIS.md` — AI infrastructure Stage 1 candidates (40+ names)
+- `research/CRITICAL_MINERALS_THESIS.md` — Critical minerals Stage 2: UUUU, LAC (created S34)
 
-### SI-61 — SHORT WATCHLIST (S33, scan-fed)
-| Ticker | Thesis | Fwd PE | Trigger | Correlation |
-|--------|--------|--------|---------|-------------|
-| PLTR | 108x fwd PE vs 18x median; compresses on guidance miss | 108x | May 4 AMC print | Low |
-| AAL | No fuel hedge, $36.5B debt, FY EPS -$0.40 to -$1.10 | Loss | Bounce $13-14 | HIGH — NOG |
+### I11 — Direct C Drive Write Confirmed (S19-S34)
+filesystem:write_file writes directly to allowed directories.
 
-Review every session alongside SI-39 and SI-45. Max 5 entries. Remove when catalyst passes or thesis breaks.
+### I12 — EXCHANGE HOLIDAY PROTOCOL (S34)
+Before every session, explicitly check whether any held-position exchanges are closed for local holidays. Do not assume all markets follow US calendar. Confirmed closed dates this session: Frankfurt/Milan May 1 (Labour Day), LSE May 4 (UK Bank Holiday). R3NK and LDO stops were inactive on May 1 — no execution risk but must be flagged.
 
 ---
 
-## SESSION CLOSE CHECKLIST — SESSION 33 FINAL
-```
-SESSION CLOSE CHECKLIST — SESSION 33
-======================================
-✅ 1. trading_journal48.jsx written — v48 FINAL
-✅ 2. FUND_SESSION_STATE.md written — S33 final close
-✅ 3. LESSONS_LEARNED.md updated — E20 added, T26/P24/I13 added
-✅ 4. PDYN short cover confirmed — Trade #29 ~-$25
-✅ 5. MSFT stop-out confirmed — Trade #30 +$940. Re-entry $403.01 live.
-✅ 6. Stop raises confirmed: NOG $26.47, AMZN $249.88, V $312.82
-✅ 7. CODA 250sh @$11.10, stop $10.00 confirmed
-✅ 8. BAH GTC $76.50 + stop $69 submitted (bid $76.60 — imminent)
-✅ 9. TXT GTC $88.00 + stop $79 submitted (needs pullback from $93.46)
-✅ 10. BKR + GOOGL GTCs cancelled — confirmed in orders tab
-✅ 11. SI-60/SI-61/P23/T25/T26/E20/I13 codified
-⬜ 12. USER: run session-close.bat (GitHub backup)
-⬜ 13. S34 check: is May 1 a US market holiday? (May Day is not a US holiday — NYSE open)
-======================================
-```
+## STANDING INSTRUCTION REFERENCE — SI-48 (S24)
+
+### SI-48 — AI THESIS ATH RULE AMENDMENT
+**SCOPE:** AI infrastructure thesis candidates ONLY.
+**RULE:** Entry may proceed at/near 52wk high if ALL FOUR tests pass in Stage 2:
+1. Valuation reasonable: fwd PE below sector median OR PEG < 1.5
+2. Structural catalyst path: multi-year contracted backlog/LTAs/order book visibility
+3. No multiple expansion required: upside works from earnings growth alone
+4. PLTR P6 test: if primary case is "narrative will continue" → REJECT
+**CONSTRAINTS:** SI-41 catalyst window (8 weeks), SI-37 speculative cap, SI-35 sizing all still apply. Reduced position size vs drawdown entry.
+**DOCUMENTATION:** Four tests must be explicitly logged before any SI-48 entry.
+
+---
+
+## 52-WEEK DATA PROTOCOL (E11-E13 PREVENTION)
+- **Current price (US):** MMD /v2/aggs/ticker/{TICKER}/prev → use `c` field
+- **52-week high/low (US):** EOD:get_us_live_extended_quotes → fiftyTwoWeekHigh/Low
+- **EU/UK:** web_fetch Yahoo Finance or Stockopedia
+- **Commodity prices:** Fastmarkets / Trading Economics / SMM / EIA — primary source, dated
+- **NEVER use memory for 52-week range or commodity spot prices**
+
+---
+
+## PROHIBITED DATA SOURCES
+- GuruFocus, PitchBook, Macroaxis
+- Any search snippet price without verified publication date
+- EODHD earnings endpoint (403 error)
+- Memory estimates for 52-week high/low
+- EODHD lastTradePrice for current session (may be 4-6 days stale)
+- Journal-only sourcing for key external event dates without primary news verification
+- Trump Truth Social posts as confirmation of geopolitical facts (T17)
+- Session number, IBKR screenshots, or conversation context as source for current date (I8, SI-47)
+- Web search / financial sites for live prices during NYSE/LSE market hours (E20) — IBKR TWS only
+- Memory for commodity spot prices (E21) — primary source with date required
