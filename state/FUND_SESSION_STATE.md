@@ -1,147 +1,142 @@
-# FUND SESSION STATE — SESSION 36 FINAL CLOSE
-**Date:** Tuesday 5 May 2026 | **Journal:** trading_journal51.jsx | **Account:** U24936508
-**Status:** SESSION 36 FINAL — UUUU filled @$21.99. LMT filled @$516.73 (SMART -$5.27). V stopped out @$321.823 (+$117.58 trade 32). PDYN earnings mixed — no re-entry. SI-67 (Section N EU Energy Transition) codified — CWR miss formalised as E23/T29. 22 active positions.
+# FUND SESSION STATE — S40 FINAL
+**Date:** Monday 11 May 2026 | **Journal:** trading_journal54.jsx | **Account:** U24936508
+**Status:** S40 FINAL. T40 R3NK stopped (-$136). T41 R3NK rebuy 200sh @€46.461. T42 IREN 24sh @$55.042. T43 ZETA 191sh @$16.866. T44 PATH 320sh @$10.726. AMZN stop raised $263.93. 22 active positions.
 
 ---
 
-## FUND SUMMARY (Session 36 FINAL)
+## FUND SUMMARY (S40 FINAL — 11 May 2026)
 | Field | Value |
 |-------|-------|
-| Net Liquidity | ~$105,600 |
-| Unrealized P&L | +$4,475 |
-| Daily P&L | +$309 / +0.29% |
-| Realized P&L (today) | +$117.58 (V stop-out) |
-| Cash USD | $24,857 |
-| Cash GBP | £637 |
-| Cash EUR | -€2,904 |
-| Cash Floor (10% rule) | $10,570 — MAINTAINED |
+| Net Liquidity | ~$104,200 |
+| Unrealized P&L | +$3,249 |
+| Realized P&L (session) | -$154.12 |
+| Daily P&L | -$432 (-0.40%) |
+| Cash USD | $28,494 |
+| Cash GBP | £641 |
+| Cash EUR | -€11,006 |
+| Cash Floor (10% rule) | $10,420 — MAINTAINED |
 | Active Positions | 22 |
 | Pending GTCs | LAC ($4.80), TXT ($88.00) |
-
-**Cash reconciliation:** $28,552 − $1,100 (UUUU) − $5,167 (LMT) + $2,575 (V sale) = **$24,860 ✅**
-
----
-
-## SESSION 36 FINAL KEY DECISIONS
-| Decision | Rationale | Status |
-|----------|-----------|--------|
-| UUUU BUY 50 FILLED @$21.99 | P24 acknowledged. FIRB cleared. May 6 earnings gate. SMART fill = exact limit | ✅ In positions avg $22.011 |
-| LMT BUY 10 FILLED @$516.73 | SMART routing: $516.73 vs $522 limit = $5.27/sh improvement. PAC-3/THAAD thesis active in UAE theatre | ✅ In positions avg $516.831 |
-| V STOPPED OUT @$321.823 | Stop $321.83 triggered. Post-earnings positioning unwind — NOT thesis break. Q2 FY26 fundamentals intact (revenue +15%, EPS beat). Trade 32: +$117.58. T28 codified | ✅ Trade 32 logged |
-| LMT stop raise $465→$480 DEFERRED | Must be FIRST ACTION S37. Brings max loss $367 within SI-35 | ⚠️ S37 PRIORITY 1 |
-| PDYN Q1 2026: no re-entry | Revenue $3.5M vs $24-27M FY guidance. Back-end loading unverified. CFO + CLO insider sales March 30. Accumulated deficit $493M. Cash burn structurally unresolved | ✅ Watch Q3 2026 only |
-| V re-entry parameters set | $305-315 zone, stop $292-295, do not chase above $321.83 exit. Q3 FY2026 July 28 next catalyst | ✅ On watchlist |
-| SI-67 / Section N codified | EU energy transition formally added as CORE THESIS scan section. CWR +989% miss = E23. Quarterly scan + thesis-triggered. Research file to be created S37 | ✅ In LESSONS_LEARNED |
+| Open Trades | T39 PYPL, T41 R3NK, T42 IREN, T43 ZETA, T44 PATH |
 
 ---
 
-## S35 JOURNAL CORRECTION (CONFIRMED FINAL)
-- S35 stated "Iran struck US warship" — CENTCOM DENIED
-- Accurate: Iran fired missiles at UAE infrastructure and US vessels. UAE intercepted. Fujairah fire confirmed
-- WTI Monday close: $106.42. Tuesday: ~$104
-- E22 codified: adversary state media requires CENTCOM verification before journaling
+## S40 KEY EVENTS (Mon 11 May 2026)
+| Event | Detail | Status |
+|-------|--------|--------|
+| T40: R3NK SELL 25sh @€47.010 | Stop triggered. T35 closed. Lesson T31 codified. -$136 | ✅ |
+| T41: R3NK BUY 200sh @€46.461 | Rebuy. Wider stop €44.00. Full SI-35 sizing. T31 applied. | ✅ OPEN |
+| T42: IREN BUY 24sh @$55.042 | GTC filled. Gate not met (premarket -9%, $2B convert). SI-37. Stop $52. | ✅ OPEN |
+| T43: ZETA BUY 191sh @$16.866 | GTC filled @$16.86. Stop $14.50. SI-35 compliant. | ✅ OPEN |
+| T44: PATH BUY 320sh @$10.726 | GTC filled @$10.72. Stop $9.20. In profit +0.2% close. | ✅ OPEN |
+| AMZN stop raised | $259.88 → $263.93. Proximity to 52W high $278.56. | ✅ |
+| NCH2 date corrected | May 12 (Tuesday), NOT May 11. Session state error. | ✅ CORRECTED |
+| LDO €50.66 | Stop €50.00 not triggered — €0.66 buffer. Extremely thin. | ⚠️ WATCH |
+| CRML $12.45 | Stop $11.20 not triggered. Recovered from $11.69 intraday low. | ⚠️ WATCH |
+| MSFT $410.34 | Stop $403.89 not triggered. $6.45 buffer (1.5%). TCI overhang. | ⚠️ WATCH |
 
 ---
 
-## HORMUZ / WTI (S36 FINAL)
+## ⚠️ S41 FIRST ACTIONS — CRITICAL
+| # | Action | Urgency |
+|---|--------|---------|
+| 1 | **SI-47: State today's date** | 🔴 STEP ZERO |
+| 2 | **NCH2: Read full H1 report at 09:00 UAE (07:00 CEST, Tue 12 May)** — gate met (€316M order intake) but EBIT -€65M and US pilot cancellation require full read before entry decision | 🔴 IMMEDIATE |
+| 3 | **LDO: Monitor at EU open 11:00 UAE** — €50.66 vs stop €50.00. €0.66 buffer. Per agreement: if stops, leave it. | 🔴 URGENT |
+| 4 | **MSFT: Monitor at NYSE open 17:30 UAE** — $410.34 vs stop $403.89. TCI $8B stake overhang. | 🟡 |
+| 5 | **CRML: Monitor** — $12.45 vs stop $11.20. Dilution risk ($450M needed, $80M held). | 🟡 |
+| 6 | **CLARITY Act Senate markup May 14** — MSTR scale gate. BTC $80K, gate $85K. | 🟡 |
+| 7 | **DPRO Q1 earnings today (Tue 12 May)** — gate for watchlist entry | 📋 |
+| 8 | **TE T1 Energy Q1 earnings today (Tue 12 May)** — gate for watchlist entry | 📋 |
+| 9 | **R3NK T41 stop raise** — raise stop to ≥€44.20 on first meaningful bounce to make SI-35 compliant | 📋 |
+| 10 | **AVAV: Monitor** — $164.50 vs stop $155.00. June 30 Q4 gate intact. | 📋 |
+
+---
+
+## ACTIVE POSITIONS (22) — S40 FINAL
+| Ticker | Shares | Avg | Last | Stop | Unreal% | Notes |
+|--------|--------|-----|------|------|---------|-------|
+| AMZN | 30 | $201.204 | $271.56 | $263.93 | +35.0% | Stop raised S40. Near 52W high $278.56 |
+| CRML | 110 | $9.08 | $12.45 | $11.20 | +37.0% | ⚠️ $1.25 buffer. Dilution risk. P21 speculative. |
+| CODA | 250 | $11.105 | $12.19 | $9.95 | +9.1% | P14 deliberate. Project Freedom catalyst. |
+| ABVX | 50 | $109.89 | $122.94 | $109.93 | +12.0% | M&A exception. Maximum room. |
+| RR.L | 100 | 1128.6p | 1207.80p | 1149.4p | +7.0% | H1 Jul 30. EU energy 1/4. |
+| IES.L | 3000 | 17.49p | 18.30p | Alert 12.5p | +5.8% | LDES pending. +4.57% today. |
+| MSTR | 15 | $181.067 | $187.25 | $153.14 | +3.2% | BTC ~$80K. Gate $85K. CLARITY May 14. |
+| SNPS | 8 | $495.125 | $514.59 | $496.76 | +3.9% | T23 lock ~May 25. DO NOT MOVE after lock. |
+| CGCT | 291 | $10.295 | $10.41 | None | +1.1% | SPAC. Trust floor ~$10.27. |
+| MSFT | 25 | $403.052 | $410.34 | $403.89 | +1.8% | ⚠️ $6.45 buffer (1.5%). TCI overhang. |
+| BAH | 33 | $76.531 | $76.33 | $69.00 | -0.3% | May 22 Q4 gate. Half size. |
+| IBM | 26 | $228.739 | $226.81 | $210.08 | -0.9% | Contrarian. Near 52W low $220.72. |
+| PATH | 320 | $10.726 | $10.75 | $9.20 | +0.2% | NEW T44. Agentic AI. Earnings May 28. |
+| ZETA | 191 | $16.866 | $16.70 | $14.50 | -1.0% | NEW T43. AI marketing. 19 consec beats. |
+| IREN | 24 | $55.042 | $55.89 | $52.00 | +1.6% | NEW T42. NVIDIA deal. SI-37. $2B convert overhang. |
+| PYPL | 55 | $45.639 | $45.26 | $37.50 | -0.9% | T39. Fintech turnaround. |
+| UUUU | 50 | $22.011 | $22.30 | $16.50 | +1.2% | Q1 beat. ASM July 2026. SI-37. |
+| R3NK | 200 | €46.485 | €45.635 | €44.00 | -1.8% | T41. T31 applied. SI-35 pending compliance (raise stop ≥€44.20) |
+| LMT | 10 | $516.831 | $511.16 | $479.77 | -1.2% | Stop raised S37. |
+| CCJ | 50 | $117.02 | $119.55 | $112.14 | +2.1% | Raise when >$127. |
+| LDO | 35 | €56.086 | €50.66 | €50.00 | -9.7% | ⚠️ €0.66 buffer. If stops, LEAVE IT. |
+| AVAV | 15 | $185.067 | $164.50 | $155.00 | -11.1% | June 30 Q4 gate. Stop = 52W low. |
+
+---
+
+## PENDING GTCs (2)
+| Ticker | Limit | Stop | Qty | Max Loss |
+|--------|-------|------|-----|----------|
+| LAC | $4.80 | $4.00 | 220 | $176 |
+| TXT | $88.00 | $79 | 55 | $495 |
+
+---
+
+## NCH2 — GATE STATUS (READ REPORT FIRST THING TOMORROW)
 | Item | Status |
 |------|--------|
-| WTI | ~$104 (Tue) / $106.42 (Mon close) |
-| SI-25 Condition 1 | ❌ NOT MET — 4 ships/day vs 120+ pre-war |
-| SI-25 Condition 2 | ⚠️ Borderline at $104 vs $105.87 threshold |
+| Q2 FY2025/26 H1 results | **TUESDAY 12 MAY 2026 at 07:00 CEST = 09:00 UAE** |
+| Gate condition | Q2 order intake >€150M — ✅ CLEARED at €316M (from May 8 ad-hoc) |
+| EBIT concern | -€65M (vs -€4M PY) — decomposition needed from full report |
+| US pilot cancellation | Flagged in ad-hoc — understand in full report |
+| Entry plan | Market ~€8.27, stop €6.50, 230sh, max loss €406, EU energy slot 2/4 |
+| Action | Read full H1 BEFORE Frankfurt opens (11:00 UAE). Entry decision after reading. |
+
+---
+
+## HORMUZ / THESIS
+| Item | Status |
+|------|--------|
+| WTI | ~$95 (Fri close) |
+| SI-25 Condition 1 | NOT MET |
+| Trump | Rejected Iran counter-offer — confirmed bullish for thesis |
 | Thesis | INTACT |
 
 ---
 
-## ACTIVE POSITIONS (22) — S36 FINAL IBKR
-| Ticker | Shares | Avg | Last | Unreal | Stop | Notes |
-|--------|--------|-----|------|--------|------|-------|
-| AMZN | 30 | $201.204 | $276.69 | +$2,265 | $251.38 SL/$224 | ✅ |
-| ABVX | 50 | $109.89 | $120.42 | +$509 | $109.93 | Royalty buyback signal. M&A thesis |
-| AMPX | 168 | $18.106 | $20.76 | +$432 | $18.92 | ⚠️ T23 LOCKED — Thu May 7 AMC |
-| CRML | 110 | $9.08 | $13.03 | +$438 | $11.20 | Deliberate buffer |
-| MSFT | 25 | $403.052 | $411.35 | +$206 | $373 | ✅ |
-| CCJ | 50 | $117.02 | $121.90 | +$250 | $110 | Beat confirmed. T23 holds |
-| CEG | 14 | $308.072 | $320.00 | +$160 | $278 | Earnings May 11 |
-| MRVL | 10 | $152.10 | $167.48 | +$154 | $159.95 | Review May 23 pre-T23 |
-| MSTR | 15 | $181.067 | $187.74 | +$100 | $153.14 | BTC $79,831. Gate $85K |
-| LMT | 10 | $516.831 | $513.25 | -$35 | $465 | ⚠️ NEW — RAISE STOP TO $480 S37 PRIORITY 1 |
-| CODA | 250 | $11.105 | $11.52 | +$99 | $10.90 | Below P20 deliberate |
-| RR.L | 100 | 1128.6p | 1191.80p | +£63 | 1050p | LSE active |
-| R3NK | 25 | €52.27 | €55.27 | +€75 | 47/48 SL | Earnings Wed May 6 |
-| SNPS | 8 | $495.125 | $504.70 | +$74 | $440 | Earnings May 20 |
-| BAH | 33 | $76.531 | $76.62 | -$3 | $69 | May 22 gate |
-| IBM | 26 | $228.739 | $227.94 | -$22 | $208 | ✅ |
-| CGCT | 291 | $10.295 | $10.39 | +$31 | None | SPAC |
-| UUUU | 50 | $22.011 | $22.05 | $0 | $16.50 | NEW — P24. May 6 earnings |
-| NOG | 200 | $26.771 | $26.45 | -$63 | $24.50 | WTI $104, hold stop |
-| IES.L | 3000 | 17.49p | 17.05p | -£13 | Alert 12.5p | LDES pending |
-| AVAV | 15 | $185.067 | $173.26 | -$172 | $155 | Day 2. June 30 gate |
-| LDO.MI | 35 | €56.086 | €53.55 | -€88 | €50 | T23 holds |
+## IREN — RISK FLAGS (NEW S40)
+| Risk | Detail |
+|------|--------|
+| $2B convertible notes | Announced May 11. $2.3B inc greenshoe. ~60% dilution potential on $3.5B mkt cap |
+| Q3 revenue miss | $144.8M vs $219.87M estimate (-34%). 4th consecutive miss |
+| JPMorgan Underweight | PT raised $39→$46 but Underweight maintained. Implies 25% downside from Friday close |
+| NVIDIA deal | $3.4B / 5yr contract + $2.1B warrant investment — transformational but execution risk |
+| Position | 24sh @$55.042, stop $52. Max loss $73. SI-37 sized. |
+| Decision | Hold. Stop manages downside. Thesis intact long term. |
 
 ---
 
-## PENDING GTCS (2)
-| Ticker | Limit | Stop | Qty | Max Loss | Status |
-|--------|-------|------|-----|----------|--------|
-| LAC | $4.80 | $4.00 | 220sh | $176 | SI-37 speculative |
-| TXT | $88.00 | $79 | 55sh | $495 | ~7% pullback needed |
+## CLARITY ACT — MSTR GATE EVENT (MAY 14)
+| Item | Status |
+|------|--------|
+| What | Digital Asset Market Clarity Act — BTC classified as commodity, CFTC jurisdiction |
+| House | Passed July 2025 (294-134) |
+| Senate | Banking Committee markup **THURSDAY MAY 14** |
+| BTC now | ~$80K |
+| MSTR scale gate | $85K — $5K away |
+| Action | If May 14 markup passes cleanly, prepare MSTR scale order per P22 |
 
 ---
 
-## EU ENERGY TRANSITION — NEW WATCH / STAGE 1 QUEUE (SI-67 SECTION N)
-| Ticker | Exchange | Category | Status | Notes |
-|--------|----------|----------|--------|-------|
-| CWR.L | LSE AIM | Fuel cell licensor | WATCH 500p only | At 739p (+989% year). Do not enter. Next CWR = pattern reference |
-| PCELL.ST | Stockholm | H2 fuel cell manufacturer | STAGE 1 S37 | Bosch partner, marine/refrigeration. ~SEK 32-37. Down 45% from high on SVT report |
-| NCR.DE | Frankfurt | Industrial electrolyser | STAGE 1 S37 | Thyssenkrupp Nucera. 300MW Moeve + 700MW Stegra. Suppressed vs ATH |
-| ORSTED.CO | Copenhagen | Offshore wind | STAGE 1 S37 | World's largest. 60% below ATH. 8.1GW under construction |
-| CNA.L | LSE | Nuclear/UK gas | STAGE 1 S37 | Centrica. Sizewell C stake. Morningstar "best UK nuclear play" |
-| ITM.L | LSE AIM | PEM electrolyser | WATCH 135-140p | Rheinmetall NATO defence partnership. Already on watchlist |
-| PRY.MI | Milan | Grid cables | STAGE 1 WHEN CAP | EU Grids Package summer 2026 catalyst |
-| RWE.DE | Frankfurt | EU utility/renewables | STAGE 1 WHEN CAP | Europe's largest renewables capex |
-| AFC.L | LSE AIM | Alkaline fuel cells | SPEC WATCH | Revenue £163K — too early. Maritime/defence angle interesting |
+## SESSION ERRORS CODIFIED (S40)
+- **E26 (NEW):** GTC cancel lag. Recommendation to cancel IREN GTC was made at 07:53 UAE on material premarket news (-9%, $2B convertible). NYSE opens 17:30 UAE — 9-hour window existed. Order was not cancelled and filled at $55.00. Protocol: any GTC where premarket shows >5% adverse move on material news must be cancelled before NYSE open. See I16.
+- **NCH2 DATE ERROR (S40):** Session state labelled May 12 as "Monday" — it is Tuesday. Always verify day-of-week independently of session state labels.
 
-**Concentration ceiling:** 4 positions max (RR.L = 1/4, CEG = 1/4 occupied). Room for 2 new positions.
-**Research file to create S37:** `research/EU_ENERGY_TRANSITION_THESIS.md`
-
----
-
-## SHORT WATCHLIST
-| Ticker | Status | Trigger |
-|--------|--------|---------|
-| PLTR | DORMANT until Q2 July | Guidance cut only |
-| AAL | Active | Dead-cat bounce $13-14 |
-| CCL | New S36 | Rally to $23-25 |
-| SNOW | New S36 | Earnings miss + guide cut |
-
----
-
-## S37 PRIORITY LIST (Wednesday 6 May 2026)
-| # | Action | Urgency |
-|---|--------|---------|
-| 1 | **SI-47: State today's date — Wed 6 May 2026** | 🔴 STEP ZERO |
-| 2 | **LMT: RAISE STOP $465→$480** — FIRST PHYSICAL ACTION | 🔴 IMMEDIATE |
-| 3 | **UUUU Q1 print** — read before NYSE open. ASM timeline, REE revenue, uranium volumes. Decide: hold, add, or exit | 🔴 |
-| 4 | **AMD AMC result** — read overnight. Data center vs $5.56B. Q2 guide | 🔴 |
-| 5 | **R3NK Q1 earnings** — 200M EUR deferred orders key. Stop 47/48 SL | 🔴 |
-| 6 | **LDOS earnings call** — book-to-bill recovery = GTC $143 reinstatement gate | 🟡 |
-| 7 | **LCII Q1 print** — guidance maintained = Stage 1 candidate | 🟡 |
-| 8 | **AMPX T23** — locked until post Thu May 7 print | 🔴 |
-| 9 | **Create `research/EU_ENERGY_TRANSITION_THESIS.md`** — Stage 1 on PCELL/NCR/ORSTED/CNA.L | 🟡 |
-| 10 | **V re-entry monitor** — price alert at $315 | 🟡 |
-| 11 | **NOG** — if WTI holds $105+ for 3 sessions, raise stop toward $26.50 | 🟡 |
-| 12 | **MRVL** — T23 opens May 23. Calendar reminder set | 🟡 |
-
----
-
-## NEW RULES CODIFIED S36 FINAL
-- **E23:** EU energy scan omission — core thesis sector missing from scans
-- **T28:** Stop-out ≠ thesis break. V re-entry parameters.
-- **T29:** EU energy transition is core thesis — formal scan required
-- **SI-67:** Section N EU Energy Transition scan
-- **SI-68:** Journal close timing — wait for final IBKR screenshots before writing
-- **P24:** V stop-out lesson (position-specific)
-- **I13:** Session close timing protocol
-
-*Updated: 2026-05-05 Session 36 FINAL close*
+*Updated: 2026-05-11 S40 FINAL*

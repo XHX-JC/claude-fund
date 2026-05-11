@@ -1,10 +1,10 @@
 # LESSONS LEARNED — CLAUDE FUND
-**Account:** U24936508 (IBKR Pro) | **Compiled through Session 36 FINAL (2026-05-05)**
-**Journal version:** trading_journal51.jsx | **SIs:** 1–68
+**Account:** U24936508 (IBKR Pro) | **Compiled through Session 40 FINAL (2026-05-11)**
+**Journal version:** trading_journal54.jsx | **SIs:** 1–76
 
 ---
 
-## ERROR TAXONOMY (SI-17) — 23 CODIFIED ERROR TYPES
+## ERROR TAXONOMY (SI-17) — 27 CODIFIED ERROR TYPES
 | # | Error | Description | Prevention |
 |---|-------|-------------|-----------|
 | E1 | Timezone | Wrong open/close times | NY=UTC-4, UAE=UTC+4. 17:30 UAE=09:30 NY open. LSE=11:00-19:30 UAE (BST). Milan/Frankfurt same. AMC earnings print after 00:00 UAE. NEVER assume a market is open without verifying clock time. |
@@ -15,7 +15,7 @@
 | E6 | Dividend capture | Selling before ex-div | Hard lock on ex-div date from primary source |
 | E7 | Session discipline | Thesis drift in fatigue | Re-read SI-25 before late-session trades |
 | E8 | Stale quote | Using stale quote as live | Live price check mandatory before execution |
-| E9 | GTC orphan | GTC stop persists after market sell | Cancel stop BEFORE market sell or IMMEDIATELY on fill confirmation |
+| E9 | GTC orphan | GTC stop persists after market sell. Also: standalone limit orders persist after stop fill. | Cancel ALL associated orders (stop AND standalone limits) on any position close. Check orders screen after every fill. |
 | E10 | Closed position scan | Closed position in live scan with active stop | Cross-reference SI-19 + positions[] before any scan table |
 | E11 | 52-week high hallucination | Stating 52wk range from memory | MANDATORY: use EOD:get_us_live_extended_quotes |
 | E12 | Tool routing gap | Not knowing which tool provides which data | MMD=current price. EODHD extended=52wk range |
@@ -30,24 +30,26 @@
 | E21 | Commodity price staleness | Memory for commodity spot | Fastmarkets/Trading Economics/EIA only. State source + date |
 | E22 | State media military claim | Iranian state media cited as military fact | CENTCOM/Western primary source required. Adversary media = unconfirmed until verified |
 | E23 | EU energy scan omission | Core thesis sector not in formal scans despite repeated discussion | EU/UK energy transition is CORE THESIS. Section N MANDATORY in every full scan. CWR +989% = cost of this error. Codified as SI-67. |
+| E24 | Session date drift | System prompt date used beyond session init; date inferred from prices instead of confirmed by user | System prompt date = session initialization only. **User statement is the authoritative override.** Never infer working date from price levels or news — only from explicit user confirmation or PC clock. See I8. |
+| E25 | Prior-year financial report misidentification | Cited Q2 FY2024/25 NCH2 press release (published May 2025) as Q2 FY2025/26 current-year results. User placed real order. | Always verify BOTH company name AND fiscal year AND publication date when citing financial results. Prior-year press releases share identical URL patterns and titles. State the fiscal year explicitly in every citation. Never act on a result without confirming it is the current fiscal year. |
+| E26 | GTC cancel lag | Recommendation to cancel IREN GTC given at 07:53 UAE on -9% premarket + $2B convertible news. NYSE opens 17:30 UAE — 9-hour window existed but order was not cancelled. Filled at $55.00. | Any GTC with >5% adverse premarket move on material news must be cancelled before NYSE open (17:30 UAE). See I16. |
+| E27 | Session state day-of-week error | S39 session state labelled May 12 as "Monday" — it is Tuesday. NCH2 report consequently flagged for wrong day. | Always verify day-of-week independently. Never trust session state day labels without calendar check. |
 
 ---
 
 ## PERFORMANCE AUDIT
-| Metric | S20 Baseline | S36 FINAL |
+| Metric | S20 Baseline | S40 FINAL |
 |--------|-------------|-----------|
-| Net realized P&L (USD) | ~-$2,073 | ~+$1,054 (IBKR 30-day incl. V +$117.58) |
+| Net realized P&L (USD) | ~-$2,073 | ~+$716 (T40 R3NK -$136 added) |
 | ITM programme realized | — | +$2,639 |
-| Open unrealized | ~+$5,505 | +$4,475 |
-| Net Liquidity | ~$102,800 | ~$105,600 |
+| Open unrealized | ~+$5,505 | +$3,249 |
+| Net Liquidity | ~$102,800 | ~$104,200 |
 | Positions | 14 | 22 active + 2 pending GTCs |
-| Trades closed total | — | 32 (V stopped out S36) |
+| Trades total | — | 44 rows (T40 closed T35, T41-T44 open) |
 
 ---
 
 ## THESIS & STRATEGY LESSONS
-
-### T1 through T24 — [unchanged from S36 pre-final]
 
 ### T1 — Supply Chain Premium > War Premium
 Structural damage persists under toll regime.
@@ -124,27 +126,33 @@ Never use memory for commodity spot prices.
 ### T25 — RULE RIGIDITY VS THESIS CONVICTION (S35)
 Rules exist to prevent specific errors, not to be applied mechanically regardless of context. When mechanical application contradicts intent, intent governs. Document override explicitly.
 
-### T26 — TIER-1 COMPETITOR STRATEGIC INVESTMENT SIGNAL (S36)
-When a direct competitor invests billions in another company via public SEC filing, it is disclosing private conviction in that company's strategic importance. Same-session Stage 1 required.
+### T26 — TIER-1 COMPETITOR STRATEGIC INVESTMENT SIGNAL (S36, AMENDED S39)
+When a direct competitor invests billions in another company via public SEC filing, it is disclosing private conviction in that company's strategic importance. Same-WEEK Stage 1 required (not same-session — urgency ≠ FOMO).
 
 ### T27 — DEEP TURNAROUND PATTERN RECOGNITION (S36)
 Three-pattern convergence: >40% below ATH + 3+ consecutive guidance beats + improving revenue. Analysts' models are structurally stale. Re-rating coming. See SI-63, SI-66.
 
 ### T28 — STOP-OUT IS NOT THESIS BREAK (S36)
-V stopped out at $321.823 on post-earnings positioning unwind, not fundamental deterioration. Stop was correct discipline — thin 1.87% clearance on a name that had already captured the earnings gain. Fundamentals intact (Q2 FY26 revenue +15%, EPS beat). Re-entry parameters: $305-315 zone, stop $292-295, do not chase back above exit price. This is distinct from T15 (broken thesis exit). A thin stop being triggered by market noise does not change the underlying investment case.
+V stopped out at $321.823 on post-earnings positioning unwind, not fundamental deterioration. Stop was correct discipline. Fundamentals intact. Re-entry parameters: $305-315 zone, stop $292-295, do not chase back above exit price. Distinct from T15 (broken thesis exit).
 
 ### T29 — EU ENERGY TRANSITION IS CORE THESIS — SCAN OMISSION COST REAL RETURNS (S36)
-**Origin:** CWR (Ceres Power) gained +989% over 12 months. This was discussed as central thesis on multiple occasions. No formal scan section existed.
-**Cost of omission:** CWR from 53.6p low to 739p = 1,279% from entry zone. P1 lesson set entry at 250-270p — even that entry would have delivered substantial returns. The scan never flagged it because Section N did not exist.
-**Lesson:** When a sector is identified as CORE THESIS in multiple sessions, it requires a FORMAL SCAN SECTION with specific tickers, screening criteria, and quarterly review. A verbal discussion without formal codification is not the same as a scan. The thesis is: EU/UK energy transition is structurally accelerated by Hormuz blockade, EU LNG dependence crisis, NATO rearmament energy security, and von der Leyen's nuclear reversal. This creates a multi-year structural tailwind for clean energy technology, grid infrastructure, nuclear renaissance, and green hydrogen. Codified as SI-67, E23, and Section N.
-**The next CWR pattern:** Capital-light technology licensor (not manufacturer), real validated IP with major corporate partners, multiple verticals, early commercial stage, LSE AIM or European small/mid cap. Screen quarterly using SI-67.
+CWR gained +989% over 12 months. Codified as SI-67, E23, and Section N.
+
+### T30 — TACTICAL EXIT AND REBUY ON THESIS-INTACT NAMES (S37)
+Selling a thesis-intact position on broad macro noise and immediately placing a GTC rebuy at a better level is valid capital efficiency. Requirements: (a) thesis intact and documented, (b) rebuy placed concurrently, (c) rebuy improves cost basis, (d) stop placed immediately.
+
+### T31 — STOP PLACEMENT ON NAMES 40%+ BELOW ATH (S40)
+**Origin:** R3NK T35 stopped at €47.010 because stop at €47 sat €1.03 ABOVE the 52W low of €45.97. The stop was triggered on a normal test of annual support, not a fundamental breakdown.
+**Rule:** When a position is already 40%+ below its ATH, stop placement must use the 52W low as the structural reference point. The stop belongs BELOW the 52W low (if SI-35 budget allows) — not above it. A mechanical entry-minus-% stop on a high-range stock is structurally too tight.
+**Application:** R3NK T41 rebuy: stop set at €44.00 (€1.97 below 52W low €45.97). Position sized to use full SI-35 budget at that stop distance.
+**Override check:** Always verify that SI-35 budget permits a stop below the 52W low before applying this rule. If it does not, reduce position size, not the stop quality.
 
 ---
 
 ## POSITION-SPECIFIC LESSONS
 
 ### P1 — CWR.L UPDATED (S36)
-Original lesson: entry only at 250-270p with confirmed re-rating. The re-rating DID occur — we failed to catch it. CWR is now at 739p (+989% year). Do not enter at these levels. Add to watch at 500p. The lesson is not that P1 was wrong — the 250-270p target was directionally correct. The error was not having Section N to track the ongoing thesis and update the entry target as evidence accumulated. See T29 and SI-67.
+Do not enter at current levels (~739p). Watch at 500p. See T29 and SI-67.
 
 ### P2 — Linde Thesis Weakened
 Toll regime resumes helium.
@@ -153,7 +161,7 @@ Toll regime resumes helium.
 Sold after peace dividend thesis broken.
 
 ### P4 — ABVX Risk Profile (Updated S36)
-Royalty buyback May 5: sophisticated investors took equity at $111.57 vs cash. Valid M&A prep signal. Not confirmation. Hold 50sh, stop $109.93, maximum room strategy.
+Royalty buyback: sophisticated investors took equity at $111.57. Hold 50sh, stop $109.93, maximum room strategy.
 
 ### P5 — SHLD Stop/Sell Sequence Error
 Cancel GTC stop FIRST, then sell.
@@ -167,14 +175,14 @@ Re-entry S35: 15sh @$185.067, stop $155. June 30 Q4 gate.
 ### P8 — ITM Stop Discrepancy
 IBKR is ground truth on stop prices always.
 
-### P9 — AMZN Stop Limit Gap Mechanics
-Stop Limit structure provides execution guarantee on gap opens.
+### P9 — AMZN Stop Mechanics
+Major US liquid stocks use SIMPLE stops only. Stop-limit reserved for volatile/EU/UK small-mid caps.
 
 ### P10 — ITM Breakout Protocol Supersession
 Apply the MORE protective stop when current exceeds protocol target.
 
 ### P11 — Re-Entry Below Stop-Out Price (REVISED S35)
-Re-entry permitted within 5% of stop-out level when thesis intact/strengthened. Requires: conviction statement, stop at/below original level, thesis documented.
+Re-entry permitted within 5% of stop-out level when thesis intact/strengthened.
 
 ### P12 — KTOS Sizing Error
 Use SI-35 dollar-risk sizing.
@@ -200,226 +208,167 @@ Confirm BOTH legs cancelled individually.
 ### P19 — AI THESIS CROWDED TRADE OBSERVATION
 Edge from anomalous valuations, drawn-down specialists, and SI-37-sized speculations.
 
-### P20 — Stop Protection Percentage Review
-Formula: cost + ((current − cost) × 0.50) minimum. Exception: M&A holdout positions.
+### P20 — Stop Protection Percentage Review (AMENDED S39)
+Formula: cost + ((current − cost) × 0.50) minimum. A stop below cost basis is never acceptable.
+Activation: P20 only applies once position is >10% in profit. Below 10%: entry-based technical level. 10-20%: P20 minimum but stop ≥5% below current. >20%: full P20 applies.
 
 ### P21 — Critical Minerals Speculative Classification
 Pre-production positions = strategic asymmetry with defined kill switch.
 
 ### P22 — MSTR mNAV ENTRY THESIS
-Entry 15sh @$181.07. Scale: BTC >$85K. Kill: BTC <$70K weekly. Monitor Bitcoin Yield quarterly.
+Entry 15sh @$181.07. Scale: BTC >$85K. Kill: BTC <$70K weekly. CLARITY Act May 14 markup = gate event.
 
-### P23 — UUUU PRE-EARNINGS ENTRY (S36)
-Filled May 5 @$21.99, earnings May 6. P24 acknowledged and deliberate. FIRB cleared. Half-size. Scale gate post-print.
+### P23 — UUUU PRE-EARNINGS ENTRY
+Q1 FY2026: revenue $36M (2x YoY), FIRB cleared, ASM ~Jul 2026. SI-37 cap $1,500; $1,100 deployed.
 
 ### P24 — V STOP-OUT AND RE-ENTRY PARAMETERS (S36)
-Stopped @$321.823 (+$117.58 trade 32). Post-earnings positioning unwind — NOT thesis break. Fundamentals intact. Re-entry: $305-315 zone only. Do not re-enter above $321. Q3 FY2026 earnings July 28 = next catalyst. Ex-div May 12 $0.67/sh.
+Stopped @$321.823. Re-entry: $305-315 zone only. Q3 FY2026 earnings July 28.
+
+### P25 — NCH2 STAGE 2 GATE
+Stage 2 analysis complete. Gate: Q2 FY2025/26 order intake >€150M — CLEARED at €316M. Full H1 report May 12 at 09:00 UAE. Read before entry. EBIT -€65M and US pilot cancellation require assessment.
+
+### P26 — R3NK CONVICTION SIZING (S40)
+T41: 200 shares (vs 25 in T35). Full SI-35 budget deployed. Stop below 52W low per T31. When thesis is intact, fundamentals are strong, and entry is below analyst floor — size accordingly. Undersizing a conviction thesis (T35 was 27% of SI-35 budget) fails to capture the return when the thesis plays out.
+
+### P27 — IREN ENTRY GATE BREACH (S40)
+T42: GTC filled at $55.00 despite gate condition (stabilise above $58 at Monday open) not being met. $2B convertible notes and 4th consecutive revenue miss were new material information identified pre-market. Gate breach was known; fill happened because cancel window was not used. Position is small (SI-37, 24sh, max loss $73). Thesis long-term intact (NVIDIA $3.4B deal). Hold to stop. Do not add.
 
 ---
 
 ## SCAN PROTOCOL LESSONS
 
 ### S1 — Full Scan = SI-14 Sections 0, A-K, N (v5.0)
-Section 0 (SI-39) runs FIRST. SI-45 weekly (first session of week). SI-65 Milestone Calendar (first session of month). **Section N (EU Energy Transition) runs QUARTERLY plus any session where geopolitical energy thesis developments occur.**
+Section 0 (SI-39) runs FIRST. SI-45 weekly (first session of week). SI-65 Milestone Calendar (first session of month). Section N (EU Energy Transition) quarterly + thesis-triggered.
 
 ### S2 — Journal Rebuild: bracket-depth counting Node.js.
-
 ### S3 — Congressional Trading: broad sweep ALL stocks >$50K + sector clustering.
-
 ### S4 — Source Quality: Apify + web search in parallel for geopolitical news.
-
 ### S5 — GOOGL Missed at $280. SI-39 Section 0 fires every session.
-
 ### S6 — AMZN Pre-Execution: check IBKR orders screenshot FIRST.
-
 ### S7 — Challenge Register Protocol.
-
 ### S8 — Premarket Price Verification. MMD for current price.
-
 ### S9 — EOD API Failure Fallback. MMD prev close + web search for 52wk range.
-
 ### S10 — Primary Source Verification for Binary Event Dates.
-
 ### S11 — SI-45 Non-Deferral Rule. First session of every week, mandatory.
-
-### S12 — THESIS-DEDICATED RESEARCH FILES
-For multi-session research thesis with 10+ candidates: `research/<THESIS>_THESIS.md`.
-
-### S13 — COMMODITY PRICE VERIFICATION
-State price, source, and date explicitly before any commercial viability assessment.
-
-### S14 — SI-45 WEEKLY SCREENER OUTPUT S35/S36
-LMT GTC $522 FILLED @$516.73. AVAV filled S35. UUUU GTC $21.99 FILLED. AI infrastructure: zero SI-39 triggers.
-
-### S15 — INTEL TURNAROUND RETROSPECTIVE
-SI-62 to SI-66 created. Government stake + NVIDIA stake = public filings not caught.
-
-### S16 — CWR SCAN OMISSION (S36)
-CWR +989% over 12 months. EU/UK energy transition discussed as CORE THESIS multiple sessions. No formal scan existed. Cost: position-sized gain not captured. Prevention: SI-67 Section N mandatory in every full scan. First run required in S37.
+### S12 — THESIS-DEDICATED RESEARCH FILES. For multi-session thesis: `research/<THESIS>_THESIS.md`.
+### S13 — COMMODITY PRICE VERIFICATION. State price, source, date explicitly.
+### S15 — PRIMARY SOURCE DISCIPLINE. Always verify FY and publication date of financial reports (E25). Earnings dates from primary source only.
+### S16 — CWR SCAN OMISSION (S36). SI-67 Section N mandatory every full scan.
+### S17 — STAGE 2 GATE COMPLETENESS. Gates must include clause: no material guidance revision since Stage 2 authorisation.
 
 ---
 
 ## INFRASTRUCTURE LESSONS
 
-### I1 — Local Filesystem MCP
-READ AND WRITE ACCESS CONFIRMED S19-S36 FINAL.
-Allowed paths: `C:\Users\jcadb\claude-fund`
-Subdirectories: journal\, state\, research\
+### I1 — Local Filesystem MCP (UPDATED S37)
+Primary path: `C:\Users\James Cadbury\Dropbox\Claude-Fund`
+Subdirectories: journal\, state\, research\, tracker\
 
 ### I2 — Google Drive DEPRECATED
 
 ### I3 — Session Open Protocol (SI-32) v5.0
 1. Read FUND_SESSION_STATE.md | 2. Read LESSONS_LEARNED.md | 3. Check journal lastUpdated
-4. **SI-47: State today's date explicitly** | 5. IBKR screenshots (positions + orders reconciliation)
-6. Section 0 SI-39 drawdown batch | 7. SI-45 weekly screener (first session of week)
-8. SI-65 milestone calendar check (first session of month)
-9. SI-14 scan A-K | 10. **Section N EU Energy Transition** (quarterly + thesis-triggered)
-11. Check `research/` directory for pending Stage 2 tasks
+4. SI-47: State today's date | 5. IBKR screenshots | 6. Section 0 SI-39 | 7. SI-45 weekly
+8. SI-65 monthly | 9. SI-14 scan A-K | 10. Section N | 11. Check research/ pending tasks
 
 ### I4 — Session Close Protocol (SI-28)
-1. Build session-close block | 2-4. Write journal + .md files to C drive
-5. Update hormuz_log.md | 6. Update trade tracker if fills | 7-10. User actions.
-**NOTE: Do NOT write journal until session is FULLY CLOSED with final IBKR screenshots.**
+Write journal + state .md files. Wait for final IBKR screenshots (SI-68).
 
 ### I5 — Journal versioning
-trading_journal51.jsx = current (Session 36 FINAL — 5 May 2026)
+trading_journal54.jsx = current (Session 40 FINAL — 11 May 2026)
 
 ### I6 — Memory Hierarchy (SI-33)
 Journal → FUND_SESSION_STATE → LESSONS_LEARNED → research/*.md → Trade Tracker
 
-### I7 — Trade Tracker Status (S36 FINAL)
-32 total closed trades. V stopped out S36 (+$117.58). All in trading_journal51.jsx tradeTracker.
+### I7 — Trade Tracker Status (S40 FINAL)
+44 trade rows. T40 closed T35 R3NK. T41 R3NK, T42 IREN, T43 ZETA, T44 PATH open. T39 PYPL open.
 
-### I8 — Date Verification Is Step Zero
-System prompt date is ONLY authoritative source. Non-negotiable.
+### I8 — Date Verification (AMENDED S37)
+System prompt date = session initialization only. User explicit statement is the AUTHORITATIVE override. Never infer working date from prices or news. See E24, E25.
 
-### I9 — DAY Orders Require Pre-Open Review
-DAY market orders submitted after hours must be reviewed at session open before fill.
+### I9 — DAY Orders Require Pre-Open Review.
 
 ### I10 — RESEARCH FILE LOCATIONS
-- `research/AI_INFRASTRUCTURE_THESIS.md` — AI infrastructure Stage 1 candidates
-- `research/CRITICAL_MINERALS_THESIS.md` — Critical minerals Stage 2: UUUU, LAC
-- `research/EU_ENERGY_TRANSITION_THESIS.md` — **TO BE CREATED S37** — EU/UK clean energy sector
+- `research/CRITICAL_MINERALS_THESIS.md`
+- `research/EU_ENERGY_TRANSITION_THESIS.md`
+- `research/RULES_FRAMEWORK.md`
+- `research/SCANNING_FRAMEWORK.md`
 
-### I11 — Direct C Drive Write Confirmed (S19-S36)
+### I11 — Direct Dropbox Write Confirmed.
 
-### I12 — EXCHANGE HOLIDAY PROTOCOL
-Check exchange-specific holidays before every session. Never state a market is open without verifying time. E1 violation S36: stated LSE/Milan open at 08:25 UAE.
+### I12 — EXCHANGE HOLIDAY PROTOCOL. Check exchange holidays every session.
 
-### I13 — SESSION CLOSE TIMING (S36)
-Do not write session close files until the user confirms the session is finished and final IBKR screenshots are provided. Writing prematurely (as occurred in S36) requires a second rewrite with the correct final data. Wait for explicit close confirmation.
+### I13 — SESSION CLOSE TIMING (SI-68). Wait for final screenshots before writing.
+
+### I14 — STOP-LIMIT RULE. Simple stops for major US liquid names. Stop-limit for volatile/EU/UK small-mid only.
+
+### I15 — EOD EXTENDED QUOTES CONFIRMED WORKING (S40)
+EOD:get_us_live_extended_quotes returns live prices, 52W range, PE, market cap for up to 15 tickers in one call. E11 (52W hallucination) is structurally solved. Call at every session open for full position sweep.
+
+### I16 — GTC CANCEL PROTOCOL ON ADVERSE PREMARKET (S40)
+If premarket shows >5% adverse move on material news (earnings miss, dilution announcement, guidance cut), the GTC entry order MUST be cancelled before NYSE open (17:30 UAE). The UAE timezone provides up to 9 hours between pre-market news and NYSE open — this is the cancel window. Do not wait for confirmation; cancel first, reassess after. See E26.
 
 ---
 
 ## STANDING INSTRUCTION REFERENCE
 
 ### SI-25 — EXIT TRIGGER (DUAL CONDITION)
-1. PERMANENT Hormuz reopening confirmed
-2. WTI -10% from $117.63 peak = $105.87
-Current: Condition 1 UNMET. WTI ~$104. Thesis intact.
+Condition 1: PERMANENT Hormuz reopening. Condition 2: WTI -10% from peak ($105.87).
+Current: Condition 1 UNMET. WTI ~$95. Thesis intact.
 
-### SI-35 — DOLLAR-RISK SIZING
-Maximum loss per trade = $500. LMT exception: $570 accepted per T25 — raise stop to $480 immediately post-fill.
+### SI-35 — DOLLAR-RISK SIZING. Max loss per trade = $500.
 
-### SI-37 — SPECULATIVE POSITION CAP
-Maximum $1,500 cost. UUUU: $1,100/$1,500 used. LAC pending.
+### SI-37 — SPECULATIVE POSITION CAP. Max $1,500. UUUU $1,100/$1,500. LAC pending. IREN $1,321/$1,500.
 
-### SI-39 — DRAWDOWN SCREENER (SECTION 0)
--15% to -20% from 52-week ATH. Every session. LIMITATION: does not catch multi-year ATH drawdowns. SI-63 addresses this.
+### SI-39 — DRAWDOWN SCREENER. -15% to -20% from 52wk ATH. Every session.
 
-### SI-45 — WEEKLY SCREENER
-First session of every week. Cannot be deferred. Sections A-K plus Section N.
+### SI-45 — WEEKLY SCREENER. First session every week. Non-deferrable.
 
-### SI-47 — DATE PROTOCOL
-State today's date explicitly. Step zero. Non-negotiable.
+### SI-47 — DATE PROTOCOL. State today's date explicitly. Step zero.
 
-### SI-48 — AI THESIS ATH RULE AMENDMENT
-AI infrastructure only. Entry near ATH if: (1) valuation reasonable, (2) structural catalyst, (3) no multiple expansion required, (4) PLTR P6 test passed.
+### SI-48 — AI THESIS ATH RULE AMENDMENT. Narrow exception for AI infrastructure.
 
-### SI-61 — SHORT WATCHLIST (UPDATED S36)
-- PLTR: DORMANT until Q2 July 2026
-- AAL: Dead-cat bounce $13-14, WTI >$100 required
-- CCL (NEW): Rally to $23-25 trigger
-- SNOW (NEW): Earnings miss + guidance trim trigger
+### SI-61 — SHORT WATCHLIST. PLTR dormant Q2 July. AAL watch. CCL watch. SNOW watch.
 
-### SI-62 — TIER-1 STRATEGIC INVESTMENT MONITOR
-Weekly SEC EDGAR SC 13D/13G/8-K scan. >$500M by competitor/sovereign/Tier-1. Same-session Stage 1.
+### SI-62 — TIER-1 STRATEGIC INVESTMENT MONITOR. Weekly SEC EDGAR.
 
-### SI-63 — DEEP TURNAROUND SCREEN
-Monthly. >40% below ALL-TIME HIGH + 3+ consecutive guidance beats + improving revenue. Market cap >$5B.
+### SI-63 — DEEP TURNAROUND SCREEN. Monthly.
 
-### SI-64 — GOVERNMENT/NATIONAL SECURITY ASSET MONITOR
-Quarterly + event-driven. CHIPS Act equity, DoD Trusted Foundry, ITAR-critical.
+### SI-64 — GOVERNMENT/NATIONAL SECURITY ASSET MONITOR. Quarterly + event-driven.
 
-### SI-65 — TECHNOLOGY MILESTONE CALENDAR
-Quarterly build, monthly review. `research/MILESTONE_CALENDAR.md`
+### SI-65 — TECHNOLOGY MILESTONE CALENDAR. Monthly review.
 
-### SI-66 — NEW CEO CREDIBILITY PATTERN
-Quarterly. New operating/technical CEO at >$5B company down >30% from 5yr high.
+### SI-66 — NEW CEO CREDIBILITY PATTERN. Quarterly.
 
-### SI-67 — EU/UK ENERGY TRANSITION SECTOR SCAN — SECTION N (NEW S36 FINAL)
-**Origin:** CWR +989% missed. EU energy transition discussed as core thesis multiple sessions. No formal scan existed. E23 codified.
+### SI-67 — EU/UK ENERGY TRANSITION SCAN — SECTION N
+Frequency: First session each month + Hormuz/EU energy news sessions.
+Ceiling: 4 positions max. Current: RR.L (1/4). NCH2 Stage 2 done — gate May 12 H1 report.
 
-**Thesis context:** EU structurally forced to diversify away from LNG/O&G dependency. Hormuz blockade accelerates this. Von der Leyen nuclear reversal. NATO rearmament energy security. EU Grids Package summer 2026. This is a MULTI-DECADE structural transition creating explosive growth opportunities in specific technology niches.
+### SI-68 — JOURNAL CLOSE TIMING. No files until user confirms session complete with final screenshots.
 
-**Scan frequency:** Full scan EVERY first session of each month. Supplementary scan any session with major Hormuz/EU energy news.
+### SI-69 — MONTHLY RULE REVIEW. First session each month. Test/question/sunset rules.
 
-**Screening categories and key tickers:**
+### SI-70 — SESSION ZERO PROTOCOL. Position news sweep + insider filing check + top movers + commodity prices via API.
 
-*Category 1 — Fuel Cell / Electrolyser Technology (capital-light model preferred):*
-- CWR.L (LSE AIM): Solid oxide SOFC/SOEC licensor. Currently 739p — WATCH ONLY at 500p
-- ITM.L (LSE AIM): PEM electrolyser manufacturer. Watch at 135-140p
-- PCELL.ST (Nasdaq Stockholm): H2 PEM fuel cells, Bosch partner, marine + refrigeration. ~SEK 32-37. Stage 1 candidate
-- AFC.L (LSE AIM): Alkaline H2 fuel cells, maritime/data centre/rail. Revenue too small currently — speculative watch
+### SI-71 — WEEKLY SECTION L. Earnings revision tracker. First session each week.
 
-*Category 2 — Industrial Scale Green Hydrogen:*
-- NCR.DE/1NUA.DE (Frankfurt): Thyssenkrupp Nucera. Alkaline electrolysers. 300MW Moeve + 700MW Stegra. Suppressed vs ATH. Stage 1 candidate
-- ORSTED.CO (Copenhagen): World's largest offshore wind developer. 60% below ATH. Stage 1 candidate
-- LHYFE.PA (Paris): France's largest RFNBO H2 producer. WARNING: analyst analysis suggests path to bankruptcy — speculative only, small position if at all
+### SI-72 — WEEKLY SECTION M. Options put-call ratio and volume-to-OI across thesis universe.
 
-*Category 3 — Nuclear Renaissance:*
-- RR.L (LSE): HELD. SMR + Rolls-Royce aero. Primary EU nuclear position
-- CNA.L (LSE): Centrica. Sizewell C nuclear stake + UK retail gas. Morningstar "best UK nuclear play." Stage 1 candidate
-- CEG (NYSE): HELD. US nuclear via Constellation Energy
+### SI-73 — WEEKLY SECTION O. 13D/13G significant stake radar (EDGAR + web search).
 
-*Category 4 — Grid Infrastructure:*
-- PRY.MI (Milan): Prysmian. Subsea + grid cables for offshore wind. EU Grids Package summer 2026 catalyst. Stage 1 when capacity
-- NG.L (LSE): National Grid. UK/US grid infrastructure. Large cap, income
-- RWE.DE (Frankfurt): Europe's largest renewable energy capex investor. 37GW target by 2030. Stage 1 when capacity
+### SI-74 — MONTHLY BULK FUNDAMENTAL SCREEN. EOD:get_bulk_fundamentals LSE + NASDAQ.
 
-*Category 5 — Offshore Wind:*
-- ORSTED.CO (Copenhagen): See Category 2
-- VWS.CO (Copenhagen): Vestas Wind Systems. Large cap offshore wind turbine manufacturer
+### SI-75 — MONTHLY EARNINGS CALL TRANSCRIPT ANALYSIS. Alpha:EARNINGS_CALL_TRANSCRIPT on pipeline candidates.
 
-**"Next CWR" screening criteria:**
-Every quarterly Section N scan should specifically screen for companies matching ALL of:
-1. UK AIM or European small/mid cap (£50M–£500M market cap)
-2. Capital-light model: technology licensor, IP royalty, or platform-as-a-service (NOT primary manufacturer)
-3. Major corporate validation: at least ONE blue-chip industrial partner (Bosch, Siemens, Doosan, Volvo, Rolls-Royce equivalent) with committed development contract
-4. Dual-use technology: usable in both power generation AND green hydrogen (or two or more clean energy verticals)
-5. EU energy independence alignment: product directly relevant to EU strategic energy shift
-6. Stage of development: past proof-of-concept, early commercial revenue, not yet scaled
-
-**Concentration ceiling:** EU energy transition maximum = 4 positions simultaneously (RR.L counts as 1/4, CEG counts as 1/4). Currently 2/4 occupied. Room for 2 new positions.
-
-**Stage 1 candidates requiring research this session:**
-1. PCELL.ST — PowerCell Sweden
-2. NCR.DE — Thyssenkrupp Nucera
-3. ORSTED.CO — Orsted
-4. CNA.L — Centrica
-
-### SI-68 — JOURNAL CLOSE TIMING PROTOCOL (NEW S36)
-Do NOT write session close files (journal, FUND_SESSION_STATE.md, LESSONS_LEARNED.md) until user explicitly confirms session is complete and final IBKR screenshots have been provided. Premature write (as occurred in S36 before V stop-out and LMT/UUUU fills were confirmed) requires a full rewrite. The cost is redundant work and potential data errors. Wait. Always wait for final confirmation.
+### SI-76 — PIPELINE DISCIPLINE. Maintain 3-5 Stage 2, 8-10 Stage 1, 15-20 Watch at all times.
 
 ---
 
 ## 52-WEEK DATA PROTOCOL
-- **Current price (US):** MMD /v2/aggs/ticker/{TICKER}/prev
-- **52-week high/low:** EOD:get_us_live_extended_quotes
-- **EU/UK:** Stockopedia or Yahoo Finance (UK) / Investing.com (EU)
-- **All-time high:** Web search + EODHD historical. Required for SI-63
-- **Commodity prices:** Fastmarkets / Trading Economics / EIA — primary source with date
-- **NEVER use memory for 52-week range, commodity prices, or earnings dates**
+- **Current price (US):** EOD:get_us_live_extended_quotes (confirmed working S40) or MMD
+- **52-week high/low:** EOD:get_us_live_extended_quotes — NEVER from memory
+- **EU/UK:** Stockopedia or Investing.com
+- **Commodity prices:** Fastmarkets / Trading Economics / EIA — state source + date
 
 ---
 
@@ -430,6 +379,59 @@ Do NOT write session close files (journal, FUND_SESSION_STATE.md, LESSONS_LEARNE
 - EODHD lastTradePrice for current session
 - Web search for live prices during market hours (E20)
 - Trump Truth Social for geopolitical fact confirmation
-- Iranian/adversary state media for military claims without CENTCOM verification (E22)
-- McPhy Energy (ALMCP.PA) — IN LIQUIDATION as of 2026
-- Lhyfe (LHYFE.PA) — analyst analysis indicates bankruptcy trajectory; speculative only if at all
+- Iranian/adversary state media without CENTCOM verification (E22)
+- McPhy Energy (ALMCP.PA) — IN LIQUIDATION
+- Lhyfe (LHYFE.PA) — bankruptcy trajectory
+- Prior-year financial press releases cited as current-year without verifying publication date (E25)
+
+---
+
+## S39 AMENDMENTS — Saturday 9 May 2026
+
+### RULES FRAMEWORK ESTABLISHED
+Full tier classification written to research/RULES_FRAMEWORK.md. Three tiers: HARD, STRONG GUIDANCE, CONTEXTUAL. T25 is governing meta-rule.
+
+### P20 AMENDMENT (S39)
+Activation threshold added. P20 only applies once position is >10% in profit.
+
+### ATH ENTRY RULE CONSOLIDATED (S39)
+T12, T19, SI-48 consolidated into single principle in RULES_FRAMEWORK.md.
+
+### T26 AMENDED (S39)
+Same-WEEK Stage 1 (not same-session).
+
+### NEW STANDING INSTRUCTIONS (S39)
+SI-69 through SI-76 added. See above.
+
+### S39 STOP CHANGES
+- MSFT: $411.96 → $403.89 | CCJ: $114.21 → $112.14 | IBM: $208.00 → $210.08 | CODA: $10.90 → $9.95
+
+---
+
+## S40 AMENDMENTS — Monday 11 May 2026
+
+### NEW TRADES
+- T40: R3NK SELL 25sh @€47.010 (stop). T35 closed. Loss ~-$136.
+- T41: R3NK BUY 200sh @€46.461. T31 applied. Stop €44.00. Conviction sizing.
+- T42: IREN BUY 24sh @$55.042. Gate breach noted. SI-37. Stop $52.
+- T43: ZETA BUY 191sh @$16.866. Stop $14.50.
+- T44: PATH BUY 320sh @$10.726. Stop $9.20.
+
+### STOP CHANGES (S40)
+- AMZN: $259.88 → $263.93 (proximity to 52W high $278.56)
+
+### NEW LESSONS CODIFIED
+- **T31:** Stop placement on 40%+ below ATH names — 52W low is the structural reference. See full entry above.
+- **P26:** R3NK conviction sizing principle. See full entry above.
+- **P27:** IREN gate breach. See full entry above.
+- **E26:** GTC cancel lag. See error taxonomy above.
+- **E27:** Session state day-of-week error. See error taxonomy above.
+- **I15:** EOD extended quotes confirmed working.
+- **I16:** GTC cancel protocol on adverse premarket moves.
+
+### KEY INTELLIGENCE (S40)
+- CLARITY Act: Senate Banking Committee markup Thursday May 14. BTC $80K, MSTR scale gate $85K.
+- NCH2 H1 report: Tuesday May 12 at 09:00 UAE. Gate met (€316M). EBIT -€65M needs assessment.
+- Iran: Trump rejected counter-offer. Thesis intact. SI-25 Condition 1 unmet.
+- LDO: €50.66 vs stop €50.00 — extremely thin. If stops, do not re-enter without compelling new catalyst.
+- R3NK: T41 pending SI-35 compliance — raise stop to ≥€44.20 on first meaningful bounce.
