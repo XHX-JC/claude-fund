@@ -17,7 +17,7 @@ const INITIAL_STATE = {
     "cashGBP": 641,
     "cashEUR": -465,
     "broker": "IBKR Pro",
-    "note": "v54 S41 CLOSE. Tue 12 May 2026. 19 positions. 2 GTCs. Daily P&L -$1,945 (-1.86%). Realized -$843.21. Three stops: LDO -$232, R3NK -$543, AMZN +$1,882. Net realized today +$1,107."
+    "note": "v55 S41 CLOSE. Tue 12 May 2026. 19 positions. 2 GTCs. Daily P&L -$1,945 (-1.86%). Realized -$843.21. Three stops: LDO -$232, R3NK -$543, AMZN +$1,882. Net realized today +$1,107."
   },
   "thesis": {
     "title": "TRUMP CEASEFIRE ON LIFE SUPPORT — THESIS INTACT — SI-25 CONDITION 1 UNMET",
@@ -78,7 +78,7 @@ const INITIAL_STATE = {
     {"ticker":"MRVL","name":"Marvell Technology","thesis":"Closed T37. AI chip thesis intact.","entry":"Post May 28 earnings if SI-39 flags.","gate":"Q1 earnings May 28.","status":"WATCH — EARNINGS MAY 28"},
     {"ticker":"PATH_SCALE","name":"UiPath scale","thesis":"T44 open 320sh. If earnings May 28 beat, consider scaling.","entry":"Post-earnings only.","gate":"May 28 Q1 FY2027.","status":"SCALE GATE — MAY 28"},
     {"ticker":"SOFI","name":"SoFi Technologies","thesis":"T27 turnaround. Fwd P/E low. 52% below ATH.","entry":"$13-14 on macro pullback. Stop $11.50.","gate":"PYPL (T39) resolved first. Price must pull back to zone.","status":"STAGE 1 — GATE: PYPL RESOLVED + PRICE $13-14"},
-    {"ticker":"DPRO","name":"Draganfly Inc","thesis":"Canadian NDAA drone. Q1 earnings May 12. Gate: revenue acceleration.","entry":"Gate not met. Q1 rev $2.31M vs $5M+ required. Re-examine when quarterly revenue reaches $4M+.","gate":"Q1 revenue $2.31M (+49.4% YoY but far below gate). Stage 1 watch only.","status":"GATE NOT MET — Q1 $2.31M vs $5M+ — STAGE 1 WATCH"},
+    {"ticker":"DPRO","name":"Draganfly Inc","thesis":"Canadian NDAA drone. Gate: revenue acceleration.","entry":"Gate not met. Q1 rev $2.31M vs $5M+ required. Re-examine when quarterly revenue reaches $4M+.","gate":"Q1 revenue $2.31M (+49.4% YoY but far below gate). Stage 1 watch only.","status":"GATE NOT MET — Q1 $2.31M vs $5M+ — STAGE 1 WATCH"},
     {"ticker":"ANET","name":"Arista Networks","thesis":"#1 AI data centre switching. Q1 2026 rev $2.71B +35%.","entry":"$130-138 on pullback. Stop $125.","gate":"Wait for Q2 (Aug 4) or macro pullback to zone. Do not chase $142.","status":"STAGE 1 — ENTRY $130-138 — DO NOT CHASE"},
     {"ticker":"ZETA_SCALE","name":"Zeta scale","thesis":"T43 open 191sh @$16.866. 19 consec beats. If next quarter confirms, scale.","entry":"Post Aug 4 earnings Q2 beat.","gate":"Q2 2026 earnings Aug 4.","status":"WATCH — SCALE GATE AUG 4"},
     {"ticker":"ENGIE","name":"Engie SA","thesis":"Morgan Stanley top pick 2026. Belgian nuclear fleet (extended to 2035). LNG infrastructure = Hormuz beneficiary. Fwd PE ~12-14x. NOT re-rated like GTT/NKT. EU Energy slot candidate.","entry":"Stage 1 research needed. Entry zone TBD after research.","gate":"H1 results May/June 2026. Stage 1 first.","status":"STAGE 1 REQUIRED — EU ENERGY CANDIDATE"},
@@ -207,7 +207,7 @@ export default function TradingJournal() {
       <div style={{marginBottom:16}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:8}}>
           <div>
-            <div style={{fontSize:18,fontWeight:700,color:COLORS.textBright}}>CLAUDE FUND — JOURNAL v54 S41</div>
+            <div style={{fontSize:18,fontWeight:700,color:COLORS.textBright}}>CLAUDE FUND — JOURNAL v55 S41</div>
             <div style={{fontSize:11,color:COLORS.textDim,marginTop:2}}>Session 41 — Tue 12 May 2026 | {data.fund.account} | 19 positions | 2 GTCs</div>
           </div>
           <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
@@ -240,7 +240,7 @@ export default function TradingJournal() {
       {activeTab==="tracker"&&(<div><div style={{fontSize:12,fontWeight:600,color:COLORS.accent,marginBottom:6}}>TRADE TRACKER — 42 CLOSED + 4 OPEN (T39 PYPL, T42 IREN, T43 ZETA, T44 PATH) | 46 rows</div>{data.tradeTracker?.closedTrades?.slice().reverse().map((t)=>(<div key={t.id} className="card" style={{marginBottom:3,borderLeft:"3px solid "+(t.pnlUSD===null?COLORS.blue:t.pnlUSD>0?COLORS.green:COLORS.red)}}><div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap"}}><span style={{fontSize:9,color:COLORS.textDim}}>#{t.id}</span><span style={{fontWeight:600,fontSize:12}}>{t.ticker}</span><span style={{fontSize:9,color:COLORS.textDim}}>{t.dateOut||"OPEN"}</span>{t.pnlUSD!==null?<span style={{fontWeight:700,color:pnlColor(t.pnlUSD)}}>{t.pnlUSD>0?"+$":"-$"}{Math.abs(t.pnlUSD).toFixed(0)}</span>:<span className="badge badge-blue">OPEN</span>}<span className="badge badge-grey">{t.ccy}</span></div><div style={{fontSize:9,color:COLORS.textDim,marginTop:1}}>{t.note}</div></div>))}</div>)}
       {activeTab==="notes"&&(<div><div style={{display:"flex",gap:8,marginBottom:10}}><input value={newNote} onChange={e=>setNewNote(e.target.value)} placeholder="Add note..." onKeyDown={e=>e.key==="Enter"&&addNote()}/><button className="btn btn-primary" onClick={addNote}>ADD</button></div>{(data.sessionNotes||[]).slice().reverse().map((n,i)=>(<div key={i} className="card" style={{marginBottom:6}}><div style={{fontSize:10,color:COLORS.textDim,marginBottom:3}}>{n.date}</div><div style={{fontSize:11,lineHeight:1.7}}>{n.note}</div></div>))}</div>)}
       <div style={{marginTop:16,paddingTop:10,borderTop:"1px solid "+COLORS.border,display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:6,alignItems:"center"}}>
-        <span style={{fontSize:10,color:COLORS.textDim}}>v54 S41 | Tue 12 May 2026 | 19 pos | Daily -$1,945 | Thesis INTACT</span>
+        <span style={{fontSize:10,color:COLORS.textDim}}>v55 S41 | Tue 12 May 2026 | 19 pos | Daily -$1,945 | Thesis INTACT</span>
         <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
           <span className="badge badge-red">CCJ $1.12 stop ⚠️</span>
           <span className="badge badge-red">CRML $0.47 stop ⚠️</span>
