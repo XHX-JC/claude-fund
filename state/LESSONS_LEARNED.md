@@ -1,11 +1,11 @@
 # LESSONS LEARNED — CLAUDE FUND
-**Account:** U24936508 (IBKR Pro) | **Compiled through Session 45 CLOSE (2026-05-16)**
-**Journal version:** trading_journal59.jsx | **SIs:** 1–84
+**Account:** U24936508 (IBKR Pro) | **Compiled through Session S50 CLOSE (2026-05-22)**
+**Journal version:** trading_journal63.jsx | **SIs:** 1–85
 **Scanning:** SCANNING_FRAMEWORK.md v2.0 | **Weekly Review:** WEEKLY_REVIEW.md
 
 ---
 
-## ERROR TAXONOMY (SI-17) — 29 CODIFIED ERROR TYPES
+## ERROR TAXONOMY (SI-17) — 31 CODIFIED ERROR TYPES
 | # | Error | Description | Prevention |
 |---|-------|-------------|-----------|
 | E1 | Timezone | Wrong open/close times | NY=UTC-4, UAE=UTC+4. 17:30 UAE=09:30 NY open. LSE=11:00-19:30 UAE (BST). Milan/Frankfurt same. AMC earnings print after 00:00 UAE. NEVER assume a market is open without verifying clock time. |
@@ -37,6 +37,8 @@
 | E27 | Session state day-of-week error | Date labelled wrong day of week | Always verify day-of-week independently. Never trust session state day labels. |
 | E28 | Stop widening on losing position | Requested to widen R3NK stop within €0.555 of trigger. Stop triggered same day. | Never widen a stop on a losing position within €1/$1 of triggering. If too tight, position was oversized — reduce shares, not stop quality. |
 | E29 | Journal version overwrite | S41 content saved to v54 instead of creating v55 | Always create new file, increment version. Never overwrite. See I17. |
+| E30 | Earnings date verification failure | RYAAY earnings date carried as unverified guess for multiple sessions | Verify all catalyst dates against EOD:get_upcoming_earnings or web search at point of entry. Stale dates are an error class, not a minor oversight. |
+| E31 | Sell limit above cost on declining hedge | Recommending a sell limit above cost basis on a position already below cost — if price reaches that level the macro driver is working, which is exactly when to hold, not sell | Exit decisions on macro hedges must be probability-weighted EV across scenarios, not price-target-based. If EV is negative, sell at market or accept current price. If EV is positive, hold. A limit above cost on a hedge is not a strategy, it is indecision. |
 
 ---
 
@@ -108,6 +110,30 @@ When a governance flag fires on a speculative (SI-37) name, conduct 48-72h triag
 5. >30% sentiment-driven price dislocation
 Full SI-37 cap resumes after one earnings print confirms revenue trajectory.
 
+### T35 — STAGE 2 DEFERRAL HAS A CALCULABLE COST. ACTIVE REQUEST IS MANDATORY.
+Origin: MU April-May 2026. MU designated Priority #1 Stage 2 on April 19 at $454. No session subsequently contained an active Stage 2 request. MU reached $778 before Stage 2 was attempted (+71% missed). This is the fund's largest single missed opportunity to date — approximately $700+ per share unrealised gain on a name with completed Stage 1 and clear thesis.
+Rule: From point of Stage 2 designation, the analyst must actively request Stage 2 completion at the next session open and every session thereafter until completed or explicitly cancelled with stated reason. Silence is not deferral — it is an error. Priority 1 names: 3-session hard deadline. All other Stage 2 names: 5-session hard deadline. See SI-83.
+
+### T36-T53 — (Filed in journals S41-S47)
+
+### T54 — PROBABILITY-WEIGHTED FRAMEWORK FOR MACRO HEDGE DECISIONS (S50)
+When evaluating whether to hold or exit a macro hedge position, the correct framework is to enumerate the key macro scenarios, assign approximate probabilities, and determine the expected value of the position across all scenarios. If the EV is negative — meaning the majority of probability-weighted outcomes work against the position — exit regardless of the nominal loss on cost basis.
+**IAU case study (S50):** Rate hike probability 50-60% (negative for gold). Peace deal near-certain before midterms (risk-on = negative for gold). Macro crash probability 20-25% (positive for gold). Two of three key scenarios work against IAU. EV negative. Correct action: exit at small loss, recover capital.
+**Rule:** A hedge that has lost its hedging function due to regime change (macro environment shift) should be treated identically to any other position with a broken thesis. Sunk cost is not a hold reason.
+
+### T55 — SNPS STOPPED MAY 15 AT $496.65
+8 shares stopped. Realized +$12.20. See S45.
+
+### T56 — RR.L STOPPED MAY 15 AT 1149.20p
+100 shares stopped. Realized +~£20.60. See S45.
+
+### T57 — ALTERNATIVE ENERGY SECTOR RERATING DISCIPLINE (S50)
+**Origin:** ITM Power and Ceres Power scan, S50. Both were previously identified as candidates for EU energy transition Section N. Both have since rerated dramatically — CWR +989%, ITM +400% — and now trade above analyst consensus targets (CWR 29% above analyst target, ITM 41% above analyst target). Entering these names after the primary rerating has already occurred is the same error class as T29 (EU rearmament post-rerating) and the broader T33 pattern.
+**Rule:** Before entering any Section N name, verify analyst consensus target against current price. If current price is above analyst consensus, the rerating has already occurred and the name is NOT a Section N opportunity — it is a position requiring further appreciation beyond what analysts can currently justify. Wait for either: (a) a fundamental development that resets the analyst target higher, or (b) a price pullback below analyst consensus. Do not enter above analyst consensus on a thesis that already played out.
+
+### T58 — MACRO HEDGE EXIT: PROBABILITY-WEIGHTED EV SUPERSEDES COST BASIS (S50)
+See T54 for the full framework. The specific IAU decision: do not set a limit sell above cost basis on a declining hedge position (see E31). The decision to hold or exit must be made on EV, then executed at current market price without waiting for a favourable print. The small loss on exit ($205 on IAU) is immaterial relative to the capital recovered ($14,844) and the strategic alignment of the portfolio with the dominant probability-weighted scenarios.
+
 ---
 
 ## POSITION-SPECIFIC LESSONS
@@ -147,17 +173,19 @@ LDO: no re-entry without compelling specific catalyst. Not just rearmament.
 
 ### P29 — SPAC INVESTMENT THESIS DOCUMENTATION (S43)
 **Origin:** S43. Analyst initially recommended redeeming CGCT shares, reversing on user pushback that the SPAC was held specifically for Factorial Inc. exposure, not as a cash equivalent.
-
-**Error:** Recommending redemption of a SPAC position without first establishing WHY the position was held. A SPAC at trust floor provides asymmetric optionality: limited downside (can always redeem), open-ended upside if the merger target performs. Redeeming destroys this asymmetry for a negligible gain.
-
-**Rule:** Before any recommendation on a SPAC position (redeem vs hold through merger), explicitly identify and state:
+**Rule:** Before any recommendation on a SPAC position (redeem vs hold through merger), explicitly identify:
 1. Was this SPAC held as a cash equivalent or for specific merger exposure?
 2. Has the analyst reviewed the merger target's thesis independently?
 3. Is the merger target thesis intact or broken?
+The trust floor protection does not mean default to redemption — it means downside is protected while upside optionality is preserved.
 
-**Prevention:** If the original investment thesis for a SPAC was specific merger exposure (documented or confirmed by the user), redemption is a thesis-break decision and requires the same rigour as stopping out of any other position. The trust floor protection does not mean the position should default to redemption — it means the downside is protected while upside optionality is preserved.
+### P30 — ATH CHART PLUS CREDIBLE VALUATION WARNING EQUALS UNIVERSE DEMOTION
+Origin: ENGIE.PA May 2026. When credible valuation source AND chart pattern independently flag elevated price, name moves to UNIVERSE pending Stage 2 fundamental disproof.
 
-**Correct framework:** Hold through the merger unless: (a) merger target thesis is broken, (b) the fund needs the capital for a better opportunity, or (c) the user confirms the SPAC was held as cash equivalent only.
+### P31 — CGCT/FAC — SPAC MECHANICS AND AUTO-CONVERSION (S50)
+**Origin:** S50. CGCT shares converting to FAC (Factorial Inc.) post-vote May 27 2026.
+**Rule:** SPAC shares at trust value require no action from the shareholder. Upon vote approval, shares automatically convert to the combined entity ticker at 1:1 in IBKR — no manual steps. The only action requiring a deadline is redemption (if desired), which must be submitted 24-48 hours before the vote. Holding = automatic conversion. The trust floor ($9.50 for CGCT) means the stock trading at trust value is AT maximum downside, not trending toward it — this is the safest level to hold a SPAC, not an alarm signal.
+**CGCT/FAC thesis:** Factorial Inc. solid-state battery developer. OEM validation: Mercedes-Benz EQS >1,200km range, Stellantis, Hyundai, Kia. Expanding into defense/drone/aerospace. $276M trust + $100M PIPE = $376M post-listing capital. New ticker FAC on NASDAQ. At $9.50 the market assigns near-zero EV above the cash — significant asymmetry if commercialisation proceeds.
 
 ---
 
@@ -180,6 +208,9 @@ LDO: no re-entry without compelling specific catalyst. Not just rearmament.
 ### S16 — Section N mandatory every full scan
 ### S17 — STAGE 2 GATE COMPLETENESS (include no material guidance revision clause)
 
+### S18 — SCREEN E CANNOT BE DISPLACED (S50)
+**Origin:** Screen E (congressional and institutional signals) was not run in S50 due to time pressure before the user's absence period. This screen has previously generated actionable intelligence (T26 thesis origin). It is now a fixed 15-minute block at the START of every Friday FULL SCAN — before position news sweep, before any other agenda item. It cannot be displaced by time pressure, by the volume of other work, or by the presence of more urgent-seeming tasks. If the session is time-limited, run Screen E first and compress other items. See SI-85.
+
 ---
 
 ## INFRASTRUCTURE LESSONS
@@ -198,7 +229,7 @@ Subdirectories: journal\, state\, research\, tracker\
 5. IBKR screenshots
 6. Section 0 (SI-70): position news sweep, active watchlist price check, volume anomaly, commodity prices
 7. SI-39 drawdown screener
-8. **Friday session:** Run SCANNING_FRAMEWORK.md full weekly discovery scan (SI-77) + complete weekly review (SI-78)
+8. **Friday session:** Screen E FIRST (SI-85), then run SCANNING_FRAMEWORK.md full weekly discovery scan (SI-77) + complete weekly review (SI-78)
 9. **First session of month:** Run SCANNING_FRAMEWORK.md monthly macro thesis session (SI-79)
 10. SI-14 scan A-K
 11. Section N EU Energy
@@ -213,13 +244,13 @@ Subdirectories: journal\, state\, research\, tracker\
 6. Commit to Dropbox via filesystem MCP
 
 ### I5 — Journal versioning
-trading_journal59.jsx = current (Session 45 CLOSE — 16 May 2026)
-Next session creates trading_journal60.jsx. See I17.
+trading_journal63.jsx = current (Session S50 CLOSE — 22 May 2026)
+Next session creates trading_journal64.jsx. See I17.
 
 ### I6 — Memory Hierarchy (SI-33)
 Journal → FUND_SESSION_STATE → LESSONS_LEARNED → SCANNING_FRAMEWORK → WEEKLY_REVIEW → research/*.md
 
-### I7 — Trade Tracker Status (S45 CLOSE): 56 rows, 7 open (T39, T42, T43, T44, T47, T48, T52). T55=SNPS close +$12.20. T56=RR.L close +$26.16.
+### I7 — Trade Tracker Status (S50 CLOSE): T57=IAU closed -$205. T58 reserved. IES partial sell (1,500 at 31.8p) recorded in journal63 — not a full close (1,500 shares remain).
 
 ### I8 — Date Verification: User statement is authoritative override. Never infer from prices or news.
 
@@ -245,17 +276,14 @@ EOD:get_us_live_extended_quotes — live prices, 52W range, PE, market cap. E11 
 
 ### I17 — JOURNAL VERSIONING: NEW FILE EVERY SESSION (S41)
 **MANDATORY: Each session close = new file at N+1. Never overwrite.**
-- Checklist: (1) Check highest journal number in journal\ folder (2) Create N+1 (3) Never touch existing files
-- Why: Complete audit trail from v26 onwards. Overwriting destroys history.
-- Error that created this: E29
 
 ---
 
 ## STANDING INSTRUCTION REFERENCE
 
 ### SI-25 — EXIT TRIGGER (DUAL CONDITION — BOTH REQUIRED)
-Condition 1: PERMANENT Hormuz reopening. Condition 2: WTI -10% from peak ($105.87).
-Current: Condition 1 UNMET. WTI ~$102. Thesis INTACT AND STRENGTHENING.
+Condition 1: PERMANENT Hormuz reopening. Condition 2: WTI -10% from peak ($105.87 = $95.28).
+Current S50: Condition 1 UNMET. WTI ~$97-101. Both conditions UNMET. Thesis INTACT.
 
 ### SI-35 — DOLLAR-RISK SIZING. Max loss per trade = $500.
 ### SI-37 — SPECULATIVE POSITION CAP. Max $1,500.
@@ -272,8 +300,10 @@ Current: Condition 1 UNMET. WTI ~$102. Thesis INTACT AND STRENGTHENING.
 
 ### SI-67 — EU/UK ENERGY TRANSITION SCAN — SECTION N
 Frequency: First session each month + thesis-triggered.
-Ceiling: 4 positions max. Current: 1/4 (RR.L). 3 slots available.
-Priority: ENGIE.PA demoted to UNIVERSE (S44) — near ATH, Morningstar 235% premium, chart confirms distribution. Re-entry at €22-24 only. GTT.PA watch €170-175 post-ex-div June 17.
+Ceiling: 4 positions max. Current: 0/4 (IES is LSE-listed but classified as speculative, not Section N). All 4 slots available.
+Priority: GTT.PA — June 17 ex-dividend approaching. Stage 1 required immediately on return.
+DO NOT ENTER: CWR.L (already rerated +989%, above analyst targets), ITM.L (already rerated +400%, above analyst targets).
+IES GBP proceeds (£477) available for Section N deployment once suitable pre-rerating name identified.
 
 ### SI-68 — JOURNAL CLOSE TIMING. No files until screenshots confirmed.
 ### SI-69 — MONTHLY RULE REVIEW. First session of month. No rule is permanent — sunset anything not earning its place.
@@ -296,9 +326,17 @@ Priority: ENGIE.PA demoted to UNIVERSE (S44) — near ATH, Morningstar 235% prem
 ### SI-81 — CONTINUOUS IMPROVEMENT TRACKING (NEW S41). Every process change logged in WEEKLY_REVIEW.md.
 ### SI-82 — TRADE CLASSIFICATION BEFORE EVALUATION (NEW S41 — codifies T32). Growth/thesis vs event bounce. Classify first.
 
-### SI-83 — STAGE 2 ACTIVE REQUEST PROTOCOL (NEW S44). At session open Step 1b: state any Stage 2 overdue. Priority 1 names: 3-session deadline. All others: 5-session deadline. Silence is an error, not a deferral. Format: "Stage 2 outstanding on [TICKER] — [X] sessions overdue. Complete now or defer with reason."
+### SI-83 — STAGE 2 ACTIVE REQUEST PROTOCOL (NEW S44).
+At session open Step 1b: state any Stage 2 overdue. Priority 1 names: 3-session deadline. All others: 5-session deadline. Silence is an error, not a deferral.
 
-### SI-84 — CHART SCREENSHOT REQUEST PROTOCOL (NEW S44). Proactively request TradingView or IBKR weekly chart (1-2 year view) before any MONITORING → ACTIVE elevation, for any position within 10% of stop, for any position up >20% from entry, and for any name described as near ATH. User does not need to remember to provide them — analyst requests proactively.
+### SI-84 — CHART SCREENSHOT REQUEST PROTOCOL (NEW S44).
+Proactively request TradingView or IBKR weekly chart (1-2 year view) before any MONITORING → ACTIVE elevation, for any position within 10% of stop, for any position up >20% from entry, and for any name described as near ATH.
+
+### SI-85 — SCREEN E MANDATORY FIRST BLOCK ON FRIDAY SCANS (NEW S50)
+Screen E (congressional and institutional signals — SI-73) must be the first item run in every Friday FULL SCAN, before position news sweep, before any other agenda item. It cannot be displaced by time pressure or competing priorities. If the Friday session is time-limited, Screen E is run first and other items are compressed. Origin: Screen E was not run in S50 due to time pressure — this is an error class, not an acceptable deferral. See S18.
+
+### SI-86 — SGOV PERMANENTLY REMOVED FROM PLANNING
+SGOV and all money market proxy positions are permanently excluded from fund planning. The fund mandate is opportunistic capital deployment. Cash held on IBKR earns adequate interest. Deploying to SGOV signals absence of ideas — the correct response to absent ideas is to hold cash and conduct better scanning, not to park in a yield proxy. If a session ends with cash and no conviction entries, cash is the correct position.
 
 ---
 
@@ -333,132 +371,22 @@ T49 MSFT -$24 | T50 CCJ -$243 | T51 BAH -$249 | Net -$516
 T47 CCL 250sh @$24.70 | T48 NCLH 75sh @$15.90
 
 ## S43 AMENDMENTS — Thursday 14 May 2026
-
-### NEW POSITION
-T52 LEU 15sh @~$191.90, stop $159 GTC. Max loss $493. HALEU toll road thesis. Stage 2 completed.
-
-### NEW LESSONS CODIFIED
-T34 (governance event triage), P29 (SPAC investment thesis documentation)
-
-### CGCT DECISION
-Hold through Factorial merger confirmed. Shareholder vote May 27, 2026 at 10am ET. Post-merger ticker FAC. SPAC held specifically for Factorial exposure — redemption would defeat the investment thesis.
-
-### KEY INTELLIGENCE
-CCL +4.8%, NCLH +5.3% — peace deal portfolio working. LEU: $3.9B backlog, $900M DOE task order, OKLO JV, Russian ban Jan 2028. OKLO: UNIVERSE, July 4 Groves criticality watch. ABVX GTC orphan $114.90 — cancel S44. CLARITY result pending S44 check.
-
----
+T52 LEU 15sh @~$191.90, stop $158.17. T34, P29 codified. CGCT hold through Factorial confirmed.
 
 ## S44 AMENDMENTS — Friday 15 May 2026
-
-### CLOSED POSITIONS
-CRML: 110sh stopped at $11.1744 (stop $11.20). Avg cost $9.08. Realized +$230.38. T22 ceiling blocks re-entry. P28 applies — no re-entry without specific new catalyst.
-ABVX: 50sh sold at $120.909 (voluntary, M&A position). Avg cost $109.89. Realized +$550.95. Position fully closed.
-Total realized S44: +$779.25.
-LEU T52 fill confirmed at $191.63 (not $191.90 estimate). Stop in IBKR confirmed $158.17 (not $159.00 in journal — marginal SI-35 breach of $1.90, noted but not acted on).
-ABVX GTC orphan $114.90: CONFIRMED CANCELLED in orders screen. E9 cleared.
-
-### NEW LESSONS CODIFIED
-
-**T35 — STAGE 2 DEFERRAL HAS A CALCULABLE COST. ACTIVE REQUEST IS MANDATORY.**
-Origin: MU April-May 2026. MU designated Priority #1 Stage 2 on April 19 at $454. No session subsequently contained an active Stage 2 request. MU reached $778 before Stage 2 was attempted (+71% missed). This is the fund's largest single missed opportunity to date — approximately $700+ per share unrealised gain on a name with completed Stage 1 and clear thesis.
-Rule: From point of Stage 2 designation, the analyst must actively request Stage 2 completion at the next session open and every session thereafter until completed or explicitly cancelled with stated reason. Silence is not deferral — it is an error. Priority 1 names: 3-session hard deadline. All other Stage 2 names: 5-session hard deadline. See SI-83.
-
-**P30 — ATH CHART PLUS CREDIBLE VALUATION WARNING EQUALS UNIVERSE DEMOTION**
-Origin: ENGIE.PA May 2026. Stage 1 research documented Morningstar 235% premium to fair value. Name remained in MONITORING. Chart screenshot at S44 revealed near-all-time-high price action (€12 to €29 in 5 years, with parabolic acceleration in 2025-2026) with distribution wicks at the top. When a credible valuation source AND chart pattern independently flag elevated price, the name moves to UNIVERSE pending Stage 2 fundamental disproof. It does not remain in MONITORING while the concern is unresolved. Re-entry condition: price pullback to prior consolidation zone (€22-24 for ENGIE) AND Stage 2 with specific Morningstar premium rebuttal.
-
-**I16 UPDATE — CHART SCREENSHOTS ARE GROUND TRUTH FOR PRICE STRUCTURE**
-In the same way IBKR screenshots are ground truth for positions and fills, chart screenshots are ground truth for price structure and entry zones. Stage 1 and Stage 2 research is incomplete without a chart review. No name is elevated from MONITORING to ACTIVE without a chart screenshot reviewed in that session or the immediately prior one. See SI-84 for the active request protocol.
-Candlestick reading guide for reference: Green body = price closed above open (buyers won). Red body = closed below open (sellers won). Long wick above body = price tried higher, got rejected — that level is resistance. Long wick below body = buyers defended a level — that is support. Multiple wicks at the same price level across different weeks = strong contested zone. Vertical move with few pullbacks = momentum exhaustion risk, not a clean entry.
-
-### WATCHLIST CHANGES
-ENGIE.PA: DEMOTED from MONITORING to UNIVERSE. Chart shows near-ATH after rally from €12 to €29. Morningstar 235% premium unresolved. Re-entry zone €22-24 on pullback. Belgian nuclear asset sale resolution and UKPN close are the catalysts to watch. Stage 2 required before any re-elevation.
-CRM: ELEVATED to ACTIVE (conditional). Entry contingent on May 27 AMC beat + Agentforce ARR >$1B. 12.6x forward PE is cheapest large-cap SaaS in market. T23 lock May 25.
-MU: Added to MONITORING — but NOT ACTIVE. SI-35 prevents meaningful position at $778. Cyclical risk means forward PE of 8.18x is based on peak-cycle earnings, not normalised. July 1 earnings catalyst. Speculative 2-3 share entry only if chosen — treat as SI-37 allocation.
-
-### NEW STANDING INSTRUCTIONS
-
-**SI-83 — STAGE 2 ACTIVE REQUEST PROTOCOL (NEW S44)**
-When any name is designated for Stage 2, the analyst must state the Stage 2 deadline at point of designation and actively request completion at every subsequent session open until done. Format at session open Step 1b: "Stage 2 outstanding on [TICKER] — designated [date], [X] sessions overdue. Complete now or defer with explicit reason stated."
-Deadlines: Priority 1 names = 3 sessions. All others = 5 sessions. A designation that expires silently is an error, not a deferral.
-
-**SI-84 — CHART SCREENSHOT REQUEST PROTOCOL (NEW S44)**
-I will proactively request chart screenshots (TradingView or IBKR, weekly timeframe, 1-2 year view) in the following situations:
-1. Any MONITORING name being evaluated for elevation to ACTIVE.
-2. Any held position within 10% of its stop level.
-3. Any held position up more than 20% from entry.
-4. Any name described as "at ATH" or "near 52-week high" in research.
-5. Any macro context suggesting sector rotation — request sector-level chart.
-The user does not need to remember to provide charts — I will request them. A chart screenshot request is a standard part of ACTIVE tier evaluation, not an optional extra.
-
-### KEY INTELLIGENCE S44
-CLARITY Act passed Senate Banking Committee 15-9. Full Senate floor vote required, needs 60 votes (7+ Democrat crossovers). Positive for BTC medium-term. BTC ~$81K, $4K below $85K MSTR scale gate.
-Trump-Xi Beijing summit: Joint statement confirms Strait of Hormuz "must remain open". Xi offered to broker peace, will not provide military equipment to Iran. SI-25 Condition 1 still UNMET — diplomatic language is not operational reopening. Ship seized near UAE same day.
-WTI ~$101.56 (May 11). SI-25 Condition 2 trigger $95.28 — UNMET.
-PATH: Intraday low $9.2002 on May 15 — new 52wk low. Stop $9.20 NOT triggered (confirmed orders screen). Earnings May 28.
-First weekly review under v2.0 completed. Two process improvements identified and implemented (SI-83, SI-84).
-Market macro risk: Shiller CAPE ~39.1x, 46% above 20yr average. Implied 10yr return 1.5%. Tighter entry standard applies — P6 test must be explicitly passed for all new positions.
-
----
+T35, P30, I16, SI-83, SI-84 codified. CRML +$230.38. ABVX +$550.95. CRM elevated to ACTIVE (conditional May 27 AMC). Warsh confirmed Fed Chair. CAPE 39.1x. Stagflation-adjacent macro.
 
 ## S45 AMENDMENTS — Saturday 16 May 2026
+T55 SNPS +$12.20. T56 RR.L +$26.16. E30 codified. AVAV earnings corrected Jun 23. OKLO entry zone corrected.
 
-### JOURNAL CORRECTIONS (not in S44 — discovered from IBKR screenshots)
+## S47 AMENDMENTS — Monday 19 May 2026
+Dropbox write protocol (permanent fix). E29 earnings date verification. E30 held position earnings monitoring. File write confirmation protocol.
 
-**T55 — SNPS stopped May 15 at $496.65**
-8 shares. Stop $496.76. Fill $496.65 ($0.11 below stop — normal market execution). Avg cost $495.125. Realized +$12.20. SNPS recovered to $499.81 post-stop — do not chase. T23 lock May 25 ahead of May 27 AMC earnings. Position count corrected from 17 to 15.
-
-**T56 — RR.L stopped May 15 at 1149.20p**
-100 shares. Stop 1149.4p. Fill 1149.20p (0.20p below stop — normal DARK execution). Avg cost 1128.6p. Realized +~£20.60 (~$26.16 USD). RR.L fell further to 1140p close after stop — stop correctly protected additional loss. Re-entry after T19.
-
-### DATA CORRECTIONS
-AVAV earnings date: Corrected from Jun 30 to **Jun 23, 2026** (verified from Investing.com). Do not use Jun 30 date again.
-OKLO entry zone: Corrected from "$12-13" to **"$50-55"** (post-criticality dip realistic range at current $62 price). The $12-13 entry was completely stale.
-
-### CHART ANALYSIS (SI-84 — IBKR 1D and 15m charts reviewed)
-
-**IREN (15m):** Stop $52.00 aligns with March-April 2026 structural support base. $52.86 daily low — stop within $0.86. $2B convertible notes offering + Q3 miss ($144.8M vs $220M est) + BTC $79K are proximate causes. Hold to stop. Do not widen.
-
-**AVAV (15m):** Crash May 13 (news-driven gap). Failed recovery. Lower highs and lower lows pattern. Stop at $155 is structural floor — last area of support on daily chart. No buyers defending $157-158. Stop likely triggers this week. Rule confirmed: do not exit manually ahead of stop (E28).
-
-**PATH (15m):** Capitulation confirmed. $9.2002 spike with maximum volume, immediate V-recovery to $10.37+. Higher lows forming since spike. Most constructive of the critical positions. Hold to stop or May 28 earnings.
-
-**LEU (1D):** Stop at $158.17 confirmed below March 2026 structural base ($160-170 zone). Position declining from entry ($191.63) but stop well-placed with $23 buffer. Thesis intact.
-
-**CRM (1D):** Clean base forming at $165-185 after downtrend from $300. 6-7 weeks of consolidation visible. $163.52 52wk low provides floor. Entry setup valid for conditional May 27 AMC play.
-
-### MACRO REGIME CHANGE
-Kevin Warsh confirmed as new Fed Chair (May 15 — Powell's term ended). More hawkish than Powell. 10-year yield at 4.416% multi-month high. Import prices +4.2% YoY April — highest since October 2022. Stagflation-adjacent: high oil ($102), rising yields, hawkish Fed, CAPE 39x. This is the most difficult macro environment for growth multiples since the fund's inception. P6 test must be applied rigorously to every new entry.
-
-### AI THESIS VALIDATION
-CSCO Q3 FY2026: Revenue $15.8B +12% YoY, AI hyperscaler orders raised $5B→$9B for FY26. Stock +13%. DELL Q4 FY2026: AI server revenue $9B +342%, $43B backlog, FY27 target $50B AI servers. Stock +22%. Both confirm AI infrastructure thesis direction. Both added to UNIVERSE — P13 applies to both (do not enter within 5% of post-earnings breakout).
-
-### PROCESS IMPROVEMENT
-Scans should be delivered as inline conversational responses, not as separate documents. Document creation for scan output adds no value — the content belongs in the conversation.
-
-### KEY INTELLIGENCE S45
-BTC fell $81K→$79K this week — moving away from $85K scale gate. MSTR kill switch $70K still $9K distant.
-WTI rose to ~$102 — SI-25 Condition 2 further away than last week. Oil moving wrong direction.
-NVDA earnings Wednesday May 20 — consensus $78B revenue. Not at SI-39 trigger ($159.14). Watch AI sector sentiment.
-RYAAY FY earnings Wednesday May 21 — entry only at $52 or below. Current $53.70 fails 3:1 R/R minimum (T32).
-CRM at $173.51 — in entry zone $165-185. T23 lock May 25. Conditional entry May 27 AMC on beat + ARR >$1B.
-CGCT vote May 27 10am ET (2pm UAE) — confirm no-redemption with IBKR before May 25.
-PATH T23 lock May 26 — do not touch stop. Earnings May 28 AMC.
-
----
-
-### S47 LESSONS — 19 May 2026
-
-**DROPBOX WRITE PROTOCOL (PERMANENT FIX)**
-Files must be written directly to `C:\Users\James Cadbury\Dropbox\Claude-Fund\state\` using the filesystem MCP tool. Never write session state to /home/claude/ or /mnt/user-data/outputs/ — those locations are invisible to the user outside the chat session. At every session close, the first file write action must target the Dropbox path. Run filesystem:list_allowed_directories at session open if path is uncertain.
-
-**EARNINGS DATE VERIFICATION (E29)**
-RYAAY was recorded as "Thursday May 21 AMC" in S46 state. Actual earnings: Monday 18 May BMO. This is a category error — earnings dates must be verified against an actual calendar source (EOD:get_upcoming_earnings or web search) at point of entry into session state. Do not carry forward unverified dates. A missed gate because of a wrong date is the same failure as missing a stop. Add earnings date verification to SI-32 session open protocol for all ACTIVE watchlist names with pending catalyst dates.
-
-**HELD POSITION EARNINGS MONITORING (E30)**
-NCLH reported on May 4-5 with a major guidance cut (-3% to -5% net yield, EPS -31.9%). The thesis review was not formally completed until S47 — 11 sessions later. A held position that reports earnings must trigger an immediate thesis review in the same session or the next. Add to SI-32: at session open, check whether any held position reported earnings since last session. If yes, thesis review is Step 1b mandatory before any other agenda item.
-
-**THIRD-PARTY RESEARCH INTEGRATION PROTOCOL**
-The Apex Trading Tech World report (18 May 2026) provided useful external validation. Correct integration order: (1) check existing thesis validation — does the report confirm or contradict? (2) identify new UNIVERSE candidates from names mentioned. (3) do not adjust any position based on third-party view alone — all new names must go through Stage 1/2. The report's value is validation and discovery, not trading instruction.
-
-**FILE WRITE CONFIRMATION**
-At every session close, confirm filesystem write succeeded by checking the return value from filesystem:write_file. Do not assume success. If the write fails, retry before closing the session. The session state file in Dropbox is the only persistent record — if it is not written, the session did not close properly.
+## S50 AMENDMENTS — Friday 22 May 2026
+**Trades:** IAU sold 175sh @$84.835 (-$205). IES 1,500sh sold @31.8p (+£211.65). Net combined +$78.04 USD.
+**Stop updates:** IBM raised $219.78 → $229.88. ZETA raised $16.98 → $17.47.
+**Watchlist:** BKNG elevated MONITORING → ACTIVE (conditional peace deal entry, 32sh, stop $148, R/R 7.4:1). INTU deferred to Jan 2027. ADBE, NOW, TTD added to UNIVERSE.
+**CGCT/FAC:** Factorial Inc. confirmed as merger target. Auto-conversion to FAC on vote approval. Trust floor $9.50. P31 codified.
+**Decisions:** SGOV permanently removed (SI-86). IAU exit on probability-weighted EV (T54, T58, E31 codified). CWR.L and ITM.L — DO NOT ENTER (already rerated).
+**New lessons:** T54, T57, T58, E31, S18, P31, SI-85, SI-86.
+**Kevin Warsh sworn in as Fed Chair 22 May 2026.** Rate hike probability 50-60%.

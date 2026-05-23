@@ -1,171 +1,163 @@
-# FUND SESSION STATE — S47 CLOSE
-**Date:** Tuesday 19 May 2026 | **Journal:** trading_journal60.jsx | **Account:** U24936508
-**Status:** S47 CLOSED. Full scan session. Apex report integrated. MSFT Stage 1 complete. TWO STOPS CRITICAL.
-**Framework:** SCANNING_FRAMEWORK.md v2.0 ACTIVE.
+# FUND SESSION STATE
+*Last updated: S50 CLOSE — Fri 22 May 2026*
 
----
+## CURRENT SESSION
+- **Session:** S50 (Fri 22 May 2026)
+- **Next session:** S50 reassessment — week of 26-31 May (user checking in, not fully absent)
+- **Next journal file:** trading_journal64.jsx
+- **User availability:** Checking in during absence period. Full reassessment ~Mon 31 May / Tue 1 Jun.
 
-## S47 KEY EVENTS
+## FUND SNAPSHOT
+| Metric | Value |
+|--------|-------|
+| Net Liquidity | $103.2K |
+| Daily P&L | +$199.15 (+0.19%) |
+| Unrealised P&L | +$1,085.84 |
+| Realised P&L (session) | +$284.25 |
+| Combined realised today (IES + IAU) | +$78.04 USD |
+| USD Cash | $57,208 |
+| GBP Cash | £2,261 |
+| EUR Cash | -€465 |
+| Active Positions | 13 |
+| Stop Orders Live | 11 (all confirmed GTC submitted correct levels) |
 
-| Event | Detail |
-|-------|--------|
-| FULL SCAN COMPLETED | All tools deployed: Alpha Vantage (WTI, BTC), EOD live quotes, web search, Coupler.io. |
-| AVAV SI-84 SATISFIED | 1D + 15m chart reviewed. Bearish structure confirmed. Lower highs since March crash. Stop $155 intact. No adjustment. Jun 23 earnings only catalyst. |
-| UUUU/LEU SECTOR SWEEP | Uranium spot $85.95/lb (retreat from $100 high). Both thesis intact — REE expansion cost phase (UUUU) and HALEU services (LEU). Sector-wide pressure, not thesis break. |
-| APEX TECH WORLD REPORT | 18 May 2026 report reviewed. Validated: IAU thesis, SGOV Friday purchase, CRM valuation, NVDA SI-39 discipline, POET do-not-enter. New UNIVERSE additions: MSFT, META, AI Photonics sector. |
-| MSFT STAGE 1 COMPLETE | Promoted to MONITORING. Entry zone $395-410. Stop $358. Catalyst: Q4 FY2026 earnings July 2026. 21.7x forward PE, lowest in 3 years. Azure +40%. AI run rate $37B +123% YoY. Alert set at $410. |
-| RYAAY DATE ERROR CORRECTED | Session state had "Thu May 21 AMC" — WRONG. Ryanair reported Monday 18 May BMO. Record FY26 profit +40% (€2.26B). Stock fell on cautious summer outlook (fares trending flat July-Sept). Last $53.28. Gate $52 still LIVE. |
-| NCLH THESIS REVIEW | Guidance cut to -3% to -5% net yield (from approx flat). 31.9% EPS cut. Thesis WEAKENED not broken. Baupost (Klarman) initiated position. Stop $14.50 confirmed. Hold to stop — no manual exit (E28). |
-| HD EARNINGS BMO | Results released today. No entry triggered. Current ~$300. Entry gate $280 still active. Class action still outstanding. Stage 1 ongoing. |
-| NVDA TOMORROW | Reports Wednesday 20 May AMC. Consensus $78-79B revenue. SI-39 trigger $159.14 not actionable. Watch AI sentiment for ZETA and PATH. Pattern: last two prints faded. |
-| CGCT DEADLINE 3 DAYS | No-redemption election hard deadline May 25. Vote May 27. ACTION REQUIRED this week. |
+## POSITIONS AT CLOSE — 13 ACTIVE
+| Ticker | Shares | Avg Cost | Last | Cost Basis | Market Value | Unreal P&L | Unreal % | Stop | Notes |
+|--------|--------|----------|------|------------|--------------|------------|----------|------|-------|
+| IBM | 26 | $228.739 | $256.92 | $5,947 | $6,681 | +$734 | +12.3% | $229.88 | Raised from $219.78. Breakeven protected. Settle then raise to $235-240 on return. |
+| IES (LSE) | 1,500 | 17.49p | 32.00p | £262 | £480 | +£218 | +83.0% | None | Free ride — effective cost 3.18p post partial sell. No stop. FlexBase catalyst live. |
+| CCL | 250 | $24.706 | $25.92 | $6,176 | $6,480 | +$304 | +4.9% | $23.00 | Peace deal play. |
+| ZETA | 191 | $16.866 | $18.43 | $3,221 | $3,528 | +$307 | +9.5% | $17.47 | Raised from $16.98. P20 active. 19 consecutive guidance beats, Q1 rev +50% YoY. |
+| CODA | 250 | $11.105 | $11.76 | $2,776 | $2,955 | +$179 | +6.4% | $9.95 | |
+| LMT | 10 | $516.83 | $528.70 | $5,168 | $5,278 | +$109 | +2.1% | $479.77 | |
+| NCLH | 75 | $15.914 | $16.34 | $1,194 | $1,224 | +$31 | +2.6% | $14.50 | Peace deal play. |
+| CGCT | 291 | $10.295 | $9.50 | $2,996 | $2,755 | -$240 | -8.0% | None | SPAC floor $9.50 — trust mechanics. Converting to FAC (Factorial) post-vote. See CGCT thesis below. |
+| PATH | 320 | $10.726 | $10.87 | $3,432 | $3,482 | +$48 | +1.4% | $9.20 | T23 LOCK ACTIVE from 22 May. Earnings 28 May AMC. DO NOT TOUCH STOP. |
+| PYPL | 55 | $45.639 | $44.56 | $2,510 | $2,450 | -$60 | -2.4% | $37.50 | |
+| LEU | 15 | $191.697 | $185.00 | $2,875 | $2,781 | -$95 | -3.3% | $158.17 | Strong close +4.43%. HALEU expansion, Palantir AI partnership, Oklo JV. Thesis intact. |
+| MSTR | 15 | $181.067 | $162.68 | $2,716 | $2,444 | -$272 | -10.0% | $153.14 | WATCH: Stop buffer 5.9% ($9.54). BTC sensitive. Check BTC over weekend. |
+| AVAV | 15 | $185.067 | $168.58 | $2,776 | $2,529 | -$247 | -8.9% | $155.00 | T23 lock 21 Jun, earnings 23 Jun. Stop is only mechanism per E28. |
 
----
+**Maximum controlled loss (all stops trigger simultaneously): ~$3,200 (3.1% of net liq)**
 
-## FUND SUMMARY (S47 CLOSE — 19 May 2026)
-
-| Field | Value | vs S46 |
-|-------|-------|--------|
-| Net Liquidity | **$100.9K** | -$800 vs S46 $101.7K |
-| Daily P&L | **-$700.39 (-0.69%)** | Red session. Broad sector sell-off. |
-| Unrealized P&L | **-$1,205.20** | Worsened -$771 vs S46 (-$434) |
-| Realized P&L | **$0** | No fills today |
-| Cash USD | **$41,539** | Unchanged |
-| Cash GBP | **£1,787** | Unchanged |
-| Cash EUR | **-€465** | Unchanged |
-| Active Positions | **15** | Flat — no entries or exits |
-| Excess Liquidity | **$85.3K** | Sufficient for SGOV Friday |
-
----
-
-## STOP PROXIMITY TABLE (S47 CLOSE) — TWO CRITICAL
-
-| Ticker | Last | Stop | Buffer | Risk Level |
-|--------|------|------|--------|------------|
-| **NCLH** | **$14.57** | **$14.50** | **$0.07 (0.5%)** | **CRITICAL — STOP TRIGGER IMMINENT** |
-| **UUUU** | **$16.78** | **$16.50** | **$0.28 (1.7%)** | **CRITICAL — ONE BAD DAY** |
-| CCL | $23.73 | $23.00 | $0.73 (3.1%) | RED — down 4.74% today. Check news S48. |
-| AVAV | $159.25 | $155.00 | $4.25 (2.7%) | WATCH — down $3.25 today. Chart bearish. |
-| IBM | $223.40 | $210.08 | $13.32 (6.0%) | OK |
-| MSTR | $165.85 | $153.14 | $12.71 (7.7%) | Watch — BTC declining |
-| LEU | $168.49 | $158.17 | $10.32 (6.1%) | Watch — down 2.58% today |
-| PATH | $10.94 | $9.20 | $1.74 (15.9%) | OK — T23 lock May 26 |
-| ZETA | $19.07 | $16.98 | $2.09 (11.0%) | OK |
-
----
-
-## S48 FIRST ACTIONS (Wednesday 20 May 2026)
-
-| # | Action | Priority |
-|---|--------|----------|
-| 1 | **SI-47:** State date (Wednesday 20 May 2026) | STEP ZERO |
-| 2 | **NCLH STOP:** Buffer $0.07. Check immediately at market open. Stop $14.50. If triggered: realised loss ~-$106. Record in journal. No re-entry. | **CRITICAL** |
-| 3 | **UUUU STOP:** Buffer $0.28. Check immediately at market open. Stop $16.50. If triggered: realised loss ~-$276. Record in journal. | **CRITICAL** |
-| 4 | **CCL NEWS SWEEP:** Down 4.74% today to $23.73. Stop $23.00 = $0.73 away. Determine cause. Any Hormuz/cruise sector specific catalyst? | **URGENT** |
-| 5 | **AVAV:** Buffer $4.25. Down $3.25 today. Chart structure unbroken but decelerating into stop. No action (E28). Monitor. | WATCH |
-| 6 | **NVDA EARNINGS REACTION:** Check NVDA print and stock reaction. Watch ZETA and PATH pre-market sentiment response. SI-39 trigger $159.14 not actionable. | HIGH |
-| 7 | **HD POST-EARNINGS:** Check actual result and stock price. Entry gate $280 or below. Currently ~$300 — no entry expected. | MONITOR |
-| 8 | **CGCT:** Initiate no-redemption election confirmation with IBKR. Hard deadline May 25. 3 sessions remaining. | THIS WEEK |
-| 9 | **IAU:** Down 1.75% today to $84.26. Gold under pressure from real rate expectations. No stop. Thesis intact. Monitor. | WATCH |
-| 10 | **SGOV:** Purchase $30K confirmed Friday May 22. Apex report 60% rate hike probability validates. | FRIDAY |
-| 11 | **MSFT alert $410:** Stage 2 required before entry. Do not enter above zone. Dip-buy pattern: wait. | MONITOR |
-
----
-
-## THREE-TIER WATCHLIST (S47 CLOSE)
-
-### ACTIVE (5/5)
-| Ticker | Zone | Gate | Status |
+## STOP PROXIMITY AT CLOSE
+| Ticker | Last | Stop | Buffer |
 |--------|------|------|--------|
-| IONQ | $38-45 | Aug 12 earnings | Above zone ~$51. |
-| TUI1.DE | €5.80-6.20 | Peace deal | Above zone. |
-| SIX2.DE | €62-65 | Peace deal | Above zone. |
-| **RYAAY** | **$52 or below** | **LIVE — earnings done May 18** | **Gate live. Last $53.28. $1.28 from entry. Monitor daily.** |
-| CRM | $165-185 | May 27 AMC beat + ARR >$1B | In zone. T23 lock May 25. |
+| MSTR | $162.68 | $153.14 | $9.54 (5.9%) — WATCH |
+| AVAV | $168.58 | $155.00 | $13.58 (8.1%) |
+| ZETA | $18.43 | $17.47 | $0.96 (5.2%) |
+| LMT | $528.70 | $479.77 | $48.93 (9.3%) |
+| LEU | $185.00 | $158.17 | $26.83 (14.5%) |
+| NCLH | $16.34 | $14.50 | $1.84 (11.3%) |
+| CCL | $25.92 | $23.00 | $2.92 (11.3%) |
+| PATH | $10.87 | $9.20 | $1.67 (15.4%) |
+| CODA | $11.76 | $9.95 | $1.81 (15.4%) |
+| IBM | $256.92 | $229.88 | $27.04 (10.5%) |
+| PYPL | $44.56 | $37.50 | $7.06 (15.8%) |
 
-### KEY MONITORING
-| Ticker | Zone | Gate | Status |
-|--------|------|------|--------|
-| **MSFT** | **$395-410** | **Q4 FY2026 earnings July 2026** | **S47 NEW — Stage 1 complete. Alert set $410. Stage 2 required before entry.** |
-| GTT.PA | €170-175 | Ex-div Jun 17 — post-dip | Unchanged |
-| RCL | $255-270 | CCL/NCLH resolution first | Unchanged |
-| MSTR scale | BTC $85K | BTC currently $76,657 | $8.3K below scale gate, moving away |
-| T53 LEU pullback | $170-175 | Chart bearish, patience | LEU now $168.49 — approaching zone |
-| HD | Post-earnings | Stage 1 in progress | BMO today. No entry triggered. Gate $280. |
-| LOW | Post HD Stage 1 | Parallel peer evaluation | Unchanged |
-| XLF/KRE | Stage 1 urgent | Rate hike thesis | **UPGRADED PRIORITY** — Apex confirms 60% swap rate hike probability. Stage 1 needed this week. |
+## CGCT THESIS — FACTORIAL (FAC)
+- **Target company:** Factorial Inc. — solid-state battery developer, Boston MA
+- **New ticker post-merger:** FAC (NASDAQ)
+- **Valuation:** $1.1B pre-money, $1.5B pro forma (assuming no redemptions)
+- **Trust:** ~$276M cash in trust
+- **PIPE:** $100M committed by institutional investors
+- **Vote:** Tuesday 27 May 10am ET (14:00 UAE) — shareholder vote on business combination
+- **Expected close:** June 2026. Long-stop: November 12, 2026.
+- **OEM validation:** Mercedes-Benz EQS (>1,200km range on single charge), Stellantis (77Ah cells verified), Hyundai, Kia
+- **Technology:** FEST® and Solstice™ solid-state platforms. Expanding into defense, drone, aerospace applications.
+- **SPAC floor:** $9.50 (trust value) — maximum further downside essentially nil from current price
+- **Action required:** None. Shares automatically convert to FAC upon close. IBKR updates ticker automatically. Do not redeem.
+- **Post-conversion risk:** SPAC hangover (arb exits, shorts arrive). Hold through initial noise. Reassess at first post-listing session once FAC trades freely.
 
-### UNIVERSE (key)
-| Name | Status |
-|------|--------|
-| META | **S47 NEW** — 19x forward, 25% revenue growth. Cheapest hyperscaler. Stage 1 required. |
-| AI Photonics/Optical sector | **S47 NEW** — LITE/COHR as liquid proxies. Entry only on meaningful SOX correction. Track LITE at 200dma proximity. |
-| OKLO | Jul 4 criticality gate. $50-55 entry post-dip. |
-| CSCO | $100-108. P13 applies. |
-| DELL | $120-130. P13 applies. |
-| ENGIE.PA | €22-24 re-entry only. Demoted S44. |
-| BWXT | $183 SI-39 trigger. |
-| ANDURIL | IPO watch. S-1 filing. |
-| POET | Do not enter. Marvell thesis break confirmed S47 (Apex report). |
+## TRADES EXECUTED S50
+| Ticker | Action | Shares | Fill | Realised P&L | Notes |
+|--------|--------|--------|------|--------------|-------|
+| IAU | SELL | 175 | $84.835 | -$205.20 | Probability-weighted exit. Rate hike + peace deal both negative for gold. 20-25% crash probability insufficient to hold. Capital recovered: $14,844. |
+| IES (LSE) | SELL | 1,500 | 31.8p | +£211.65 | Limit set 30.5p, filled at 31.8p. Proceeds £477. Remaining 1,500 shares: effective cost 3.18p. |
 
----
+## KEY DECISIONS S50
+| Item | Decision |
+|------|----------|
+| SGOV | PERMANENTLY REMOVED — fund is opportunistic, cash on IBKR adequate |
+| IAU | EXITED — T58 applied (probability-weighted EV negative) |
+| IBM stop | RAISED $219.78 → $229.88 (breakeven protected) |
+| ZETA stop | RAISED $16.98 → $17.47 (post Q1 earnings confirmation) |
+| BKNG | MONITORING → ACTIVE |
+| INTU | UNIVERSE → DEFERRED (reassess Jan 2027, TurboTax structural AI disruption) |
+| LAC / TXT | CONFIRMED CANCELLED — removed permanently from all references |
+| IES order type | Confirmed GTC throughout (S49 journal error — was never a DAY order) |
+| CWR.L / ITM.L | DO NOT ENTER — both have already rerated (CWR +989%, ITM +400%); analyst targets below current prices |
 
-## ACTIVE POSITIONS (15) — S47 CLOSE
+## WATCHLIST STATUS
+### ACTIVE
+| Ticker | Entry Zone | Stop | Target | Shares | Condition |
+|--------|-----------|------|--------|--------|-----------|
+| BKNG | $151-165 | $148 | $224 | 32 | Conditional — buy FIRST PULLBACK on confirmed peace deal announcement. Do NOT buy ahead of May 25 deadline or into initial gap spike. R/R 7.4:1. |
 
-| Ticker | Shares | Avg | Last | Stop | Unrealized | Notes |
-|--------|--------|-----|------|------|------------|-------|
-| IES.L | 3,000 | 17.49p | 23.00p | Alert 12.5p | +£165 (+31.5%) | LSE. Performing. |
-| ZETA | 191 | $16.866 | $19.07 | **$16.98** | +$415 (+12.9%) | P20 stop above breakeven. |
-| CODA | 250 | $11.105 | $11.43 | $9.95 | +$79 (+2.8%) | Flat day. |
-| LMT | 10 | $516.831 | $525.46 | $479.77 | +$90 (+1.7%) | Defense thesis intact. |
-| PATH | 320 | $10.726 | $10.94 | $9.20 | +$62 (+1.8%) | +2.82% today. T23 lock May 26. Earnings May 28. |
-| CGCT | 291 | $10.295 | $10.40 | None | +$31 (+1.0%) | Vote May 27. No-redemption election May 25 deadline. |
-| CCL | 250 | $24.706 | $23.73 | $23.00 | -$242 (-3.9%) | **DOWN 4.74% TODAY. Stop $0.73 away. Check news S48.** |
-| IAU | 175 | $86.006 | $84.26 | None | -$305 (-2.0%) | T57. Gold down on rate hike fears. No stop. Thesis intact. |
-| IBM | 26 | $228.739 | $223.40 | $210.08 | -$137 (-2.3%) | Buffer $13.32. |
-| PYPL | 55 | $45.639 | $44.09 | $37.50 | -$85 (-3.4%) | Buffer $6.59. |
-| NCLH | 75 | $15.914 | $14.57 | **$14.50** | -$101 (-8.4%) | **STOP $0.07 AWAY. EXPECT TRIGGER S48. Thesis weakened.** |
-| MSTR | 15 | $181.067 | $165.85 | $153.14 | -$229 (-8.4%) | BTC $76,657. Kill switch $70K = $6,657 away. |
-| LEU | 15 | $191.697 | $168.49 | $158.17 | -$348 (-12.1%) | Down 2.58% today. HALEU thesis intact. Buffer $10.32. Jul 28 earnings. |
-| AVAV | 15 | $185.067 | $159.25 | $155.00 | -$391 (-14.1%) | **Down $3.25 today. Buffer $4.25 (2.7%). Chart bearish. Jun 23 earnings.** |
-| UUUU | 50 | $22.011 | $16.78 | **$16.50** | -$261 (-23.8%) | **STOP $0.28 AWAY. REE expansion cost phase. Thesis intact but stop will work.** |
+### MONITORING
+| Ticker | Zone | Notes |
+|--------|------|-------|
+| META | $570-610 | Stage 1 complete. Entry $570-610, stop $525, target $750-800. |
+| GTT.PA | €170-175 | June 17 ex-dividend. 26 days away at S50 close. Stage 1 pending — PRIORITY on return. |
 
----
+### UNIVERSE (Stage 1 required before elevation)
+| Ticker | Added | Notes |
+|--------|-------|-------|
+| ADBE | S50 | Down 30% YTD, 14x P/E, $25B buyback, June 11 earnings catalyst. AI disruption vs Firefly. |
+| NOW | S50 | Down 40% YTD, deal slippage not structural, premium multiple. |
+| TTD | S50 | H2 midterm elections programmatic surge + Google antitrust beneficiary. |
+| AECOM | S49 | Peace reconstruction play. |
+| Jacobs | S49 | Peace reconstruction play. |
 
-## IF NCLH STOP TRIGGERS (prepared calculation)
-Realised P&L on NCLH: 75 shares x ($14.50 fill - $15.914 avg) = **-$106.05**
-Position removed. No re-entry. Update unrealised to realised. 14 positions remaining.
+### UNIVERSE DEFERRED
+| Ticker | Reassess | Reason |
+|--------|----------|--------|
+| INTU | Jan 2027 | TurboTax structural AI disruption, 17% workforce cut, guidance cut on core product. Gates failed S50. |
 
-## IF UUUU STOP TRIGGERS (prepared calculation)
-Realised P&L on UUUU: 50 shares x ($16.50 fill - $22.011 avg) = **-$275.55**
-Position removed. Uranium thesis tracked via LEU only. 13 or 14 positions remaining.
+### SECTION N — EU ENERGY TRANSITION (0/4 slots used)
+- IES GBP proceeds (£477) held as GBP cash pending Stage 1 research
+- CWR.L and ITM.L: DO NOT ENTER — already rerated
+- GTT.PA: June 17 ex-dividend — initiate Stage 1 immediately on return (PRIORITY)
+- Target: pre-rerating LDES names ahead of Ofgem cap-and-floor summer 2026 awards
 
----
+## MACRO AT S50 CLOSE
+| Signal | Value | Status |
+|--------|-------|--------|
+| WTI | ~$97-101 | SI-25 C2 threshold $95.28. Gap ~$3.72-$5.72. UNMET. |
+| BTC | $77,626 | Kill switch $70K (buffer $7.6K). Scale gate $85K (gap $7.4K). |
+| Fed rate | 3.50-3.75% | Warsh sworn in 22 May. Rate hike probability 50-60%. |
+| 10yr yield | 4.5% | |
+| 30yr yield | 5.0%+ | |
+| Real rates | ~-2.25% | Still negative — gold not in structural decline yet (exit was EV-based not rate-based) |
+| Iran deadline | Mon 25 May | Both SI-25 conditions UNMET. Deal near-certain before midterms (user conviction). |
+| CAPE | 39.1x | Crash probability 25-35% over 18-24 months. |
+| Philly Fed | New orders negative | First time since April 2025 — stagflation signal. |
+| SI-25 C1 | UNMET | Hormuz not operationally open for commercial transit |
+| SI-25 C2 | UNMET | WTI above $95.28 threshold |
 
-## KEY INTELLIGENCE (S47 CLOSE — 19 May 2026)
+## ABSENCE PERIOD ALERTS (22-31 MAY) — PRIORITY ORDER
+| Priority | Item | Action |
+|----------|------|--------|
+| 1 | CGCT vote | Tue 27 May 10am ET. Stock at trust floor $9.50. Shares auto-convert to FAC. No action needed unless watching for upside catalyst post-vote. |
+| 2 | PATH earnings | 28 May AMC. T23 lock active. Stop $9.20 only mechanism. ±15.11% implied move. Do not touch. |
+| 3 | MSTR stop buffer | 5.9% ($162.68 vs $153.14). Check BTC over weekend. |
+| 4 | BKNG entry | May 25 deadline. If deal confirmed: buy first pullback $151-165, stop $148, 32 shares. |
+| 5 | CCL/NCLH | If peace deal: raise CCL stop to $24.50, NCLH stop to $15.50 immediately. |
 
-**Hormuz still closed:** Since May 6 open transits have fallen to near zero vessels per day. ~2,000 ships stranded in Gulf. Iran waiting to respond to latest US peace proposal. IEA calls this largest oil supply disruption in history. SI-25 Condition 1 (operational ship passage) UNMET. SI-25 Condition 2 (WTI below $95.28) UNMET — WTI $101.56 May 11.
+## S50 REASSESSMENT AGENDA (on return ~31 May)
+1. **Screen E** — congressional/institutional signals (MISSED S50 — now MANDATORY first block every Friday scan)
+2. **CGCT/FAC** — assess vote outcome, post-conversion price action
+3. **PATH** — was stop $9.20 triggered on earnings?
+4. **BKNG** — did peace deal close during absence? If yes, enter. If no, reassess lower-high pattern.
+5. **IBM stop** — move $229.88 → $235-240 after 10-day consolidation
+6. **GTT.PA** — June 17 ex-dividend approaching (17 days from S50). Initiate Stage 1 IMMEDIATELY.
+7. **Section N** — 0/4 EU energy slots. Deploy £477 GBP into pre-rerating LDES name once identified.
+8. **ADBE Stage 1** — June 11 earnings is the catalyst gate. Stage 1 must be complete before then.
+9. **Iran deal status** — did Trump May 25 deadline produce resolution? SI-25 update.
+10. **WTI** — approaching $95.28 threshold or rebounding? SI-25 C2 status.
+11. **BTC / MSTR** — stop buffer check, kill switch check.
+12. **Weekly review** May 25-30.
+13. **ZETA** — stop confirm, P20 protocol status.
+14. **LEU** — continued recovery or reversal?
 
-**Trump/Iran political economy argument (Apex):** Trump's economic incentive (lower rates requires lower oil requires Hormuz resolution) provides indirect political pressure toward a deal. Additive but not decisive for SI-25 timeline.
-
-**Rate hike probability: 45-60%:** CME FedWatch 45%. Apex report cites 60% in swap markets. Directionally identical. Kevin Warsh (inflation hawk) confirmed as incoming Fed Chair. SGOV Friday purchase fully validated.
-
-**BTC $76,657 (Alpha Vantage 04:29 UTC):** Moving away from kill switch ($70K = $6,657 buffer). Scale gate $85K = $8,343 away. MSTR stop $153.14 primary protection.
-
-**WTI $101.56 (May 11 — Alpha Vantage):** SI-25 Condition 2 threshold $95.28 remains UNMET. Oil moving wrong direction.
-
-**Japan 30yr yield at 4.079% (1997 highs):** Global liquidity withdrawal risk if Japanese institutional investors repatriate. Strengthens IAU thesis and SGOV positioning. Material tail risk for risk assets.
-
-**NVDA earnings tomorrow AMC:** Consensus $78-79B revenue. Whisper $80B+. Options pricing 8-10% move. Key variable: China re-entry commentary. Pattern: last two prints faded. Not actionable (SI-39 at $159.14). Watch ZETA and PATH reaction.
-
-**MSFT Stage 1 complete (S47):** Q3 FY2026: revenue $82.9B (+18%), Azure +40%, AI run rate $37B (+123% YoY). Stock at 3-year valuation low (21.7x forward). Capex fear ($190B CY2026) created the entry opportunity. Margins guided up 1pt YoY despite capex. Entry zone $395-410. Alert at $410. Stage 2 required.
-
-**RYAAY date corrected:** Earnings were Monday 18 May (not Thursday 21 May as session state had). FY26 profit +40% record. Cautious summer: fares trending broadly flat July-Sept. Stock last $53.28. Gate $52 = $1.28 away. Gate still live this week.
-
-**NCLH guidance cut (May 4-5):** Net yield cut to -3% to -5% from approximately flat. Full-year EPS -31.9%. Thesis weakened not broken. Baupost (Klarman) initiated position — contrarian signal. Stop $14.50 in place. Expect trigger tomorrow. Do not manually exit ahead of stop (E28).
-
-**CCL down 4.74% today:** Stop $23.00 = $0.73 away. Investigate cause at S48 open. If cruise-sector specific news (not Hormuz), thesis review required.
-
-**SOX 64% above 200dma (Apex):** Last seen March 1999. Valuation froth in semis and photonics. Software at 1980-level discount to semis. Broad froth = broader risk-off risk for AI names including ZETA and PATH when correction comes.
-
-*Updated: 2026-05-19 S47 CLOSE | v2.0 | trading_journal60.jsx | 15 positions | NCLH + UUUU stops critical*
+*Written by Claude S50 close via filesystem MCP — Fri 22 May 2026*
