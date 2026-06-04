@@ -171,3 +171,43 @@ At every session open, after reading FUND_SESSION_STATE.md and LESSONS_LEARNED.m
 
 *File created: 2026-05-11 S40. Review and update at S45 or on first confirmed peace deal signal.*
 *Next review trigger: Trump-Iran direct talks confirmed OR Hormuz commercial traffic resumes.*
+*Last updated: S52 CLOSE — 30 May 2026*
+
+---
+
+## STATUS UPDATE — S52 (30 May 2026)
+
+### CURRENT POSITIONS STATUS
+| Position | Status | Notes |
+|----------|--------|-------|
+| CCL | HELD — 250sh @$24.706, stop $24.51 | +13.2% unrealised. Stop raised to near-cost S52. |
+| NCLH | HELD — 75sh @$15.914, stop $15.98 | +15.0% unrealised. Stop above avg cost — effectively risk-free. |
+| RCL | NOT ENTERED | Entry zone $255-270 never reached. Still valid if price enters zone. |
+| BKNG | ACTIVE WATCHLIST | Entry $151-165, stop $148, 32sh, R/R 7.4:1. Conditional on confirmed peace deal + first pullback. |
+
+### POSITIONS IN ORIGINAL FILE NO LONGER HELD
+- **LDO:** Stopped out T45 at -$232. No re-entry planned without specific catalyst.
+- **R3NK:** Stopped out T41 at -$543. Net all R3NK trades: -$261.
+- **BAH:** Stopped out T51 at -$249. US government IT thesis not specific enough.
+- **AVAV:** Still held but class action overhang (Robbins Geller, Pomerantz, Schall). T23 lock until 21 Jun, earnings 23 Jun. Stop raised to $183. DO NOT ADD.
+- **LMT:** Still held, stop $479.77. Structural NATO rearmament thesis survives peace deal.
+- **AMZN, MSFT, PATH:** All closed. ZETA still held — thesis intact.
+- **MSTR:** Stopped out 28 May at $148.76. No longer held.
+
+### PORTFOLIO BALANCE TABLE — IGNORE ORIGINAL, USE THIS
+Original table (S40) assumed LDO, R3NK, BAH, AMZN, MSFT, MSTR all still held. All are closed.
+Current war-premium exposure: AVAV (15sh, stop $183) + LMT (10sh, stop $479.77) only.
+Current peace deal exposure: CCL (250sh, stop $24.51) + NCLH (75sh, stop $15.98).
+Current cash available for deployment: ~$57,740 USD + £2,261 GBP.
+
+### SI-25 CURRENT STATUS — S52
+- **Condition 1 (PERMANENT Hormuz reopening):** UNMET. 60-day ceasefire extension tentatively agreed at negotiator level as of 29 May 2026, awaiting Trump signature. NOT a permanent reopening. SI-25 C1 requires confirmed permanent commercial transit restoration.
+- **Condition 2 (WTI -10% from peak $105.87 = $95.28):** IMMINENT. WTI at $97.63 as of 26 May. Gap only $2.35. If ceasefire signed and Hormuz reopens, WTI likely gaps below $95.28 Monday.
+- **Protocol:** DO NOT execute full SI-25 exit on 60-day ceasefire deal. C1 requires PERMANENT. When C1 is confirmed: AVAV stop is primary exit mechanism (T23 lock until 21 Jun). Further raise CCL and NCLH stops on confirmation. LMT holds — structural rearmament survives ceasefire.
+
+### KEY RULE UPDATES FROM S52
+- **T59:** 60-day ceasefire ≠ permanent reopening. Correct response is incremental stop raises, NOT full SI-25 exit.
+- **CCL stop note:** New stop $24.51 is $0.196 below avg cost $24.706. A fill here produces a ~$49 loss on 250 shares — acceptable given binary deal risk.
+- **NCLH stop note:** New stop $15.98 is $0.066 above avg cost $15.914 — position is effectively risk-free on a net basis.
+- **BKNG:** Added to ACTIVE watchlist S50 as the primary new peace deal beneficiary. Entry on confirmed deal + first pullback only — no gap chasing.
+- **Do NOT enter RCL or RYAAY** unless price returns to original entry zones. Both have partially recovered.
