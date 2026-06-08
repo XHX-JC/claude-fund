@@ -1,7 +1,7 @@
 # SESSION OPEN PROTOCOL — READ THESE FILES IN ORDER
 # Claude reads this at the start of every morning session.
 # This replaces loading the full journal at session open.
-# Last updated: S55 | 2 June 2026 — DECISION_REGISTER added, SI-88 integrated
+# Last updated: S59 WEEKEND | 6 June 2026 — BTC_PLAYBOOK integrated
 # ═══════════════════════════════════════════════════════
 
 ## STEP ZERO — DATE AND TIMEZONE (mandatory before anything)
@@ -65,14 +65,76 @@ then sync to Dropbox via session-close.bat.
 2. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\SESSION_BRIEF.md              <- macro + overnight (skip if absent)
 3. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\OPPORTUNITY_SCAN.md           <- market signals (skip if absent)
 4. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\FUND_SESSION_STATE.md         <- portfolio state + priorities
-5. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md         <- HIGH CONVICTION DECISIONS <- MANDATORY
+5. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md          <- HIGH CONVICTION DECISIONS <- MANDATORY
+6. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\MARKET_HEALTH_CHECK.md     <- MARKET REGIME CHECK <- READ WHILE STATUS=ELEVATED
+7. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md               <- BTC CYCLE MONITOR <- READ ON FRIDAY OR WHEN BTC WITHIN 15% OF ENTRY ZONE
 
 ## ═══════════════════════════════════════════════════════════════════════════
+## STEP 0D — MARKET HEALTH CHECK (MANDATORY WHILE STATUS = ELEVATED OR CRISIS)
+## ═══════════════════════════════════════════════════════════════════════════
+## Added S59 | 6 June 2026 | Trigger: VIX 15→26 in 48hrs, CAPE 39x, Fed hike odds 57%
+##
+## Read MARKET_HEALTH_CHECK.md and execute Step 1 autonomously:
+##   - Pull WTI via EOD commodity API
+##   - Pull SPX/SPY level via EOD or IBKR
+##   - Web search: current VIX level + current 10yr yield + HYG price
+##
+## Then ask user for:
+##   - VIX current (TradingView or IBKR)
+##   - 10yr yield current (TradingView or IBKR)
+##   - Any overnight macro news
+##   - BTC price (when within 15% of $58K entry zone — also feeds BTC_PLAYBOOK)
+##
+## Calculate composite score (0-24) and state regime before any analysis.
+##
+## ENTRY GATE: While composite score >7, ALL new buy orders require the
+## CRASH STRESS TEST documented in MARKET_HEALTH_CHECK.md before entry.
+##
+## BUY ORDER REVIEW: At every session open while score >7, review all pending
+## limit BUY orders in IBKR. Flag any that would execute in a down-gap open.
+## State: "PENDING BUY ORDERS — [list] — confirm keep or cancel before proceeding."
+##
+## SUSPEND CONDITION: Score returns to ≤7 for 5 consecutive sessions AND VIX
+## holds below 18. Add suspension note to MARKET_HEALTH_CHECK.md history log.
+## ═══════════════════════════════════════════════════════════════════════════
+
+## ═══════════════════════════════════════════════════════════════════════════
+## STEP 0E — BTC PLAYBOOK CHECK (FRIDAY SESSIONS + ANY SESSION WHEN BTC NEAR ZONE)
+## ═══════════════════════════════════════════════════════════════════════════
+## Added S59 WEEKEND | 6 June 2026
+##
+## BTC_PLAYBOOK.md is a standing cycle monitor for the fund's BTC entry thesis.
+## Full path: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md
+##
+## READ AND UPDATE when ANY of the following:
+##   a. Friday weekly review session (always)
+##   b. BTC price is within 15% of $58,000 (i.e. below ~$67,000)
+##   c. BTC makes a decisive move of >5% in a session (up or down)
+##   d. Any session where user mentions BTC
+##
+## At each check, Claude:
+##   1. Pulls current BTC price via web search
+##   2. Pulls Fear & Greed index via web search (alternative.me)
+##   3. Pulls ETF flow direction via web search (Farside Investors)
+##   4. Fills in the BTC_PLAYBOOK.md Cycle Log row for the week
+##   5. Scores Scorecard A (bottom forming) and Scorecard B (not reached)
+##   6. States: "BTC [X/3 conditions met] | Scorecard A: [X/9] | B: [X/9] | Phase: [X]"
+##   7. If ALL conditions met (price + SPX + F&G + A≥6 + B≤4): escalate to ORDER REQUIRED
+##
+## Entry conditions summary:
+##   Price:     BTC $53,000–$58,000
+##   SPX:       Below 50-day MA (~7,156 currently)
+##   F&G:       Sustained below 15 for ≥5 consecutive days
+##   Scorecard: A ≥6/9 AND B ≤4/9
+##   Sizing:    Max $22,000 (20% net liq, hard ceiling)
+##
+## Current BTC status (6 June 2026):
+##   Price ~$61,200 | A: 1/9 | B: 4/9 | Phase: Capitulation/base-watch
+##   Entry conditions: 0/3 met | STATUS: MONITOR
+## ═══════════════════════════════════════════════════════════════════════════
+
 ## STEP 2B — SI-88 DECISION REGISTER CHECK (MANDATORY — runs after IBKR reconciliation)
 ## ═══════════════════════════════════════════════════════════════════════════
-## Added S55 | 2 June 2026 | Origin: HPE missed +36%, MU +71%, CRM +24% — all
-## had Stage 2 complete, entry zone defined, no order placed, no proximity check.
-##
 ## After IBKR reconciliation, Claude runs the proximity check for every name in
 ## the DECISION_REGISTER:
 ##
@@ -88,24 +150,14 @@ then sync to Dropbox via session-close.bat.
 ##   DEFERRED — Capital: [$X available, $Y needed]
 ##   ALERT SET — not yet in zone
 ##
+## NOTE: While MARKET_HEALTH_CHECK score >7, STATUS defaults to:
+##   DEFERRED — Market regime: Tier 2 active. No entries until score ≤7.
+## Exception: crash stress test passed + sizing at 50% normal.
+##
 ## ESCALATION: If a name is ORDER REQUIRED for 2 consecutive sessions with no
 ## action and no documented deferral, Claude states:
 ## "ESCALATION — [TICKER] ORDER REQUIRED [N] sessions. No action. No deferral.
 ## Confirm: ENTER / PASS / DEFER with condition and deadline before continuing."
-##
-## NOTE ON P24 (amended S55):
-## P24 does NOT block pre-earnings entry when Stage 2 is complete and conviction
-## is high. Pre-earnings entry is a calculated decision. State:
-## "Pre-earnings entry — Stage 2 complete — conviction [HIGH] — stop sized for
-## thesis break at [PRICE] — gap-down risk accepted."
-## See SI88_ACTIONABLE_ORDER_PROTOCOL.md for full rule.
-##
-## NOTE ON DECISION_REGISTER MAINTENANCE:
-## The DECISION_REGISTER.md file is updated at EVERY session close.
-## When a decision is made (enter/pass/defer), it moves to the archive.
-## When a new Stage 2 name is identified, it is added immediately.
-## The register is NEVER more than one session stale.
-## If it is stale, that is an error class violation to be logged.
 ## ═══════════════════════════════════════════════════════════════════════════
 
 ## DO NOT READ AT SESSION OPEN (load only if needed)
@@ -137,70 +189,29 @@ First Friday of each month: also run CF-SCREEN-EU (EU/LSE names).
 
 Paste all screenshots and I will analyse and flag any Stage 1 candidates."
 
-WHEN TO REQUEST SCREENERS:
-- EVERY session where NYSE is open — takes 5 minutes, costs nothing, surfaces new ideas
-- Weekend/closed market sessions — skip (data is stale, screeners will show few results)
-- The screeners populate best during NYSE hours (17:30-00:00 UAE)
+Note while MARKET_HEALTH_CHECK score >7: Screen B (Quality at Lows) is PRIMARY.
+The market regime is creating the entry opportunities. Flag every Screen B candidate
+for Crash Stress Test evaluation before any entry decision.
 
-SCREENER SUMMARY (confirmed saved S53 — 1 June 2026):
-┌─────────────────┬──────────────────────────────────────────────────────────────┐
-│ CF-SCREEN-D     │ Volume Anomaly: Market cap $300M+, avg vol $1M+,             │
-│                 │ change -5% to +5%, RVOL ≥2.0x, vol/min ≥1                   │
-│                 │ Sort: RVOL Higher Values/Important                           │
-├─────────────────┼──────────────────────────────────────────────────────────────┤
-│ CF-SCREEN-A     │ Revenue Momentum: Market cap $300M+, avg vol $500K+,         │
-│                 │ change -60% to -10%, revenue growth Y/Y ≥15%                │
-├─────────────────┼──────────────────────────────────────────────────────────────┤
-│ CF-SCREEN-B     │ Quality at Lows: Market cap $300M+, avg vol $500K+,          │
-│                 │ P/E 0.01-100K, net profit margin ≥10%, change -60% to -5%   │
-├─────────────────┼──────────────────────────────────────────────────────────────┤
-│ CF-SCREEN-C     │ Earnings Surprise: Market cap $300M+, avg vol $500K+,        │
-│                 │ EPS growth ≥50%, change -20% to +5%, net margin ≥15%        │
-│                 │ Sort: EPS Growth Higher Values/Important                     │
-├─────────────────┼──────────────────────────────────────────────────────────────┤
-│ CF-SCREEN-SI39  │ Thesis Drawdown: Market cap $1B+, avg vol $1M+,              │
-│                 │ EPS growth ≥10%, change -45% to -10%                        │
-├─────────────────┼──────────────────────────────────────────────────────────────┤
-│ CF-SCREEN-M     │ Options Flow: Use IBKR Options tab pre-built scans           │
-│                 │ → High Call Volume top 25 (bullish signal)                  │
-│                 │ → High Put Volume top 25 (bearish warning on held names)    │
-├─────────────────┼──────────────────────────────────────────────────────────────┤
-│ CF-SCREEN-EU    │ EU/LSE Section N: Run first Friday of each month only        │
-└─────────────────┴──────────────────────────────────────────────────────────────┘
-
-WHAT CLAUDE DOES WITH SCREENSHOTS:
-- Scans each output for names matching active thesis sectors
-- Flags any name appearing in multiple screens simultaneously (strongest signal)
-- Cross-references CF-SCREEN-SI39 output against DECISION_REGISTER names
-- Cross-references High Put Volume against held positions (stop review trigger)
-- Elevates confirmed candidates to UNIVERSE tier with one-line rationale
-- Completes Stage 1 on highest-priority candidates within the same session
-- Any screener output matching a DECISION_REGISTER name is flagged immediately
-
-## IBKR CONNECTOR PROTOCOL (SI-87 — replaces screenshot protocol for positions/orders)
+## IBKR CONNECTOR PROTOCOL (SI-87)
 The IBKR connector is the PRIMARY source for all portfolio data from S52 onwards.
-Screenshots are now the FALLBACK only, not the default.
+Screenshots are the FALLBACK only.
 
-USE IBKR CONNECTOR (autonomous, no user action required):
+USE IBKR CONNECTOR (autonomous):
 - Session open position check     → get_account_positions
 - Session open order/stop check   → get_account_orders
 - Cash balance verification       → get_account_balances
 - Net liquidity confirmation      → get_account_summary
 - Overnight fill check            → get_account_trades (period: TODAY or DAYS_7)
-- Stop proximity analysis         → get_price_snapshot (fields: last, misc-statistics, change)
+- Stop proximity analysis         → get_price_snapshot
 - 52-week range for any name      → get_price_snapshot (field: misc-statistics)
 - Price history for chart review  → get_price_history
 - Resolve ticker to contract_id   → search_contracts
-- Realised P&L audit              → get_account_trades (period: DAYS_90 or YEAR_TO_DATE)
+- Realised P&L audit              → get_account_trades (period: DAYS_90)
 
 PRICE SNAPSHOT STANDARD FIELD SET:
   ["last", "change", "prior-close", "misc-statistics", "year-to-date-change",
    "historical-vol", "avg-90d-usd-volume", "dividend-yield"]
-
-REQUEST SCREENSHOTS WHEN (fallback only):
-- IBKR screener outputs (CF-SCREEN-X)
-- Trades tab confirmation of a specific fill
-- Visual chart confirmation before an entry decision
 
 ## AFTER READING ALL FILES — STRUCTURED SESSION OPEN OUTPUT
 
@@ -209,23 +220,27 @@ Execute automatically — no user instruction required:
 1. Pull live portfolio via IBKR connector:
    a. get_account_summary       → net liquidity
    b. get_account_positions     → live positions + unrealised P&L
-   c. get_account_orders        → confirm all GTC stops live and at correct levels
+   c. get_account_orders        → confirm all GTC stops live at correct levels
    d. get_account_trades(TODAY) → any overnight fills since last session
 
-2. Cross-reference positions against FUND_SESSION_STATE.md:
-   - Flag any position present in IBKR but absent from state file (new fill)
-   - Flag any position in state file absent from IBKR (stop triggered overnight)
-   - Flag any stop level in IBKR that does not match state file (amendment needed)
+2. Cross-reference positions against FUND_SESSION_STATE.md
 
-2b. SI-88 DECISION REGISTER PROXIMITY CHECK (see block above):
-   - Read DECISION_REGISTER.md
-   - For every name in register, check current price vs entry zone
-   - Flag any name within 5% of entry zone
-   - State ORDER REQUIRED or deferral reason for each
-   - Escalate any name ORDER REQUIRED for 2+ sessions with no action
+2b. SI-88 DECISION REGISTER PROXIMITY CHECK (see block above)
 
-3. Run stop proximity check on any position where live price shows
-   clearance <5% from stop level.
+2c. MARKET HEALTH CHECK (see Step 0D — while status ELEVATED):
+   - Pull WTI, SPX, VIX, 10yr autonomously
+   - Ask user for VIX + 10yr + BTC price confirmation
+   - Calculate composite score
+   - State regime and entry gate status
+   - Review all pending BUY orders
+
+2d. BTC PLAYBOOK CHECK (see Step 0E — Friday sessions or BTC within 15% of zone):
+   - Pull BTC price, Fear & Greed, ETF flow direction
+   - Update Cycle Log in BTC_PLAYBOOK.md
+   - Score Scorecards A and B
+   - State BTC regime and entry condition status
+
+3. Run stop proximity check on any position where clearance <5% from stop.
 
 4. Report in structured summary — no prose:
 
@@ -233,8 +248,11 @@ DATE: [today]
 NET LIQ: $[X] | UNREALISED: $[X]
 CASH: USD $[X] | GBP £[X] | EUR €[X]
 WTI: $[X] | SI-25 gap: [X]%
+VIX: [X] | 10YR: [X]% | REGIME: [GREEN/AMBER/RED] score [X]/24
+BTC: $[X] | Entry conditions: [X/3] | Scorecard A: [X/9] | Phase: [X]  ← Friday/near-zone only
 OVERNIGHT FILLS: [None or details]
 STOP FLAGS: [<5% clearance positions]
+PENDING BUY ORDERS: [list — confirm keep or cancel]
 DECISION REGISTER: [names in zone + status]
 EARNINGS TODAY/TOMORROW: [from SESSION_BRIEF if available]
 OVERNIGHT SIGNALS: [from SESSION_BRIEF + OPPORTUNITY_SCAN]
