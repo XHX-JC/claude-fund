@@ -1,263 +1,279 @@
-# SESSION OPEN PROTOCOL — READ THESE FILES IN ORDER
-# Claude reads this at the start of every morning session.
-# This replaces loading the full journal at session open.
-# Last updated: S59 WEEKEND | 6 June 2026 — BTC_PLAYBOOK integrated
-# ═══════════════════════════════════════════════════════
+# SESSION OPEN PROTOCOL — CLAUDE FUND
+# Last updated: S61 | 9 June 2026 — STRATEGY_FRAMEWORK integrated, journal as backbone
+# ═══════════════════════════════════════════════════════════════════════════════════════
 
-## STEP ZERO — DATE AND TIMEZONE (mandatory before anything)
-State today's date explicitly. Source: system prompt only.
-NYSE opens 17:30 UAE. LSE opens 11:00 UAE. XETRA opens 11:00 UAE.
-Compute — never recall.
-See also: TIME_PROTOCOL.md for bash-based clock verification.
+## THE OPERATING PHILOSOPHY
 
-## STEP 0Z — IBKR CONNECTOR AUTHORITY (PERMANENT — READ EVERY SESSION)
-The IBKR connector is available and confirmed working from S52 (30 May 2026).
-Claude's authority is STRICTLY LIMITED to READ-ONLY data retrieval.
+The trading journal is the backbone and pillar of this fund.
+It is the authoritative record of every decision, entry, exit, watchlist note,
+lesson, key date, and strategic evolution. Without it, continuity is impossible.
+
+Every session open begins by reading the most recent journal.
+Every session close writes a new journal before anything else.
+The journal number increments by one each session. Never skip. Never overwrite.
+
+---
+
+## STEP ZERO — DATE AND TIME (mandatory — execute before any statement)
+
+Run this bash command. Do not state any date, time, or market status before running it.
+
+```python
+python3 -c "
+from datetime import datetime, timezone, timedelta
+utc = datetime.now(timezone.utc)
+uae = utc + timedelta(hours=4)
+h = uae.hour + uae.minute/60
+print('DATE  :', uae.strftime('%A %d %B %Y'))
+print('UAE   :', uae.strftime('%H:%M'))
+print('UTC   :', utc.strftime('%H:%M'))
+print()
+print('LSE/EU:', 'OPEN' if 11.0 <= h < 19.5 else 'CLOSED', '(11:00-19:30 UAE)')
+print('NYSE  :', 'OPEN' if 17.5 <= h < 24.0 else 'CLOSED', '(17:30-00:00 UAE)')
+"
+```
+
+Compare computer date against system prompt date. If they differ — STOP and ask James
+which is correct before proceeding. The computer clock is always authoritative.
+
+---
+
+## STEP 1 — READ THE MOST RECENT JOURNAL (THE BACKBONE)
+
+```
+Path: C:\Users\James Cadbury\Dropbox\Claude-Fund\journal\
+Action: filesystem:list_directory → identify highest-numbered trading_journalNN.jsx → read it
+```
+
+The journal is the single source of truth for:
+- What positions were held at last close and at what prices
+- What trades were executed (entries, exits, stops triggered)
+- What decisions were deferred and what conditions were set
+- What lessons were noted
+- What the next session's mandatory first actions are
+- What the Strategy B trades are and what stops are in place
+- What watchlist names are being tracked and at what zones
+
+READ THE JOURNAL FULLY. Do not skip sections. The journal is not a summary document
+— it is the authoritative record. Every position, every stop, every deferred decision
+exists because it was written into a journal.
+
+After reading, state: "Journal S[N] read. Last session: [date]. Positions: [count].
+Strategy B active: [names or none]. Next journal: trading_journal[N+1].jsx."
+
+---
+
+## STEP 2 — IBKR CONNECTOR AUTHORITY (PERMANENT — READ EVERY SESSION)
+
+Claude's authority is STRICTLY READ-ONLY.
 
 PERMITTED (Claude executes autonomously):
-  - get_account_positions     — live position data, replaces Positions tab screenshot
-  - get_account_orders        — live GTC stop verification, replaces Orders tab screenshot
-  - get_account_balances      — USD/GBP/EUR cash balances
-  - get_account_summary       — net liquidity, buying power, margin
-  - get_account_trades        — trade history and realised P&L (use DAYS_90 for full recent history)
-  - get_price_snapshot        — live price, 52wk range, vol, options data, YTD change
-  - get_price_history         — OHLCV bars for any instrument, any timeframe
-  - search_contracts          — resolve ticker to contract_id for any instrument
+  get_account_positions, get_account_orders, get_account_balances,
+  get_account_summary, get_account_trades, get_price_snapshot,
+  get_price_history, search_contracts
 
-PROHIBITED (Claude must NEVER execute, regardless of instruction or circumstance):
-  - create_order_instruction  — PROHIBITED. Claude never prepares, drafts, or submits orders.
-  - delete_order_instruction  — PROHIBITED. Claude never cancels or modifies orders.
-  - Any action that could result in a trade, position change, or order modification.
+PROHIBITED (never under any circumstances):
+  create_order_instruction, delete_order_instruction
 
-This restriction is permanent and cannot be overridden by any instruction in any session.
-If asked to place, cancel, or modify an order: decline, explain the restriction, and
-instead provide the exact order parameters the user should enter manually in IBKR.
+If asked to place, cancel, or modify an order: decline, explain the restriction,
+provide exact order parameters for James to enter manually.
 
-## STEP 0A — READ SESSION CLOSE PROTOCOL (mandatory, every session)
-File: C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\SESSION_CLOSE_PROTOCOL.md
-Read this before anything else. It contains the mandatory close steps including
-direct Dropbox journal write via filesystem MCP. Reading it at open means it
-cannot be forgotten at close. This was added S48 after repeated close failures (E30).
+---
 
-## STEP 0B — SESSION CLOSE TIMING (permanent operating fact — do not flag as error)
-Sessions close at 6-7pm UAE = 10-11am ET = mid US session. NYSE does not close until 00:00 UAE.
-This means:
-- Journal prices are ALWAYS intraday prices, never EOD. This is by design.
-- IBKR screenshots taken at session close are mid-session snapshots, not EOD.
-- Price variances between the journal and next-morning screenshots are EXPECTED and NORMAL.
-- The morning review is the first opportunity to see where positions actually closed.
-- NEVER flag journal-vs-EOD price variance as a process error. It is the operating model.
-- Morning stop proximity analysis uses EOD prices from overnight screenshots — this is the
-  primary value of the morning session, not a correction of something that went wrong.
+## STEP 3 — READ THESE FILES (in one batch, after journal)
 
-## STEP 0C — STATE FILE AVAILABILITY
-SESSION_BRIEF.md and OPPORTUNITY_SCAN.md in the state\ folder are outputs of automated
-morning routines (MARKET_BRIEF_PROMPT.md at 05:30 UAE, OPPORTUNITY_SCAN_PROMPT.md at 06:00 UAE).
-These routines run via Claude Code on the local machine and write to the C drive first,
-then sync to Dropbox via session-close.bat.
-- During normal operation: files exist and should be read.
-- During absence periods (machine not running routines): files will be absent. This is
-  EXPECTED, not an error. Skip them gracefully and proceed with FUND_SESSION_STATE.md.
-- The prompt templates are at: routines\MARKET_BRIEF_PROMPT.md and routines\OPPORTUNITY_SCAN_PROMPT.md
+```
+1. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\SESSION_CLOSE_PROTOCOL.md  <- MANDATORY
+2. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\STRATEGY_FRAMEWORK.md      <- MANDATORY — SI-89
+3. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md          <- MANDATORY — watchlist + register
+4. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\FUND_SESSION_STATE.md         <- current snapshot
+5. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\LESSONS_LEARNED.md            <- scan last 3 entries every session
+6. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\MARKET_HEALTH_CHECK.md     <- while status ELEVATED or CRISIS
+7. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md               <- Fridays + when BTC within 15% of $58K
+8. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\SESSION_BRIEF.md              <- skip if absent
+9. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\OPPORTUNITY_SCAN.md           <- skip if absent
+```
 
-## FILES TO READ (in this order, all in one batch)
-1. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\SESSION_CLOSE_PROTOCOL.md  <- MANDATORY FIRST
-2. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\SESSION_BRIEF.md              <- macro + overnight (skip if absent)
-3. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\OPPORTUNITY_SCAN.md           <- market signals (skip if absent)
-4. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\FUND_SESSION_STATE.md         <- portfolio state + priorities
-5. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md          <- HIGH CONVICTION DECISIONS <- MANDATORY
-6. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\MARKET_HEALTH_CHECK.md     <- MARKET REGIME CHECK <- READ WHILE STATUS=ELEVATED
-7. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md               <- BTC CYCLE MONITOR <- READ ON FRIDAY OR WHEN BTC WITHIN 15% OF ENTRY ZONE
+### Why each file matters:
 
-## ═══════════════════════════════════════════════════════════════════════════
-## STEP 0D — MARKET HEALTH CHECK (MANDATORY WHILE STATUS = ELEVATED OR CRISIS)
-## ═══════════════════════════════════════════════════════════════════════════
-## Added S59 | 6 June 2026 | Trigger: VIX 15→26 in 48hrs, CAPE 39x, Fed hike odds 57%
-##
-## Read MARKET_HEALTH_CHECK.md and execute Step 1 autonomously:
-##   - Pull WTI via EOD commodity API
-##   - Pull SPX/SPY level via EOD or IBKR
-##   - Web search: current VIX level + current 10yr yield + HYG price
-##
-## Then ask user for:
-##   - VIX current (TradingView or IBKR)
-##   - 10yr yield current (TradingView or IBKR)
-##   - Any overnight macro news
-##   - BTC price (when within 15% of $58K entry zone — also feeds BTC_PLAYBOOK)
-##
-## Calculate composite score (0-24) and state regime before any analysis.
-##
-## ENTRY GATE: While composite score >7, ALL new buy orders require the
-## CRASH STRESS TEST documented in MARKET_HEALTH_CHECK.md before entry.
-##
-## BUY ORDER REVIEW: At every session open while score >7, review all pending
-## limit BUY orders in IBKR. Flag any that would execute in a down-gap open.
-## State: "PENDING BUY ORDERS — [list] — confirm keep or cancel before proceeding."
-##
-## SUSPEND CONDITION: Score returns to ≤7 for 5 consecutive sessions AND VIX
-## holds below 18. Add suspension note to MARKET_HEALTH_CHECK.md history log.
-## ═══════════════════════════════════════════════════════════════════════════
+**SESSION_CLOSE_PROTOCOL.md** — Reading at open means close steps cannot be forgotten (E30 prevention).
 
-## ═══════════════════════════════════════════════════════════════════════════
-## STEP 0E — BTC PLAYBOOK CHECK (FRIDAY SESSIONS + ANY SESSION WHEN BTC NEAR ZONE)
-## ═══════════════════════════════════════════════════════════════════════════
-## Added S59 WEEKEND | 6 June 2026
-##
-## BTC_PLAYBOOK.md is a standing cycle monitor for the fund's BTC entry thesis.
-## Full path: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md
-##
-## READ AND UPDATE when ANY of the following:
-##   a. Friday weekly review session (always)
-##   b. BTC price is within 15% of $58,000 (i.e. below ~$67,000)
-##   c. BTC makes a decisive move of >5% in a session (up or down)
-##   d. Any session where user mentions BTC
-##
-## At each check, Claude:
-##   1. Pulls current BTC price via web search
-##   2. Pulls Fear & Greed index via web search (alternative.me)
-##   3. Pulls ETF flow direction via web search (Farside Investors)
-##   4. Fills in the BTC_PLAYBOOK.md Cycle Log row for the week
-##   5. Scores Scorecard A (bottom forming) and Scorecard B (not reached)
-##   6. States: "BTC [X/3 conditions met] | Scorecard A: [X/9] | B: [X/9] | Phase: [X]"
-##   7. If ALL conditions met (price + SPX + F&G + A≥6 + B≤4): escalate to ORDER REQUIRED
-##
-## Entry conditions summary:
-##   Price:     BTC $53,000–$58,000
-##   SPX:       Below 50-day MA (~7,156 currently)
-##   F&G:       Sustained below 15 for ≥5 consecutive days
-##   Scorecard: A ≥6/9 AND B ≤4/9
-##   Sizing:    Max $22,000 (20% net liq, hard ceiling)
-##
-## Current BTC status (6 June 2026):
-##   Price ~$61,200 | A: 1/9 | B: 4/9 | Phase: Capitulation/base-watch
-##   Entry conditions: 0/3 met | STATUS: MONITOR
-## ═══════════════════════════════════════════════════════════════════════════
+**STRATEGY_FRAMEWORK.md** — SI-89. Governs Strategy A and Strategy B rules. Must be in context
+for every trade decision. Strategy B in particular requires the three mandatory declarations
+and the stop-only-moves-up rule to be active at all times.
 
-## STEP 2B — SI-88 DECISION REGISTER CHECK (MANDATORY — runs after IBKR reconciliation)
-## ═══════════════════════════════════════════════════════════════════════════
-## After IBKR reconciliation, Claude runs the proximity check for every name in
-## the DECISION_REGISTER:
-##
-## "Which MONITORING or ACTIVE tier names are within 5% of their entry zone?"
-##
-## For each name within 5%, state:
-##   [TICKER] | Zone [X-Y] | Current [Z] | Distance [N%] | STATUS
-##
-## STATUS options:
-##   ORDER REQUIRED — no valid deferral applies. Request confirmation to place.
-##   DEFERRED — P24 (pre-earnings, Stage 2 complete, state conviction level)
-##   DEFERRED — Technical: [specific condition not yet met, deadline stated]
-##   DEFERRED — Capital: [$X available, $Y needed]
-##   ALERT SET — not yet in zone
-##
-## NOTE: While MARKET_HEALTH_CHECK score >7, STATUS defaults to:
-##   DEFERRED — Market regime: Tier 2 active. No entries until score ≤7.
-## Exception: crash stress test passed + sizing at 50% normal.
-##
-## ESCALATION: If a name is ORDER REQUIRED for 2 consecutive sessions with no
-## action and no documented deferral, Claude states:
-## "ESCALATION — [TICKER] ORDER REQUIRED [N] sessions. No action. No deferral.
-## Confirm: ENTER / PASS / DEFER with condition and deadline before continuing."
-## ═══════════════════════════════════════════════════════════════════════════
+**DECISION_REGISTER.md** — The active watchlist. Every name the fund is tracking, its stage,
+entry zone, stop level, and status. This is where stocks remain visible until entered or ruled out.
+Names on this list must be reviewed at every session — not just when price is in zone.
 
-## DO NOT READ AT SESSION OPEN (load only if needed)
-- trading_journalNN.jsx  <- load only if making journal edits
-- LESSONS_LEARNED.md    <- load only if diagnosing an error type
-- AI_INFRASTRUCTURE_THESIS.md <- load only if running Stage 2 research
+**FUND_SESSION_STATE.md** — Current portfolio snapshot. Cross-reference against journal to confirm
+no overnight changes have been missed.
 
-## IBKR SCREENER PROTOCOL (S53 — HARDWIRED — applies every session where markets are open)
-═══════════════════════════════════════════════════════════════════════════════════
-SCREENERS ARE FREE, PRE-CONFIGURED, AND TAKE UNDER 5 MINUTES. USE THEM EVERY SESSION.
-═══════════════════════════════════════════════════════════════════════════════════
+**LESSONS_LEARNED.md** — Scan the LAST THREE ENTRIES every session. These are the most recent
+errors and rules. The purpose is active prevention, not retrospective diagnosis. Reading them
+regularly is the only way to ensure they are not repeated. Key permanent lessons:
+  T64: Chart price supersedes search data
+  T65: HNR1 standalone stop — manual cancel required on any exit
+  T66: Check all stops after any order cancellation
+  T67: Every exit requires one of four stated conditions
+  E30: Journal written at close only, never mid-session
+  E31: Journal never overwritten — always new file
 
-Claude issues this request at EVERY session where NYSE is open (17:30-00:00 UAE):
+**MARKET_HEALTH_CHECK.md** — Current market regime score. Read while status is ELEVATED or CRISIS.
+Governs entry gates and crash stress test requirements.
 
-"Before we start — please open IBKR Trader Workstation → New Window → Screener
-and run these saved screeners, screenshotting top 25 results from each.
-All can be done in one batch in under 5 minutes:
+**BTC_PLAYBOOK.md** — Cycle monitor. Read on Fridays and any session when BTC is below $67,000.
 
-  1. CF-SCREEN-D  — Volume Anomaly          (run FIRST — signals fade during the day)
-  2. CF-SCREEN-A  — Revenue Momentum
-  3. CF-SCREEN-B  — Quality at 52-Week Lows
-  4. CF-SCREEN-C  — Earnings Surprise
-  5. CF-SCREEN-SI39 — Thesis Drawdown Watchlist
+---
 
-For options flow: open the Options tab → screenshot High Call Volume top 25,
-then High Put Volume top 25.
+## STEP 4 — SESSION TIMING (permanent facts — do not flag as errors)
 
-First Friday of each month: also run CF-SCREEN-EU (EU/LSE names).
+Sessions close at 6-7pm UAE = 10-11am ET = mid US session.
+NYSE does not close until 00:00 UAE.
+Journal prices are ALWAYS intraday — never EOD. This is by design.
+Price variances between journal and next-morning IBKR data are EXPECTED and NORMAL.
+Morning stop proximity analysis uses EOD prices — this is the primary value of the morning session.
 
-Paste all screenshots and I will analyse and flag any Stage 1 candidates."
+---
 
-Note while MARKET_HEALTH_CHECK score >7: Screen B (Quality at Lows) is PRIMARY.
-The market regime is creating the entry opportunities. Flag every Screen B candidate
-for Crash Stress Test evaluation before any entry decision.
+## STEP 5 — IBKR RECONCILIATION (autonomous — no user action required)
 
-## IBKR CONNECTOR PROTOCOL (SI-87)
-The IBKR connector is the PRIMARY source for all portfolio data from S52 onwards.
-Screenshots are the FALLBACK only.
+Pull live data:
+  a. get_account_summary       → net liquidity
+  b. get_account_positions     → live positions + unrealised P&L
+  c. get_account_orders        → confirm all GTC stops live at correct levels
+  d. get_account_trades(TODAY) → any overnight fills since last session
 
-USE IBKR CONNECTOR (autonomous):
-- Session open position check     → get_account_positions
-- Session open order/stop check   → get_account_orders
-- Cash balance verification       → get_account_balances
-- Net liquidity confirmation      → get_account_summary
-- Overnight fill check            → get_account_trades (period: TODAY or DAYS_7)
-- Stop proximity analysis         → get_price_snapshot
-- 52-week range for any name      → get_price_snapshot (field: misc-statistics)
-- Price history for chart review  → get_price_history
-- Resolve ticker to contract_id   → search_contracts
-- Realised P&L audit              → get_account_trades (period: DAYS_90)
+Cross-reference against journal. Flag any discrepancy immediately.
 
-PRICE SNAPSHOT STANDARD FIELD SET:
-  ["last", "change", "prior-close", "misc-statistics", "year-to-date-change",
-   "historical-vol", "avg-90d-usd-volume", "dividend-yield"]
+**HNR1 STANDALONE STOP CHECK** (while HNR1 held):
+Confirm only ONE GTC stop exists at EUR219.60 in Orders tab.
+This stop is not bracket-linked. Manual cancel required on any HNR1 exit.
+Failure to cancel creates an unintentional short sell of 40 EUR shares.
 
-## AFTER READING ALL FILES — STRUCTURED SESSION OPEN OUTPUT
+---
 
-Execute automatically — no user instruction required:
+## STEP 6 — STRATEGY B CHECK (every session)
 
-1. Pull live portfolio via IBKR connector:
-   a. get_account_summary       → net liquidity
-   b. get_account_positions     → live positions + unrealised P&L
-   c. get_account_orders        → confirm all GTC stops live at correct levels
-   d. get_account_trades(TODAY) → any overnight fills since last session
+Read STRATEGY_FRAMEWORK.md before this step.
 
-2. Cross-reference positions against FUND_SESSION_STATE.md
+Ask: "What named catalyst exists in the next 1-7 days that could drive a 5-15% move
+in a liquid name? Does it meet the three mandatory declarations?"
 
-2b. SI-88 DECISION REGISTER PROXIMITY CHECK (see block above)
+Current proven Strategy B categories:
+  - Geopolitical resolution (peace deal, ceasefire): CCL, NCLH, RCL, UAL, DAL, AAL
+  - Post-earnings bounce on quality name after contagion selloff: SNPS (proven S60)
+  - IPO adjacency sentiment move: sector-adjacent names around major listing days
+  - Index inclusion / institutional forced buying
+  - Mega cap with specific short-term momentum catalyst
 
-2c. MARKET HEALTH CHECK (see Step 0D — while status ELEVATED):
-   - Pull WTI, SPX, VIX, 10yr autonomously
-   - Ask user for VIX + 10yr + BTC price confirmation
-   - Calculate composite score
-   - State regime and entry gate status
-   - Review all pending BUY orders
+Check Strategy B positions live:
+  - Are stops above cost basis on all Strategy B positions?
+  - Has the hard exit date passed on any open Strategy B trade?
+  - Has the catalyst resolved or failed on any open trade?
 
-2d. BTC PLAYBOOK CHECK (see Step 0E — Friday sessions or BTC within 15% of zone):
-   - Pull BTC price, Fear & Greed, ETF flow direction
-   - Update Cycle Log in BTC_PLAYBOOK.md
-   - Score Scorecards A and B
-   - State BTC regime and entry condition status
+If a Strategy B trade is at hard exit date: flag for immediate market close at session open.
 
-3. Run stop proximity check on any position where clearance <5% from stop.
+---
 
-4. Report in structured summary — no prose:
+## STEP 7 — DECISION REGISTER PROXIMITY CHECK (SI-88)
 
-DATE: [today]
-NET LIQ: $[X] | UNREALISED: $[X]
+For every name in the DECISION_REGISTER, state status:
+
+  [TICKER] | Zone [X-Y] | Current [Z] | Distance [N%] | Strategy A/B | STATUS
+
+STATUS options:
+  ORDER REQUIRED — no valid deferral. Request confirmation before proceeding.
+  DEFERRED — [condition + deadline stated]
+  ALERT SET — not yet in zone
+  WATCHING — in zone but catalyst condition not yet met
+
+ESCALATION: Two consecutive sessions ORDER REQUIRED with no action and no documented
+deferral triggers: "ESCALATION — [TICKER] ORDER REQUIRED [N] sessions. Confirm:
+ENTER / PASS / DEFER before continuing."
+
+---
+
+## STEP 8 — MARKET HEALTH CHECK (while status ELEVATED or CRISIS)
+
+Pull autonomously:
+  - WTI via EOD commodity API
+  - SPX/SPY via EOD or IBKR
+  - VIX and 10yr yield via web search
+  - HYG via web search
+
+Calculate composite score (0-24). State regime before any trade discussion.
+
+While score >7: ALL new Strategy A entries require crash stress test.
+Strategy B stops must be confirmed above cost before session close.
+
+---
+
+## STEP 9 — SESSION OPEN OUTPUT (structured, no prose)
+
+DATE: [today from bash clock]
+JOURNAL READ: S[N] — [date] | Next journal: trading_journal[N+1].jsx
+NET LIQ: $[X] | UNREALISED: $[X] | DAILY P&L: $[X]
 CASH: USD $[X] | GBP £[X] | EUR €[X]
-WTI: $[X] | SI-25 gap: [X]%
-VIX: [X] | 10YR: [X]% | REGIME: [GREEN/AMBER/RED] score [X]/24
-BTC: $[X] | Entry conditions: [X/3] | Scorecard A: [X/9] | Phase: [X]  ← Friday/near-zone only
+POSITIONS: [count Strategy A] Strategy A | [count Strategy B] Strategy B
+WTI: $[X] | VIX: [X] | 10YR: [X]% | REGIME: [score]/24
 OVERNIGHT FILLS: [None or details]
-STOP FLAGS: [<5% clearance positions]
+STOP FLAGS: [positions <5% from stop]
+STRATEGY B ACTIVE: [names, stop levels, hard exit dates]
+STRATEGY B CATALYST HUNT: [any named catalyst in next 7 days?]
+DECISION REGISTER: [names in zone or approaching]
+LESSONS SCAN: [last 3 lessons confirmed active]
 PENDING BUY ORDERS: [list — confirm keep or cancel]
-DECISION REGISTER: [names in zone + status]
-EARNINGS TODAY/TOMORROW: [from SESSION_BRIEF if available]
-OVERNIGHT SIGNALS: [from SESSION_BRIEF + OPPORTUNITY_SCAN]
-OPEN ACTIONS: [from FUND_SESSION_STATE MANDATORY FIRST ACTIONS]
-SCREENERS: "Please run CF-SCREEN-D, A, B, C, SI39 + Options flow — screenshot top 25 each"
-CLOSE PROTOCOL LOADED: YES — next journal: trading_journalNN.jsx
+MANDATORY FIRST ACTIONS: [from journal and FUND_SESSION_STATE]
+SCREENERS: "Please run CF-SCREEN-D, A, B, C, SI39 + Options — screenshot top 25 each"
+CLOSE PROTOCOL LOADED: YES
 
 Then await screener screenshots before any analysis.
+
+---
+
+## STEP 10 — IBKR SCREENER REQUEST (every session where NYSE is open)
+
+"Before we start — please open IBKR Trader Workstation → New Window → Screener
+and run these saved screeners, screenshotting top 25 results from each:
+
+  1. CF-SCREEN-D  — Volume Anomaly          (FIRST — signals fade during the day)
+  2. CF-SCREEN-A  — Revenue Momentum
+  3. CF-SCREEN-B  — Quality at 52-Week Lows (PRIMARY while AMBER regime)
+  4. CF-SCREEN-C  — Earnings Surprise
+  5. CF-SCREEN-SI39 — Thesis Drawdown Watchlist
+  Options tab: High Call Volume top 25, High Put Volume top 25
+  First Friday of month: also run CF-SCREEN-EU
+
+All can be done in one batch in under 5 minutes."
+
+---
+
+## WHAT THE JOURNAL MUST CONTAIN AT EVERY CLOSE
+
+The journal is the backbone. It must capture at close:
+
+POSITIONS: Every held position — ticker, shares, avg cost, last price, stop level,
+           strategy (A or B), unrealised P&L, notes
+TRADES: Every fill — symbol, side, qty, price, type, realised P&L, thesis statement
+ORDERS LIVE: Every GTC stop and pending order with levels
+STRATEGY B: Active trades — catalyst, stop level, hard exit date, current status
+WATCHLIST: Any new names added, stage changes, alert levels set
+DECISIONS: Every ENTER/PASS/DEFER decision made this session with reasoning
+LESSONS: Any new T-codes, E-codes, or rules established
+MACRO: WTI, VIX, 10yr, SPX, market health score
+NEXT SESSION MANDATORY ACTIONS: Specific, numbered, actionable
+NET LIQ / P&L: Final numbers at close
+
+---
+
+## PRICE NOTE (permanent)
+
+Journal prices are ALWAYS intraday — session closes at 6-7pm UAE, mid-US session.
+Morning review uses EOD prices. Variance between journal price and next-morning
+IBKR data is EXPECTED and NORMAL. Never flag as an error.
+
+---
+
+*Written: S61 | 9 June 2026 | Supersedes all prior versions of SESSION_OPEN_PROTOCOL.md*
+*The journal is the backbone. Read it first. Write it last. Never skip. Never overwrite.*

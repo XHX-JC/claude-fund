@@ -1,7 +1,7 @@
 # HIGH CONVICTION DECISION REGISTER
 # SI-88 companion file reviewed at EVERY session open without exception
 # Path: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md
-# Last updated: S60 WEEKEND | 7 June 2026
+# Last updated: S63 close | 10 June 2026
 
 ## PURPOSE
 Every name on this list requires a binary decision: ENTER / PASS / DEFER.
@@ -9,385 +9,200 @@ Deferral requires a stated condition and deadline. Passive monitoring is not per
 
 ## IBKR ALERT BUG — STANDING NOTE
 LSE-listed stocks (confirmed: LRE) trigger alerts immediately regardless of price.
-Do NOT set IBKR alerts on affected names. Use manual price check at each session open.
+Do NOT set IBKR alerts on affected names. Manual price check at session open.
 
 ## HNR1 STANDALONE STOP — PERMANENT NOTE WHILE HELD
-HNR1 GTC stop is EUR 219.60 (raised S59 weekend from EUR 213).
-Only ONE stop exists — confirmed cleared in Orders tab S59 weekend.
-Must be manually cancelled on any exit. Failure = unintentional short sell of 40 EUR shares.
+HNR1 GTC stop EUR 225.80. ONE stop only — verified S63.
+Manual cancel required on any exit. Failure = unintentional short sell of 40 EUR shares.
 
-## IBKR MCP CONNECTOR — RESTORED S60
-Connector working at S60 session open. Full portfolio data pulled cleanly.
-Error codes from S58 outage: ofid_1f57389873bf4af4 | ofid_225ea3e0ad41b0ef | ofid_a360356f4361fbc4
-Retain for reference only.
-
-## MARKET HEALTH STATUS: AMBER | Score 13/24 | Caution active
-New entries require crash stress test. Pragmatic approach — high-conviction names
-with strong fundamentals and insider signals are eligible. See MARKET_HEALTH_CHECK.md.
+## MARKET HEALTH: AMBER | Score ~11-12/24 (provisional pre-auction)
+CPI June 10: headline 4.2% in line, core +0.2% SOFT. Benign print.
+10yr auction 20:00 UAE June 10 result UNKNOWN at write — check S64 open.
+Iran/Israel: ACTIVE exchange of fire (CENTCOM strikes + Iranian retaliation on Gulf bases).
+Peace trades: signed/verified deal is the ONLY re-entry trigger. No verbal triggers.
+SPCX lists Thursday June 12 — primary catalyst of the week.
 
 ---
 
-## CURRENT REGISTER — S60 WEEKEND | 7 JUNE 2026
+## ═══════════════════════════════════════════════════════════
+## STRATEGY B — LIVE POSITIONS (entered S63)
+## ═══════════════════════════════════════════════════════════
 
-### ═══════════════════════════════════════════════════════════
-### BTC — BITCOIN (via IBKR Paxos) — NEW S59
-### ═══════════════════════════════════════════════════════════
-Stage: STRATEGY DEFINED — awaiting entry conditions
-Access: IBKR Paxos — trading permission required (enable in Client Portal, 24hr approval)
-Test transaction: Week of S60 — small amount to confirm plumbing before live entry
+### LUNR — 330sh @ $27.6535 | Stop $26.35 GTC | HARD EXIT Thursday June 12 close
+Catalyst: SPCX listing Thursday. Stop = below 26.44 premarket (T69).
+Plan: sell INTO listing-day strength. Stop raises on strength only — noise-raises prohibited.
+James override on record: held overnight below cost, phone-monitored.
 
-FULL PLAYBOOK: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md
+### RKLB — 55sh @ $110.52 | Stop $104.15 GTC | HARD EXIT Thursday June 12 close
+Same catalyst, same rules. Stop = below 104.25 premarket.
 
-ENTRY RULE (pre-committed):
-  Price trigger:    BTC $53,000–$58,000
-  Market condition: SPX simultaneously below 50-day MA (currently ~7,156)
-  Sentiment:        Fear & Greed Index sustained below 15 for minimum 5 days
-  Scorecard gate:   BTC_PLAYBOOK Scorecard A ≥6/9 AND Scorecard B ≤4/9
-  ALL conditions must be met simultaneously — not just price alone
-
-SIZING RULE:
-  Maximum allocation: 20% of net liquidity | Hard ceiling: $22,000
-
-CURRENT STATUS (7 June 2026):
-  BTC price: ~$60,949 | Entry zone: $53,000-$58,000
-  Cycle phase: Capitulation/base-watch — bottom NOT confirmed
-  Scorecard A: ~2/9 | Scorecard B: ~5-6/9 — BEARISH SIGNAL
-  Strategy ETF outflows: 12 consecutive sessions (~$4B total) — Scorecard B flag
-  Strategy Inc. BTC sale: first since 2022 — whale distribution signal
-  Entry conditions: 0/3 met | Fund action: MONITOR
-  NOTE: Price approaching zone but Scorecard B signals bottom not yet in.
-        Do NOT enter on price alone. All 3 conditions + scorecard gates required.
-
-MONDAY ACTION: Enable Paxos trading permissions in IBKR Client Portal
-### ═══════════════════════════════════════════════════════════
-
-### 1. MU — Micron Technology
-Stage 2: COMPLETE
-Status: STOP TRIGGERED Friday 5 June at $897.69 — FLAT
-Realised loss: ~-$896 (entry $987.31, exit $897.69, 10 shares)
-Re-entry thesis: INTACT — Broadcom selloff was sentiment not fundamentals
-Re-entry conditions: Monday open above $850 with stable volume
-Re-entry parameters: Entry $850-880 | Stop $820 | Target $1,050 | R/R 4.2:1
-Earnings: June 24 2026 AMC — catalyst confirmed
-Note: June 17 Fed meeting 7 days before earnings — rate hike language = risk
-Status: MONITORING — decision at Monday open
-
-### 2. HNR1 — Hannover Re
-Stage 2: COMPLETE
-Status: HELD @ EUR224.60 | 40sh | Stop EUR219.60 GTC STANDALONE
-MANUAL CANCEL REQUIRED ON EXIT — only one stop confirmed live
-Current: EUR226.80 | Buffer: ~3.3%
-Catalyst: Q2 Aug 12
-Action: Check LSE price Monday open 11:00 UAE
-
-### 3. CEG — Constellation Energy
-Stage 2: COMPLETE
-Status: HELD @ $267.33 | 30sh | Stop $250 GTC
-Current: ~$254 | Buffer: ~1.7% | Unrealised: ~-$400
-Earnings: July 30. P24 gate June 30.
-Thesis intact. Action: Let stop work. Do not touch.
-
-### 4. EXE — Expand Energy
-Status: HELD | 55sh @ $91.57 | Stop $89.92 GTC
-Current: ~$91.89 | Buffer: ~2.2%
-Action: Check Monday open. May stop out. Acceptable.
-
-### 5. MRVL — Marvell Technology
-Stage 2: COMPLETE
-Entry zone: $210-215 | IBKR alert $225 | Current: ~$292
-Deferral: Alert-driven.
-
-### 6. CRDO — Credo Technology
-Stage 2: COMPLETE
-Entry zone: $185 | IBKR alert $185 | Current: ~$210
-Deferral: Alert-driven. Deadline S65 mid-July.
-
-### 7. SNPS — Synopsys
-Stage 2: COMPLETE
-Orders CANCELLED S59 weekend — confirm cleared Monday.
-Entry zone: $420-455. Alert at $460. Re-enter only on pullback.
-Status: MONITORING — no live orders
-
-### 8. NXPI — NXP Semiconductors
-Stage 1: COMPLETE
-Entry zone: $270-285 | IBKR alert $280 | Current: ~$305
-Deferral: Alert-driven.
-
-### 9. SAF.PA — Safran
-Stage 1: COMPLETE
-Entry zone: EUR278-288 | IBKR alert EUR285 | Current: ~EUR346
-Deferral: Alert-driven.
-
-### 10. MP — MP Materials
-Stage 2: COMPLETE
-Entry zone: $60-65 | Current: $59.18 — AT ZONE
-Crash stress test: PASSES conditionally (US govt contracts provide floor).
-Deferral: Reassess Monday open.
-
-### 11. POWL — Powell Industries
-Stage 2: COMPLETE
-Entry zone: $240-265 | IBKR alert $260 | Current: ~$296
-Deferral: Alert-driven. Deadline S70.
-
-### 12. MTX.DE — MTU Aero Engines
-Stage 2: COMPLETE
-Entry zone: EUR320-340 | IBKR alert EUR330 | Current: ~EUR347 — NEAR ENTRY
-Deferral: Alert-driven. Deadline S68.
-Passes crash stress test.
-
-### 13. LRE — Lancashire Holdings
-Stage 1: COMPLETE
-Exchange: LSE | IBKR ALERT BUG — manual check only
-Entry zone: 560p or below | Current: ~595p
-Deferral: Price above zone.
-
-### 14. AVGO — Broadcom
-Stage 1: COMPLETE | Stage 2: REQUIRED BEFORE ENTRY
-IBKR alert: $379.78 | Current: ~$402
-Stage 2 mandatory on alert trigger.
-
-### 15. XSG — Xeros Technology
-Status: FILLED (LSE) — confirm Monday open 11:00 UAE
-40,000 shares @ 1.5p. Cost basis GBP600. Micro position.
-
-### 16. CHG — LSE
-Orders CANCELLED S59 weekend — confirm cleared Monday.
-Re-enter only via live order when conditions improve.
-
-### 17. HOOD — Robinhood Markets
-Stage 1: COMPLETE
-Entry zone: $68-75 | Alert $75 | Current: ~$82
-Deferral: Above entry zone. Alert-driven.
-
-### 18. CRS — Carpenter Technology
-Stage 1: COMPLETE
-Entry zone: $390-415 | Alert $415 | Current: ~$484
-Alert $415. SI-39 drawdown watchlist.
-
-### 19. ALM — Almonty Industries
-Stage 1: COMPLETE
-Entry zone: $13-15 | Alert $15 | Current: ~$16.34
-Deferral: Slightly above entry zone. Alert-driven.
-
-### 20. HWM — Howmet Aerospace
-Stage 1: REQUIRED — deadline S62
-
-### 21. CLS — Celestica
-Stage 2: COMPLETE (S60 weekend)
-Entry zone: $340-355 | Alert $360 | Current: ~$427
-Crash list entry: $280-300
-PEG 0.54. FY26 revenue $19B guided (+53%). Customer concentration risk (35%/15%/15%).
-Crash stress test: FAILS at $427. PASSES at $340-355 entry.
-Status: DEFER — price not in zone. Alert $360. No entry at current levels.
-
-### 22. RDW — Redwire
-HARD PASS — Phase 2 narrative. Removed.
-
-### 23. OKLO — Oklo Inc
-Stage 1: COMPLETE (S60 weekend)
-Current price: ~$58 | 52-week range: $44.88-$193.84
-Pre-revenue. First reactor late 2027/early 2028 at earliest.
-Cash: $2.5B, no debt — runway intact.
-Partners: Meta (1.2GW campus), NVIDIA, Idaho National Laboratory.
-Earnings: Aug 18, 2026.
-Crash stress test: FAILS — pure optionality/narrative name, no revenue.
-SI-37 speculative cap applies.
-Status: DEFER — pre-revenue speculative name. Revisit S65 or when market score ≤7.
-NOTE: CEG is the correct nuclear/AI power vehicle while held. OKLO is a 2028 story.
-
-### 24. FRSH — Freshworks
-Stage 2: COMPLETE (S60 weekend)
-Current price: ~$9.45 | 52-week range: $6.79-$16.14
-Market cap: ~$2.5B | FY26 revenue guide: $958-964M (+14%)
-FCF guide: $265M / 27.5% margin | FCF yield at $9.45: ~10.6%
-EX ARR: $540M, +27% YoY | Net Dollar Retention: 106%
-Freddy AI Copilot attach: +80% YoY | 8,000 AI customers, $25M ARR
-Two largest deals in company history landed Q1 2026.
-$400M buyback authorised on $2.5B float (16% of float).
-CEO Dennis Woodside: $993K personal purchase at ~$7.94 (March 2026).
-AI restructuring: 11% headcount cut May 2026 — margin expansion expected H2 2026.
-Non-GAAP op margin: compressed to 17.9% Q1 (from 23.6% Q1 2025) — restructuring fix.
-Competitive moat: ServiceNow displacement at fraction of cost. Honda Europe (36 countries).
-Crash stress test: PASSES — essential ITSM/CX software, $844M cash, non-cyclical.
-Bear case: Growth decelerating 22%→14%. Third major restructuring in 2 years. EPS miss.
-Next earnings: August 4, 2026.
-
-ENTRY PARAMETERS (confirmed S60 weekend):
-  Entry: $9.45 (Monday open price check first)
-  Size: $2,500
-  Shares: ~265 at $9.45
-  Stop: $8.00 (below February base — structural failure signal)
-  Stop width: $1.45/share
-  Max loss: ~$384
-  Target: $16-18 (FCF re-rating to 20x)
-  R/R: ~4.5:1 to $16 target
-  Catalyst: August 4 earnings — margin recovery confirmation
-
-ACTION: Confirm price at Monday open. If holding $9.00-$10.00 range, enter $2,500.
-        If stock has moved materially above $10.50, reassess before entering.
-        Order: LIMIT near open price, DAY order, not GTC.
-        Stop: GTC stop at $8.00 immediately after fill.
-
-STATUS: ORDER REQUIRED — Monday open price check then enter.
-
-### 25. SpaceX adjacents — RKLB, LUNR
-Stage 1: REQUIRED — S60 Monday
+## 🚨 NBIS — STRATEGY B — THURSDAY DECISION (SPCX day)
+Stage 2 COMPLETE. Conditions: (1) SPCX outcome neutral/positive, (2) 30-min close >$225
+on >300K vol, (3) VIX <22, (4) trendline $215-225 intact on daily close (held June 9-10).
+Pre-built ticket: BUY LIMIT $226 DAY, 47sh, stop $223.85 (re-reference entry-day premarket).
+Targets T1 $255 | T2 $278. Hard exit pre-Q2 earnings.
 
 ---
 
-## EXITS QUEUED FOR MONDAY S60 OPEN
-| Ticker | Order | Reason |
-|--------|-------|--------|
-| PYPL | Market sell DAY | Thesis broken |
-| SERV | Market sell DAY | Thesis broken |
-| NVO | Market sell DAY | ADA catalyst failed — no re-rating |
-
-## MANDATORY MONDAY ORDER MANAGEMENT
-| Action | Priority |
-|--------|----------|
-| Cancel SNPS stop $430 | BEFORE open |
-| Cancel CHG stop 440p | BEFORE open |
-| Cancel NVO stop $39.98 | After NVO fill |
-| Confirm PYPL/SERV/NVO fills | First 30 min |
-| FRSH entry $2,500 | After open check |
-
----
-
-## CRASH SHOPPING LIST — BUILD DURING MARKET WEAKNESS
-If SPX breaks 200-day MA (6,858) and Tier 3 activates:
-  MU    — entry $700-750 | FY27 PE <9x
-  CLS   — entry $280-300 | PEG <0.4
-  SNPS  — entry $380-420 | EDA duopoly
-  CEG   — entry $200-220 | nuclear PPAs intact
-  CRDO  — entry $140-160 | SI-37 sizing
-  BTC   — entry $53-58K  | see BTC_PLAYBOOK.md
+## STRATEGY B PIPELINE
+- PEACE BASKET (UAL primary vehicle, CCL only $25-26): trigger = SIGNED/VERIFIED deal only.
+  Fresh three declarations required. Stop below entry-day premarket (T69). 72h hard exit.
+- NCLH (exited S63 +$191): joins basket as confirmation-only re-entry vehicle.
+- FAC: June 17 Nasdaq Bell. REWRITTEN S63 evening per P39/P40 after +20% day (~$20.50).
+  The $14-16 pullback zone is RETIRED — absorption of PIPE selling was the signal it
+  would not be reached, and it wasn't. Dual-entry design now:
+  (a) STRENGTH ENTRY: holds/bases above $19 for the two sessions into June 17 → Strategy B
+  Bell trade, entry on June 17 premarket strength per T69, stop below the base low,
+  HARD EXIT before Fed statement 22:00 UAE June 17. Size REDUCED (half standard B) —
+  14.5M float cuts both ways and a -30% air pocket is structurally possible.
+  (b) RETRACE ENTRY: only if it gives back the move to $16-18 AND absorption repeats there.
+  Structure facts unchanged: PIPE basis $10.07, 85% FD locked — still no Strategy A hold.
+- LUNR post-SPCX retrace play ($22-26) — only if listing disappoints. Separate from live position.
+- SPCX Nasdaq-100 fast-track (Category 4): possible after 15 trading days if top-40 valuation.
+  Pipeline item ~early July. Revisit once SPCX has trading history.
+- SMCI post-offering stabilization: ONLY after $5B offering prices AND base forms at/above
+  offer price. ATM overhang weakens even that. Otherwise PASS (dilution/indictment/margins).
+- ONDS: alert $8.50. FIFA deployment confirmed + no incident.
 
 ---
 
-## SI-25 STATUS — 7 JUNE 2026
-C2 BREACHED: WTI ~$96 vs $95.28. Breach date: 5 June 2026.
-C1 UNMET: Hormuz closed.
-Lebanon ceasefire agreed June 3.
-Do NOT execute SI-25 exits. CCL/NCLH mechanical stops are the mechanism.
+## CURRENT REGISTER
+
+### BTC (IBKR Paxos)
+Entry: $53-58K + SPX below 50d MA + F&G <15 sustained 5d. 0/3 met. Max $22K.
+Paxos permissions STILL PENDING.
+
+### CEG — RE-ENTRY WATCH (stopped out S63 at $244.36, −$690)
+Conditions (ALL required): (1) June 30 Calpine lock-up expired and absorbed,
+(2) base formed on daily — no falling-knife entry, (3) zone $220-235 if base above
+crash band, else crash list $200-220. Alert $235. P24 gate July 30 earnings.
+
+### FRSH — HELD @ $9.305 | 265sh | Stop $8.81
+Did NOT stop out (S62 prediction wrong — recovered). Aug 4 earnings catalyst intact.
+
+### HNR1 — HELD @ EUR224.71 | Stop EUR225.80 STANDALONE (above cost). Q2 Aug 12.
+
+### ZENA — HELD @ $1.365 | Stop $1.38 | Closed $1.57 (+7.9% S63)
+S64 action: raise stop ~$1.48. Blue UAS certification trigger.
+
+### MU — Re-entry $850-880 | Stop $820 | Earnings June 24 AMC. No entry before June 17 Fed.
+
+### ICHR — NEW S63 | Zone $63-66 | Alert $66 | Invalidation $62.50
+Range play: triple top $76-77, triple-tested floor $63-65. Q2 earnings Aug catalyst.
+Q2 guide $290-310M vs $268M consensus. NO CHASE mid-range ($71-75).
+
+### FLYW — NEW S63 | UNIVERSE | Stage 1 due this week
+Rev +41%, profitable, $50M buyback, $1.8B cap. KEY RISK: education vertical = US visa
+policy exposure. GM slide 60.3→56.8% to investigate.
+
+### OSCR — NEW S63 | UNIVERSE | Alert ~$24
+ACA consolidation share-gainer (Cigna/Aetna exits). At 5yr highs — no chase.
+Q1 MLR seasonality caveat. APTC expiry already priced (lapsed Dec).
+
+### FUTU — NEW S63 | UNIVERSE one-liner
+$13B Chinese broker, 10.5x P/E, 53% off high, EPS +51%. Three screens in one day. Friday scan.
+
+### UNFI — CONDITIONAL WATCH
+Strong absorption candle June 9 but no dated catalyst = no trade. Activates only on
+named event (activist filing, guidance event, strategic review).
+
+### AVGO — Alert triggered S62 at $378. Closed ~$392. Stage 2 REQUIRED before entry. Zone $340-370.
+
+### CLS — DEFER. $371 vs crash list $280-300. Market score ≤10 or price in crash zone.
+
+### UEC — Stage 1 complete S63: STOCK-SPECIFIC earnings miss. Sector-zone premise struck.
+No Strategy B (no quality, no catalyst). Crash-list-grade only, weak even there.
+
+### CRDO — Zone $185 STRUCK (price $252, +7.8% S63, post-earnings re-rating).
+No dated event before Sept 2. Needs full re-assessment or removal at Friday review.
+
+### ANET — IN ZONE $148-155 (closed $152 June 9). Stage 2 required FIRST. Q2 early Aug.
+### CRWV — IN ZONE $90-100 ($98.45 June 9). Stage 2 never done — required first.
+### AIP — IN ZONE $32-35 ($33.76). Stage 2 complete. DEFERRED S63: condition = post-SPCX
+regime with score ≤13. Deadline S65. CFO departure Aug 31 caps conviction.
+### MRVL — Zone $210-215 | Alert $225 | ~$288. Alert-driven.
+### NXPI — Zone $270-285 | Alert $280 | ~$305.
+### SAF.PA — Zone EUR278-288 | Alert EUR285 | ~EUR346.
+### MP — Below zone floor ($54.30, falling). Reclaim $60 + volume required.
+### POWL — Zone $240-265 | $289.75 S63. Alert-driven. Deadline S70.
+### MTX.DE — Zone EUR320-340 | Alert EUR330 | ~EUR347. Deadline S68.
+### LRE — LSE manual check. 560p or below | ~595p.
+### LUNR (register zone) — $22-26 post-SPCX retrace only. Live position is separate.
+### ZS — Zone $114-120 | Alert $120 | ~$129.
+### HWM — Zone $230-245 | Alert $230 | ~$246. Stage 2 on trigger. Q2 late July.
+### HOOD — Zone $68-75 | $86.49 S63, EPS +260% (Screen C). Above zone. Alert-driven.
+### CRS — Zone $390-415 | $523.91. Far above.
+### ALM — Zone $13-15 | Alert $15 | ~$16.34.
+### OKLO — DEFER. Pre-revenue, crash test fails. Revisit S65 or score ≤7.
+### DOCN — Alert $120. Stage 2 on trigger.
+### ABVX — Re-entry: 25mg safety clean + NDA + M&A + $80-85.
+### MYRG — Zone $300-340 | ~$436. Crash test fails.
+### MOG.A — Zone $295-320 | ~$372.
+### COHR — Zone $310-340 | $369 (+3.7% S63). Stage 2 on trigger.
+
+### PASSES LOGGED S63 (SI-90-compliant grounds)
+PARR (Hormuz correlation/concentration), OSCR-as-entry (chase/no dated event — UNIVERSE only),
+CLOV (meme breakout, no catalyst), AAOI (momentum casino, leveraged ETF, insider selling),
+SMCI (dilution ~30% of cap + indictment + margins — watch note only),
+ICHR-at-market (timing — zone set instead), UNFI-as-trade (no catalyst — conditional watch).
 
 ---
 
-## ESCALATION PROTOCOL
-Two consecutive sessions ORDER REQUIRED with no action and no deferral:
-"ESCALATION — [TICKER] ORDER REQUIRED [N] sessions. No action. No deferral.
-Confirm: ENTER / PASS / DEFER with condition and deadline before continuing."
+## CRASH SHOPPING LIST (SPX breaks 200d MA 6,858)
+MU $700-750 | CLS $280-300 | SNPS $380-420 | AVGO $300-340 | CEG $200-220 (re-listed
+post stop-out) | CRDO $140-160 | BTC $53-58K
 
 ---
 
-## COMPLETED DECISIONS — ARCHIVE
+## SI-25 STATUS — 10 JUNE 2026
+ESCALATION ACTIVE: CENTCOM strikes + Iranian retaliation on Jordan/Bahrain/Kuwait bases.
+C1 unmet (Hormuz), C2 ambiguous (WTI ~$87-88 despite strikes; Hormuz traffic rising per
+Energy Secretary). Peace re-entry: SIGNED DEAL ONLY.
 
+---
+
+## STRATEGY B PROOF OF CONCEPT LOG
+| Trade | Session | Catalyst | Vehicle | Outcome |
+|-------|---------|---------|---------|---------|
+| SNPS bounce | S60/S61 | Broadcom contagion | 41sh $466 | +$206 |
+| Peace deal | S62 | Ceasefire + Brent falling | AAL 1000sh | +$130 |
+| Peace deal | S62 | Ceasefire + Brent falling | UAL 150sh | +$249 |
+| NBIS | S62 | Staircase T4 | CANCELLED bad print | $0 |
+| SPCX eve | S63 | Listing Thu June 12 | LUNR 330sh $27.65 | OPEN |
+| SPCX eve | S63 | Listing Thu June 12 | RKLB 55sh $110.52 | OPEN |
+
+Cumulative closed Strategy B P&L: +$585. Trades logged: 3 closed, 2 open. Target 10 before
+allocation reassessment.
+
+---
+
+## COMPLETED DECISIONS — ARCHIVE (S63 additions on top)
 | Ticker | Decision | Session | Outcome |
 |--------|---------|---------|---------|
-| BKNG | Cancelled | S55 | Watching for C1 re-entry |
-| CHG | ORDER PLACED then CANCELLED | S55/S59 | Stale order discipline |
-| AVEX | HARD PASS | S55 | Removed |
-| OKLO | DEFER alert $60 | S55 | Alert triggered S58 — Stage 1 done S60 |
-| CRML | DEFER alert $8 | S55 | Alert set |
-| ABVX | EXIT | S56 | -$1,808 |
-| IBM | STOP triggered | S56 | +$2,104 |
-| ZETA | STOP triggered | S56 | +$1,173 |
-| EXE | ENTERED $91.55 | S56 | Live. Stop $89.92. |
-| FUTU | HARD PASS | S56 | Removed |
-| HNR1 | ENTERED EUR224.60 | S57 | Live. Stop EUR219.60. |
-| CEG | ENTERED $267.30 | S57 | Live. Stop $250. |
-| MU | ENTERED $987.31 | S57 | Stop triggered $897.69 | -$896. Re-entry monitoring. |
-| XSG | ORDER SUBMITTED | S57 | Confirm fill Monday. |
-| CWR | SKIP | S57 | Removed |
-| SIVE | UNIVERSE | S57 | Monitoring |
-| LULU | HARD PASS | S58 | Demand destruction confirmed |
-| LEU | STOP TRIGGERED $158.10 | S58 | -$504. Re-entry later. |
-| CGCT | EXIT | S58 | SPAC proceeds logged |
-| SNPS | BUY CANCELLED | S59 | Stale order |
-| PYPL | EXIT Monday S60 | S59/S60 | Thesis broken |
-| SERV | EXIT Monday S60 | S59/S60 | Thesis broken |
-| NVO | EXIT Monday S60 | S60 | ADA catalyst failed — no re-rating on results |
-| RDW | HARD PASS | S59 | Phase 2 narrative |
+| NCLH | EXIT $18.48 | S63 | +$191 — T67 C4. To Strategy B pipeline |
+| IES | EXIT 30.8p | S63 | +£197 — T67 C4 declared S62 |
+| CEG | Stop triggered $244.36 | S63 | −$690 — T67 C3. Re-entry watch set |
+| LUNR | Strategy B ENTERED $27.65 | S63 | OPEN |
+| RKLB | Strategy B ENTERED $110.52 | S63 | OPEN |
+| UEC | Stage 1: stock-specific | S63 | Zone struck |
+| SMCI | PASS + watch note | S63 | Dilution/indictment |
+| AAOI | PASS | S63 | Momentum casino |
+| CLOV | PASS | S63 | No catalyst |
+| PARR | PASS | S63 | Hormuz concentration |
+| BKNG | Cancelled | S55 | C1 re-entry watch |
+| IBM | STOP | S56 | +$2,104 |
+| ZETA | STOP | S56 | +$1,173 |
+| HNR1 | ENTERED EUR224.60 | S57 | Live |
+| MU | STOP $897.69 | S57 | −$896. Re-entry watch |
+| LULU | HARD PASS | S58 | Validated |
+| LEU | STOP $158.10 | S58 | −$504 |
+| PYPL/SERV/NVO | EXIT | S60 | Thesis broken |
+| SNPS | Strat B +$206 | S60/S61 | Closed |
+| CCL | STOP $26.98 | S61 | +$568 |
+| EXE | STOP $89.85 | S62 | −$96 |
+| FRSH | ENTERED $9.30 | S62 | Live — survived S63 |
+| AAL/UAL | Strat B +$379 | S62 | Closed |
+| RDW/POET/BIOX/HY | PASS | S59-S61 | Validated |
 
----
-
----
-
-## S60 UPDATES — Monday 8 June 2026
-
-### NEW ENTRIES
-
-### CCL — Carnival Corp (RE-ENTRY WATCH)
-Status: MONITORING — stop triggered today at $26.98, gain +$568
-Re-entry conditions (ALL required):
-  1. WTI directionally falling and sustained below $88
-  2. Iran confirms resumption of US-Iran talks via mediators
-  3. Price ideally $25-26 for best R/R (not mandatory but preferred)
-Entry: Market price on signal day
-Stop: $24.00 | Target: $34 analyst consensus | R/R at $27: 3.2:1
-Sizing: High conviction on trigger — $6,000-$8,000, stop $24, max loss ~$700
-Analysts: 26 analysts Buy, avg target $34.57. BofA $45. Loop Capital $36.
-Fundamentals: Q1 2026 record revenue $6.2B, EPS +50% YoY, EBITDA $1.3B. 85% of 2026 booked at record prices. PROPEL: ROIC >16%, EPS growth >50% by 2029, $14B shareholder returns.
-Risk: $500M fuel cost headwind. Insider selling June 1. Net debt/EBITDA 3.6x.
-DO NOT re-enter on price alone. Macro trigger required.
-
-### FAC — Factorial Energy
-Status: MONITORING — DTC Chill active June 8, cannot trade
-Thesis: Solid-state battery FEST technology. Manufacturing-compatible with existing lithium-ion infrastructure. JDAs with Mercedes, Stellantis, Hyundai, Kia. IQT national security investment. Listing valuation $1.3B.
-Entry: Tranche 1 $5,000 | Tranche 2 $5,000 (when DTC Chill lifts)
-Constraint: Entry must be below $12.89 (CGCT exit price)
-Stop: $9.00 — below SPAC NAV floor
-Hold: 12 months
-Lock-up: 25% insider unlock December 5 2026. Early release at $12/$14/$16 VWAP.
-Action: Check DTC Chill daily. Alert $12.00. Enter Tranche 1 at market when chill lifts if price below $12.89.
-
-### LUNR — Intuitive Machines
-Stage 1: COMPLETE
-Status: MONITORING — wait for SPCX IPO June 12 reaction
-Entry zone: $22-26 | Alert: $27
-Stop on entry: $18.00 | Target: $38 analyst consensus
-Thesis: Space infrastructure prime. Q1 revenue $186.7M +3x YoY. Backlog $1.1B. NASA/Space Force contracts. IQT investment.
-Risk: $500M ATM dilution overhang. SpaceX IPO sentiment risk. NASA LTV contract loss.
-DO NOT enter before June 12 SPCX listing.
-
-### CRWV — CoreWeave
-Stage 1: COMPLETE
-Status: MONITORING
-Entry zone: $90-100 | Alert: $105
-Thesis: $99.4B contracted backlog. Revenue +112% YoY. FY2026 guidance $12-13B. 2027 revenue 75% contracted.
-Risk: Google-Blackstone JV competitive threat. Debt/equity 10.7x. Losses widening.
-
-### ZS — Zscaler
-Stage 1: COMPLETE
-Status: MONITORING
-Entry zone: $120-128 | Alert: $128
-Thesis: ARR $3.5B +25% YoY. FCF 23% margin record. Down 55% YTD vs sector +30%. ZS-specific dislocation.
-Risk: Sales leadership departures. FY27 guidance 16-17% below 20% expectations.
-
-### ABVX — Abivax (updated)
-Status: MONITORING — high conviction bar, same as LDO standard
-Current price: ~$100 | Fund exit price: $81.49 (June 3)
-Re-entry conditions:
-  1. 25mg dose de-escalation data confirms sustained remission with clean safety profile
-  2. NDA filed Q4 2026 with no FDA hold
-  3. Confirmed M&A approach from named acquirer
-  4. Price pulls back to $80-85
-Alert: $85
-
-### SHORT-TERM BOUNCE STRATEGY — NEW FRAMEWORK (S60)
-Large position tight stop recovery trades permitted on occasion.
-Requirements at entry — all three mandatory:
-  1. Specific short-term catalyst and time horizon in DAYS not weeks
-  2. Stop at genuine thesis-break level — not arbitrary
-  3. Hard exit date stated at entry
-Without all three: defaults to standard $500 max loss sizing.
-Does NOT replace core $500 max loss or 3:1 R/R standards.
-SNPS S60 is the proof of concept: $19K deployed, Broadcom contagion catalyst, stop at Friday low, exit Wednesday pre-SpaceX.
-
-### PENDING ORDER ACTIONS TUESDAY
-- LRCX $308.06 DAY: CANCEL — stock ran to $319, recovery missed
-- FRSH $9.21 DAY: Reassess — did not fill today, stock held above
-- ZENA $1.36 GTC: HOLD — stock at $1.41, Blue UAS certification thesis unchanged
-- SNPS stop: RAISE to $471 if holding above $473 at Tuesday close
-
-Last updated: S60 | 8 June 2026 | Claude via filesystem MCP
+Last updated: S63 close | 10 June 2026 | Claude via filesystem MCP
 Read at: every session open, immediately after FUND_SESSION_STATE.md
