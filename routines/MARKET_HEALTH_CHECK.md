@@ -212,7 +212,9 @@ Reactivate immediately if VIX spikes above 20 again.
   FRSH ORDER REQUIRED Monday — $2,500, stop $8.00, 265 shares approx.
   FRSH crash stress test: PASS (essential ITSM, $844M cash, non-cyclical).
   CLS Stage 2 complete — DEFER, price not in zone ($427 vs $340-355 zone).
-  OKLO Stage 1 complete — DEFER, pre-revenue speculative, Tier 2 regime.
+  OKLO Stage 1 complete - DEFER, pre-revenue speculative, Tier 2 regime.
+
+  16 June 2026 - S69 dated note (not a full recalculation, see DECISION_REGISTER.md OKLO note for the ~4/24 figure produced this session in a different context). VIX 16.1-16.2, described externally as a low vol bull regime. WTI under $83, a three month low. SPX above its 50 day MA. Directionally this points further toward GREEN than the 7/24 carried from S67/S68, but the full 12 indicator composite (HY spreads, 10yr, CAPE, breadth, Fed direction) was not re-pulled in full today. Recalculate properly at S70 open rather than carrying forward either the 7/24 or this directional note as a confirmed score. FOMC outcome Wednesday 17 June is the swing factor either way.
 
 ---
 *Created: S59 | 6 June 2026 | Claude via filesystem MCP*

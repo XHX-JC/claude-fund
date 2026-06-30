@@ -4,30 +4,94 @@
 # Path: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md
 # Referenced in: DECISION_REGISTER.md (BTC entry — see item #BTC)
 # Updated: weekly during Friday review session, and after any decisive BTC move
+# Last updated: S66 WEEKEND | 13 June 2026
 # ═══════════════════════════════════════════════════════════════════════════════
 
 ## FUND ENTRY RULE — READ FIRST
-Entry requires ALL THREE conditions simultaneously:
+This playbook now operates with FOUR defined scenarios.
+Scenario 1 is the original three-condition entry — parameters unchanged.
+Scenarios 2, 3, and 4 define what happens if BTC does not reach the original zone.
+See SCENARIO FRAMEWORK section below before actioning any entry.
+
+Original three-condition entry (Scenario 1):
   1. BTC price:       $53,000–$58,000
   2. SPX:             Below 50-day MA (currently ~7,156)
   3. Fear & Greed:    Sustained below 15 for minimum 5 consecutive days
 
-Max allocation: $22,000 (20% of net liquidity, hard ceiling)
+Max allocation Scenario 1: $22,000 (20% of net liquidity, hard ceiling)
+Max allocation Scenario 2: $10,000 (see Scenario Framework)
 Access: IBKR Paxos — permissions enabled week of S59
 Thesis exit: BTC below $35,000 post-entry OR 30+ days sustained ETF outflows
 See DECISION_REGISTER.md for full sizing rules and thesis documentation.
 
 ---
 
-## CURRENT STATUS — 6 JUNE 2026
+## CURRENT STATUS — 13 JUNE 2026
 | Item | Reading |
 |------|---------|
-| BTC price | ~$61,200 |
-| Active band | $58,000–$60,000 (immediate battleground) |
-| Cycle phase | Capitulation / base-watch — bottom NOT confirmed |
-| Entry conditions met | NONE — price above zone, SPX above 50d MA |
-| Fund action | MONITOR — alert at $60,000 |
-| Fear & Greed | 12 (extreme fear) — condition 3 approaching but not sustained |
+| BTC price | ~$63,562 (June 12 close) |
+| Active band | $60,000–$65,000 (consolidation above battleground) |
+| Cycle phase | Base-watch — bottom NOT confirmed but forming signals present |
+| Entry conditions met (Scenario 1) | 1 of 3 — F&G condition met. Price and SPX conditions unmet. |
+| Entry conditions met (Scenario 2) | Partial — ETF flows decelerating. See Scorecard A below. |
+| Fund action | MONITOR — run full scorecards Friday. Scenario 2 gate approaching. |
+| Fear & Greed | 13 (June 13), 12 (June 12). 7+ consecutive days below 15. CONDITION 3 MET. |
+| ETF flows | Dramatically decelerating — $733M/day outflows (May 27) to $22M/day (June 11). IBIT turned net positive June 11. Profit-taking from Q1 buyers at $52-58K appears largely exhausted. |
+| Mid-$50Ks probability | 20-25%. Reduced from prior estimate. ETF flow deceleration is key signal. |
+| Scenario 2 probability | 40-45% — most likely path if equity recovery continues. |
+| BINARY GATE | Fed June 17 (Warsh first meeting). Hawkish surprise would reset to Scenario 1 monitoring. 20-30% probability. |
+
+---
+
+## SCENARIO FRAMEWORK — FOUR PREDEFINED PATHS
+# Added S66 WEEKEND | 13 June 2026
+# Replaces binary enter/do-not-enter structure with four clearly defined outcomes.
+# The original Scenario 1 parameters are UNCHANGED.
+# Scenarios 2, 3, 4 are additive — they define fund behaviour for non-base-case paths.
+
+### SCENARIO 1 — DEEP RETEST (original parameters, unchanged)
+Probability: 20-25%
+Trigger: BTC falls back to $53-58K on a daily close AND SPX breaks below 50d MA (~7,156)
+  AND F&G below 15 sustained 5+ days
+Allocation: $22,000 maximum
+Stop on entry: Below $48,000 (stress shelf)
+Action: Full original three-condition entry. No modifications.
+Notes: Requires hawkish Fed surprise on June 17 or new wave of ETF institutional selling
+  or Iran re-escalation. Not the base case but remains fully defined and ready to execute.
+
+### SCENARIO 2 — BASE CONFIRMATION ENTRY (new secondary framework)
+Probability: 40-45%
+Trigger: ALL of the following simultaneously:
+  a. ETF flows net positive for 3 consecutive sessions (Farside confirmed — not estimated)
+  b. BTC holds $60,000–$65,000 for 5+ sessions without retesting below $58,000
+  c. F&G below 20 for 10+ consecutive days (currently at 7+ days — approaching)
+  d. Any retest of $58,000–$60,000 holds as support, not resistance (higher low confirmed)
+  e. VIX below 22 (regime stable — replaces SPX below 50d MA condition for this scenario only)
+Allocation: $10,000 maximum — this is NOT the full conviction entry
+Stop: $57,500 — weekly close below this invalidates the base thesis entirely
+Hard review gate: June 17 Fed statement. Any hawkish surprise before all five conditions
+  are complete = scenario defaults back to Scenario 1 monitoring. Do not enter pre-Fed
+  unless conditions a-e were already fully met before June 17.
+Exit thesis: BTC closes below $57,500 on a weekly basis OR ETF outflows resume above
+  $200M/day for 3+ consecutive sessions.
+
+### SCENARIO 3 — WINDOW CLOSED (missed the entry)
+Probability: 20-25%
+Trigger: BTC reclaims and holds $68,000–$70,000 on a weekly close
+Action: Entry window for this cycle is closed. No chasing above $70,000.
+  The $22,000 Scenario 1 allocation and $10,000 Scenario 2 allocation remain in cash.
+  Next entry point = next cycle drawdown to structural support.
+Notes: This scenario exists to prevent the worst outcome — buying at $72,000 because
+  "it is going to $100,000." Defining it in advance is the only protection against it.
+  If BTC reaches $70K without the fund, the correct answer is to accept it and wait.
+
+### SCENARIO 4 — CONTINUATION LOWER (below $58K base fails)
+Probability: 10-15%
+Trigger: BTC breaks $58,000 on a daily close and fails to reclaim within 48 hours
+Action: Scenario 2 is immediately cancelled. Scenario 1 original parameters take over.
+  Do NOT enter between $58,000 and $54,000. Wait for the $54,000–$56,000 realised-price band.
+  Run full Scorecard A at $54-56K. If 6+ AND all three Scenario 1 conditions met = ENTER.
+  If $54-56K also fails: next test $48-50K. Treat all bounces as suspect.
 
 ---
 
@@ -38,10 +102,11 @@ Update on-chain anchors weekly — realised price and STH realised price move ov
 |------|------|--------------------|
 | Above $80,000 | Cycle repair / renewed bull structure | Sustained move above True Market Mean. Buyers in control if ETF inflows persist. |
 | $72,000–$75,000 | Strong recovery confirmation | If reclaimed and held, shifts from repair to buyers returning. If rejected, still vulnerable. |
-| $68,000–$70,000 | First major repair level | Reduces immediate crash risk. Failed reclaim = market still weak. |
+| $68,000–$70,000 | First major repair level — Scenario 3 trigger | Reduces immediate crash risk. Failed reclaim = market still weak. Weekly close above = window closed. |
 | $60,000–$69,000 | Major demand / consolidation band | Broad base-watch zone. Holding after panic = absorption. Breaking below weakens case. |
-| **$58,000–$60,000** | **Immediate battleground — FUND ENTRY ZONE** | Holding keeps base-low scenario alive. Loss shifts focus to realised-price support. |
-| $54,000–$56,000 | Realised-price / structural retest | Key deeper support if $58K fails. Tests average network cost basis. |
+| **$60,000–$65,000** | **Current consolidation band — Scenario 2 monitoring zone** | Holding here for 5+ sessions with ETF flow reversal = Scenario 2 conditions forming. |
+| **$58,000–$60,000** | **Immediate battleground — Scenario 1 entry zone upper limit** | Holding keeps base-low scenario alive. Loss shifts focus to realised-price support. |
+| $54,000–$56,000 | Realised-price / structural retest — Scenario 4 entry | Key deeper support if $58K fails. Tests average network cost basis. |
 | $48,000–$50,000 | Stress shelf | More severe deleveraging phase. Need forced-selling exhaustion before calling bottom. |
 | $42,000–$45,000 | Deep bear stress zone | Not base case. Major cycle failure or broad liquidity shock. |
 | Below $40,000 | Systemic bear / thesis invalidation | Treat all bounces as suspect. Exit if post-entry. |
@@ -60,41 +125,49 @@ Update on-chain anchors weekly — realised price and STH realised price move ov
 
 ## WEEKLY SCORECARD A — BOTTOM LIKELY FORMING
 Run every Friday. Need at least 6 of 9 checked before considering entry.
-Combined with fund entry conditions (price, SPX, Fear & Greed) — ALL must align.
+For Scenario 1: combined with all three fund entry conditions — ALL must align.
+For Scenario 2: 5 of 9 sufficient given higher price, smaller allocation, tighter stop.
+
+### SCORECARD A — JUNE 13 2026 (partial — on-chain data unavailable without Glassnode)
 
 | # | Condition | Status | Notes |
 |---|-----------|--------|-------|
-| 1 | BTC holds active support band on daily/weekly closes | [ ] | |
-| 2 | Liquidations spike then cool | [ ] | |
-| 3 | Funding neutral or negative | [ ] | |
-| 4 | ETF outflows shrink materially | [ ] | |
-| 5 | Fear & Greed below 20 then stabilises or improves | [ ] | |
-| 6 | SOPR starts recovering towards/above 1 | [ ] | |
-| 7 | Whale/LTH accumulation improves | [ ] | |
-| 8 | Exchange outflows increase (more BTC leaving exchanges) | [ ] | |
-| 9 | BTC stops making lower lows | [ ] | |
+| 1 | BTC holds active support band on daily/weekly closes | [X] | $58-60K held cleanly. Higher lows since June 5. |
+| 2 | Liquidations spike then cool | [~] | Chart suggests cooling. Confirmation needed via CoinGlass. |
+| 3 | Funding neutral or negative | [ ] | Unknown — check CoinGlass Friday. |
+| 4 | ETF outflows shrink materially | [X] | CONFIRMED Farside. $733M/day to $22M/day. IBIT net positive June 11. |
+| 5 | Fear & Greed below 20 then stabilises or improves | [X] | 12-13 for 7+ consecutive days. Stabilising. |
+| 6 | SOPR starts recovering towards/above 1 | [ ] | Unknown — check Checkonchain Friday. |
+| 7 | Whale/LTH accumulation improves | [ ] | Unknown — check Glassnode or Checkonchain Friday. |
+| 8 | Exchange outflows increase (more BTC leaving exchanges) | [ ] | Unknown — check Glassnode Friday. |
+| 9 | BTC stops making lower lows | [X] | Confirmed. Higher lows forming on hourly since June 5. |
 
-**Score this week: [ ] / 9**
-**Entry gate: 6+ checked AND all 3 fund entry conditions met**
+**Score this week: 4/9 confirmed + 1 partial**
+**Scenario 1 entry gate: 6+ AND all three conditions met**
+**Scenario 2 entry gate: 5+ AND all five Scenario 2 conditions met**
+**Friday action: complete items 3, 6, 7, 8 via CoinGlass and Checkonchain**
 
 ---
 
 ## WEEKLY SCORECARD B — BOTTOM PROBABLY NOT REACHED
-5 or more checked = bearish, do not enter regardless of price.
+5 or more checked = bearish, do not enter regardless of price or scenario.
+
+### SCORECARD B — JUNE 13 2026 (partial)
 
 | # | Condition | Status | Notes |
 |---|-----------|--------|-------|
-| 1 | BTC closes below active support and cannot reclaim it | [ ] | |
-| 2 | ETF outflows remain heavy or accelerate | [ ] | |
-| 3 | Liquidation cascades continue | [ ] | |
-| 4 | Open interest remains high despite falling price | [ ] | |
-| 5 | Funding remains positive while price falls | [ ] | |
-| 6 | STH realised price is lost and retests fail | [ ] | |
-| 7 | Whales are distributing rather than accumulating | [ ] | |
-| 8 | BTC dominance rises because alts are collapsing | [ ] | |
-| 9 | Macro remains risk-off: stronger dollar, higher yields, weak equities | [ ] | |
+| 1 | BTC closes below active support and cannot reclaim it | [ ] | NOT triggered. $58-60K held. |
+| 2 | ETF outflows remain heavy or accelerate | [ ] | NOT active. Dramatically shrinking per Farside. |
+| 3 | Liquidation cascades continue | [ ] | Appears to be easing. Confirm Friday via CoinGlass. |
+| 4 | Open interest remains high despite falling price | [ ] | Unknown — check CoinGlass Friday. |
+| 5 | Funding remains positive while price falls | [ ] | Not applicable — price has recovered. |
+| 6 | STH realised price is lost and retests fail | [ ] | Unknown — check Checkonchain Friday. |
+| 7 | Whales are distributing rather than accumulating | [ ] | Unknown — check Glassnode Friday. |
+| 8 | BTC dominance rises because alts are collapsing | [ ] | Unknown — check Friday. |
+| 9 | Macro remains risk-off: stronger dollar, higher yields, weak equities | [ ] | NOT active. VIX 19.25, 10yr 4.46%, market health approaching GREEN. |
 
-**Score this week: [ ] / 9**
+**Score this week: ~2-3/9 confirmed bearish (items 2, 9 clearly not active)**
+**Down from 4/9 on June 6. Trend is improving.**
 **Do not enter if 5+ checked**
 
 ---
@@ -139,24 +212,45 @@ Run whenever BTC reaches or breaks any support band.
 ---
 
 ## TRIGGER LADDER — WORKING ACTIONS
+Updated S66 WEEKEND to reflect Scenario Framework.
+
 | Trigger | Read-through | Fund action |
 |---------|-------------|-------------|
-| BTC holds $58K-$60K | Base-watch remains valid | Watch ETF flows, leverage, SOPR. Run Scorecard A. |
-| BTC loses $58K-$60K | Bottom not confirmed — move focus lower | Next test $54-56K. Re-run universal test. Do NOT enter yet. |
-| BTC holds $54K-$56K | Deep base possible. At low end of fund entry zone. | Run full Scorecard A. If 6+ AND SPX below 50d MA AND F&G <15 sustained = ENTER |
-| BTC loses $54K-$56K | Structural weakness. Stress scenario active. | Next test $48-50K. Treat bounces as suspect. Entry deferred. |
-| BTC holds $48K-$50K | Severe capitulation. Below fund entry zone. | Monitor only. Evidence of exhaustion needed before re-assessing entry level. |
+| BTC holds $60-65K for 5+ sessions | Scenario 2 conditions forming | Check ETF flows (Farside). If 3 consecutive positive days AND F&G below 20 for 10+ days AND VIX below 22 = Scenario 2 entry gate open. Allocate $10K max. |
+| BTC reclaims $68K-$70K on weekly close | Scenario 3 — window closed | No entry. Accept the missed opportunity. Wait for next cycle. Do not chase. |
+| BTC drops below $60K but holds $58-60K | Retest of battleground | Watch for higher low. If holds = constructive. Run Scorecard A. Scenario 2 still possible. |
+| BTC loses $58K on daily close — cannot reclaim in 48h | Scenario 4 active | Scenario 2 cancelled. Original Scenario 1 parameters only. Wait for $54-56K. |
+| BTC holds $54K-$56K | Realised price support — Scenario 4 entry | Run full Scorecard A. If 6+ AND all three Scenario 1 conditions met = ENTER $22K. |
+| BTC loses $54K-$56K | Structural weakness. Stress scenario. | Next test $48-50K. Treat bounces as suspect. Entry deferred. |
+| BTC holds $48K-$50K | Severe capitulation. Below Scenario 1 zone. | Monitor only. Evidence of exhaustion before reassessing. |
 | BTC loses $48K-$50K | Deep bear stress zone | No entry. Map $42-45K. Monitor systemic signals. |
-| BTC reclaims $68K-$70K | First trend-repair signal | If held pre-entry: do not enter — missed window. If held post-entry: Scorecard C. |
-| BTC reclaims $72K-$75K | Recovery credible | If post-entry: strong hold signal. Monitor for profit-taking opportunity. |
-| BTC holds above $80K | Cycle repair | Consider partial exit or trailing stop if post-entry. |
+| BTC holds above $80K | Cycle repair | If post-entry: Scorecard C. Consider partial exit or trailing stop. |
+
+---
+
+## FED JUNE 17 BINARY GATE
+Warsh's first meeting. 20-30% probability of hawkish language.
+This is the single event that determines whether Scenario 2 remains available this week.
+
+HAWKISH OUTCOME (hike or explicit hike language):
+  SPX likely falls toward 50d MA or below. BTC likely retests $58-60K or lower.
+  Scenario 2 gate closes. Scenario 1 monitoring resumes.
+  Watch for daily close below $58K as Scenario 4 trigger.
+
+HOLD / DOVISH OUTCOME (hold with neutral language):
+  SPX stays above 50d MA. BTC likely holds $60-65K or drifts higher.
+  Scenario 2 conditions may complete within 1-2 weeks post-Fed.
+  Watch for ETF flow reversal confirmation (3 consecutive positive days Farside).
+
+Do NOT attempt entry before June 17 unless ALL Scenario 2 conditions (a-e) were
+already fully met prior to June 16 close. The Fed is 4 days away. Waiting is free.
 
 ---
 
 ## DATA SOURCES
 Free / accessible first:
 - BTC price / charts: TradingView (BTCUSD), CoinGecko
-- ETF flows: Farside Investors — farside.co.uk/btc (free, daily)
+- ETF flows: Farside Investors — farside.co.uk/btc (free, daily) — PRIMARY
 - Fear & Greed: alternative.me/crypto/fear-and-greed-index (free)
 - Derivatives/liquidations: CoinGlass — coinglass.com (free tier sufficient)
 - STH Realised Price: Bitcoin Magazine Pro — bitcoinmagazinepro.com/charts (free)
@@ -165,8 +259,9 @@ Free / accessible first:
 
 Claude pulls weekly at Friday review:
 - Fear & Greed via web search
-- ETF flow trend via web search (Farside/Bloomberg)
-- BTC price vs support bands via EOD or web search
+- ETF flow trend via Farside direct fetch (farside.co.uk/btc)
+- BTC price vs support bands via chart or web search
+- Scorecard A items 3, 6, 7, 8 via CoinGlass and Checkonchain
 - Macro signals already tracked in MARKET_HEALTH_CHECK.md
 
 ---
@@ -187,6 +282,13 @@ Claude pulls weekly at Friday review:
    for 6/9 may mean entering after a 15-20% bounce from the absolute low. This is
    acceptable — the goal is confirmation, not catching the exact bottom.
 
+5. Scenario 2 SPX condition modification: the SPX below 50d MA requirement is replaced
+   by VIX below 22 for Scenario 2 only. Rationale: in the ETF era, waiting for SPX
+   to be below its 50d MA while F&G is in extreme fear creates an entry that only
+   fires in the worst possible macro environment. Scenario 2 is a base-confirmation
+   entry, not a crisis entry. VIX below 22 confirms regime is stable without requiring
+   full equity breakdown. Scenario 1 retains the original SPX condition unchanged.
+
 ---
 
 ## WEEKLY CYCLE LOG
@@ -194,9 +296,8 @@ Copy forward each week. Target is a time series of decisions, not memory-depende
 
 | Date | BTC price | Active band | ETF flow trend | Leverage/funding | F&G | Whales | Macro | A score | B score | Phase |
 |------|-----------|-------------|---------------|------------------|-----|--------|-------|---------|---------|-------|
-| 6 Jun 26 | ~$61,200 | $58-60K | Outflows (6 consecutive days late May) | Cooling | 12 | Unknown | Risk-off, VIX 25.89, 10yr 4.54% | 1/9 | 4/9 | Capitulation/base-watch |
-| | | | | | | | | | | |
-| | | | | | | | | | | |
+| 6 Jun 26 | ~$61,200 | $58-60K | Outflows (heavy — $733M/day peak) | Cooling | 12 | Unknown | Risk-off, VIX 21.51 close (25.89 intraday), 10yr 4.54% | 1/9 | 4/9 | Capitulation/base-watch |
+| 13 Jun 26 | ~$63,562 | $60-65K consolidation | Decelerating sharply — $22M/day Jun 11, IBIT net positive | Unknown | 13 (7+ days below 15) | Unknown | Improving — VIX 19.25, 10yr 4.46%, WTI $85.40 | 4/9 partial | ~2/9 | Base-watch / bottom forming signals present |
 | | | | | | | | | | | |
 | | | | | | | | | | | |
 | | | | | | | | | | | |
@@ -204,5 +305,6 @@ Copy forward each week. Target is a time series of decisions, not memory-depende
 ---
 
 *Created: S59 WEEKEND | 6 June 2026 | Claude via filesystem MCP*
+*Last updated: S66 WEEKEND | 13 June 2026 | Claude via filesystem MCP*
 *Source: Adapted from BTC_Cycle_Watchlist_and_Support_Band_Playbook.docx prepared for James C*
-*Next update: Friday S60 weekly review — fill in Cycle Log row and run Scorecards A and B*
+*Next update: Friday S67 review — complete Scorecard A items 3, 6, 7, 8 via CoinGlass and Checkonchain. Run Scorecard B full. Assess Scenario 2 gate post-Fed June 17.*

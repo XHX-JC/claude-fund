@@ -109,9 +109,16 @@ One of four conditions required (T67):
 All three must be stated explicitly at the point of entry decision.
 Without all three the trade defaults to Strategy A standard sizing ($500 max loss).
 
-  Declaration 1: Specific short-term catalyst and time horizon in DAYS.
-                 Must be a named, identifiable event — not "market sentiment"
-                 or "it looks ready to move." Named catalysts only.
+  Declaration 1: Named catalyst OR named probability thesis with time horizon in DAYS.
+                 The catalyst does NOT need to have occurred or been confirmed.
+                 It needs to be specific, assessable, and time-bounded.
+                 VALID: "MU will beat — 26/27 analysts Buy, structural supply deficit."
+                 VALID: "Hormuz mine clearance active, CODA in Northrop mine hunting supply chain."
+                 VALID: "LRCX equipment orders will rise if MU Q4 guides up — report in 6 hours."
+                 INVALID: "Market sentiment" or "it looks ready to move."
+                 The stop (Declaration 2) must be set at THESIS COLLAPSE level, not at
+                 the level where the news fails to confirm. If you can define thesis collapse,
+                 you can take the position before confirmation. See P61.
 
   Declaration 2: Stop at a genuine thesis-break level.
                  The entry-day low is the standard reference.
@@ -211,11 +218,58 @@ If conviction remains high after the initial catalyst period, the
 stop doing its job IS the position management — do not interfere.
 Duration: defined by catalyst, then stop-managed until triggered.
 
+### MANDATORY VEHICLE SELECTION CHECK (added S79 — P60)
+═══════════════════════════════════════════════════════════════════
+Before any Strategy B entry, state in the session log:
+  "Most direct vehicle: [NAME]. Reason not using it: [MAX TWO SENTENCES]."
+  If the reason exceeds two sentences, the current vehicle is likely wrong.
+  If the current vehicle IS the most direct — state that explicitly.
+  This question must appear in the journal. Absence is a protocol violation.
+
+Vehicle directness test: how many causal steps between the catalyst and the
+vehicle's revenue? One step is correct. Two or more requires explicit justification.
+  One hop:  MU beats → LRCX equipment orders (CORRECT)
+  Four hops: MU beats → HBM demand → data centre connectivity → CRDO revenue (WRONG)
+═══════════════════════════════════════════════════════════════════
+
+### PRE-CATALYST PROBABILITY ENTRY FRAMEWORK (added S79 — P61 / E32)
+═══════════════════════════════════════════════════════════════════
+When the fund has conviction >70% on a specific binary catalyst and a direct
+vehicle is identified, the position goes on BEFORE the event.
+
+The protocol:
+  1. Define Declaration 1 as a probability thesis, not a confirmed event.
+  2. Define Declaration 2 as the thesis-COLLAPSE stop, not the news-fail stop.
+     Thesis collapse = the level below which the underlying probability
+     assessment is demonstrably broken, regardless of any announcement.
+  3. Define Declaration 3 as the hard exit — event date or time horizon.
+  4. Size at standard Strategy B sizing. The stop does the risk management.
+
+Example (MU beat / LRCX, S79 correct approach):
+  Dec 1: MU Q3 beat likely — 26/27 analysts Buy, structural supply deficit,
+          prior quarter a record. LRCX is the primary DRAM equipment vendor.
+  Dec 2: Stop $363.50 (Jun 23 session low — thesis collapse if LRCX breaks here).
+  Dec 3: Hard exit 72 hours post-announcement.
+  Entry: $374.80 (the night before MU reports). Not after MU confirms.
+
+Waiting for confirmation after three declarations are completable is a
+protocol violation under E32. If you can define the stop, take the position.
+═══════════════════════════════════════════════════════════════════
+
 ### Actively hunt for Strategy B opportunities every session.
 Strategy B should not be passive. At every session open, the question
 is asked: what named catalyst exists in the next 1-7 days that could
 drive a 5-15% move in a liquid name? If one exists, evaluate the
 three declarations. If all three pass, it is a candidate.
+
+SOURCING METHOD (SI-91, added S70-S72): the question above is answered by
+working through STRATB_SOURCING_PROTOCOL.md, not by searching the news for
+stocks that have already moved. Reactive news search only ever finds
+catalysts that have already fired and already been priced in. The sourcing
+protocol's forward calendar (IPO quiet periods, index reconstitution dates,
+lockup expirations, 13D filings, contract award timelines) is the primary
+tool. Reactive search remains valid only for same-day sympathy/second-order
+plays (Category 8 of that file) after a lead name has already moved.
 
 ---
 

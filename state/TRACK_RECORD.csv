@@ -1,0 +1,106 @@
+Status,Ticker,Side,Qty,Open_Date,Close_Date,Entry,Exit,Realized_PL,Return_Pct,Strategy,Catalyst,Notes
+CLOSED,CCL,LONG,240,2026-03-24,2026-03-26,24.830,25.350,122.35,2.1,,,backfilled from broker statement
+CLOSED,ONDS,LONG,250,2026-03-24,2026-03-30,10.900,8.505,-601.30,-22.0,,,backfilled from broker statement
+CLOSED,KTOS,LONG,100,2026-03-24,2026-03-30,81.000,64.978,-1604.27,-19.8,,,backfilled from broker statement
+CLOSED,UEC,LONG,206,2026-03-25,2026-03-31,13.770,13.160,-127.76,-4.4,,,backfilled from broker statement
+CLOSED,IAG,LONG,2200,2026-03-27,2026-04-01,3.550,3.700,322.02,4.2,,,backfilled from broker statement
+CLOSED,RCL,LONG,36,2026-03-24,2026-04-02,273.540,269.910,-132.89,-1.3,,,backfilled from broker statement
+CLOSED,LDOm,LONG,17,2026-03-27,2026-04-07,58.100,59.560,18.82,2.5,,,backfilled from broker statement
+CLOSED,LEU,LONG,13,2026-03-24,2026-04-07,188.790,170.260,-242.94,-9.8,,,backfilled from broker statement
+CLOSED,R3NK,LONG,80,2026-03-26,2026-04-08,51.510,56.010,354.00,8.7,,,backfilled from broker statement
+CLOSED,UPS,LONG,50,2026-04-08,2026-04-08,100.170,99.600,-30.61,-0.6,,,backfilled from broker statement
+CLOSED,PLTR,LONG,49,2026-03-24,2026-04-09,161.608,134.976,-1307.11,-16.5,,,backfilled from broker statement
+CLOSED,SHLD,LONG,69,2026-03-24,2026-04-10,72.010,73.340,89.65,1.8,,,backfilled from broker statement
+CLOSED,SHLD,SHORT,69,2026-04-10,2026-04-10,73.210,72.846,23.00,0.5,,,backfilled from broker statement
+CLOSED,AVAV,LONG,25,2026-03-26,2026-04-15,195.050,197.945,70.27,1.5,,,backfilled from broker statement
+CLOSED,LNG,LONG,19,2026-04-13,2026-04-17,268.760,248.000,-396.54,-7.7,,,backfilled from broker statement
+CLOSED,PATK,LONG,25,2026-04-17,2026-04-17,108.800,109.256,9.34,0.4,,,backfilled from broker statement
+CLOSED,ABVX,LONG,44,2026-04-06,2026-04-21,117.890,114.260,-161.83,-3.1,,Takeover speculation (AstraZeneca exclusivity window),backfilled from broker statement
+CLOSED,RR.,LONG,150,2026-03-26,2026-04-22,11.750,11.500,-52.31,-2.1,,,backfilled from broker statement
+CLOSED,LLY,LONG,3,2026-04-16,2026-04-24,905.010,875.540,-90.46,-3.3,,,backfilled from broker statement
+CLOSED,CODA,LONG,416,2026-03-25,2026-04-27,12.000,11.420,-245.62,-4.8,,,backfilled from broker statement
+CLOSED,ISRG,LONG,22,2026-04-09,2026-04-27,459.200,471.676,272.25,2.7,,,backfilled from broker statement
+CLOSED,ITM,LONG,3100,2026-04-01,2026-04-28,0.650,1.311,2037.87,101.7,,,backfilled from broker statement
+CLOSED,CCJ,LONG,49,2026-03-27,2026-04-28,104.000,119.970,780.40,15.4,,,backfilled from broker statement
+CLOSED,ABBV,LONG,20,2026-04-22,2026-04-29,205.170,191.161,-282.27,-6.8,,,backfilled from broker statement
+CLOSED,PDYN,LONG,500,2026-03-25,2026-04-29,6.590,6.242,-178.91,-5.3,,,backfilled from broker statement
+CLOSED,VST,LONG,53,2026-03-24,2026-04-29,150.550,156.530,314.76,4.0,,,backfilled from broker statement
+CLOSED,PDYN,SHORT,250,2026-04-29,2026-04-30,5.751,5.850,-27.40,-1.7,,,backfilled from broker statement
+CLOSED,MSFT,LONG,25,2026-04-09,2026-04-30,372.730,410.380,939.03,10.1,,,backfilled from broker statement
+CLOSED,NOG,LONG,80,2026-04-17,2026-05-01,24.370,26.500,168.34,8.7,,,backfilled from broker statement
+CLOSED,V,LONG,8,2026-04-23,2026-05-05,307.000,321.823,116.53,4.8,,,backfilled from broker statement
+CLOSED,R3NK,LONG,25,2026-04-13,2026-05-06,52.150,53.440,26.25,2.5,,,backfilled from broker statement
+CLOSED,NOG,LONG,200,2026-05-04,2026-05-06,26.765,25.110,-333.14,-6.2,,,backfilled from broker statement
+CLOSED,AMPX,LONG,168,2026-03-25,2026-05-07,18.100,17.940,-28.98,-0.9,,,backfilled from broker statement
+CLOSED,CEG,LONG,14,2026-04-27,2026-05-07,308.000,314.770,92.69,2.2,,,backfilled from broker statement
+CLOSED,MRVL,LONG,10,2026-04-27,2026-05-07,152.000,160.020,78.17,5.3,,,backfilled from broker statement
+CLOSED,R3NK,LONG,25,2026-05-07,2026-05-11,52.000,47.010,-130.75,-9.6,,,backfilled from broker statement
+CLOSED,LDOm,LONG,35,2026-04-21,2026-05-12,56.000,50.000,-216.00,-10.7,,,backfilled from broker statement
+CLOSED,R3NK,LONG,200,2026-05-11,2026-05-12,46.461,43.992,-502.84,-5.3,,,backfilled from broker statement
+CLOSED,AMZN,LONG,30,2026-03-30,2026-05-12,201.170,263.943,1881.02,31.2,,,backfilled from broker statement
+CLOSED,MSFT,LONG,25,2026-04-30,2026-05-13,403.012,402.090,-25.25,-0.2,,,backfilled from broker statement
+CLOSED,CCJ,LONG,50,2026-04-28,2026-05-13,117.000,112.171,-243.60,-4.1,,,backfilled from broker statement
+CLOSED,BAH,LONG,33,2026-04-30,2026-05-13,76.500,68.960,-250.86,-9.9,,,backfilled from broker statement
+CLOSED,CRML,LONG,110,2026-04-14,2026-05-14,9.070,11.174,229.44,23.2,,,backfilled from broker statement
+CLOSED,ABVX,LONG,50,2026-04-29,2026-05-14,109.870,120.909,549.82,10.0,,Phase 2a/2b extension data,backfilled from broker statement
+CLOSED,RR./RRl,LONG,100,2026-04-23,2026-05-15,11.200,11.492,17.60,2.6,,Ticker recoded RR.->RRl mid-position same instrument,backfilled from broker statement
+CLOSED,SNPS,LONG,8,2026-04-27,2026-05-15,495.000,496.650,11.12,0.3,,,backfilled from broker statement
+CLOSED,IREN,LONG,24,2026-05-11,2026-05-18,55.000,51.979,-74.53,-5.5,,,backfilled from broker statement
+CLOSED,UUUU,LONG,50,2026-05-05,2026-05-19,21.990,16.501,-276.49,-25.0,,,backfilled from broker statement
+CLOSED,IAU,LONG,175,2026-05-18,2026-05-22,86.000,84.835,-206.22,-1.4,,,backfilled from broker statement
+CLOSED,MSTR,LONG,15,2026-05-04,2026-05-28,181.000,148.760,-485.65,-17.8,,,backfilled from broker statement
+CLOSED,PATH,LONG,320,2026-05-11,2026-05-29,10.720,10.450,-89.73,-2.5,,,backfilled from broker statement
+CLOSED,CGCT,LONG,291,2026-04-17,2026-06-01,10.290,12.890,753.56,25.3,,,backfilled from broker statement
+CLOSED,AVAV,LONG,15,2026-05-04,2026-06-01,185.000,199.370,213.49,7.8,,,backfilled from broker statement
+CLOSED,ABVX,LONG,40,2026-05-26,2026-06-03,126.630,81.490,-1807.68,-35.6,,ABTECT maintenance data positive but ADS dilution/resale registration crushed stock same day,backfilled from broker statement
+CLOSED,IBM,LONG,26,2026-04-30,2026-06-03,228.700,309.720,2104.35,35.4,,,backfilled from broker statement
+CLOSED,ZETA,LONG,191,2026-05-11,2026-06-03,16.860,23.015,1173.48,36.5,,,backfilled from broker statement
+CLOSED,MU,LONG,10,2026-06-04,2026-06-05,987.310,897.690,-898.39,-9.1,,,backfilled from broker statement
+CLOSED,LEU,LONG,15,2026-05-14,2026-06-05,191.630,158.100,-505.00,-17.5,,,backfilled from broker statement
+CLOSED,PYPL,LONG,55,2026-05-08,2026-06-08,45.620,41.250,-242.41,-9.6,,,backfilled from broker statement
+CLOSED,SERV,LONG,75,2026-06-02,2026-06-08,9.000,7.930,-82.28,-11.9,,,backfilled from broker statement
+CLOSED,NVO,LONG,55,2026-06-01,2026-06-08,44.505,42.300,-123.33,-5.0,,,backfilled from broker statement
+CLOSED,CCL,LONG,250,2026-05-13,2026-06-08,24.700,26.981,567.54,9.2,,,backfilled from broker statement
+CLOSED,SNPS,LONG,41,2026-06-08,2026-06-08,466.000,471.088,206.21,1.1,,,backfilled from broker statement
+CLOSED,EXE,LONG,55,2026-06-03,2026-06-09,91.550,89.850,-95.61,-1.9,,,backfilled from broker statement
+CLOSED,AAL,LONG,1000,2026-06-09,2026-06-09,13.940,14.061,110.21,0.9,,,backfilled from broker statement
+CLOSED,UAL,LONG,150,2026-06-09,2026-06-09,107.820,109.392,233.38,1.5,,,backfilled from broker statement
+CLOSED,IES,LONG,3000,2026-04-20,2026-06-10,0.174,0.313,408.30,80.0,,,backfilled from broker statement
+CLOSED,NCLH,LONG,75,2026-05-13,2026-06-10,15.900,18.480,191.46,16.2,,,backfilled from broker statement
+CLOSED,CEG,LONG,30,2026-06-04,2026-06-10,267.300,244.360,-690.36,-8.6,,,backfilled from broker statement
+CLOSED,LUNR,LONG,330,2026-06-10,2026-06-10,27.653,26.329,-440.52,-4.8,,,backfilled from broker statement
+CLOSED,ACM,LONG,65,2026-06-01,2026-06-10,69.140,68.851,-20.91,-0.4,,,backfilled from broker statement
+CLOSED,LW,LONG,35,2026-06-01,2026-06-11,42.840,44.130,43.11,3.0,,,backfilled from broker statement
+CLOSED,ZENA,LONG,1000,2026-06-08,2026-06-11,1.360,1.475,104.77,8.5,,,backfilled from broker statement
+CLOSED,FAC,LONG,870,2026-06-11,2026-06-11,24.960,19.083,-5122.06,-23.5,,IPO volatility - largest single loss YTD,backfilled from broker statement
+CLOSED,FAC,LONG,800,2026-06-11,2026-06-11,17.750,16.636,-899.63,-6.3,,IPO volatility,backfilled from broker statement
+CLOSED,RKLB,LONG,55,2026-06-10,2026-06-12,110.520,114.560,220.06,3.7,,,backfilled from broker statement
+CLOSED,CODA,LONG,250,2026-04-30,2026-06-12,11.100,11.600,122.39,4.5,,,backfilled from broker statement
+CLOSED,FAC,LONG,579,2026-06-12,2026-06-12,17.390,14.710,-1557.69,-15.4,,IPO volatility,backfilled from broker statement
+CLOSED,LMT,LONG,10,2026-05-05,2026-06-15,516.730,533.760,168.19,3.3,,,backfilled from broker statement
+CLOSED,RKLB,LONG,97,2026-06-15,2026-06-16,106.000,106.185,15.71,0.2,,,backfilled from broker statement
+CLOSED,ASTS,LONG,114,2026-06-15,2026-06-16,87.000,83.752,-372.51,-3.7,,,backfilled from broker statement
+CLOSED,ORCL,LONG,108,2026-06-12,2026-06-17,184.500,185.371,91.67,0.5,,,backfilled from broker statement
+CLOSED,FRSH,LONG,265,2026-06-09,2026-06-18,9.300,8.805,-133.93,-5.3,,,backfilled from broker statement
+CLOSED,KRMN,LONG,225,2026-06-16,2026-06-18,48.450,48.975,115.60,1.1,,,backfilled from broker statement
+CLOSED,MSTR,SHORT,47,2026-06-23,2026-06-23,106.110,106.610,-25.61,-0.5,,,backfilled from broker statement
+CLOSED,KRMN,LONG,153,2026-06-22,2026-06-24,49.050,45.853,-491.37,-6.5,,,backfilled from broker statement
+CLOSED,UAMY,LONG,526,2026-06-22,2026-06-24,7.640,6.894,-397.84,-9.8,,,backfilled from broker statement
+CLOSED,CRDO,LONG,36,2026-06-24,2026-06-24,278.190,269.550,-313.25,-3.1,,,backfilled from broker statement
+CLOSED,CRDO,LONG,30,2026-06-24,2026-06-24,270.000,264.000,-182.17,-2.2,,,backfilled from broker statement
+CLOSED,WAF,LONG,145,2026-06-25,2026-06-25,91.750,89.150,-390.12,-2.8,,,backfilled from broker statement
+CLOSED,ASM,LONG,15,2026-06-25,2026-06-25,1006.500,1018.000,157.32,1.1,,,backfilled from broker statement
+CLOSED,BESI,LONG,55,2026-06-25,2026-06-25,303.300,300.500,-170.60,-0.9,,,backfilled from broker statement
+CLOSED,AEHR,LONG,200,2026-06-25,2026-06-25,100.040,96.195,-771.44,-3.8,,,backfilled from broker statement
+CLOSED,UUUU,LONG,310,2026-06-24,2026-06-26,15.500,13.921,-492.83,-10.2,,,backfilled from broker statement
+CLOSED,CAPR,LONG,189,2026-06-29,2026-06-29,26.500,23.491,-570.85,-11.4,B,FDA AdCom stop hit,backfilled from broker statement
+OPEN,HNR1,LONG,40,2026-06-04,,224.600,,,,A,,backfilled from broker statement
+OPEN,XSG,LONG,40000,2026-06-05,,0.015,,,,A,,backfilled from broker statement
+OPEN,ZS,LONG,80,2026-06-22,,122.600,,,,A,,backfilled from broker statement
+OPEN,AIRJ,LONG,900,2026-06-22,,4.950,,,,SPEC,,backfilled from broker statement
+OPEN,AGI,LONG,161,2026-06-23,,31.000,,,,A,,backfilled from broker statement
+OPEN,FISV,LONG,200,2026-06-24,,47.610,,,,A,,backfilled from broker statement
+OPEN,RHM,LONG,10,2026-06-26,,947.400,,,,A,,backfilled from broker statement
+OPEN,OKLO,LONG,200,2026-06-26,,50.280,,,,B,,backfilled from broker statement
+OPEN,LEU,LONG,40,2026-06-29,,165.000,,,,B,,backfilled from broker statement
+CLOSED,LCII,LONG,100,2026-06-30,2026-06-30,99.050,99.670,59.77,0.6,SPEC,Unverified network rumor confirmed real same day - PATK $8.1B all-stock merger,Orphaned stop flagged and cancelled same session

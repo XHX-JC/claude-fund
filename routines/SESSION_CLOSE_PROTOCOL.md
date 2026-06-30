@@ -59,6 +59,27 @@ Why this matters: HPE was in a watchlist note for 6 weeks at its entry zone
 with no mechanism to escalate. DECISION_REGISTER prevents this recurring.
 ═══════════════════════════════════════════════════════════════════
 
+## STEP 2C — RECONCILE TRACK_RECORD.csv (MANDATORY — added S83, SI-95)
+═══════════════════════════════════════════════════════════════════
+File: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\TRACK_RECORD.csv
+Protocol: C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\TRACK_RECORD_PROTOCOL.md
+
+The primary rule is that TRACK_RECORD.csv is updated AT THE MOMENT each entry or
+exit fills, not deferred to close. This step is the safety net, not the primary
+mechanism — confirm nothing was missed mid-session.
+
+Cross-check get_account_trades(TODAY) against TRACK_RECORD.csv:
+  - Every fill today has a corresponding row (new OPEN row, or an OPEN row updated
+    to CLOSED with Exit/Realized_PL/Return_Pct filled in)
+  - Strategy and Catalyst fields are populated on any row opened today — blank
+    fields are only acceptable on pre-S83 backfilled rows
+  - No duplicate rows for the same round trip
+
+If any fill from today is missing a row, add or correct it now, before the
+journal is written. Failure to keep this file current is the same error class
+as a missed DECISION_REGISTER update.
+═══════════════════════════════════════════════════════════════════
+
 ## STEP 3 — DETERMINE NEXT JOURNAL FILE NUMBER
 Read: C:\Users\James Cadbury\Dropbox\Claude-Fund\journal\
 Last file in that folder = current version. New file = last number + 1.
