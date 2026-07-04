@@ -5,11 +5,17 @@
 # Pause condition: Composite score ≤7 for 5 consecutive sessions AND VIX below 18
 # ═══════════════════════════════════════════════════════════════════════════════════════
 
-## CURRENT STATUS: AMBER (updated S60 — softened from AMBER-RED)
-## COMPOSITE SCORE: 13/24
-## REGIME: ELEVATED CAUTION — pragmatic entry approach
-## VIX AT CLOSE: 21.51 (Friday 5 June — spike day was intraday high 25.89, not close)
-## BUY ORDERS IN MARKET: NONE
+## CURRENT STATUS: GREEN (updated S85 — full recalculation, deferred from S84)
+## COMPOSITE SCORE: 6/24
+## REGIME: NORMAL OPERATIONS — crash stress test no longer mandatory, mechanical caution lifted
+## VIX AT CLOSE: 16.59 (Wednesday 1 July close, prior close 16.45)
+## BUY ORDERS IN MARKET: KRMN $50.00 limit, CODA $9.50 limit (both GTC, unfilled)
+
+### S85 RECALCULATION — SUPERSEDES STALE 12-13/24 CARRIED SINCE JUNE 16
+The prior AMBER 12-13/24 score was six weeks stale, carried forward through S80-S84
+without a full twelve-indicator repull despite S84 itself noting the actual inputs
+(VIX 16.45, 10yr 4.44-4.46%) would score GREEN. Full recalculation run S85, 2 July 2026.
+See updated table and HISTORY LOG below.
 
 ### REGIME CLARIFICATION — S60 UPDATE
 The VIX closing level on June 5 was 21.51, not 25.89. The 25.89 figure was the
@@ -66,26 +72,73 @@ Optional:
 
 ## STEP 3 — COMPOSITE SCORE (Claude calculates each session)
 
+## STEP 2B — MANUAL FLAG: LEVERAGE AND FACTOR DIVERGENCE (ADDED S86W, 4 July 2026)
+═══════════════════════════════════════════════════════════════════
+Origin: James forwarded technical trader charts flagging a genuine leverage and factor
+extreme that the 12 indicator composite score cannot see, because none of the 12
+indicators measure margin debt growth or narrow factor unwind risk. On 4 July 2026 the
+score read GREEN 6/24 while, two sessions earlier (1 to 2 July), the Goldman Sachs High
+Beta Momentum index had its worst two day move since Covid (down almost 19%) with VIX
+actually falling (16.59 to 16.15) and SPX roughly flat. A violent factor level unwind
+occurred underneath a headline tape that looked calm. This is not captured by the
+score, and will not be, until a real indicator is added.
+
+MANUAL CHECK, run every session until a proper data feed is found, high confidence
+this is currently informative:
+  1. FINRA margin debt month over month growth rate (source: FINRA Margin Statistics,
+     free, monthly). RED FLAG if two consecutive months show 5%+ MoM growth, or if
+     margin debt to M2 approaches its record high of 6.35% (was 6.17% as of 2026 05 01,
+     53.5% above its own long term average). Current reading, May 2026: $1.42 trillion,
+     up 8.5% month over month, second consecutive record month, up 54% year over year.
+     Real (inflation adjusted) margin debt has grown 550% since 1997 versus the market's
+     358% over the same period, the widest gap on record. This is independently
+     corroborated across multiple named sources (Kobeissi Letter, Advisor Perspectives,
+     STL News), not a single source claim.
+  2. Momentum or high beta factor divergence from broad index vol: if a named momentum,
+     growth, or high beta index or basket (Goldman Sachs High Beta Momentum, or any
+     comparable factor tracker found via web search) moves 10%+ over one to two sessions
+     while VIX is flat or falling, log it explicitly as a leverage unwind signal
+     independent of the composite score, regardless of what the score itself reads.
+  3. US Total Market Cap divided by M2 money supply (source: MacroMicro, free): currently
+     3.28 as of May 2026, an all time high across the full 50+ year series and above the
+     2000 dot com peak (approximately 3.0). Treat any further increase as confirmation,
+     not new information, until it reverses.
+  4. Cross check margin debt to TOTAL MARKET CAP (not M2) before treating leverage as an
+     outright extreme: this ratio was actually 0.5% BELOW its own long term average as
+     of 2026 05 01 (1.87% vs 1.88% average). The M2 denominator, not runaway margin debt
+     alone, is doing a meaningful share of the work in indicator 1's alarming reading.
+     State both ratios together every time this check runs, never indicator 1 alone.
+THIS BLOCK IS A MANUAL FLAG, NOT YET A SCORED INDICATOR. It does not change the 6/24
+composite score or the GREEN regime designation on its own. Its purpose is to prevent
+the composite score's blind spot from being mistaken for "nothing is wrong." If this
+block and the composite score disagree, say so explicitly rather than defaulting to
+whichever reads more reassuring.
+════════════════════════════════════════════════════════════════════
+
+## STEP 3 — COMPOSITE SCORE (Claude calculates each session)
+
 Score each indicator: GREEN=0, AMBER=1, RED=2
 Maximum score = 24.
 
 | # | Indicator | Green | Amber | Red | Current | Score |
 |---|-----------|-------|-------|-----|---------|-------|
-| 1 | SPX vs 50d MA | >3% above | 0-3% above | Below | +3.2% above | 1 |
-| 2 | SPX vs 200d MA | >5% above | 1-5% above | Below | +7.5% above | 0 |
-| 3 | SPX Fibonacci | Above 7,290 | 7,093-7,290 | Below 7,093 | ~7,346 | 1 |
-| 4 | VIX level | <20 | 20-30 | 30+ | 21.51 (close) | 1 |
-| 5 | VIX velocity | Falling | Flat | Spiking | Spiked then partially recovered | 1 |
-| 6 | HY spreads | <350bp | 350-500bp | 500bp+ | ~285bp | 0 |
-| 7 | 10yr yield | <4.5% | 4.5-5.0% | 5%+ | 4.55% | 1 |
-| 8 | 10yr trend | Falling | Flat | Rising | Rising since Jan | 2 |
-| 9 | CAPE ratio | <25x | 25-35x | 35x+ | ~39x | 2 |
-| 10 | Fed direction | Cutting | On hold | Hiking | 57% hike odds | 1 |
-| 11 | WTI oil | <$90 | $90-105 | $105+ | ~$96 | 1 |
-| 12 | Market breadth | >65% | 40-65% | <40% | ~55% | 1 |
+| 1 | SPX vs 50d MA | >3% above | 0-3% above | Below | ~+1.7% above (SPX 7,483 vs 50d MA ~7,359, derived from SPY) | 1 |
+| 2 | SPX vs 200d MA | >5% above | 1-5% above | Below | ~+8.2% above (200d MA ~6,914, derived from SPY) | 0 |
+| 3 | SPX Fibonacci | Above 7,290 | 7,093-7,290 | Below 7,093 | 7,483 (Jul 1 close) | 0 |
+| 4 | VIX level | <20 | 20-30 | 30+ | 16.59 (Jul 1 close) | 0 |
+| 5 | VIX velocity | Falling | Flat | Spiking | Down from 21.51 (Jun 5) to 16.45-16.59 range, sustained | 0 |
+| 6 | HY spreads | <350bp | 350-500bp | 500bp+ | HYG $79.58, flat vs 50d/200d avg — no widening signal | 0 |
+| 7 | 10yr yield | <4.5% | 4.5-5.0% | 5%+ | 4.475% (TNX, Jul 1 close) | 0 |
+| 8 | 10yr trend | Falling | Flat | Rising | Flat intraday, JOLTS-driven upward pressure noted S84 | 1 |
+| 9 | CAPE ratio | <25x | 25-35x | 35x+ | ~39-40x, not refreshed, SPX higher since last calc | 2 |
+| 10 | Fed direction | Cutting | On hold | Hiking | On hold, hike odds rising into Sept per S84 macro read | 1 |
+| 11 | WTI oil | <$90 | $90-105 | $105+ | $71.87 (Jun 29, FRED/EOD) | 0 |
+| 12 | Market breadth | >65% | 40-65% | <40% | Not directly measured — S84 rotation was sector-specific not a breadth collapse, estimated mid-band | 1 |
 
-CURRENT COMPOSITE SCORE: 12/24
-REGIME: AMBER — elevated caution, pragmatic entries permitted
+CURRENT COMPOSITE SCORE: 6/24
+REGIME: GREEN — normal operations. Crash stress test and pragmatic-caution overlay both lift.
+Caveat: indicators 9 (CAPE) and 12 (breadth) are carried/estimated, not freshly pulled from a
+primary source this session — flagged, not treated as verified to the same standard as 1-8, 10-11.
 
 Score thresholds:
   0-7:   GREEN — normal operations
@@ -215,6 +268,16 @@ Reactivate immediately if VIX spikes above 20 again.
   OKLO Stage 1 complete - DEFER, pre-revenue speculative, Tier 2 regime.
 
   16 June 2026 - S69 dated note (not a full recalculation, see DECISION_REGISTER.md OKLO note for the ~4/24 figure produced this session in a different context). VIX 16.1-16.2, described externally as a low vol bull regime. WTI under $83, a three month low. SPX above its 50 day MA. Directionally this points further toward GREEN than the 7/24 carried from S67/S68, but the full 12 indicator composite (HY spreads, 10yr, CAPE, breadth, Fed direction) was not re-pulled in full today. Recalculate properly at S70 open rather than carrying forward either the 7/24 or this directional note as a confirmed score. FOMC outcome Wednesday 17 June is the swing factor either way.
+
+  2 July 2026 - S85 FULL RECALCULATION (deferred from S84 per James's direction). Score dropped
+  to 6/24, regime GREEN. The prior AMBER 12-13/24 had been stale since 16 June, carried through
+  five sessions without a full twelve-indicator repull. VIX 16.59 (Jul 1 close), 10yr 4.475%, WTI
+  $71.87, SPX 7,483 (+1.7% above 50d MA, +8.2% above 200d MA), HYG flat with no spread-widening
+  signal. CAPE (~39-40x) and market breadth were carried/estimated, not freshly sourced this
+  session — the two weakest indicators in the recalc, flagged for a cleaner pull next session.
+  Practical effect: crash stress test is no longer mandatory for new entries, and the AMBER
+  pragmatic-caution overlay lifts. This does not itself trigger the formal five-consecutive-
+  session suspend condition — only one session of a sub-8 score is confirmed so far.
 
 ---
 *Created: S59 | 6 June 2026 | Claude via filesystem MCP*

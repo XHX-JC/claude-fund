@@ -1,140 +1,111 @@
 # FUND SESSION STATE
-# Last updated: S83 | 30 June 2026 | ~21:30 UAE
-# S83: CAPR confirmed stopped out (-$570.85, June 29 same-day hit). LCII speculative round trip (+$59.77). MSFT entered via stock, unfilled, stop $345. KRMN GTC cancelled, deferred. AIRJ stop raised to $4.38. LEU stop raised to $162.00 (evening). OKLO stop showing $50.04, unconfirmed. FAC P42 reassessed. Defense Sector Earnings Watch + Deep Dive Conviction Assessment added (ONDS/KTOS/RCAT/DRS/LHX/NOC/RTX). New permanent infrastructure: TRACK_RECORD.csv + protocol, P62 lesson.
+# Path: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\FUND_SESSION_STATE.md
+# Last updated: S86W weekend check | 4 July 2026 (Saturday, no trading, off-cycle) — see below. Prior live update: S86 close | 3 July 2026, 18:12 UAE.
+# Holiday session (S86) — NYSE closed for Independence Day (observed). No trading journal written that session per James's explicit instruction, no US trading occurred. LSE/XETRA open, RHM traded, down on continuation of a two-month deterioration the register previously undersold.
+
+## S86W WEEKEND CHECK — SATURDAY 4 JULY 2026 (no trading, both NYSE and LSE closed)
+Run at James's request to check the book against OKLO's July 4 Groves catalyst. IBKR connector absent from the tool registry a second consecutive check (also missing S86) — escalating from session-specific to a genuine standing gap, still unresolved, no live positions/orders/balances confirmed this check. OKLO catalyst readiness re-run: modal outcome remains delay, revised to 75-78% (from 70%) on a newly found procurement gap (electrical/plumbing/auxiliary equipment incomplete at the Lockhart site per independent trade press), stacked on the zero-DOE-business-days point already logged S86. First market reaction is Monday regardless of what happens over the DOE holiday weekend.
+Process correction, P66 (full detail in LESSONS_LEARNED.md): an initial pass this session treated market closure as license to skip news scanning on the rest of the held book. Corrected mid-session by James. Full sweep then surfaced three genuine misses, now written into DECISION_REGISTER.md: RHM's July 2 ad-hoc disclosure on Q2 order nominations (missed at S86 close despite predating it), ONDS's escalating dilution overhang mischaracterized as "no news" at S84, and MP's China export-control blacklisting plus its own suit against USA Rare Earth (neither previously in the file). CEG's Aug 6 earnings date challenged by a conflicting aggregator figure and confirmed correct via primary source. Standing division of labor now codified in SESSION_OPEN_PROTOCOL.md Step 3B: James checks live prices/stops directly, Claude runs the full news/opportunity/macro sweep every session regardless of market hours.
 
 ---
 
-## PRICE NOTE
-Journal prices are ALWAYS intraday — never flag this as an error.
+## ACCOUNT SNAPSHOT (last confirmed live, IBKR screenshot ~11:00 UAE, before CRM/OKLO limit orders placed — no cash-impacting fills since)
+Net Liquidity: $98.4K
+Excess Liquidity: $72.7K
+Maintenance Margin: $25.6K
+Initial Margin: $26.6K
+Available Funds: $71.7K
+Buying Power: $286.5K
+Daily P&L: +$491.14 (+0.50%)
+Unrealized P&L: $7,106.04
+Realized P&L: -$170.94 (LEU stop-out, exact fill confirmed via Trades tab)
 
-## CURRENT SESSION
-Session: S83 completed | Tuesday 30 June 2026 | Close: ~21:30 UAE
-Next session: S84 — Wednesday 1 July 2026
-Next journal file: trading_journal93.jsx
-
----
-
-## FUND SNAPSHOT — S83 CLOSE (IBKR CONFIRMED)
-| Metric | Value |
-|--------|-------|
-| Net Liquidation (IBKR confirmed) | **$94,668.10** |
-| Session change | +$705.77 (from $93,962.33 open) |
-| Cash USD | **$43,416.65** |
-| Cash EUR | -EUR19,339.91 |
-| Cash GBP | GBP2,117.11 |
-| Positions held | **9** (CAPR closed, no replacement) |
-| GTC orders live | **9** (HNR1, ZS, AIRJ, AGI, FISV, OKLO, RHM, LEU, MSFT stop + ASTS/RHM T2/MSFT buy pending) |
-| Fills today | LCII 100sh $99.05→$99.67 round trip (+$59.77). MSFT 50sh $360 buy placed, unfilled. |
+## IBKR CONNECTOR STATUS
+Not directly reachable via tool_search under any query this session — absent from the deferred tool registry entirely, a different failure mode than S84's connector-down pattern. All reconciliation this session done via James's own screenshots (Positions, Orders, Trades tabs, and the OKLO order confirmation dialog). Confirm at S87 open whether this is a session-specific access issue or a genuine standing gap.
 
 ---
 
-## POSITIONS AT CLOSE (S83 — IBKR CONFIRMED)
-| Ticker | Shares | Avg Cost | S83 Price | Stop | Unrealised | Strategy | Notes |
-|--------|--------|----------|-----------|------|-----------|----------|-------|
-| ZS | 80 | $122.61 | $139.78 | $124.88 GTC | +$1,373 | A | All exit triggers cleared. Q4 Sep 8. |
-| HNR1 | 40 | EUR224.72 | EUR241.40 | EUR229.60 STANDALONE | +EUR668 | A | Manual cancel on exit. ONE stop only. |
-| OKLO | 200 | $50.28 | $51.34 | **$50.04 GTC — UNCONFIRMED** | +$211 | B | Stop discrepancy vs $46.00 at open, confirm S84. Hard exit July 7. |
-| FISV | 200 | $47.616 | $47.33 | $46.90/$43.00 GTC | -$57 | A HIGH CONV | Buffer tightened to ~1.8%. Q2 July 22-29. |
-| RHM | 10 | EUR947.88 | EUR998.50 | EUR850 GTC | +EUR506 | A HIGH CONV | Best day in book, +3.62%. H1 results Aug 6. |
-| AGI | 161 | $31.007 | $30.26 | $29.42/$28.50 GTC | -$120 | A | Buffer back below $30.50 alert. Q2 Jul 29. |
-| **LEU** | **40** | **$165.025** | **$163.82** | **$162.00 GTC** | **-$48** | **B** | Stop raised near-cost S83 evening. FY27 DOE budget excludes this cascade per verified 10-Q. |
-| AIRJ | 900 | $4.956 | $5.34 | $4.38 GTC | +$346 | SPEC | +17% day on Prime system unveiling. Stop raised from $3.85. |
-| XSG | 40,000 | 1.5075p | 1.55p | None | +GBP17 | A | Micro position. |
+## HELD POSITIONS (as of last confirmed screenshot, cross-checked against session discussion)
 
-**LCII — CLOSED SAME SESSION.** Bought $99.05, sold $99.67, +$59.77. Speculative rumor trade, deal confirmed real (PATK merger). No position.
-**CAPR — CONFIRMED STOPPED OUT same-day June 29.** Fill $23.491. Realised -$570.85. Position 0.
-**UUUU — STOPPED OUT Friday 26 June.** Fill ~$13.92. Realised -$492.83. Re-entry: Q2 July 31.
+| Ticker | Shares | Avg Cost | Stop | Strategy | Key Date | Notes |
+|--------|--------|----------|------|----------|----------|-------|
+| HNR1 | 40 | EUR224.72 | EUR235.0 GTC STANDALONE | A | Aug 12 Q2 | Unchanged. ONE stop only, manual cancel required on exit. |
+| XSG | 40,000 | 1.5075p | None | A | -- | Micro position, unchanged. |
+| ZS | 80 | $122.613 | $134.40 GTC trailing | A | ~Sep 8 Q4 | Unchanged, trailing-only per James's standing override. |
+| FISV | 200 | $47.616 | $46.50/$43.00 GTC | A HIGH CONV | Jul 22-29 Q2 | Unchanged. Insider cluster buy confirmed S85 still stands. |
+| AGI | 161 | $31.007 | $29.42/$28.50 GTC | A | Jul 29 Q2, T2 | Unchanged. |
+| AIRJ | 900 | $4.956 | $4.50 GTC | SPEC | -- | Unchanged, confirmed deliberate not a bug. |
+| RHM | 10 | EUR947.88 | EUR1020.6 GTC | A HIGH CONV | Aug 6 H1 | Down ~2.3% today, NOT profit-taking as first framed — corrected S86 with full history: May 7 Q1 miss triggered JPMorgan downgrade to Neutral (first in ~4yrs, -9.2% same day), June 24 Germany scrapping warship plans hit RHM -19% same session (hits the NVL naval acquisition directly), operating FCF -EUR285M, order nominations -55% YoY despite backlog still climbing. Position itself remains sound, +15% since entry, stop buffer ~6.7%, but Aug 6 H1 now carries real weight given May 7 is what started this slide. |
+| OKLO | 200 | $50.286 | $50.49 GTC | B | July 4 Groves criticality | Full readiness deep dive run S86: on-time positive criticality 15% (medium-high confidence, primary-sourced from Oklo's own softened July 1 language), delay/non-event 70%, negative surprise 10%. Partial profit-take limit placed same session: SELL 100sh LMT $58.80 GTC (confirmed via order screenshot), resting alongside the $50.49 stop on the full 200, unlinked, James's explicit decision to leave the stop as-is through Monday despite gap risk on a binary event. Gap-up-sell-at-open rule stays live for the other 100sh if not captured by the limit. |
+| KTOS | 200 | $50.006 | $46.00 GTC | B | ~Aug 6 Q2 est | Unchanged. Flagged S86: IBKR position view showed a stale/lagged Unrealized P&L (-$611 implying a ~$46.95 reference price against an actual Last of $55.50) — display lag, not real, refresh before trusting that field again. |
+| CEG | 25 | $240.041 | $220.00 GTC | B | Aug 6 Q2 | Unchanged. |
+| ONDS | 600 | $8.256 | $7.00 GTC | B | Aug 12-17 est Q2 | James considered widening the stop to $6.50 on a "let the selling exhaust" theory S86 — directly conflicted with the fund's own one-directional stop rule, flagged, James confirmed leave as-is. Two-week chart shows repeated failed gap-ups (Jun 30, Jul 2) sold back into same/next session, distribution pattern not exhaustion. Thesis (Q2 order momentum, Sentrycs/Lockheed integration) unchanged, not yet contradicted by the drift. |
+| MP | 100 | $54.011 | $50.00 GTC | A | Aug 6 Q2 | FILLED overnight S85 into S86 (confirmed via Trades tab, contradicts the S85 journal's own "DAY order will expire" note — reconcile that discrepancy next session, not urgent). |
+| CODA | 600 | $9.506 | $8.75 GTC | B | No hard deadline | FILLED, confirmed via Trades tab. |
+| CRM | 50 (pending) | $165.00 limit | $149.80 GTC | A | Aug 26 Q2 | NEW S86. Stage 2 complete same session, order placed, UNFILLED as of last confirmed screenshot — confirm fill status at S87 open. Trailing P/E 18.9x, forward 12.0x. Real leverage risk: $25B ASR funded by new debt, not cash, boosted Q1 EPS $0.23 non-GAAP. Conviction 55-60%, medium. R/R 4.1:1 to $228 (Guggenheim's fresh target), 5.9:1 to $255. Max loss at stop $760, between standard and high-conviction tiers without a three-point declaration, flagged not blocked. |
 
-## GTC PENDING (not yet filled)
+**LEU — STOPPED OUT S86.** 40sh, entry $165.00, exit $160.78 (confirmed via Trades tab, $0.12 slippage below the $160.90 GTC level, tight for the name's liquidity). Realized -$170.94 after both commissions, -2.59%. TRACK_RECORD.csv updated live at the moment this was confirmed, not deferred to close. Round trip from a genuine positive catalyst (DOE HALEU contract news, real, primary-sourced) to a full reversal and stop-out inside one session — read alongside GLW's and LRCX's own violent single-session reversals same window as a pattern worth carrying into how OKLO's Monday gap risk is weighted, not an isolated LEU event.
+
+---
+
+## GTC PENDING (unfilled)
+
 | Ticker | Shares | Limit | Stop | Notes |
 |--------|--------|-------|------|-------|
-| ASTS | 50 | $64.50 | $55.00 | Order 1239301925. Current $87.26, running on sector sympathy. James explicitly DEFERRED S83, not chasing. |
-| MSFT | 50 | $360.00 | $345.00 | Order 1215513877/1215513900. Current $372, running away. Stop adjusted twice S83. |
-| RHM T2 | 6 | EUR880 | EUR850 | Second tranche, running away. |
+| KRMN | 100 | $50.00 | $46.00 | Unchanged, still unfilled. |
 
-**KRMN — GTC CANCELLED S83.** No position, no resting orders. Re-entry deferred to post-July 27 lock-up, watching for T74-pattern capitulation in the July 27-Aug 6 window, not a calendar date.
-
-## GTC STOP ORDERS LIVE AT S83 CLOSE (CONFIRMED IBKR)
-| Ticker | Type | Stop Level | Order ID | Flag |
-|--------|------|-----------|---------|------|
-| HNR1 | SELL Stop | EUR229.60 | 278826083 | STANDALONE — ONE only. Manual cancel on exit. |
-| ZS | SELL Stop | $124.88 | 1807166316 | |
-| AIRJ | SELL Stop | $4.38 | 1807166367 | Raised S83 from $3.85 |
-| AGI | SELL Stop Limit | $29.42/$28.50 | 1165625692 | |
-| FISV | SELL Stop Limit | $46.90/$43.00 | 1124369353 | Buffer tightened |
-| OKLO | SELL Stop | $50.04 | 2043807781 | UNCONFIRMED change from $46.00 — verify S84 open |
-| RHM | SELL Stop | EUR850.00 | 2043807866 | |
-| LEU | SELL Stop | $162.00 | 806304671 | Raised S83 evening from $149.91 |
-| MSFT | SELL Stop | $345.00 | 1215513900 | NEW S83, paired with unfilled buy |
+**MAGNETAR/PRA — RESOLVED MOOT S86.** ProAssurance merger closed June 26 2026 per direct SEC EDGAR filing, $25.00 cash, Magnetar and all holders now at 0%. The S85 flag calling this "worth a Stage 1 look" was already six days stale when written. No live decision ever existed.
 
 ---
 
-## STRATEGY B STATUS (S83)
-
-### OKLO — ACTIVE, STOP DISCREPANCY UNRESOLVED
-200sh at $50.28. Stop shows $50.04 in IBKR, was $46.00 at S83 session open — not discussed or authorized in session, CONFIRM INTENT FIRST ACTION S84.
-CALENDAR: July 4 Groves criticality (Saturday — NYSE closed). First market reaction Monday July 6.
-If gap up Monday July 6 open: sell at open, do not wait for close. Hard exit July 7 regardless.
-
-### LEU — ACTIVE, STOP TIGHTENED EVENING S83
-40sh at $165.025. Stop raised $149.91→$162.00 near session close, James-directed, given the catalyst now looks like a slower funding negotiation than a clean same-day binary.
-DOE HALEU contract expired Tuesday June 30. No announcement found across three checks this session.
-VERIFIED (direct 10-Q pull): FY2027 DOE budget proposal does NOT include funding for operation of this cascade. Option 1b carries $163.5M target cost / $15.2M target fee — company has no obligation to perform beyond DOE-committed funding. Real structural risk to fast resolution.
-Stock climbed $159→$164 late session on no identifiable news, light volume — treat as drift not signal.
-Earnings date estimate ~Aug 3, 2026.
-
-### CAPR — CLOSED
-Stop fired same-day June 29 at $23.491. Realised -$570.85, within planned max loss. No live exposure.
+## SECTOR CONCENTRATION
+Nuclear/power infrastructure: OKLO + CEG remain, LEU exited via stop S86. Combined exposure reduced from the $22,983 flagged S84, exact current figure not recalculated this session (no live IBKR pull available). Still no formal sector cap set — raise again once OKLO's Monday outcome is known, the position count in this sector may look different by S87 regardless of a cap decision.
 
 ---
 
-## MSFT — STOCK ENTRY, NOT OPTIONS (REVISED S83)
-Options spread (2× $380/$450 bull call) abandoned after order-ticket execution confusion (wrong side shown, then wrong contract type). James correctly declined to proceed without full comfort with the mechanics.
-Pivoted to plain stock: Buy 50sh Limit $360 GTC, paired stop, adjusted twice to $345 (max loss $750). Unfilled all session, stock ran to $372.
-Concentration flag: MSFT + LEU + OKLO together = 37.3% of NAV if MSFT fills, all leaning on the same AI-infrastructure macro thesis.
-Q4 earnings July 28 (confirmed) is the primary catalyst if filled.
+## TODAY'S RESEARCH, NOT POSITIONS (Stage 1/2 work done S86, none resulted in a new fill beyond CRM)
+
+**AMPX** — PASS, Stage 1 does not clear. Manatee Research short report: Eurocell (Korean manufacturing partner) factory seized, Jan 2026 court finding of fraud — real, court-corroborated. Berzelius relationship IS disclosed in the 10-K (corrected mid-session after initially mischaracterizing it as undisclosed) — dispute is over characterization of control, not existence. Insiders selling continues post-report. Conviction allegations true in substance: 40-50%. Material litigation consequence: 15-25%. Re-engage only on a credible rebuttal, independent audit, or the fraud investigation closing clean.
+
+**LRCX** — PASS, Stage 2 run in full. Corrected a same-session error: LRCX actually closed down ~10% Thursday, not the "flat/+0.4%" figure first pulled from a mislabeled data field. Consensus targets ($343-349) sit at or below spot, no defined R/R case. Fresh CEO Form 144 filed the day of the crash. Valuation still 66-74x trailing despite the drop.
+
+**ORCL** — analysis only, no position. Debt concern is real: $55.7B FY26 capex, negative $23.7B FCF, another $40-50B raise planned on top of $48B already raised. Sharper risk than the debt itself: over half the $638B backlog may be linked to OpenAI, whose own funding depends on continued external raises.
+
+**SNOW** — watch only, already ran (+36-38% May 28), no current entry case, next test Aug 26.
+
+**STX** — reviewed twice now (S85, S86), still no base, correction has intensified not resolved. Genuine two-sided analyst split (BofA $1,150 target Jul 1 vs Fox/Zacks downgrades same window). Real leverage (D/E 3.16x) into a possible tightening-rate backdrop — one macro data point (new Fed chair, hike-odds repricing) found single-sourced, UNCONFIRMED, worth an independent check before the next MARKET_HEALTH_CHECK.md recalc. Next real look: ~July 16 earnings.
+
+**GLW** — bear case upgraded to high confidence, verified against actual Form 4 filing language (Weeks' June 9 exercise-and-sell, exact weighted average price quoted in the filing itself), not just aggregator paraphrase. Alert $165.77 stands.
+
+**AVAV** — Stage 1 run twice in one session, first pass wrongly logged a named gap ("SCAR") as unresolved when one more search would have closed it — James caught this directly, addressed below. SCAR resolved: a terminated $1.7B Space Force contract from March 2026, still carrying active, unresolved securities fraud litigation (multiple firms, live solicitation as of this week). Conclusion: PASS on positioning ahead of the July 8 Investor Day — real operational momentum (fresh $500M DoD contract July 2) but genuine unresolved litigation plus a live management-credibility question, on a name that already ran past the entry window from its own earnings pop.
+
+**SOUN** — reviewed a third time this session cycle (May 11, June 20, now), same conclusion each time, now with three weeks of fresh evidence (three positive PR events, zero price support) reinforcing rather than weakening the bear case. Fund's own $6.00 alert not yet touched.
+
+**Magnetar/PRA** — see GTC PENDING section, resolved moot.
 
 ---
 
-## BAH — STAGE 2 COMPLETE (unchanged from S82)
-Entry: $58-68, optimal $60-65. Stop: $55 hard floor. Target: $88-95.
-Entry date: July 21-22.
+## PROCESS CHANGES MADE THIS SESSION, NOT TRADE-SPECIFIC
+
+**P65 (new permanent lesson, LESSONS_LEARNED.md and SESSION_OPEN_PROTOCOL.md Step 6B):** catalyst readiness checks on held positions with a dated event inside 7 days must run automatically at session open, not only when James asks. Directly prompted by LEU's contract news being missed twice and OKLO's Groves readiness only getting checked on request.
+
+**New standing instruction, James's own userPreferences, added S86 mid-session:** before logging any specific term, acronym, contract name, or figure as unresolved, run one additional targeted search for that specific item first — only log a genuine gap if the direct attempt fails. Added after the AVAV "SCAR" miss, where a named gap was presented as a finding when closing it was one search away. This is now a standing behavioral rule, not fund-specific, applies to every research task going forward.
+
+**Two mid-session file-edit errors, both caught and fixed same turn:** MSFT's archive row and NBIS's watchlist row were each briefly overwritten instead of appended to during rapid-fire register updates. Same error class filesystem edits guard against generally, worth watching whether this recurs under similar rapid-update conditions.
 
 ---
 
-## DEFENSE SECTOR EARNINGS WATCH (NEW S83) — full detail in DECISION_REGISTER.md
-No current positions. ONDS flagged HIGHEST PRIORITY for Stage 2 prep — closest AVAV/MU-style setup of seven names tracked (depressed price + accelerating real order momentum, $150M+ Q2 orders independently confirmed). James flagged $6.00 as a serious pre-earnings entry consideration — NOT Stage 2 complete, alerts resting at $6.97/$5.01. Calibrated conviction bands set for ONDS/KTOS/RCAT/DRS/LHX/NOC/RTX, full reasoning in DECISION_REGISTER.md. NOC (July 21) and RTX (July 23) earnings dates company-confirmed; DRS and KRMN remain estimates only.
+## OPEN ITEMS CARRIED TO S87 (next live session, Monday July 6)
+1. Confirm CRM fill status — order was unfilled as of last screenshot.
+2. OKLO Monday: gap-up-sell-at-open rule live on remaining shares, $58.80 limit and $50.49 stop both resting unlinked, cancel whichever doesn't fill manually.
+3. Reconcile MP's actual fill mechanism — S85 journal said the DAY order would expire, Trades tab shows it filled. Minor, not urgent, but the journal's own account should be accurate.
+4. Confirm the Kevin Warsh/Fed-hike-odds detail found under STX research before the next MARKET_HEALTH_CHECK.md recalculation — single-sourced, unconfirmed, but relevant to the GREEN regime read if real.
+5. Nuclear/power sector cap still unset, revisit once OKLO's Monday outcome is known.
+6. RHM's Aug 6 H1 print now carries more weight than the position's prior framing implied — worth a fresh pre-earnings look as the date approaches, not treated as routine.
+7. IBKR connector: confirm at S87 open whether the "absent from tool registry" pattern from this session was temporary or a genuine access change. Now absent a SECOND consecutive check (S86W) — treat as a likely standing gap, not session noise, unless S87 proves otherwise.
+8. RHM: fold the July 2 order-nomination ad-hoc disclosure into the Aug 6 pre-earnings read (see DECISION_REGISTER.md).
+9. ONDS: dilution overhang (P62) needs to be tracked as active/worsening, not backgrounded — stop buffer is tightening on supply pressure, not fundamentals.
+10. MP: log the China export-control blacklisting and the USAR litigation, low materiality expected but real headline-risk carriers into Aug 6.
 
 ---
-
-## MARKET HEALTH (S83 — unchanged)
-Regime: AMBER TRENDING GREEN
-VIX: 18.41 (Friday June 27) — below 20, trending GREEN
-10yr yield: 4.375% — GREEN
-SPX: ~7,354 — above 50d (7,156) and 200d (6,858)
-Macro risk: 32% probability major reset over 12 months.
-
----
-
-## BTC STATUS (unchanged)
-ATH: $126,296 October 6, 2025. Current: ~$60,310.
-Scenario 0: October 2026 conviction entry window. Price $42-46K. Max $20-22K staged. Stop $35,000.
-Scorecard A: 0-1/9. Do not enter at current levels.
-
----
-
-## NEXT SESSION PRIORITIES (S84 — Wednesday 1 July 2026)
-1. **LEU** — check for DOE announcement first action. Stop now $162, protects overnight. If announcement landed: execute decision tree. If not: reassess given the slower-negotiation read, no automatic Wednesday-open exit rule anymore (superseded by the tighter stop).
-2. **OKLO** — CONFIRM whether the $50.04 stop was deliberate. Unresolved since mid-session S83.
-3. **FISV** — buffer tightened to ~1.8%, already on warning. Watch closely.
-4. **AGI** — back below the $30.50 alert. Buffer ~3.3%.
-5. **ONDS** — begin Stage 2 groundwork. Highest-priority earnings-watch name, James wants pre-positioning ready before the Aug 12-17 window, not after.
-6. **MSFT** — still unfilled at $360 vs ~$372. No action unless it pulls back into range.
-7. **FAC** — pull the Schedule of Selling Securityholders from the resale S-1 on EDGAR before July 6 to identify the original PIPE investors and check the founders' registration-statement status.
-8. **AIRJ** — raise stop to breakeven ($4.96) once post-news range visibly settles.
-9. **TRACK_RECORD.csv** — confirm updated at every entry/exit going forward, not just at close.
-10. **SCREENERS** — Run all screeners at NYSE open 17:30 UAE.
-
----
-Last updated: S83 | 30 June 2026 | ~21:30 UAE | Claude via filesystem MCP
-One fill: LCII round trip +$59.77. CAPR/UUUU confirmed closed. KRMN cancelled, deferred. MSFT entered via stock (unfilled). LEU stop raised to $162 evening. AIRJ stop raised to $4.38. New infrastructure: TRACK_RECORD.csv, P62 lesson, Defense Sector Earnings Watch with calibrated conviction across 7 names.
+*Last updated: S86W close | 4 July 2026, 18:00 UAE | Claude via filesystem MCP. See trading_journal96.jsx for full session detail. Prior live close: S86 | 3 July 2026, 18:12 UAE.*

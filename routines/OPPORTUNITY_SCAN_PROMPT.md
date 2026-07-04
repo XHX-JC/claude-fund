@@ -1,7 +1,45 @@
 # OPPORTUNITY SCAN ROUTINE — 06:00 UAE DAILY
 # Runs via Claude Code 30 minutes after MARKET_BRIEF.
-# Output: OPPORTUNITY_SCAN.md → C:\Users\jcadb\claude-fund\state\
-# NO GIT OPERATIONS — file is written to C drive only. Git backup via session-close.bat.
+# Output: OPPORTUNITY_SCAN.md → see OUTPUT PATH RESOLUTION below. Dual-machine setup, added S86W
+# second pass, 4 July 2026: James runs this fund from a PC (user profile "James Cadbury") most of
+# the time, but works off a laptop (user profile "jcadb") for extended stretches, confirmed a
+# month-long laptop period starting in two weeks. One hardcoded path breaks every time the machine
+# changes. This file now tries both, in order, at every run.
+# CORRECTED S86W, 4 July 2026: this file previously pointed to C:\Users\jcadb\claude-fund\state\,
+# a local, non-Dropbox path with no relation to either machine's synced folder. That specific path
+# is now retired entirely, not used as a fallback. Do not resurrect it.
+# NO GIT OPERATIONS — file is written to a Dropbox path only. Git backup via session-close.bat
+# if still applicable; confirm this still applies post-correction.
+
+---
+
+## OUTPUT PATH RESOLUTION — TRY IN ORDER, USE THE FIRST THAT RESOLVES
+
+Before Round 3, resolve the output path. Do not assume which machine is running this task.
+
+PATH A (PC, "James Cadbury" profile): C:\Users\James Cadbury\Dropbox\Claude-Fund\state\
+PATH B (laptop, "jcadb" profile):     C:\Users\jcadb\Dropbox\Claude-Fund\state\
+
+Source for Path B: DECISION_REGISTER.md standing note ("FILESYSTEM MCP — USE LOWERCASE ONLY"),
+which states this is the real, live Dropbox-synced path on the jcadb profile, not a stale clone.
+That note has not been independently re-verified against the laptop itself as of this writing.
+Medium-high confidence, sourced from the fund's own prior documentation, not a fresh guess.
+If it turns out wrong, correct it here and only here, do not let a second stale path accumulate.
+
+RESOLUTION LOGIC:
+1. Attempt to confirm Path A exists (the state\ directory is reachable, DECISION_REGISTER.md is
+   visible inside it as a sanity check that this is genuinely the live fund folder, not an empty
+   or wrong directory of the same name).
+2. If Path A resolves, use it. Write there. Do not also write Path B, this is not a redundancy
+   scheme, it is a fallback.
+3. If Path A does not resolve, attempt Path B with the same sanity check.
+4. If neither resolves, do NOT guess a third location and do NOT write a partial/empty file.
+   Stop and surface the failure explicitly at the top of the next thing James reads, rather than
+   silently producing nothing, which is indistinguishable from "ran clean, found no signals."
+5. Whichever path is used, the FIRST LINE of the written OPPORTUNITY_SCAN.md must record which
+   one, e.g. "# Written via PATH A (PC)" or "# Written via PATH B (laptop)". This is the only way
+   anyone reading the file later can tell which machine actually ran the task, since the content
+   format is otherwise identical either way.
 
 ---
 
@@ -63,8 +101,9 @@ Maximum 3 follow-up searches. Do not run for completeness.
 
 ## OUTPUT FORMAT — COPY THIS TEMPLATE EXACTLY
 
-Write the following to: C:\Users\jcadb\claude-fund\state\OPPORTUNITY_SCAN.md
-Overwrite any existing file.
+Write the output to whichever path resolved in OUTPUT PATH RESOLUTION above, prefixed with the
+PATH A/PATH B marker line as specified there.
+Overwrite any existing file at that path.
 
 ```
 # OPPORTUNITY SCAN — [DATE] | Generated [TIME] UAE
@@ -98,10 +137,10 @@ PRIORITY: [TICKER or "None"] — [reason in 10 words max]
 
 ## ROUND 3 — WRITE FILE THEN STOP
 
-Write OPPORTUNITY_SCAN.md to C:\Users\jcadb\claude-fund\state\OPPORTUNITY_SCAN.md
+Write OPPORTUNITY_SCAN.md to the path resolved in OUTPUT PATH RESOLUTION above.
 
 That is the final step. Do not run any git commands. Do not commit. Do not push.
-Do not create branches. The file on the C drive is the deliverable. Stop here.
+Do not create branches. The file at the resolved Dropbox path is the deliverable. Stop here.
 
 ---
 

@@ -57,6 +57,27 @@ to Strategy A — it is an equal and complementary capital engine.
 
 ---
 
+## SECTOR CONCENTRATION POLICY (ADDED S86W, 4 July 2026, JAMES'S EXPLICIT DECISION)
+
+No formal per-sector position cap. Raised three times in one session (nuclear/power:
+OKLO+CEG, then defence-tech: CODA+ONDS+KTOS, then again with Kraken/AMSC as candidates) —
+James's standing answer, stated directly: a hard cap is not required if the underlying
+thesis and fundamentals are sound with genuine conviction on upside. Concentrating in a
+hot sector during a rotation is a deliberate, accepted strategy, not an oversight to be
+corrected. The discipline required is being mindful of the exposure if a concentrated
+sector goes cold, not avoiding concentration in the first place.
+
+OPERATIONAL TRIPWIRE, proposed by Claude, not yet confirmed adopted by James as a hard
+rule — treat as a suggested mechanism until he explicitly confirms it, not as policy:
+if aggregate exposure to a single thematic cluster (nuclear/power: OKLO+CEG; defence-tech:
+CODA+ONDS+KTOS+any future adds) crosses roughly 25% of net liquidity, that should trigger
+a mandatory correlation-risk review before the next add in that cluster, not a block on it.
+This operationalises "stay mindful" into something checkable rather than a permanent good
+intention. Do not present this tripwire as already-adopted policy in future sessions unless
+James has separately confirmed it — as of this writing it is Claude's proposal only.
+
+---
+
 ## STRATEGY A — RULES
 
 ### Entry requirements

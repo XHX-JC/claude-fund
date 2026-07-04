@@ -1,3 +1,88 @@
+## S86W AMENDMENTS — Saturday 4 July 2026 (weekend check, no trading)
+
+Session character: off-cycle Saturday check-in, no journal-numbered session, run at James's request to check the book against OKLO's July 4 Groves catalyst. IBKR connector absent from the tool registry a second consecutive check. One process failure, caught and corrected by James mid-session, logged directly below.
+
+### P66 — MARKET CLOSURE GATES ORDER MECHANICS, NOT RESEARCH (S86W)
+Origin: asked to check the book on a Saturday with both NYSE and LSE closed, the first pass ran the OKLO catalyst check and the standing mechanical items (IBKR reconciliation, HNR1 stop) but explicitly skipped a full news sweep on the rest of the held book, reasoning that "markets are closed" meant there was nothing to find. James corrected this directly: closure prevents trading, it does not prevent RHM issuing an ad-hoc disclosure, ONDS filing a resale registration, or MP being added to an export-control list, all of which happen on real-world clocks unrelated to NYSE/LSE hours. Once actually run, the sweep surfaced three genuine, previously-uncaptured findings (RHM's July 2 order-nomination guidance cut, ONDS's escalating dilution overhang, MP's China blacklisting and USAR litigation) confirming the skip was not merely theoretically wrong but cost real information.
+
+This is the same root failure class as P65 (catalyst checks must be automatic, not requested) one layer up: P65 said run the check every session; this says the check does not pause for weekends, holidays, or closed exchanges. A held position's news doesn't wait for the fund to be open to trade it.
+
+RULE: a full news sweep across every held position runs at every session open, live trading day or not, holiday or not, weekend or not. Market/exchange closure only suspends order mechanics (fills, live price checks, screener runs) — it never suspends research. Division of labor going forward, per James's explicit instruction S86W: James checks live prices and stop placement directly since he is looking at the platform; Claude's job every session is the exhaustive news, opportunity, and macro sentiment sweep, regardless of what the clock or calendar says about market hours. Codified as a standing division-of-labor note in SESSION_OPEN_PROTOCOL.md, not left as a one-off correction.
+
+---
+
+## S86 AMENDMENTS — Friday 3 July 2026
+
+Session character: Holiday session, NYSE closed for Independence Day (observed), no trading possible. Session dominated by reconciliation (LEU stopped out overnight, CODA and MP entries confirmed filled, TRACK_RECORD.csv updated live), a corrected read on a broad AI/semiconductor complex selloff initially undersold in the morning brief, a Stage 2 pass on LRCX after a material self-correction on the prior session's actual close price, confirmation that the AVAV/MU-pattern window had already closed before the fund could act on it, and a full primary-sourced readiness deep dive on OKLO's Groves catalyst that reversed an earlier unresearched assumption about binary-event scheduling. One new permanent lesson below, directly prompted by James naming the same process gap twice in one session.
+
+### P65 — CATALYST READINESS CHECK MUST BE AUTOMATIC, NOT REQUESTED (S86)
+Origin: two instances of the same failure inside one week. LEU's DOE HALEU contract news existed from July 1 but was checked for and missed twice (S84, S85), caught only when James asked directly. OKLO's Groves readiness, DSA approval status, the four remaining regulatory steps, and the company's own softened timing language, was never checked at all until James explicitly requested a deep dive, despite the fund holding a live Strategy B position with a stop calibrated specifically around that catalyst and a same-day discussion of resting a profit-take order against it. Both times the diligence was correct once run, the failure was in when it ran: on request, not by default.
+
+Rule: any HELD position with a named, dated catalyst inside the next 7 calendar days requires a full readiness check at every session open, automatically. Full detail and the six-point minimum standard now live in SESSION_OPEN_PROTOCOL.md Step 6B. Summary: fresh primary source pull dated since last session, independent trade-press cross-check, an explicit calendar/logistics check of whether the counterparty agency actually has the working days available to deliver, a language-comparison check against the company's own prior statements, a stated probability breakdown with confidence levels rather than a single verdict, and an explicit statement of what the finding means for any resting stop or profit-take order. Absence of this block for a qualifying name at session open is a protocol violation, same class as a missing V1 table.
+
+---
+
+## S85 AMENDMENTS — Thursday 2 July 2026
+
+Session character: Session open. IBKR connector restored after two sessions down. Full MARKET_HEALTH_CHECK.md recalculation run (deferred from S84) — AMBER 12-13/24, six weeks stale, replaced with GREEN 6/24. P44 mandatory decisions run on MP and BAH, both recommended ENTER. MP order submitted live (100sh $55.00 limit / stop $50.00 GTC). MSFT and ASTS GTC pairs, both flagged missing at S84 close, confirmed by James as deliberate cancellations (MSFT: lack of funds. ASTS: price moved away from target). OKLO/AIRJ stop reversions, flagged unresolved from S84, confirmed by James as a deliberate re-toggle ("first raise was too aggressive, new stops sit at previous support levels") — not a platform bug, not an accidental reversion. One new permanent lesson below, a second P52 recurrence in the same session it was being actively guarded against.
+
+### P64 — MECHANICAL GUARD AGAINST P52 RECURRENCE (S85)
+Origin: P52 (S70-S72) documented the exact failure mode — a generic sandbox tool
+(create_file/str_replace/bash) used against a Dropbox-shaped path, reporting false
+success against the wrong filesystem. It recurred twice more in S84 per that session's
+processNotes, and recurred a THIRD time in S85 (this session) on the very first
+MARKET_HEALTH_CHECK.md edit — str_replace was called against a
+C:\Users\James Cadbury\Dropbox\... path and correctly errored ENOENT, but only
+because str_replace happens to fail loudly on a nonexistent sandbox path. A similar
+mistake against create_file would have silently written to the wrong location again,
+exactly as it did the first time in S70-S72.
+
+Knowing the rule is not preventing the error. The rule needs a mechanical trigger,
+not a remembered principle, because the failure happens at the moment of tool
+selection, before any content is written, when attention is on the edit itself
+not the tool name.
+
+RULE, effective immediately: any file path beginning with
+"C:\Users\James Cadbury\Dropbox\" is a Dropbox-shaped path. Before calling ANY
+file-write tool (create, edit, or overwrite) against a Dropbox-shaped path, the
+tool name must be checked against this list:
+  ALLOWED:  filesystem:write_file, filesystem:edit_file
+  FORBIDDEN: create_file, str_replace, bash_tool heredocs, any other write tool
+If the tool about to be called is not on the ALLOWED list and the path is
+Dropbox-shaped, STOP before calling it and reroute to filesystem:edit_file or
+filesystem:write_file instead. This check happens BEFORE tool invocation, not
+as a post-hoc read of the error message.
+Secondary backstop, unchanged from P52: after any NEW file creation (not edit)
+claimed to be in Dropbox, verify with filesystem:list_directory on the parent
+folder before treating the write as confirmed.
+This is now the third occurrence of the same root cause. If it recurs a fourth
+time, the fix under consideration is refusing to call any non-filesystem-prefixed
+write tool at all when a Dropbox path is in view, rather than relying on a
+pre-call mental check.
+
+OPERATIONAL NOTE, not a lesson-numbered item: Cowork hourly scheduled task set up S85
+against WATCHLIST_TICKERS.md (BAH, KRMN, ASTS, RKLB, CODA), time-gated to US market
+hours, writes to OPPORTUNITY_SCAN.md only on a genuine contract award/loss hit.
+notifyOnCompletion tested and found unreliable/too noisy for hourly cadence, turned
+off by James. Real notification path, if configured, is a conditional send-message
+step inside the task itself (email/Slack) firing only on a hit — not the OS toggle.
+Until/unless that's confirmed working, OPPORTUNITY_SCAN.md is a pull, not a push:
+read automatically at every session open per standing protocol, plus ad hoc on
+James's request mid-session. Keep WATCHLIST_TICKERS.md in sync with the register
+whenever contract-award monitoring status changes for a name.
+
+---
+
+## S84 AMENDMENTS — Wednesday 1 July 2026
+
+Session character: Extremely long live session. Three new entries (ONDS, KTOS, CEG), two re-entries after resolving stale gating conditions (KRMN, CODA). IBKR connector down entire session despite disconnect/reconnect. Multiple stop reversions flagged (OKLO, AIRJ) without correction pending James confirmation. MSFT position vanished from screenshots without explanation, flagged not assumed. Full sourcing protocol run, WYY and MP surfaced. UAMY checked against a specific political-connection claim and cleared. One new permanent lesson below, directly prompted by James identifying the CEG Calpine lock-up as the actual cause of a move that had been attributed only to sector rotation.
+
+### P63 — CHECK FOR SCHEDULED SHARE-SUPPLY EVENTS BEFORE ENTRY, NOT AFTER A DROP (S84)
+Second occurrence in one session of a stock's decline being explained only after the fact by a scheduled, previously-published technical supply event: KRMN's TCFIII lock-up (fully resolved via research but only after James asked why the answer was taking so long) and CEG's Calpine merger lock-up (the actual immediate cause of the post-entry decline, surfaced by James, not caught pre-entry, despite TIKR having flagged the exact date as a known risk weeks in advance). A same-day LEU decline was then correctly traced to a Russell Microcap index exit, but only because the CEG miss had just made this category of event top of mind, not because it was on a standing checklist.
+RULE: before entering or holding through a known date on any name, check for scheduled lock-up expirations, secondary offerings, and index reconstitution events (Russell, S&P) tied to that name. This is now a mandatory pre-entry check, not a reactive one run only after an unexplained drop. Cross-reference against STRATB_SOURCING_PROTOCOL.md's existing lockup/greenshoe category, this is the same mechanic applied as a screen rather than an explanation.
+
+---
+
 ## S83 AMENDMENTS — Tuesday 30 June 2026
 
 Session character: Live session. MSFT high-conviction stock entry (sized, stopped, adjusted twice on James's instruction). LCII speculative entry on unverified network rumour, flagged but not blocked given disciplined sizing. ABVX history reconstructed from a prior session James referenced but that was never written into this file, a real documentation gap, closed this session. Full broker-statement backfill of TRACK_RECORD.csv (95 closed round trips, 9 open positions, fully reconciled against live IBKR). One new permanent lesson below, directly prompted by James reviewing the FAC history in the new track record and generalising it forward to SpaceX (SPCX).

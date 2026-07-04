@@ -4,7 +4,7 @@
 # Path: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md
 # Referenced in: DECISION_REGISTER.md (BTC entry — see item #BTC)
 # Updated: weekly during Friday review session, and after any decisive BTC move
-# Last updated: S66 WEEKEND | 13 June 2026
+# Last updated: S86 | 3 July 2026 (session-open partial refresh, see status note below)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 ## FUND ENTRY RULE — READ FIRST
@@ -26,7 +26,23 @@ See DECISION_REGISTER.md for full sizing rules and thesis documentation.
 
 ---
 
-## CURRENT STATUS — 13 JUNE 2026
+## CURRENT STATUS — 3 JULY 2026 (S86, supersedes 13 June read below)
+| Item | Reading |
+|------|---------|
+| BTC price | $61,433 (current, EOD) |
+| Active band | $60,000–$65,000, unchanged since 13 June, still holding |
+| Cycle phase | Base-watch continues — no scenario gate open |
+| Entry conditions met (Scenario 1) | 0 of 3 confirmed live — price and SPX both well outside trigger range |
+| Entry conditions met (Scenario 2) | GATE CLOSED — condition (a) directly contradicted, see below |
+| Fund action | MONITOR ONLY. Scenario 2 probability revised down hard from the stale 40–45% June 13 estimate. |
+| Fear & Greed | 15 today (multiple current sources agree). Extended sub–20 stretch continues, condition (c) of Scenario 2 likely satisfied on duration alone. |
+| ETF flows | REVERSED, not decelerating. June closed with ~$4.5B in net outflows across US spot BTC ETFs, the worst month since the products launched (Jan 2024), IBIT alone ~$3.55B of it. This directly contradicts the 13 June read ("$22M/day, IBIT net positive") — that read was accurate for its date and stale within three weeks. Scenario 2 condition (a) is not unmet, it is falsified. |
+| Scenario 2 probability | Revised down from 40–45% (13 June) — gate closed on hard contradicting evidence, not merely unconfirmed. |
+| ON-CHAIN DATA GAP | RESOLVED S86, same session, via James's own screenshots (CoinGlass funding, Checkonchain SOPR and whale cohort, CoinMarketCap exchange flow table). See WEEKLY CYCLE LOG for the full dated entry. Funding rate: CONFIRMED positive (avg 0.0057%), sustained positive since mid-May through the price decline from ~$70K to ~$60K — this is the Scorecard B item 5 pattern (funding positive while price falls), a genuine bearish tick, not a gap. Exchange netflow: CONFIRMED heavy 30-day net outflows across major venues (Binance -$5.31B, OKX -$1.14B, Bitget -$1.93B, Bitfinex -$789.91M, ~-$9.4B summed across the five largest), a genuine accumulation-consistent signal, though the source table is aggregate crypto asset flow per exchange, not BTC-isolated. SOPR: chart resolution insufficient for a precise current value (10-year compressed log scale), qualitatively no extreme capitulation spike visible at the right edge unlike 2018/2020/2022 bottoms — re-pull zoomed to Last 3-Month with STH/LTH split for a usable number. Whale cohort (Entity Balance Net Position Change, checkonchain): CHART SCALE PROBLEM, not a null finding — right axis runs to 20M BTC, swamps any realistic 30-day flow, all cohort bands render flat/invisible. Needs the MegaWhales/Exchanges >10k BTC cohort excluded or a log-scale toggle before this chart is usable. |
+
+---
+
+## PRIOR STATUS — 13 JUNE 2026 (superseded, retained for the record)
 | Item | Reading |
 |------|---------|
 | BTC price | ~$63,562 (June 12 close) |
@@ -128,7 +144,27 @@ Run every Friday. Need at least 6 of 9 checked before considering entry.
 For Scenario 1: combined with all three fund entry conditions — ALL must align.
 For Scenario 2: 5 of 9 sufficient given higher price, smaller allocation, tighter stop.
 
-### SCORECARD A — JUNE 13 2026 (partial — on-chain data unavailable without Glassnode)
+### SCORECARD A — 3 JULY 2026 (S86, real evidence via James's screenshots, supersedes June 13 partial)
+
+| # | Condition | Status | Notes |
+|---|-----------|--------|-------|
+| 1 | BTC holds active support band on daily/weekly closes | [X] | $60-65K band holding since June 13, confirmed again 3 July at $61,433. |
+| 2 | Liquidations spike then cool | [~] | Not shown in the screenshots pulled this session. Still needs a CoinGlass liquidation-specific view. |
+| 3 | Funding neutral or negative | [ ] FAILS | CONFIRMED via CoinGlass chart: avg funding +0.0057%, sustained positive since mid-May through the $70K to $60K decline. This is the OPPOSITE of the bottom-forming signal, not a gap filled favorably. |
+| 4 | ETF outflows shrink materially | [ ] FAILS | Reversed hard, see CURRENT STATUS. Worst month on record, not shrinking. |
+| 5 | Fear & Greed below 20 then stabilises or improves | [X] | 15 today, extended sub-20 streak continues. |
+| 6 | SOPR starts recovering towards/above 1 | [~] | Checkonchain chart pulled but 10-year compressed scale can't resolve a precise current value. Qualitatively no extreme capitulation spike visible at the right edge, unlike 2018/2020/2022. Re-pull zoomed to confirm. |
+| 7 | Whale/LTH accumulation improves | [~] | Checkonchain whale cohort chart pulled but axis scale (0-20M BTC) swamps the signal, all cohorts render flat. Chart problem, not a null finding. Needs re-pull with MegaWhale/Exchange cohort excluded or log scale. |
+| 8 | Exchange outflows increase (more BTC leaving exchanges) | [X] | CONFIRMED via CoinMarketCap exchange flow table: ~-$9.4B summed 30-day net outflow across the five largest exchanges (Binance -$5.31B, OKX -$1.14B, Bitget -$1.93B, Bitfinex -$789.91M, Bybit -$203.88M). Real and broad, though table is aggregate crypto not BTC-isolated. |
+| 9 | BTC stops making lower lows | [X] | Confirmed, $60-65K band held since June 13. |
+
+**Score this week: 4/9 confirmed (1, 5, 8, 9), 1 explicit fail (3), 3 unresolved (2, 6, 7)**
+**Scenario 1 entry gate: 6+ AND all three conditions met — not close**
+**Scenario 2 entry gate: 5+ AND all five Scenario 2 conditions met — below threshold, and condition (a) already falsified regardless**
+
+---
+
+### SCORECARD A — JUNE 13 2026 (partial — on-chain data unavailable without Glassnode, superseded above)
 
 | # | Condition | Status | Notes |
 |---|-----------|--------|-------|
@@ -152,7 +188,26 @@ For Scenario 2: 5 of 9 sufficient given higher price, smaller allocation, tighte
 ## WEEKLY SCORECARD B — BOTTOM PROBABLY NOT REACHED
 5 or more checked = bearish, do not enter regardless of price or scenario.
 
-### SCORECARD B — JUNE 13 2026 (partial)
+### SCORECARD B — 3 JULY 2026 (S86, real evidence)
+
+| # | Condition | Status | Notes |
+|---|-----------|--------|-------|
+| 1 | BTC closes below active support and cannot reclaim it | [ ] | NOT triggered. $60-65K band holding. |
+| 2 | ETF outflows remain heavy or accelerate | [X] | CONFIRMED. Worst month on record, ~$4.5B June net outflow, IBIT ~$3.55B of it. |
+| 3 | Liquidation cascades continue | [~] | Not confirmed this session, needs a dedicated liquidation-data pull. |
+| 4 | Open interest remains high despite falling price | [~] | Not directly shown in the funding chart. Unconfirmed. |
+| 5 | Funding remains positive while price falls | [X] | CONFIRMED. This is exactly the CoinGlass chart pattern, sustained positive funding through the mid-May to July price decline. Real, well-evidenced bearish tick. |
+| 6 | STH realised price is lost and retests fail | [ ] | Not confirmed this session. |
+| 7 | Whales are distributing rather than accumulating | [ ] | Evidence points AGAINST this. Exchange netflow shows coins LEAVING major exchanges (~-$9.4B/30d across the five largest), more consistent with accumulation/custody than distribution. |
+| 8 | BTC dominance rises because alts are collapsing | [ ] | Not checked this session. |
+| 9 | Macro remains risk-off | [ ] | NOT active. GREEN regime, VIX 16.59, SPX above both MAs. |
+
+**Score this week: 2/9 confirmed bearish (2, 5), 1 item now leaning against triggering (7)**
+**Consistent with the prior ~2-3/9 estimate but now evidenced rather than assumed. Do not enter if 5+ checked — not close.**
+
+---
+
+### SCORECARD B — JUNE 13 2026 (partial, superseded above)
 
 | # | Condition | Status | Notes |
 |---|-----------|--------|-------|
@@ -298,6 +353,7 @@ Copy forward each week. Target is a time series of decisions, not memory-depende
 |------|-----------|-------------|---------------|------------------|-----|--------|-------|---------|---------|-------|
 | 6 Jun 26 | ~$61,200 | $58-60K | Outflows (heavy — $733M/day peak) | Cooling | 12 | Unknown | Risk-off, VIX 21.51 close (25.89 intraday), 10yr 4.54% | 1/9 | 4/9 | Capitulation/base-watch |
 | 13 Jun 26 | ~$63,562 | $60-65K consolidation | Decelerating sharply — $22M/day Jun 11, IBIT net positive | Unknown | 13 (7+ days below 15) | Unknown | Improving — VIX 19.25, 10yr 4.46%, WTI $85.40 | 4/9 partial | ~2/9 | Base-watch / bottom forming signals present |
+| 3 Jul 26 (S86) | $61,433 | $60-65K, holding since Jun 13 | REVERSED — June closed ~$4.5B net outflows, worst month on record, IBIT ~$3.55B of it. Directly contradicts the Jun 13 deceleration read. | Not confirmed — CoinGlass/Checkonchain gap unresolved, web search returned only Feb-Apr dated results | 15 | Not confirmed — same tool gap | GREEN regime, VIX 16.59, 10yr 4.475%, SPX +1.7% above 50d MA | Unconfirmed (3/9 hard-blocked) | Not run | Base-watch, Scenario 2 gate CLOSED on contradicting evidence, not merely unconfirmed |
 | | | | | | | | | | | |
 | | | | | | | | | | | |
 | | | | | | | | | | | |

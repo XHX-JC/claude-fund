@@ -6,6 +6,19 @@ Dated record of Strait of Hormuz developments relevant to SI-25 exit trigger.
 
 ---
 
+## 2026-07-04 — FUNCTIONAL RECOVERY WITHOUT FORMAL RESOLUTION (S86W, 2+ month gap closed)
+
+- **This log had not been updated since 2026-04-22, despite its own "updated each session" design. Closing that gap now.**
+- WTI: $68.78 (down 38% from the $111.54 peak, down 26% in the past month alone). Already below the $100.38 trigger as far back as the 2026-04-22 entry ($87.51 that day) — the WTI leg of SI-25 has been satisfied for over two months, not a new development.
+- Hormuz: functional flow has recovered substantially without a formal reopening. Saudi crude exports back to ~90% of pre-war levels, UAE restored to full pre-war export levels (partly via a pipeline bypassing the strait entirely), aggregate Hormuz flows above 10 million barrels/day. This is via fragmented alternate routes (Omani-coast route, Iranian-coast route), not a return to the pre-war center-channel norm — a separate tracker (straits.live, dated 3 July) puts raw daily strait transits at 27 vs ~84 normal, which looks contradictory until you read it as counting only the traditional center route, not aggregate flow via alternates.
+- No formal reopening, no peace deal. Iran's military (Fars News, 2 July) issued a fresh warning that vessels off Tehran-designated routes will face "immediate and firm response." Foreign Minister Araghchi separately claimed Iran retains "total oversight and management" of the strait for 30 more days (statement made ~28 June, in Iraq).
+- Major event since April not reflected anywhere in this log: the February 28 US-Israel strikes (Operation Epic Fury) killed Supreme Leader Ali Khamenei. His son Mojtaba has succeeded him. Funeral proceedings run 4 through 9 July, pausing the Doha/Qatar negotiating track this week specifically.
+- US-Iran technical talks in Doha were described as making "positive progress" 2 July (Qatar's own readout), next round expected after the funeral concludes, no fixed date.
+- **SI-25 STILL NOT TRIGGERED.** WTI leg satisfied, decisively. Reopening leg not met, medium-high confidence this remains the correct read, formal reopening requires an actual signed resolution, not de facto flow recovery via workarounds. The gap between "oil has already fully repriced the de-escalation" and "the formal trigger condition is unmet" is now the live tension on this thesis, not a new risk, a persistent one this log failed to surface for two months.
+- **NOG/CODA thesis — FLAGGED FOR REVIEW, not confirmed either way.** This log's framing (blockade causes supply disruption regardless of ceasefire status, thesis intact) needs to be reconciled against CODA's own Q2 2026 results, which cited reduced Middle East/Asia demand *because of* the conflict as a live headwind, not a tailwind. Either this reference predates and is unrelated to the fund's current Coda Octopus position, or the original thesis has been quietly contradicted by the company's own guidance. Unresolved, raised directly to James rather than assumed.
+
+---
+
 ## 2026-04-22 — CEASEFIRE EXTENDED INDEFINITELY
 
 - Trump extended ceasefire indefinitely pending Iranian submission of a unified proposal

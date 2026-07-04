@@ -102,5 +102,10 @@ OPEN,AGI,LONG,161,2026-06-23,,31.000,,,,A,,backfilled from broker statement
 OPEN,FISV,LONG,200,2026-06-24,,47.610,,,,A,,backfilled from broker statement
 OPEN,RHM,LONG,10,2026-06-26,,947.400,,,,A,,backfilled from broker statement
 OPEN,OKLO,LONG,200,2026-06-26,,50.280,,,,B,,backfilled from broker statement
-OPEN,LEU,LONG,40,2026-06-29,,165.000,,,,B,,backfilled from broker statement
+CLOSED,LEU,LONG,40,2026-06-29,2026-07-02,165.000,160.780,-170.94,-2.59,B,DOE HALEU contract news spiked to 177.98 intraday then fully reversed same session,Stop hit 160.78 vs 160.90 GTC level, 0.12 slippage. Hand-trailed stop per S84 James instruction. Commissions 1.00 entry / 1.14 exit included in realized.
 CLOSED,LCII,LONG,100,2026-06-30,2026-06-30,99.050,99.670,59.77,0.6,SPEC,Unverified network rumor confirmed real same day - PATK $8.1B all-stock merger,Orphaned stop flagged and cancelled same session
+OPEN,ONDS,LONG,600,2026-07-01,,8.256,,,,B,Pre-earnings positioning - Q2 orders $110M+ vs $66.5M consensus,Filled Blue Ocean ATS pre-market per P55. Stop $7.00 GTC. Earnings Aug 12-17 est.
+OPEN,KTOS,LONG,200,2026-07-01,,50.00,,,,B,Guidance raised to $1.70-1.76B ahead of print, JPMorgan upgrade to Overweight, $446.8M Space Force OTA,Filled pre-market. Stop $46.00 GTC. Target $82 conservative (JPM), $96-112 upside cluster. Cash burn $85-105M FY26 is the live risk.
+OPEN,CEG,LONG,25,2026-07-01,,240.041,,,,B,Sector rotation out of AI/semis mispriced a diversified nuclear/power compounder - fresh 1yr low despite Q1 beat, Walmart PPA, NY relicensing filing,Stop $220.00 GTC below all prior 1yr lows. Target $360 analyst mean. R/R 6:1. Crash-list zone ($200-220) was SPX-crash-gated and did not apply, entered as standalone Stage 2 instead.
+OPEN,MP,LONG,100,2026-07-02,,54.000,,,,A,P44 mandatory decision - DoD 15% equity stake, 10yr NdPr offtake with price floor, Q1 beat 90.6M rev vs 73.6M consensus,Stop 50.00 GTC. Target 76-82. R/R 5:1 at entry. Conviction 68% at Stage 2.
+OPEN,CODA,LONG,600,2026-07-02,,9.500,,,,B,DAVD Navy approval and NANO PIPE integration order confirmed real, both prior selloffs fully explained,Stop 8.75 GTC. Entry inside 9.55-9.80 favourable fill band identified pre market.
