@@ -9,9 +9,10 @@ claude-fund/
 ├── journal/          ← trading_journalNN.jsx (versioned per session)
 ├── state/            ← Session state, briefs, and lesson files
 │   ├── FUND_SESSION_STATE.md     ← Primary portfolio state (written each session)
-│   ├── LESSONS_LEARNED.md        ← Error taxonomy + standing instructions
+│   ├── LESSONS_LEARNED.md        ← Error taxonomy + standing instructions (single file; permanent-index + recent-narrative read model, S110)
 │   ├── SESSION_BRIEF.md          ← AUTO-GENERATED 05:30 UAE daily (macro)
-│   └── OPPORTUNITY_SCAN.md       ← AUTO-GENERATED 06:00 UAE daily (signals)
+│   ├── OPPORTUNITY_SCAN.md       ← AUTO-GENERATED 06:00 UAE daily (signals)
+│   └── CRASH_HEDGE_ACTION_PLAN.md ← Read only while MARKET_HEALTH_CHECK.md regime is AMBER/RED/CRISIS (S110)
 ├── routines/         ← Automated routine prompts and scripts
 │   ├── MARKET_BRIEF_PROMPT.md    ← Prompt for 05:30 routine
 │   ├── OPPORTUNITY_SCAN_PROMPT.md← Prompt for 06:00 routine

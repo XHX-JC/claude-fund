@@ -53,8 +53,24 @@
 # scanner escalates again per the Market Turning Alert Protocol.
 # ═══════════════════════════════════════════════════════════════════════════════════════
 
-## CURRENT STATUS: AMBER (confirmed 19 August 2026, full recalculation — score continues to build from 18 Aug's 8/24, driven by today's live inputs, not a stale carry-forward)
-## COMPOSITE SCORE: 9/24 (AMBER)
+## CURRENT STATUS: AMBER, near the RED boundary (confirmed 21 August 2026, full recalculation
+## — see indicator table and sourcing in the comment block immediately above this line. This
+## supersedes the 19 August 9/24 reading, demoted to PRIOR STATUS immediately below.)
+## COMPOSITE SCORE: 12/24 (AMBER). Four indicators RED (SPX vs 50d MA, VIX velocity, 10yr trend,
+## CAPE), three AMBER (SPX vs 200d MA, 10yr yield, Fed), one AMBER on a stale, likely-optimistic
+## breadth figure, four GREEN (SPX Fibonacci, VIX level, HY spreads, WTI). Treat 12/24 as a floor
+## — CAPE and breadth are carried, not freshly re-sourced this pass, and both are more likely to
+## move against the regime than for it at the next recalculation.
+## CRASH_HEDGE_ACTION_PLAN.md APPLICABILITY (ADDED S110): this file is the sole source of the
+## regime label above. state\CRASH_HEDGE_ACTION_PLAN.md is applicable this session whenever the
+## CURRENT STATUS above reads AMBER, RED, or CRISIS, and not applicable while GREEN. This line
+## only consumes the regime stated above — it does not restate or redefine the score bands.
+
+## PRIOR STATUS: AMBER (confirmed 19 August 2026, full recalculation — score continued to build
+## from 18 Aug's 8/24, driven by that session's live inputs, not a stale carry-forward at the time)
+## PRIOR COMPOSITE SCORE: 9/24 (AMBER) — SUPERSEDED 21 August 2026 by the 12/24 reading above.
+## Retained here as the immediately-prior recalculation and its supporting detail, not as a
+## current reading.
 
 ## RECALCULATION NOTE, 19 AUGUST 2026 — 8/24 TO 9/24, THIRD CONSECUTIVE VIX UP-SESSION, 30YR YIELD
 ## GENUINE NEW DETERIORATION NOT PREVIOUSLY ON FILE
@@ -97,9 +113,11 @@ in the RED direction, next session should re-pull before trusting AMBER on bread
 
 ---
 
-## PRIOR STATUS: AMBER (confirmed 18 August 2026, full recalculation — crossed from GREEN 7/24 the same session, driven by that session's live inputs)
-## PRIOR COMPOSITE SCORE: 8/24 (AMBER, one point over the GREEN boundary)
-## REGIME: AMBER — Tier 2 protocol now in effect: no new BUY limit orders left resting GTC, crash stress test required on all new entries, raise stops on profitable positions, sizing gated on thesis quality/judgment not mechanical
+## HISTORICAL RECALCULATION, 18 AUGUST 2026 (superseded 19 August, then 21 August — see CURRENT
+## STATUS at top of file for today's reading): AMBER, crossed from GREEN 7/24 the same session,
+## driven by that session's live inputs at the time.
+## SCORE AT THE TIME: 8/24 (AMBER, one point over the GREEN boundary)
+## REGIME AT THE TIME: AMBER — Tier 2 protocol was in effect: no new BUY limit orders left resting GTC, crash stress test required on all new entries, raise stops on profitable positions, sizing gated on thesis quality/judgment not mechanical
 ## VIX AT CLOSE: 15.70 (18 Aug, +3.36% intraday — first uptick after a month-long decline, not yet a confirmed multi-session spike)
 ## BUY ORDERS IN MARKET: check current GTC pending table in DECISION_REGISTER.md/FUND_SESSION_STATE.md directly, not tracked redundantly here
 
@@ -420,9 +438,14 @@ Maximum score = 24.
 | 11 | WTI oil | <$90 | $90-105 | $105+ | ~$81-82 (14 Aug), Hormuz naval blockade story remains active but has not moved price through the threshold | 0 |
 | 12 | Market breadth | >65% | 40-65% | <40% | 58.3% of S&P 500/US equities above 50d MA (most recent hard figure, 7 Aug), 56.8% above 200d MA — confirmed AMBER with a real source, not the Russell-2000 proxy used at first pass. Likely modestly higher now given SPX's continued push to record highs since, but no more recent hard number found | 1 |
 
-CURRENT COMPOSITE SCORE: 7/24
-REGIME: GREEN (confirmed) — all twelve inputs now freshly sourced, including breadth (updated same session, see note below). Sits exactly on the GREEN/AMBER boundary by score; normal operations apply, but given the boundary proximity and CAPE/10yr/Fed context noted above, judgment on new-entry sizing should stay closer to AMBER-era discipline than to unqualified GREEN complacency.
-Caveat: indicator 12 was proxy-estimated at first pass this session, then confirmed against a real breadth source (58.3% above 50d MA, 7 Aug) within the same session — all twelve inputs are now sourced to the same standard.
+SCORE AS OF THIS TABLE'S LAST FULL REPULL (17 August 2026): 7/24, GREEN at the time — all twelve
+inputs freshly sourced that session, including breadth. SUPERSEDED — see CURRENT STATUS at the
+top of this file for today's authoritative score and regime. This table's per-indicator Green/
+Amber/Red band DEFINITIONS remain the live scoring methodology; only the summary score/regime
+below reflects the 17 August pull specifically, not today.
+REGIME AT THAT PULL: GREEN (confirmed 17 Aug) — sat exactly on the GREEN/AMBER boundary by score;
+judgment on new-entry sizing was advised to stay closer to AMBER-era discipline even then.
+Caveat: indicator 12 was proxy-estimated at first pass that session, then confirmed against a real breadth source (58.3% above 50d MA, 7 Aug) within the same session.
 
 Score thresholds:
   0-7:   GREEN — normal operations
@@ -624,5 +647,7 @@ Reactivate immediately if VIX spikes above 20 again.
 ---
 *Created: S59 | 6 June 2026 | Claude via filesystem MCP*
 *Last updated: S60 WEEKEND | 7 June 2026*
-*Read at: every session open, after DECISION_REGISTER.md, while status ELEVATED*
+*Read at: every session open, after DECISION_REGISTER.md, while status AMBER, RED, or CRISIS
+(S110: reconciled from the legacy "ELEVATED" term to this file's own current GREEN/AMBER/RED/
+CRISIS vocabulary — wording only, the underlying conditional is unchanged)*
 *Next review: Monday 9 June 2026 — update score based on VIX and SPX open*

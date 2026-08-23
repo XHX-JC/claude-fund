@@ -139,13 +139,13 @@ provide exact order parameters for James to enter manually.
 3. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\STRATB_SOURCING_PROTOCOL.md <- MANDATORY — SI-91, Strategy B catalyst sourcing method
 4. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md          <- MANDATORY — watchlist + register
 5. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\FUND_SESSION_STATE.md         <- current snapshot
-6. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\LESSONS_LEARNED.md            <- scan last 3 entries every session
-7. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\MARKET_HEALTH_CHECK.md     <- while status ELEVATED or CRISIS
-8. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md               <- Fridays + when BTC within 15% of $58K
-9. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\SESSION_BRIEF.md              <- MANDATORY, S90 — raw ChatGPT/external intake, read FIRST among state files
-10. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\OPPORTUNITY_SCAN.md           <- MANDATORY, S90 — verified outcome ledger, read after SESSION_BRIEF.md
-11. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\TRACK_RECORD_PROTOCOL.md  <- MANDATORY - SI-95, governs TRACK_RECORD.csv
-12. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\ANALYST_WATCH.md              <- MANDATORY, S90 — top tier analyst tracking, see Step 3G
+6. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\LESSONS_LEARNED.md            <- MANDATORY, permanent-index lessons (listed below, always active) + recent narrative (last 2-3 sessions); single unsplit file pending Stage 3b
+7. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\MARKET_HEALTH_CHECK.md     <- while status AMBER, RED, or CRISIS (S110: reconciled from legacy "ELEVATED" wording)
+8. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\SESSION_BRIEF.md              <- MANDATORY, S90 — raw ChatGPT/external intake, read FIRST among state files
+9. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\OPPORTUNITY_SCAN.md           <- MANDATORY, S90 — verified outcome ledger, read after SESSION_BRIEF.md
+10. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\TRACK_RECORD_PROTOCOL.md  <- MANDATORY - SI-95, governs TRACK_RECORD.csv
+11. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\ANALYST_WATCH.md              <- MANDATORY, S90 — top tier analyst tracking, see Step 3G
+12. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\CRASH_HEDGE_ACTION_PLAN.md    <- CONDITIONAL, S110 — read and apply only when MARKET_HEALTH_CHECK.md's current regime is AMBER, RED, or CRISIS; N/A while GREEN. MARKET_HEALTH_CHECK.md is the sole source of the regime label — this file only consumes it.
 ```
 
 ### Why each file matters:
@@ -169,9 +169,10 @@ Names on this list must be reviewed at every session — not just when price is 
 **FUND_SESSION_STATE.md** — Current portfolio snapshot. Cross-reference against journal to confirm
 no overnight changes have been missed.
 
-**LESSONS_LEARNED.md** — Scan the LAST THREE ENTRIES every session. These are the most recent
-errors and rules. The purpose is active prevention, not retrospective diagnosis. Reading them
-regularly is the only way to ensure they are not repeated. Key permanent lessons:
+**LESSONS_LEARNED.md** — REVISED S110 (replaces the old "scan last 3 entries" instruction).
+Two layers, both mandatory every session:
+  (1) PERMANENT INDEX — the list below is always active regardless of file structure or
+      session recency. These are standing rules, not narrative to skim:
   V1:  Conviction Verification Loop — mandatory table before any conviction rating
   V1-S: Source hierarchy — primary sources before conclusions
   V1-GO: Go/No-Go reassessment loop — runs fresh at every entry decision point
@@ -184,11 +185,24 @@ regularly is the only way to ensure they are not repeated. Key permanent lessons
   T67: Every exit requires one of four stated conditions
   E30: Journal written at close only, never mid-session
   E31: Journal never overwritten — always new file
+  (2) RECENT NARRATIVE — skim the most recent entries in LESSONS_LEARNED.md (currently at
+      the top of the file, reverse-chronological) covering roughly the last 2-3 sessions,
+      for anything newly relevant not yet reflected in the permanent index above.
+NOTE: LESSONS_LEARNED.md is currently a single unsplit file — both layers live inside it
+today. Once the Stage 3b archive split is implemented, this step will point at a dedicated
+permanent-index file plus a separate recent-narrative section; until then, this instruction
+operates against the current, single file exactly as it exists now. Do not assume the split
+has happened.
 
-**MARKET_HEALTH_CHECK.md** — Current market regime score. Read while status is ELEVATED or CRISIS.
+**MARKET_HEALTH_CHECK.md** — Current market regime score. Read while status is AMBER, RED, or
+CRISIS (S110: reconciled from the legacy "ELEVATED" term to this file's own current GREEN/
+AMBER/RED/CRISIS vocabulary — wording only, the underlying conditional is unchanged).
 Governs entry gates and crash stress test requirements.
 
-**BTC_PLAYBOOK.md** — Cycle monitor. Read on Fridays and any session when BTC is below $67,000.
+**CRASH_HEDGE_ACTION_PLAN.md** — ADDED S110. Read and apply only when MARKET_HEALTH_CHECK.md's
+current regime is AMBER, RED, or CRISIS. N/A while GREEN. MARKET_HEALTH_CHECK.md alone defines
+the regime label and its numerical thresholds — this file only consumes that label, it never
+restates the score bands.
 
 ---
 
@@ -305,9 +319,9 @@ fill in each line, don't paraphrase or skip for time:
     STRATB_SOURCING_PROTOCOL.md: [YES / NO]
     DECISION_REGISTER.md: [YES / NO]
     FUND_SESSION_STATE.md: [YES / NO]
-    LESSONS_LEARNED.md (last 3 entries): [YES / NO]
-    MARKET_HEALTH_CHECK.md (if ELEVATED/CRISIS, else N/A): [YES / NO / N/A]
-    BTC_PLAYBOOK.md (if Friday or BTC <15% of $58K, else N/A): [YES / NO / N/A]
+    LESSONS_LEARNED.md (permanent index + recent narrative): [YES / NO]
+    MARKET_HEALTH_CHECK.md (if AMBER/RED/CRISIS, else N/A — S110, reconciled from "ELEVATED"): [YES / NO / N/A]
+    CRASH_HEDGE_ACTION_PLAN.md (if AMBER/RED/CRISIS per MARKET_HEALTH_CHECK.md, else N/A): [YES / NO / N/A]
     SESSION_BRIEF.md: [YES / NO] — MANDATORY since S90, no longer skip-if-absent
     OPPORTUNITY_SCAN.md: [YES / NO] — MANDATORY since S90, no longer skip-if-absent
     ANALYST_WATCH.md: [YES / NO] — MANDATORY since S90, Step 3G
@@ -595,7 +609,7 @@ ENTER / PASS / DEFER before continuing."
 
 ---
 
-## STEP 8 — MARKET HEALTH CHECK (while status ELEVATED or CRISIS)
+## STEP 8 — MARKET HEALTH CHECK (while status AMBER, RED, or CRISIS)
 
 Pull autonomously:
   - WTI via EOD commodity API
