@@ -5,7 +5,7 @@
 # Filename kept as-is (cross-referenced by STRATEGY_FRAMEWORK.md, SESSION_OPEN_PROTOCOL.md,
 # LESSONS_LEARNED.md, and the project's own file index) but the charter is broader than
 # the name suggests — read the whole file, not just the Strategy B parts.
-# LAST WEEKLY DEEP DIVE RUN: S86W | 4 July 2026 (this entry, full weekend scan run early per James's explicit instruction, two days ahead of the normal 7 day cadence) — update this line every time
+# LAST WEEKLY DEEP DIVE RUN: 17 August 2026 (partial, see log table — forward calendar rebuilt in full, categories 15/5/21/20 touched, several categories not run this pass, honest gap not silent skip) — update this line every time
 # the weekly run executes. SESSION_OPEN_PROTOCOL.md checks this date at every session open.
 # ALSO RUN EVERY WEEKLY PASS: SESSION_OPEN_PROTOCOL.md Step 3D (thesis file freshness check)
 # — covers intelligence\AUTONOMOUS_DEFENCE_SUPPLY_CHAIN_THESIS.md and
@@ -318,6 +318,33 @@ explicit S85: token cost is a live constraint, and this category's home is the w
 research pass, not the automated scan infrastructure that handles named-ticker, dated,
 undated-event catalysts (see state\WATCHLIST_TICKERS.md for that separate system).
 
+### 23. MANUFACTURING CAPACITY / PRODUCTION EXPANSION SIGNAL (NEW S90, James's instruction)
+Mechanic: for a defense/hardware name transitioning from prototype to production, a
+new production line, factory expansion, automation investment, or a material hiring push
+(named headcount, named function) is close to as informative as a contract award itself.
+Contracts show demand exists. Capacity announcements show the company believes that
+demand is real and durable enough to spend capital and headcount ahead of it, and they
+remove the single most common reason a real contract fails to convert to revenue on
+schedule, the winner not actually being able to build the thing. James's framing, S90,
+KTOS/KRMN comparative review: this is becoming almost as important as the contract
+itself as primes shift from prototype to production at scale, and should be one of the
+highest-weighted items on the watchlist, not a footnote inside an earnings-call summary.
+Sourcing method: same Source Targeting principle as the rest of this file, trade press by
+name (Breaking Defense, Defense News, GovConWire, company IR/8-K capex disclosures),
+not generic financial search. Watch specifically for: new facility openings named by
+location, stated production rate increases (units/year, with both the old and new
+figure), automation/tooling capex called out separately from routine maintenance capex,
+and hiring pushes tied to a named production role, not generic corporate hiring.
+Bar for logging: a specific company, a specific facility or production line, and a real
+rate figure or dollar amount, the same discipline as category 22, not a vague "expanding
+operations" press release.
+Output: log to the relevant name's DECISION_REGISTER.md entry directly if the name is
+already tracked (this is a live-position-relevant signal, not just a discovery category),
+and to the weekly deep dive log below either way.
+Cadence: WEEKLY as a dedicated check for every actively tracked hardware/defense name,
+plus opportunistically any session a name's earnings call or 8-K is already being read
+for another reason, the same low-cost bundling logic as category 19's every-session use.
+
 ---
 
 ## PART B — STRUCTURAL RE-RATING TAXONOMY (categories 14-19, SI-92, added S74 weekend
@@ -418,6 +445,25 @@ struggles to find small/fresh names because patent-litigation and patent-volume 
 naturally surface the companies large enough to litigate or file at scale, which tend to
 already be discovered. Rotate to a third technical area (memory packaging specifically,
 not yet tried) before drawing a final conclusion on the category's productivity.
+THIRD PASS RESULT, S94 (memory packaging, the specifically-flagged next area): same
+outcome a third time. Landscape entirely mega-cap dominated (TSMC, Samsung, Intel,
+Applied Materials' June 25 DRAM/advanced-packaging system launch), plus two private,
+pre-public names in adjacent in-memory-computing chiplet packaging (WitMem Technology,
+Chinese-based, seven EP/US filings June 2025; D-Matrix Corporation, US-based, three
+related US filings 2025-2026) — technically real per-company findings, matching the
+category's own logging bar, but neither is public or tradeable, same pattern as
+PowerLattice/Empower Semiconductor at the second pass. Three technical areas now, three
+clean nulls for an actionable public small-cap, with a consistent, specific failure mode
+across all three: the category surfaces either already-large/already-discovered public
+names (TSMC, Vicor, Navitas) or genuinely early private names with no public entry point
+(Westmag, PowerLattice, Empower, WitMem, D-Matrix). CONCLUSION, drawn honestly rather than
+run a fourth time on the same tooling: this category's structural weakness is not query
+construction, it's that meaningful patent-filing acceleration and small/undiscovered public
+float are close to mutually exclusive in current search-engine-indexed coverage, a company
+filing enough patents to surface in a web search has usually already filed enough to be on
+an analyst's radar too. Keep the category open for opportunistic use (a patent check on a
+name already surfaced by another category), retire it as a cold-discovery weekly-scan item
+unless a dedicated USPTO full-text search tool (not general web search) becomes available.
 
 ### 17. SUM-OF-THE-PARTS / STRUCTURAL VALUATION MISPRICING — FIRST REAL RUN S74
 Mechanic: a company trading below the disclosed sum of its segment values (one segment
@@ -458,13 +504,24 @@ yet moved to reflect it, is mechanically interesting — and unlike the catalyst
 categories, this signal persists for weeks after a single data point rather than firing
 on one date.
 Sourcing method: requires an estimate-revision data feed (Zacks, Refinitiv I/B/E/S-style).
-Alpha Vantage's EARNINGS_CALENDAR gives dates, not revision direction — does not satisfy
-this category.
-Tool reality: BLOCKED. No connected tool currently supplies estimate-revision direction
-or magnitude, and no usable web-search workaround was found this session (unlike category
-15). Flagged alongside category 15's original state as a second concrete case for a
-screener/data upgrade decision — this one remains a harder block, not resolved this
-session, no second-pass attempt made yet.
+Alpha Vantage's EARNINGS_CALENDAR gives dates, not revision direction, does not satisfy
+this category, correctly ruled out at S74.
+Tool reality: **UNBLOCKED S93/S94, corrected.** Alpha Vantage's EARNINGS_ESTIMATES tool
+(separate from EARNINGS_CALENDAR, not tested in the original S74 pass) returns exactly
+what this category needs per name: eps_estimate_average at 7/30/60/90 days ago alongside
+current, plus explicit revision_up/down counts at 7 and 30 day trailing windows, for every
+reported and forward quarter and fiscal year. Confirmed working live on AMSC S93/S94, see
+DECISION_REGISTER, real and decision-relevant (ongoing downward near-term EPS revisions
+across the next three quarters, corroborating a margin-guidance concern found by other
+means). This is a PER-NAME check, not a cold universe screen, apply it the same
+opportunistic way category 19 already runs: any time a name is already under review for
+another reason, pull this alongside it, not as a standalone weekly scan across hundreds of
+tickers (no free tool does that screening step, that specific gap is real and unchanged).
+The three prior weekly-deep-dive log rows below that say "hard-blocked" or "still
+hard-blocked" were accurate for what was tested at the time, but the block was in the
+testing, not the tooling, worth remembering as its own lesson: a standing "BLOCKED" note
+carried across three separate sessions without anyone trying the adjacent tool in the same
+connector. Log this as a LESSONS_LEARNED candidate if it recurs elsewhere.
 
 ### 19. SECOND/THIRD-DERIVATIVE SUPPLY CHAIN MAPPING
 Mechanic: instead of researching an already-hot name directly, map who supplies ITS
@@ -582,25 +639,33 @@ Reactive, same-day only:
 ---
 
 ## STANDING FORWARD CALENDAR (populate and maintain — update every session it changes)
+## REBUILT 17 AUGUST 2026 — every row below is fresh. The prior table (June-early August dates,
+## all expired or resolved by the time of the July travel gap) has been removed entirely rather
+## than patched, per the file's own discipline that a stale calendar is actively misleading, not
+## just outdated. Legacy resolved items (SPCX, KRMN, CRDO, FLEX, Hanmi) are not carried forward —
+## if any needs revisiting, it re-enters fresh via category 20 (stale register), not by inertia.
 
 | Date | Name | Category | Event | Status |
 |------|------|----------|-------|--------|
-| 6 July 2026 (Mon) | MIDD / Midera | 14 (Forced-seller, spin-off) | Middleby distributes Midera Food Processing, 1-for-1, record date passed June 26. Watch first 10-20 trading days for forced-selling exhaustion per category 14 mechanic. | NEW S85 |
-| 3-4 Aug 2026 | REZI / ADIG | 14 (Forced-seller, spin-off) | Resideo distributes ADI Global Distribution, record date July 20, distribution Aug 3, ADIG begins trading Aug 4. Flagged well ahead per the file's own discipline. | NEW S85 |
-| 1 July 2026 (occurred) | SPGI / MBGL | 14 (Forced-seller, spin-off) | S&P Global's Mobility Global spin-off already completed. Too fresh for a forced-selling signal yet — noting existence, not yet actionable. | NEW S85, informational only |
-| June 29 — July 15 2026 | TLRY | 5 (FDA/Regulatory) | DEA hearing on federal marijuana rescheduling. Positive signal = sector-wide cannabis rerating. TLRY primary vehicle as largest listed cannabis company with international exposure. Probability 45-55% — monitor for escalation. Stage 2 required before entry. | PROBABILITY WATCH — escalates to MANDATORY DECISION if news flow turns positive ahead of hearing |
-| ~3 July 2026 | SPCX | 1 (Quiet period) | **CORRECTED S86W: confirmed Tuesday July 7, not ~3 July.** Quiet period ends AND SPCX enters the Nasdaq-100 same day — a genuine 1+2 crossover (quiet period expiration stacked on forced index-fund buying), a stronger setup than either alone. | **WATCH — double catalyst confirmed, but see P62 conflict below** |
-| **Late July/early Aug 2026 (2nd trading day post-Q2 earnings)** | SPCX | 3 (Lockup, bearish lean) | **NEW S86W.** First major SPCX lockup tranche (20-30% of a 4.6B-share block) releases right after Q2 earnings, weeks after the July 7 catalyst above. Two-sided setup on the SAME NAME in the same month: July 7 is bullish (coverage + index flows), late July/Aug is bearish (float roughly doubles). P62 (LESSONS_LEARNED.md) already bars any SPCX entry until lockup fully clears AND a T74-style capitulation signal confirms — that standing rule is not satisfied by the July 7 catalyst alone, regardless of how clean the quiet-period trade looks in isolation. Flag, don't override. | **CONFLICT FLAGGED, not resolved — P62 governs, takes precedence over the July 7 setup** |
-| ~3 July 2026 | FAC | 1 (Quiet period) | IPO 8 June + 25 days, underwriter coverage initiation expected; Q2 results also now scheduled Aug 13 2026, separate catalyst | WATCH — P42 cooling-off still governs FAC separately, this does not override it |
-| 27 June 2026 | KRMN | 3 (Greenshoe) | Greenshoe option expiry — watch for case (b), overhang removal | Already tracked in DECISION_REGISTER. KRMN re-entered S74 ahead of this date per James's standing instruction not to reject on minor price deltas — see DECISION_REGISTER. |
-| 26 June 2026 | CRDO (already a fund name, on crash shopping list) | 2 (Russell reconstitution) | Final after close 26 June, effective 29 June — CRDO graduating Russell 2000→1000 specifically due to its growth to $51B market cap. Confirmed via FTSE Russell's own published schedule S74. | CONFIRMED S74 — crash-list price corrected, see DECISION_REGISTER |
-| 22 June 2026 | RKLB, MRVL, ALAB, CRWV, NBIS | 2 (NDX effective) | NDX quarterly effective date | Already tracked, execution timing uncertain per P50 |
-| 22 June 2026 | FLEX | 2 (S&P 500 inclusion) | Flex joins S&P 500 — forced index buying. Separately has a planned spin-off of its AI data-center power unit (future category 14 setup once that spin executes, no date yet) | WATCH, not yet sized — already up ~94% from its 200dma ahead of the date, same already-priced pattern as the rest of this weekend's research |
-| 19 Aug 2026 | Hanmi Semiconductor (042700.KRX) | — (not catalyst-dated, valuation re-engage trigger) | Next earnings — PASS re-engage condition is either a valuation reset or a confirmed, explained recovery at this print | NEW S74 |
+| 17 August 2026 (today) | TLRY | 5 (FDA/Regulatory) + 21 (narrative) | DEA marijuana-rescheduling hearing: evidentiary record closed 14 July, post-hearing briefs due TODAY. ALJ (Judge Julius) recommendation follows on NO ANNOUNCED TIMELINE, then a separate Administrator final decision (not bound by the ALJ) is the actual reviewable action. | PROBABILITY WATCH, upgraded confidence — see note below, NOT yet an entry trigger |
+| 18 August 2026 (Tue) | RDDT | 4 (Index inclusion) | Joins S&P 500 effective before open, replacing AvalonBay. Announcement pop (+12.6%) already happened 14 Aug — this is a confirmation/mechanical-flow date, not a fresh entry signal. | INFORMATIONAL — already priced, no action |
+| 18 August 2026 (Tue) | HD | catalyst-dated, not fund-held | Q2 FY26 earnings, before open. Ted Decker medical leave overhang. Verified 17 Aug, correctly a WAIT per the fund's own read — noted here for peer read-through into LOW/TGT. | WATCH, no position |
+| 19 August 2026 (Wed) | ADI | 1-hop mega-cap earnings | Q3 FY26 earnings, 7:00am ET. Fund passed on entry 17 Aug — price had already run through the alert's own $384-390 accumulation zone. Re-evaluate off the POST-earnings reaction, not before. | PASSED PRE-EARNINGS — re-open post-print only |
+| 19-20 August 2026 | LOW, TGT, TJX (Wed) / WMT, DE, ROST (Thu) | catalyst-dated, not fund-held | Retail earnings cluster, HD read-through relevant. | WATCH for peer confirmation, no fund position |
+| 20 August 2026 (Thu) | AMAT | dividend, not a re-rating catalyst | $0.53 quarterly dividend, ex-date. Routine, logged for completeness only. | INFORMATIONAL |
+| 19 August 2026 (fired, RESOLVED) | RARE | 5 (FDA/Regulatory), HELD POSITION | DTX401/GENGLYCOS accelerated approval for GSDIa, arrived 4 days ahead of the 23 Aug PDUFA. **PROCESS GAP: this PDUFA was never added to this table despite RARE already being a held position** — James caught it independently, fund benefited by luck of already being long, not by this calendar doing its job. See DECISION_REGISTER.md RARE row, 20 Aug, for full detail and the LESSONS_LEARNED candidate this generates. | RESOLVED POSITIVE — see UX111 row below for the next dated catalyst on this same name, added now so this doesn't repeat |
+| 19 September 2026 (Sat) | RARE | 5 (FDA/Regulatory), HELD POSITION | UX111 (rebisufligene etisparvovec) PDUFA date, accelerated approval sought for Sanfilippo syndrome type A (MPS IIIA). Second gene-therapy approval decision inside a month for the same held name — a real, dated, second binary catalyst, added the day it was found rather than left to repeat the DTX401 gap. Pre-DTX401-approval third-party modelling (Simply Wall St, sourced 20 Aug) assumed ~65% approval odds for this specific catalyst as part of a ~$32 probability-weighted fair value estimate — informative on how the market was pricing it, not a number to anchor on directly. | CATALYST-DATED, ~4 WEEKS OUT — mandatory catalyst-readiness check once inside the 7-day window, do not let this one go unflagged the way DTX401 did |
+| 4 September 2026 (Fri) | AAON | dividend, not a re-rating catalyst | $0.10 quarterly dividend, ex-date. Routine. | INFORMATIONAL |
+| ~7-14 September 2026 (date TBC) | ORCL | 1-hop mega-cap earnings | Fiscal Q1 FY27, exact date not yet confirmed by the company as of 17 Aug (estimates range 7-14 Sept across sources). Directly relevant — fund holds a post-trim residual position through this print. Confirm exact date before it's inside the 7-day catalyst-readiness window. | HELD POSITION — catalyst readiness check due once date confirms |
+| 15-16 September 2026 | FOMC | macro, not name-specific | Next Fed decision. Kalshi prices 26% hike / 73% hold / 1% cut as of 17 Aug — feeds MARKET_HEALTH_CHECK.md indicator 10 directly, re-check that indicator fresh going into the meeting rather than carrying the 17 Aug read. | MACRO WATCH |
+| 15 September 2026 | RCAT | investor conference, minor | Piper Sandler Growth Frontiers Conference — management 1x1s, not a hard catalyst but a real visibility event for a name already held. | INFORMATIONAL |
+| No fixed date, tracked as PROBABILITY not CALENDAR | TLRY (see 17 Aug row above) | 5 + 21 | Full detail in the weekly deep dive log entry below. | PROBABILITY WATCH |
 
 This table is a living document. Add a row the moment a dated catalyst is identified,
 even if it's weeks out — the entire point of this protocol is having it on record before
-it's urgent, not discovering it three days before (or after) it matters.
+it's urgent, not discovering it three days before (or after) it matters. DELETE rows once
+resolved rather than letting them accumulate as dead weight — a rebuilt table is easier to
+trust than a patched one, this is now the standing practice, not a one-time fix.
 
 ---
 
@@ -614,6 +679,10 @@ it's urgent, not discovering it three days before (or after) it matters.
 | 2 July 2026 (S85), FULL RUN completing categories 14, 17, 18, 20, 21 per James's explicit instruction | 14 (forced-seller), 17 (13D feeder search), 18 (reconfirm blocked), 20 (stale register price check), 21 (thematic narrative) | MIDD/Midera spin-off (Jul 6), REZI/ADIG spin-off (Aug 3-4), SPGI/MBGL spin-off (informational, too fresh); Magnetar 13D on ProAssurance/PRA (Jun 30); STX ($850 alert triggered Jun 26, now $910, Stage 1 completion UNCONFIRMED); ZETA (register anchored to $15.50 base-formation alert, now $20.80); NOW (register anchored to a "$98 Friday" bounce note, now $105.60) | Cat 14: three spin-offs logged to forward calendar, none yet in the forced-selling window that matters. Cat 17: PRA/Magnetar flagged for a Stage 1 look next session, not run tonight. Cat 18: still hard-blocked, no workaround. Cat 20: THREE real stale-register findings — STX is the most serious (an alert fired and Stage 1 completion isn't confirmed in the file), ZETA and NOW have both drifted well past their register reference prices without an updated read. Cat 21: clean null, no new narrative beyond the three already tracked (cannabis, nuclear/AI power, robotics). | This is now a genuinely complete first week across all active categories (14-22, 18 excepted as a standing known block). STX/ZETA/NOW need a fresh look at next session open — flagged in DECISION_REGISTER, not resolved tonight. |
 
 | 4 July 2026 (S86W), full weekend scan per James's explicit "go deep, do not ask" instruction | 20 (stale-register momentum cross-check), category 1 date correction, full held-book news sweep (not a numbered category, standing session discipline) | SPCX quiet-period date corrected to July 7 (was ~3 July placeholder), now confirmed to coincide with Nasdaq-100 inclusion same day; AIRJ Prime system commercialization milestone (new, positive); ZS insider-selling cluster (5 sellers, June 16-17) landing inside the exact $140-155 resistance band already flagged; RHM July 2 ad-hoc order-nomination disclosure (missed at S86 close); ONDS dilution overhang re-characterized from "no news" to active/worsening; MP China export-control blacklisting and USAR litigation | SPCX: double catalyst confirmed but directly conflicts with P62 (lockup tranche lands weeks later, late July/Aug post-Q2 earnings) — flagged, not resolved, P62 governs. ZS: not a thesis break under the trailing-stop mandate, but the resistance-zone/insider-cluster coincidence is now on record instead of risking rediscovery later. AIRJ: genuinely new positive information, first time logged. Full detail in DECISION_REGISTER.md per name. | Also added: MARKET_HEALTH_CHECK.md Step 2B, a manual leverage/factor-divergence flag (margin debt growth, momentum-factor vs VIX divergence, Market Cap/M2 ratio), prompted by James forwarding technical-trader charts the 12-indicator composite score cannot see. This is a standing gap fix, not a one-time note — the composite score will keep reading GREEN through this exact blind spot until a real indicator exists. |
+| 11 July 2026 (S93), on-cadence weekly run, exactly 7 days after S86W per the mandatory trigger, James's explicit "do all of it, don't ask" instruction | 14 (forced-seller status check), 15 (insider cluster screen), 20 (implicit, via AMSC/BAH re-checks), 23 (manufacturing capacity, defense names) | MIDD/Midera spin-off confirmed complete and trading, ticker MFP not MFPVV, began July 7, only 4 trading days old at check time, too early in the 10-20 day category-14 window for a signal, status only; REZI/ADIG (Aug 3-4) unchanged, not yet in window; WEX insider cluster (Chair, COO, CFO, CTO, Chief Legal, Chief Digital all buying same short window, stock down 7% on the week) on a name the fund already SOTP-reviewed and structurally passed on at S74 (bank-funding dis-synergy blocked the deal-structure case, not the fundamentals) — broad C-suite alignment is a genuinely unusual signal, logged as a fresh data point on an already-shelved name, not a new entry case, the standing structural objection is unchanged; HDSN (Hudson Technologies) 10%-owner Hartree Partners bought ~764K shares (~$4.48M) over three sessions, but near the 52-week high after a +137% trailing year, a large-owner top-up near highs, not a buying-the-dip signal, logged as reference only, below the bar for action; KTOS — 106,000 sq ft Oklahoma City capacity expansion (6 July, Valkyrie/Firejet/Mighty Hornet IV, current ~165 jet drones/year run rate, explicit rate-increase framing), stacking on a May Florida $67M facility and a 9 June Spartan Engines expansion, three specific rate-quantified capacity announcements in six weeks, the exact category-23 pattern, logged directly to KTOS's DECISION_REGISTER row, no change to entry zone or alert level, thesis reinforced; BAH re-checked for a fresh contract award (register's own trigger), none found, but a real Ultra I&C Mission Solutions acquisition (22 June) and an OpenAI national-security partnership (29 June) are on record as genuine positive developments that don't meet the trigger as written; AMSC given a full Stage 2 (see DECISION_REGISTER), the one name flagged S92 as warranting it, resulted in a genuine mixed finding, real fundamentals and a real unresolved margin-guidance negative, FAIL on the crash stress test, WATCHING not entered. | MIDD/Midera: too early, re-check next weekly pass inside the 10-20 day window. WEX/HDSN: logged, no action, below or against the fund's own standing structural/technical objections respectively. KTOS: thesis reinforced, alert unchanged. BAH: no new trigger, Cowork automation gap now standing since S90 (the hourly scan this row's own text describes no longer exists, checked manually this session instead). AMSC: Stage 2 complete, genuinely NO-GO today on a specific, statable reason (unresolved margin question, no confirmed base), not a deferral-by-default, re-visit trigger explicitly defined (capitulation base OR Aug 5 earnings). | Full session also included AISP/OPXS/FATE trade-record reconciliation and a PDYN live-stop discrepancy flag, see FUND_SESSION_STATE.md and TRACK_RECORD.csv, not part of this weekly-deep-dive scope but completed the same session. |
+| 12 July 2026 (S94), continuation of the S93 weekly deep dive per James's direct question about categories 16/18/19/22 being skipped, run same standing instruction | 16 (patent filings, third and final technical area), 18 (estimate revision momentum, tool re-tested), 19 (supply chain mapping, applied opportunistically to KTOS), 22 (freshness check on VPG/ALNT, full re-scan not yet due) | Category 16: memory packaging produced a third clean null for actionable public small-caps, mega-caps and private pre-public names only (WitMem, D-Matrix), same failure shape as the first two areas, conclusion drawn: retire as a cold weekly scan, keep for opportunistic per-name use. Category 18: RETESTED AND UNBLOCKED, the prior "hard block" was a testing gap not a tooling gap, Alpha Vantage's EARNINGS_ESTIMATES returns real per-name revision direction and magnitude, confirmed live on AMSC with a decision-relevant result (ongoing downward near-term EPS revisions across the next three quarters). Category 19: applied to KTOS using the RAFAEL/Prometheus Energetics JV already on file (Crane, Indiana, up to $175M committed, SRM production targeted 2027), a real second/third-derivative angle behind KTOS's own capacity story, reinforcing rather than adding a fresh name. Category 22: VPG/ALNT freshness check, VPG has run further past its own evidence since S85 (up to $148 on the same $1M Q1 humanoid order line, analyst target $95 sits ~35% below price), sharpening the S85 non-entry read, plus a real sector milestone (Agility Robotics' SPAC listing). | Category 16 closed out as a cold-scan category, three-strike honest conclusion. Category 18 reopened, apply per-name going forward on profitability-sensitive names. Category 19 no new tradeable name, contextual reinforcement of KTOS only. Category 22 no status change, VPG's non-entry case strengthened. | This continuation exists because a direct question caught an unstated triage decision from S93, the honest answer was time/prioritization under load, not a genuine protocol gap. |
+| 12 July 2026 (S95), FULL StratB Sourcing Protocol run at James's explicit "don't skip anything" instruction, all 23 categories touched | 4 (PHUN activist stake, tiny/thin), 6 (contract award scan, nothing new beyond routine/already-tracked), 15 (insider cluster refresh, null, CTM reconfirmed at trivial dollar amounts), 20 (systematic stale-register price scan, real find), 21/22 (Chinese-robot-ban legislative narrative, Taiwan drone trusted-supply-chain narrative, Thunder Tiger/8033.TW surfaced) | **NNE: current price $18.86 is AT/THROUGH the register's own $18.93 "ALERT, URGENT IF TOUCHED, Stage 2 mandatory same session" trigger — this had not been caught by any session between whenever the alert was set and tonight.** Thunder Tiger Corp (TWSE:8033): real, verifiable defense pivot, DOD Blue UAS Cleared List inclusion for its Overkill FPV loitering munition (first Asian system ever included), genuine trusted-supply-chain narrative tailwind, ~$700-875M market cap, thin margins, EXECUTION ACCESS UNVERIFIED (no IBKR tool access this session to check, same category of open question as Hanmi at S74, do not assume either way). PHUN (Phunware): Goldenwise Capital 6.6% activist stake, 13D/A filed 10 July, open letter on governance/capital allocation, real but a true microcap, likely too thin to size meaningfully. Stale-register scan also surfaced real, unaddressed drift on PATH (well above its $9.50 alert, never re-examined), ADBE (drifted to $223.64 from the $190-200s last checked S86, CEO search still presumably open, not re-verified), QCOM (drifted to $189.16 from the $169.80 alert set 2 July, not re-examined since), STX (Q4 FY earnings ~July 16, same week as ISRG, not previously cross-flagged), OPEN (Q2 EBITDA breakeven entry condition falls this same month, catalyst window opening, not previously flagged as imminent), GENB (down 8.9% same session, approaching but not yet through its $13 Stage 2 alert), MX (alert triggered S77, still unrevisited many sessions later, genuinely stale under category 20's own 3-week rule). | NNE is the single actionable item: mandatory Stage 2 per the register's own standing rule, not yet run, flagged to James rather than completed unilaterally given the scope of tonight's request. Thunder Tiger needs an execution-access check from James directly before any Stage 1 work is worth doing. **UPDATE, same day, James's follow-up:** NNE Stage 2 now run, see DECISION_REGISTER NNE row, verdict PASS at current price, real re-engage conditions defined, not a passive alert anymore. Thunder Tiger chart reviewed against James's own TradingView screenshot: +66% in three weeks ($140 to $233), OBV surged from near-flat to 130M confirming real volume behind the move, today the second red session off the high. CONFIRMED: this was already a fired, extended breakout by the time tonight's search surfaced it, not a live entry, consistent with category 22's own documented structural weakness. Real process lesson: the Blue UAS Cleared List addition and the trusted-supply-chain legislation were both building for weeks before tonight, a standing weekly scan on that narrative specifically might have caught the early leg. No entry recommended, chasing the extension violates category 9. Execution access still unverified regardless. Categories 1 (IPO quiet period), 3 (lockup/greenshoe calendar), 7 (short interest overlay), 11 (uplisting), 12 (reverse split), 13 (drill results), 14 (fresh forced-seller check beyond the MIDD window already logged S93), 17 (SOTP, no new candidate), 18 (estimate revision, tool available but not applied to any new name this pass) were NOT run with the same depth as the above, an honest gap given the scope of a full 23-category pass in one sitting, not silently skipped. Categories 8/9/10 correctly N/A, no live catalyst fired same-session on a weekend. Category 16 correctly not re-run, retired S94. Category 19 not applied to a new name this pass. |
+| 17 August 2026, first StratB run since 11 July (S93) — a 5+ week gap, James's explicit instruction to fix the forward calendar and run the protocol | 15 (insider cluster screener, live-fetched not just searched), 5/21 (TLRY DEA-hearing narrative refresh), 2 (index reconstitution — RDDT/S&P already covered in same-day StratB alert verification, not re-run here), 20 (partial — INTC/ASTS flagged, not full Stage 1 re-runs given scope) | **TLRY: real, decision-relevant combination.** Three separate insiders (Chief Strategy Officer, CFO, Global General Counsel) bought on the open market 3-6 August, $4.43-4.78/share, right as the DEA hearing's evidentiary record closed (14 July) and post-hearing briefs came due (17 August, today). This is the first fresh insider-conviction signal on this name since it was first flagged as a probability watch. Fresh regulatory timeline confirmed via primary/legal-tracker sources: ALJ recommendation has NO ANNOUNCED TIMELINE post-briefs, and the Administrator's final decision (the actual reviewable agency action) sits behind that with its own unstated timeline — this is NOT a days-scale catalyst despite the insider signal, Declaration 3 (hard exit date) cannot honestly be set yet. Applying the probability-entry framework directly rather than avoiding it: the catalyst is real and probability arguably rising, but the timing leg of the three declarations genuinely fails on the facts, not from excess caution — this stays PROBABILITY WATCH, escalates to mandatory Stage 2 the moment either the ALJ recommendation date firms up or news flow turns clearly positive/negative. TSM cluster buy (~30 VPs/SVPs, all at an identical $73.31 same day, Aug 7) flagged and DISCOUNTED as a routine ESPP execution, not conviction buying — same false-positive pattern as the Quantinuum IPO-date lesson, logged so it isn't rediscovered. AMRZ (Amrize) cluster (5 C-suite officers, CFO/President-Building Materials/Chief Supply Chain/CTO/Chief People, all buying 11-12 Aug) is a genuinely broad, WEX-shaped signal but on a name entirely outside the fund's current thematic universe (building materials/cement) — logged per the protocol's own discipline (log what's found, don't only log what fits), not pursued further without a reason to open a new sector. No other cluster hits from this pass fell inside an existing fund theme (defense/space/AI/nuclear/robotics/cannabis) or cleared a materiality bar worth a name-by-name note. | Forward calendar fully rebuilt, see table above — every prior row was expired or resolved, replaced rather than patched. INTC and ASTS (DECISION_REGISTER WATCHLIST-ACTIVE, last touched S97/15 July) identified as stale under category 20's own 3-week rule but NOT given full Stage 1 re-runs this pass — flagged honestly as an unclosed gap, not silently dropped, given the explicit instruction was calendar-plus-protocol, not a full watchlist refresh. Categories 1, 3, 4, 6, 7, 11, 12, 13, 14, 16 (correctly retired), 17, 18, 19, 22, 23 were NOT run this pass — an honest scope limitation on a 5-week backlog tackled in one session, consistent with this file's own documented practice of stating gaps rather than false-completing a 23-category run. Highest-value next pass: categories 14 (forced-seller/spin-off calendar, genuinely empty right now) and 23 (manufacturing capacity, opportunistic on KTOS/RCAT specifically since both are held) are the two most likely to produce something the fund can act on. |
 
 ---
 
@@ -745,6 +814,25 @@ For any sector the fund has exposure to or is researching, search the sector's o
 press directly — by publication name, not by "stock" or "shares" framing — as the FIRST
 step, not a follow-up. General financial news search is for confirming and dating
 something already found this way, not for discovery.
+
+### MECHANICAL ENFORCEMENT, ADDED S91, SEE P69 IN LESSONS_LEARNED.md
+This rule existed in full above and was still skipped on a live, real case (AEHR, S91,
+a same-day press release missed because the first and only query was "AEHR stock surge
+news," a pure digest-layer query, when a company-name-plus-product-name query found the
+release in the very next attempt). A principle that gets skipped under normal working
+pressure needs a mechanical trigger, not a restated reminder — same lesson class as P64's
+fix for P52 recurring three times.
+RULE: for ANY named company or ticker being researched, the FIRST search attempted must
+be source-targeted by construction — company name plus a specific product, program, or
+segment name (e.g. "Aehr FOX-XP" not "AEHR stock news"), or a direct attempt to fetch the
+company's own IR/press-release page. A generic "[ticker] stock news [date]" or "[ticker]
+surge/crash [reason]" query does not satisfy this and cannot be the sole basis for
+concluding "no catalyst found" or "no news found." If the source-targeted attempt turns up
+nothing, general search may follow to confirm the null result, but it goes second, not
+first. This applies whether or not the check ever gets to the point of writing a negative
+conclusion — the fix is in query order, not in a review step at the end that can itself be
+skipped under pressure, which is exactly what happened to the SCAR case at S86 and this
+case at S91.
 
 ### SECTOR SOURCE LIST (expand as new sectors are researched)
   - **Defense / government contracting:** Breaking Defense, GovConWire, Defense News,

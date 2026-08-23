@@ -26,7 +26,25 @@ See DECISION_REGISTER.md for full sizing rules and thesis documentation.
 
 ---
 
-## CURRENT STATUS — 3 JULY 2026 (S86, supersedes 13 June read below)
+## CURRENT STATUS — 14 JULY 2026 (S96, supersedes 3 July read below)
+| Item | Reading |
+|------|---------|
+| BTC price | ~$62,700-62,900 (13-14 July, multiple corroborating sources) |
+| Active band | $60,000–$65,000, still holding, now five-plus weeks in this range |
+| Cycle phase | Base-watch continues, genuine two-way flow returning — no scenario gate fully open |
+| Entry conditions met (Scenario 1) | 0 of 3 — price and SPX both well outside the $53-58K/below-50d-MA trigger range |
+| Entry conditions met (Scenario 2) | Partially and briefly touched, then broken again — see below, gate is CLOSED as of 14 July but less firmly closed than the 3 July read |
+| Fund action | MONITOR ONLY. No entry action warranted. |
+| Fear & Greed | 28 (13 July, cryptonomist/alternative.me), up meaningfully from June 30's reading of 11-13 (deepest extreme fear of the cycle). Real improvement off the extreme, still solidly in Fear territory, not Neutral. |
+| ETF flows | GENUINELY TWO-WAY NOW, not one-way collapse. June closed ~$4.5B net outflows (worst month on record, confirmed). BUT: a real 10-day, $2.73B outflow streak broke 2 July on a weak jobs report, followed by THREE CONSECUTIVE POSITIVE SESSIONS (2, 6, 7 July, +$510M combined) — this technically satisfied Scenario 2 condition (a) for a brief window. Reversed again 8 July (-$84.9M net) as FOMC minutes showed a hawkish split. Since then, flows have stayed mixed rather than resuming a clean multi-day outflow trend. Net effect: condition (a) is not permanently falsified the way the 3 July read concluded, it briefly opened and closed within days — a real, evidenced instance of the gate almost opening, worth tracking closely rather than writing off. |
+| NEW NEGATIVE, not on file 3 July | Strategy (the corporate BTC treasury, formerly MicroStrategy) has begun actively SELLING Bitcoin — ~$216M sold as of reporting, described as ongoing, explicitly to fund a dividend/improve the cash position. A major corporate holder becoming a net seller is a structurally different signal than ETF redemptions (which can reverse on sentiment) — this is a large, price-insensitive holder reducing exposure for balance-sheet reasons. Real and worth weighting. |
+| Open interest / leverage | REAL NEW DATA POINT, resolves the 3 July gap partially: OI has collapsed from over $90B to ~$44.5B since the cycle high, consistent with genuine leverage flush and liquidation cooling (Scorecard A item 2), not continued elevated leverage into a falling price (Scorecard B item 4 does NOT trigger). Source: crypto.news, cross-referenced, treat as directionally reliable, not exact-figure verified against CoinGlass directly this session. |
+| Whale/LTH accumulation | REAL NEW DATA POINT, resolves the 3 July chart-scale problem: "Long-Term Investors Now Control 84% of Supply" (13 July, on-chain sourced), described as the strongest holder-conviction reading since 2016, reducing available sell-side liquidity. Single-sourced this session (CoinMarketCap AI news aggregation), directionally consistent with the exchange-outflow signal already confirmed 3 July, treat as a real positive but not yet cross-verified against a second independent on-chain provider. |
+| Macro | AMBER 11/24 today (fresh MARKET_HEALTH_CHECK recalc, same session), a genuine deterioration from the 3 July GREEN 6/24 — VIX spiked to 17.16 (+14% one session) on fresh Iran/Hormuz escalation, 10yr yield rising. This directly affects Scenario 2 condition (e), VIX below 22 — still technically satisfied (17.16 < 22) but moving the wrong direction, worth watching if the geopolitical situation continues to escalate into the week. |
+
+---
+
+## PRIOR STATUS — 3 JULY 2026 (S86, superseded above, retained for the record)
 | Item | Reading |
 |------|---------|
 | BTC price | $61,433 (current, EOD) |
@@ -144,7 +162,27 @@ Run every Friday. Need at least 6 of 9 checked before considering entry.
 For Scenario 1: combined with all three fund entry conditions — ALL must align.
 For Scenario 2: 5 of 9 sufficient given higher price, smaller allocation, tighter stop.
 
-### SCORECARD A — 3 JULY 2026 (S86, real evidence via James's screenshots, supersedes June 13 partial)
+### SCORECARD A — 14 JULY 2026 (S96, real evidence, supersedes 3 July)
+
+| # | Condition | Status | Notes |
+|---|-----------|--------|-------|
+| 1 | BTC holds active support band on daily/weekly closes | [X] | $60-65K band holding, now five-plus weeks, confirmed again at ~$62,700-62,900 on 13-14 July. |
+| 2 | Liquidations spike then cool | [X] | RESOLVED this session, was a standing gap. Open interest collapsed from over $90B to ~$44.5B since the cycle high (crypto.news, cross-referenced), consistent with a genuine leverage flush already having occurred, not an ongoing cascade. |
+| 3 | Funding neutral or negative | [ ] STILL UNRESOLVED | No fresh CoinGlass pull this session, standing gap carried forward, do not assume resolved either direction. |
+| 4 | ETF outflows shrink materially | [~] UPGRADED FROM FAILS | Genuinely two-way now: a real 3-day positive streak (2, 6, 7 July, +$510M) briefly satisfied this, then reversed 8 July. Not a clean pass, but no longer a clean fail either — the one-way collapse read from 3 July is outdated. |
+| 5 | Fear & Greed below 20 then stabilises or improves | [X] | 28 on 13 July, up from 11-13 at the June 30 extreme. Real improvement, though still in Fear not Neutral. |
+| 6 | SOPR starts recovering towards/above 1 | [ ] | Still unresolved, standing gap, not re-attempted this session. |
+| 7 | Whale/LTH accumulation improves | [X] | NEW, resolves the prior chart-scale problem: "Long-Term Investors Now Control 84% of Supply" (13 July), strongest holder conviction since 2016. Single-sourced this session, treat with appropriate caution, but directionally a real positive. |
+| 8 | Exchange outflows increase (more BTC leaving exchanges) | [X] carried forward | Confirmed 3 July (~-$9.4B/30d across the five largest exchanges), not independently re-pulled this session, carried as still-directionally-valid rather than re-verified. |
+| 9 | BTC stops making lower lows | [~] | Nuanced: a fresh 21-month low near $58K printed 30 June before recovering. The $60-65K band has held SINCE that low, but a technically lower low was made this cycle before the recovery — not a clean pass. |
+
+**Score this session: 5 clear (1, 2, 5, 7, 8), 2 partial/upgraded (4, 9), 2 unresolved (3, 6). Materially improved from the 3 July reading of 4/9 with one explicit FAIL, but still short of the 6+ clean threshold Scenario 1 or 2 both require.**
+**Scenario 1 entry gate: 6+ AND all three conditions met — not met, price nowhere near the $53-58K zone regardless of scorecard.**
+**Scenario 2 entry gate: 5+ AND all five Scenario 2 conditions met — condition (a) briefly true then false again, gate remains CLOSED as of 14 July, but this is now a live, dynamic situation worth checking every session rather than a settled no.**
+
+---
+
+### SCORECARD A — 3 JULY 2026 (S86, superseded above)
 
 | # | Condition | Status | Notes |
 |---|-----------|--------|-------|
@@ -188,7 +226,25 @@ For Scenario 2: 5 of 9 sufficient given higher price, smaller allocation, tighte
 ## WEEKLY SCORECARD B — BOTTOM PROBABLY NOT REACHED
 5 or more checked = bearish, do not enter regardless of price or scenario.
 
-### SCORECARD B — 3 JULY 2026 (S86, real evidence)
+### SCORECARD B — 14 JULY 2026 (S96, real evidence, supersedes 3 July)
+
+| # | Condition | Status | Notes |
+|---|-----------|--------|-------|
+| 1 | BTC closes below active support and cannot reclaim it | [ ] | NOT triggered, band holding. |
+| 2 | ETF outflows remain heavy or accelerate | [~] DOWNGRADED FROM CONFIRMED | No longer accelerating, genuinely two-way now (see Scorecard A item 4). Still a real headwind on a 30-day view (~-$6.27B per one source), but the acceleration itself has stopped. |
+| 3 | Liquidation cascades continue | [ ] NOW RESOLVED AGAINST | OI collapse to ~$44.5B is more consistent with a completed flush than an ongoing cascade. |
+| 4 | Open interest remains high despite falling price | [ ] | Directly contradicted, OI has collapsed, not stayed elevated. |
+| 5 | Funding remains positive while price falls | [ ] unresolved | No fresh data this session, price is not meaningfully falling right now regardless (holding the band), lower priority to re-check while price is range-bound. |
+| 6 | STH realised price is lost and retests fail | [ ] | Not checked this session. |
+| 7 | Whales are distributing rather than accumulating | [ ] | Directly contradicted, see Scorecard A item 7 (84% LTH supply control, strongest since 2016). |
+| 8 | BTC dominance rises because alts are collapsing | [~] | Real finding, not fully resolved: BTC dominance reported at 56.03% (13 July) with commentary describing alts as being "abandoned faster," a late-stage risk-off pattern per that source. Single-sourced, treat as a partial/unconfirmed signal, not a clean trigger. |
+| 9 | Macro remains risk-off | [~] UPGRADED FROM NOT ACTIVE | Real shift from the 3 July GREEN reading: today's fresh recalc is AMBER 11/24, VIX spiked 17.16 (+14% one session) on Iran/Hormuz escalation, oil volatile. Not full risk-off, but no longer the clean GREEN backdrop this scorecard read against on 3 July. |
+
+**Score this session: 0 clean bearish triggers, 3 partial/unconfirmed (8, 9, and a downgraded-but-not-zero 2). Materially LESS bearish than the 3 July reading on items 3, 4, 7 (all flipped from unresolved/confirmed-bearish to resolved-against), partially offset by a genuine macro deterioration (item 9) that didn't exist 3 July. Net: still well short of the 5+ threshold, do not enter, but the composition of the bearish case has shifted from crypto-specific (funding, leverage, distribution) to macro-general (Iran, VIX, oil) — worth tracking which one is actually driving price if BTC weakens from here.**
+
+---
+
+### SCORECARD B — 3 JULY 2026 (S86, superseded above)
 
 | # | Condition | Status | Notes |
 |---|-----------|--------|-------|
@@ -354,7 +410,7 @@ Copy forward each week. Target is a time series of decisions, not memory-depende
 | 6 Jun 26 | ~$61,200 | $58-60K | Outflows (heavy — $733M/day peak) | Cooling | 12 | Unknown | Risk-off, VIX 21.51 close (25.89 intraday), 10yr 4.54% | 1/9 | 4/9 | Capitulation/base-watch |
 | 13 Jun 26 | ~$63,562 | $60-65K consolidation | Decelerating sharply — $22M/day Jun 11, IBIT net positive | Unknown | 13 (7+ days below 15) | Unknown | Improving — VIX 19.25, 10yr 4.46%, WTI $85.40 | 4/9 partial | ~2/9 | Base-watch / bottom forming signals present |
 | 3 Jul 26 (S86) | $61,433 | $60-65K, holding since Jun 13 | REVERSED — June closed ~$4.5B net outflows, worst month on record, IBIT ~$3.55B of it. Directly contradicts the Jun 13 deceleration read. | Not confirmed — CoinGlass/Checkonchain gap unresolved, web search returned only Feb-Apr dated results | 15 | Not confirmed — same tool gap | GREEN regime, VIX 16.59, 10yr 4.475%, SPX +1.7% above 50d MA | Unconfirmed (3/9 hard-blocked) | Not run | Base-watch, Scenario 2 gate CLOSED on contradicting evidence, not merely unconfirmed |
-| | | | | | | | | | | |
+| 14 Jul 26 (S96) | ~$62,700-62,900 | $60-65K, holding 5+ weeks | Two-way now — 10-day $2.73B outflow streak broke 2 Jul, 3-day +$510M inflow streak (2/6/7 Jul) briefly satisfied Scenario 2 cond. (a), reversed again 8 Jul (-$84.9M) on hawkish FOMC minutes. Strategy (corp. treasury) actively selling BTC (~$216M), a new negative not on file 3 Jul. | OI collapsed $90B→~$44.5B since cycle high, consistent with completed leverage flush, resolves the Scorecard A/B liquidation gap | 28 | 84% of supply held by LTHs per 13 Jul on-chain read, strongest conviction since 2016, resolves the prior whale-chart-scale problem, single-sourced | AMBER 11/24 (fresh recalc same session), VIX 17.16 (+14% one session) on Iran/Hormuz escalation, 10yr rising | 5 clear + 2 partial/9 | 0 clean + 3 partial/9 | Base-watch, Scenario 2 gate technically touched then closed within days — a live, dynamic situation, not a settled no |
 | | | | | | | | | | | |
 | | | | | | | | | | | |
 

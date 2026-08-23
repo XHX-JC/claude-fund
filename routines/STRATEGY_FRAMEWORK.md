@@ -45,6 +45,13 @@ They are structurally separate from entry to exit.
 | Strategy B | 50% of net liquidity | 3-4 positions, rotating | Event-driven, active |
 | Cash reserve | Minimum 10% | — | Always maintained |
 
+**FLAGGING CADENCE CHANGED 18 AUGUST 2026, JAMES'S EXPLICIT INSTRUCTION:** the 10% cash floor
+remains the standing target above, but James has confirmed he understands it and does not need
+it re-flagged as an urgent open item every session while it sits breached. Continue tracking it
+as a normal balance-sheet fact (state the number when balances are pulled), but stop treating a
+sub-10% cash reading as a standing mandatory-action flag the way the LNTH-style orphaned-order
+checks are. Escalate again only if the breach deepens materially or James asks for the flag back.
+
 At current net liquidity ~$103K:
   Strategy A target: ~$51,500 across maximum 8 positions
   Strategy B target: ~$51,500 across maximum 3-4 active trades

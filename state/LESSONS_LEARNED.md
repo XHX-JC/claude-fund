@@ -1,3 +1,172 @@
+## S107 AMENDMENTS — Friday 21 August 2026 (21 Aug close, dual-session journal covering 20-21 Aug)
+
+Session character: heavy file-reconciliation session (market health recalc, six new resting
+orders, AVAV/KTOS/ONDS Stage 1, CFG Stage 1/2, analyst watch), two real process errors made and
+caught within the same session rather than carried forward.
+
+ERROR 1: MARKET_HEALTH_CHECK.md recalculation initially claimed to supersede a stale AMBER
+11/24 from 14 July. Wrong — the file's own 19 August entry (AMBER 9/24) was the genuine most
+recent baseline, sitting between the 14 July content and the top of the file. Root cause: a tail
+read plus keyword grep landed on the old 14 July section; the intervening 17-19 Aug entries were
+technically in the fetched context but never surfaced or read before the recalc was written and
+saved. Caught immediately after the write, when the file's own content contradicted the just-
+written "supersedes" claim. Corrected same session before it could propagate. Lesson: a keyword
+grep against a large append-only log file is not a substitute for reading the top of the file in
+full before writing a new entry that claims to supersede something — the two searches used
+(tail, and grep for AMBER/GREEN/score-value) both happened to skip the exact section that
+mattered. Structural fix for next time this pattern recurs: read the first ~150 lines of any
+append-only state file in full before writing a superseding entry, don't rely on grep alone to
+surface the most recent prior entry.
+
+ERROR 2: the analyst-watch check (ANALYST_WATCH.md) was run in a way that filtered out a fresh
+name (MRVL) on the grounds it didn't touch an existing held or register position. This inverts
+the check's actual purpose — it exists to surface NEW names, not to confirm coverage of names
+already being tracked. Caught by James directly ("don't cross reference and disregard because
+they are not on our radar"), corrected same session, re-run properly, surfaced two genuine leads
+(MU, CFG) that the first pass would have discarded. Root cause: applied the wrong filter by
+default, reasoning that only overlap with existing coverage was actionable, when the file's own
+stated purpose is the opposite. Structural fix logged directly into ANALYST_WATCH.md's own
+"HOW THIS RUNS AT SESSION OPEN" section as step 0, so the correction is load-bearing at the next
+session open rather than living only in this journal entry.
+
+Common thread across both: neither error was a data-availability problem, both were a reasoning/
+process default applied without checking it against the file's own stated purpose or content
+first. Worth flagging as a pattern rather than two unrelated one-offs — before writing a
+superseding entry to any state file, or before applying a filter to a search/scan step, check
+what the file or step is actually for, not just what seems like the reasonable default.
+
+
+
+Session character: extended live session, LEVI entered via Strategy B off a verified ChatGPT-sourced scan, AVAV stop mechanics resolved (stop-limit required by platform constraint, not preference), CRM's stop discrepancy corrected a second time after an earlier verbal confirmation was never actually written to file, KTOS/KRMN comparative feedback resulted in a new watchlist category (manufacturing capacity), and a real search-discipline failure on AEHR prompted this entry.
+
+### P69 — A STANDING SOURCE-TARGETING RULE DOES NOT PREVENT ITS OWN VIOLATION WITHOUT A MECHANICAL TRIGGER (S91)
+Origin: James asked whether an AEHR press release, issued the same day, had been checked
+for. The first search run was "Aehr Test Systems stock surge news July 2026," a generic,
+digest-layer query, exactly the pattern STRATB_SOURCING_PROTOCOL.md's own Source Targeting
+section already warns against by name. That search returned months of recycled coverage
+and missed a press release that was, at the time, minutes old. A second search, built as
+"Aehr Test Systems follow-on production order silicon photonics FOX-XP July 9 2026," found
+it immediately. The conclusion "no fresh AEHR-specific catalyst found" had been stated to
+James with more confidence than a single generic query actually supported.
+This is not a new failure class. It is the same shape as the SCAR gap on AVAV at S86, a
+named item logged as unresolved when a better search would have closed it, caught by James
+not found internally, after which a standing instruction ("verify before declaring anything
+unresolved") was already added. That instruction did not prevent this recurrence. The
+principle was correct both times. Restating it a third time in different words would not
+fix what actually failed, which is query construction under normal working pressure, not
+awareness that a rule exists.
+RULE, implemented directly in STRATB_SOURCING_PROTOCOL.md's Source Targeting section, not
+repeated here in full: for any named company or ticker, the FIRST search attempted must be
+source-targeted by construction (company name plus a specific product/program/segment
+name, or a direct company IR/press-release page attempt), not a generic "[ticker] stock
+news" query. This moves the check to the point where the query gets typed, not to a review
+step at the end that can itself be skipped under the same pressure that skipped the rule in
+the first place, which is exactly what happened here and at S86. If a third occurrence of
+this shape happens despite the mechanical query-order fix, the next escalation is refusing
+to state any negative conclusion ("no catalyst found," "no news found") on a named company
+without the source-targeted query visible in that turn's own tool-call history, the same
+escalation structure P64 used for P52's third recurrence.
+Separately, James noted a broader concern worth recording honestly rather than smoothing
+over: that a general-purpose external tool has been consistently finding things faster on
+this exact category of check, despite the volume of protocol built here. The honest
+assessment is that more protocol was not the missing layer, a rule that already existed
+and said the right thing was not applied. The fix logged above targets that specific gap.
+Whether it holds is itself something to check honestly next time this category of research
+comes up, not assume solved because a rule was written.
+
+### P70 — "I NEED TO CHECK THIS" IS NOT AN ANSWER WHEN THE TOOLS TO CHECK IT ARE ALREADY LIVE (S91)
+Origin: James's direct feedback, same session as P69 but a distinct failure. P69 is about
+query construction quality once a check is actually run. This is about whether the check
+gets run at all before a response is sent. James named the pattern precisely: half-checking
+a question and stating "I need to look at this" as though that were the answer, rather than
+actually looking and then answering. Repeated enough across a session that he now runs a
+second, independent check on most of this fund's output via a separate tool, which he
+correctly identifies as defeating the purpose of the fund's own research layer existing at
+all.
+This is a completeness failure, not a knowledge failure. Every tool needed to finish these
+checks was available in the same turn. Stopping short and naming the gap instead of closing
+it is a worse outcome than either fully answering or asking one genuine clarifying question,
+it produces the appearance of diligence (a caveat was stated) without the substance of it
+(the fact was never actually found).
+RULE: if research is flagged as needed to answer a question, it gets completed in the same
+turn, before the response is sent, using whatever tools are available, not deferred with
+language like "I'd need to check this" or "worth verifying" standing in for the actual
+verification. This applies to every specific question and every requested scan, not only
+fund positions. The single exception is genuine, irreducible ambiguity, where the question
+itself needs clarification from James before any research direction makes sense, that is a
+clarifying question, not a research shortcut, and is still not the same thing as reporting
+an unfinished check as if it were a finding.
+Self-check before sending any response that involved research: does this response contain a
+fact I flagged as needing verification but never actually verified? If yes, the response is
+not finished, regardless of how complete it reads.
+
+### P72 — A CONFIRMED CATALYST GETS POSITIONED AHEAD OF, NOT WAITED OUT (S91)
+Origin: OKLO. Recommended "add once a catalyst is confirmed" as the actionable path forward,
+without first checking whether a real, near-term catalyst already existed. It did: DOE had
+approved Groves' final safety analysis July 1, with first criticality targeted "later this
+month" per multiple sources from the past week, a fact this file had wrongly carried as
+stale ("no further binary reaction window") from an earlier session. James pointed out
+directly that "buy after confirmation" is not a clean strategy, it means paying up after
+the market has already priced the good news, and that this fund already has a standing
+instruction covering exactly this: position ahead of a high-conviction binary catalyst with
+a defined stop, not after it.
+Two separate failures stacked here, worth keeping distinct. First, a stale fact (Groves
+"missed its window") was carried forward without being re-checked before being used to
+shape a recommendation, the same P69/P70 shape already logged twice this session. Second,
+even independent of that stale fact, the DEFAULT framing offered, wait for confirmation,
+ran directly against a standing rule already on file. A correct search does not fix an
+incorrect default; both have to be checked.
+RULE: when a name has a real, dated or approximately-dated catalyst and an already-definable
+stop, the recommendation defaults to positioning ahead of it, sized to the stop, not to
+waiting for the outcome and adding afterward. "Wait for confirmation" is only the right
+answer when no dated catalyst exists, or when the stop cannot be defined against thesis
+failure rather than against the catalyst outcome itself. State which of those two situations
+applies explicitly, rather than defaulting to the safer-sounding "wait and see" framing.
+
+### P71 — A STOP TIGHTENED FOR "OPEN VOLATILITY" CAN SIT INSIDE THE SHAKEOUT ZONE, NOT AT THESIS FAILURE (S91)
+Origin: LEVI, entered $22.90 on a verified beat-and-raise/guidance-miss-overreaction thesis.
+Stop was moved from $22.00 to $22.50 same morning specifically to protect against a
+market-open fall, James's own explicit reasoning at the time. The session's actual range
+was $22.47 to $24.53, opened weak, dipped just under the new stop, triggered the exit at
+$22.502, then reversed hard on real volume to close $24.31, +2.49% on the day. The thesis
+was correct. The stop was in the wrong place to survive finding that out. James's own
+verdict, stated plainly: "right call, wrong stop."
+The distinction that matters: tightening a stop because volatility is EXPECTED at the open
+is not the same thing as tightening it because the thesis is more fragile. A name gapping
+into an open after a large prior move frequently prints an exaggerated wick in both
+directions before the real direction sets in, a shakeout, not a trend confirmation, the
+same mechanic T74's capitulation-volume signal and P59's "first 30 minutes" discipline
+both already describe from the other side. A stop moved specifically to "protect against a
+fall" without asking whether that fall would be real thesis failure or ordinary opening
+noise ends up sitting exactly where the noise does its damage.
+RULE: when tightening a stop specifically in anticipation of open-specific volatility, ask
+explicitly first: does this new level still sit at genuine thesis failure, or has it moved
+into the range where a normal opening shakeout on this name could tag it regardless of
+which way the real session goes. If the honest answer is the latter, the stop is being
+tightened for the wrong reason, calibrated to expected noise rather than to the thesis. On
+a name with a real overnight gap or a big prior move, the first 15 to 30 minutes of range
+should generally be given room to resolve before a stop is treated as testing the thesis
+itself, the same discipline already applied elsewhere in this fund's own files, not yet
+applied to same-day stop placement decisions until this case.
+
+---
+
+## S87 AMENDMENTS — Monday 6 July 2026
+
+Session character: full trading session, NYSE open, OKLO gap-down whipsaw stopped the position out within minutes of the open then reversed hard, CRM filled on a favourable gap, a large broad market-wide recovery rally ran through the AI-infrastructure/semis complex that had sold off July 1-2, and a genuine process failure on a scanner name (SHAZ) surfaced mid-session. Two lessons logged below.
+
+### P67 — SCANNER-WIDE SCRUTINY MUST APPLY EQUALLY, NOT PROPORTIONALLY TO WHAT CLAUDE IS ALREADY FOCUSED ON (S87)
+Origin: a premarket "top movers" screenshot containing multiple tickers (LRCX, SHAZ, IREN, EZJ among others) was reviewed the same morning a full V1 table was being built on LRCX specifically. LRCX got a complete Stage 2, primary-sourced, multi-search treatment. SHAZ, sitting in the identical screenshot, got a single dismissive clause ("not fund-relevant") with zero verification, in the same message where every other alert that session was being held to a "verify before dismissing" standard. SHAZ went on to run from roughly 8% to over 20% intraday gains across the session. James flagged the inconsistency directly: "I flagged SHAZ to you, you dismissed it."
+No capital was lost — James confirmed he would likely not have entered SHAZ even with a fuller look this morning — so the cost was informational, not financial. That does not make the process gap less real.
+This is NOT a knowledge gap and rereading standing instructions will not fix it, since the instructions were already being correctly applied to LRCX in the same message. The actual failure mode: attention allocated in proportion to which name Claude happened to already be building a thesis around, rather than applied uniformly across every name in a shared scan or screenshot.
+RULE: when multiple names appear in one screenshot, alert batch, or scanner output, every name receives the same minimum one-line verification (current price check plus a targeted news search) before any of them is dismissed, regardless of which name is already the session's focus. A name that looks less interesting in the moment does not get a lower verification bar than the name Claude is already excited about.
+
+### P68 — STRATEGY B REQUIRES A 3-4 DAY REACTION WINDOW, NOT MERELY A DATED EVENT MONTHS OUT (S87)
+Origin: OKLO, KTOS, CEG, and ONDS were all carried under the DECISION_REGISTER as Strategy B (short-term catalyst trades) despite three of the four being entered as value/thematic positions (CEG on a sector-rotation dip, KTOS and ONDS on long-term defense conviction with an earnings date used loosely as justification) and the fourth (OKLO) having its own hard-exit catalyst rule already retired at S84 once Groves was correctly identified as a subsidiary milestone, not the core thesis. James corrected this directly: "StratB are short term trades based around a particular short term rerating catalyst... buying low is stratA and buying over a month away from earnings is not StratB." Applying strict one-directional Strategy B stop discipline to what were actually Strategy A thematic holds meant OKLO's stop sat 0.4% above cost, well inside the name's own demonstrated single-session volatility, and triggered on ordinary opening-bell noise rather than any actual thesis failure.
+RULE: Strategy B is reserved for trades entered close to a specific, dated, short-duration rerating event (quiet period expirations, lockup dates, contract decisions with a known date) with an exit at or shortly after that event, matching the categories in STRATB_SOURCING_PROTOCOL.md. A position held for weeks or months against a distant earnings date, however good the underlying thesis, is Strategy A and should carry Strategy A's flexible, reason-stated stop discipline, not Strategy B's rigid one-directional rule. Register corrected S87: OKLO, KTOS, CEG, ONDS all reclassified to A. Fund holds zero live Strategy B positions as of this session; genuine B exposure requires fresh sourcing against the actual 3-4 day catalyst categories, not relabeling an existing value hold.
+
+---
+
 ## S86W AMENDMENTS — Saturday 4 July 2026 (weekend check, no trading)
 
 Session character: off-cycle Saturday check-in, no journal-numbered session, run at James's request to check the book against OKLO's July 4 Groves catalyst. IBKR connector absent from the tool registry a second consecutive check. One process failure, caught and corrected by James mid-session, logged directly below.
@@ -528,4 +697,188 @@ Note: The thesis may be correct. The company may reach $50+. The error was not c
 ### P43 — IBKR MARKET DATA UPGRADE (S65)
 Upgraded to US Securities Snapshot + US Equity/Options Streaming Bundle ($14.50/month). Live streaming Level 1 across NYSE/Nasdaq/AMEX. Replaces delayed/snapshot data. Standing operational note for all sessions.
 
-Next journal: trading_journal79.jsx
+### P73 — OBV NEEDS BOTH WINDOWS TOGETHER, NEVER SEQUENTIALLY (S92)
+Repeated pattern across an exceptionally long session: a verdict given off one OBV window
+(intraday or a single medium-term chart) was reversed once the other window was actually
+pulled. AREC: initial 1-minute chart showed OBV climbing through a flat price, read as
+quiet accumulation and called a buy; the 3-month chart showed the same stock had been in
+net distribution for the entire prior quarter, with two prior rally attempts already
+failed, reversing the call to a clean PASS. TLS: initial read off price structure alone
+(three tests of the same resistance) called it the weakest of a batch of names; once OBV
+was actually checked against price, it showed OBV making a new high while price stayed
+below its own prior peak, a genuine bullish divergence that materially improved the case.
+Both mistakes were the same root cause: judging a chart from whichever single timeframe
+had been requested first, rather than treating short and long OBV windows as two different
+questions (what is happening right now vs. what has this name's volume actually been doing
+for months) that need to both be answered before a verdict is given. Standing rule: when
+OBV is going to inform a real conviction call, request at minimum an intraday/short window
+AND a 3-month-or-longer window together before answering, not one followed by a
+correction after the fact. A single-window read is acceptable for a quick status check
+("is this stock currently active") but not for anything feeding a Stage 1/2 verdict, an
+entry decision, or a size recommendation.
+
+### P74 -- ALL AND DONT LEAVE ANYTHING UNANSWERED ARE COMPLETION GATES, NOT PRIORITY SIGNALS (S93/S94)
+Origin: James opened S93 with an explicit instruction to run the full weekly deep dive and
+close out every outstanding Stage 1/2 name, no exceptions stated. The session ran categories
+14, 15, 20, and 23 in full, produced real, decision-relevant findings (AMSCs Stage 2, KTOSs
+capacity reinforcement), and then stopped, with categories 16, 18, 19, and 22 noted as an
+honest gap inside a file rather than flagged to James directly. James asked why. The answer
+given was accurate as far as it went, time and prioritization under load, but the underlying
+failure was not explained by that alone: nothing in SESSION_OPEN_PROTOCOL.md or
+STRATB_SOURCING_PROTOCOL.md authorizes substituting a scope judgment for an explicit
+instruction, and no such authorization was cited because none exists. The categories were
+then run, closing three of them (16 concluded, 18 unblocked with a real find, 19 applied to
+KTOS, 22 given a freshness check), but a further item, category 17 SOTP work, was left
+unfinished a second time in the same response that was explaining the first omission. James
+caught this immediately, stating plainly that the instruction had been overridden twice.
+This is the same failure shape as P69 and P70, a real check or a real piece of work gets
+stated as needed, or noted as skipped, rather than actually completed, and the honest-sounding
+note about the gap substitutes for closing it. P69/P70 already established that restating
+the underlying rule a second time does not prevent a third occurrence, only a mechanical
+trigger does. This is that third occurrence, in a different category of task, research
+scope rather than search-query construction or verification completeness, itself evidence
+the pattern generalizes beyond the specific contexts P69/P70 were written for.
+RULE: when an instruction contains ALL, EVERY, DONT LEAVE ANYTHING UNANSWERED, or
+equivalent completion language, that language is a gate on when the response is considered
+finished, not a priority ranking Claude is free to apply its own judgment against. Every
+item inside the stated scope gets an explicit, stated disposition, ENTER/PASS/DEFER-with-
+reason for a trade decision, DONE/NOT DONE-with-reason for a research task, before the
+response is sent. A NOT DONE disposition is an acceptable outcome under real constraints
+(a category may be structurally slow, or may need a follow-up tool not yet used) provided it
+is stated as a disposition in the same turn, not discovered by the person having to ask why
+something is missing. Silence on an item inside an ALL instruction is never an acceptable
+disposition, regardless of how reasonable the underlying time tradeoff was.
+Self-check before sending any response answering an ALL-scoped instruction: does every
+item named or implied by the instruction have a stated disposition in this response? If any
+items status can only be inferred by its absence, the response is not finished.
+
+### P75 — ORDER STATUS COLUMNS MUST BE READ LITERALLY, "SUBMITTED" AND "0/N" ARE NOT "FILLED" (S96)
+Origin: OKLO's S96 reentry order (BUY Limit 400 @ $45.30 GTC) was logged in DECISION_REGISTER.md
+as "CONFIRMED FILLED" directly off a TWS Orders screenshot that literally read "0/400 ...
+Submitted." Zero of four hundred shares filled, status Submitted, is a resting order, not a
+completed trade — there is no ambiguity in what the screenshot showed, the error was in how it
+was read. The mistake likely happened because the order's price and stop had just been
+confirmed as correct (a genuine, separate finding worth logging) and that correctness got
+conflated with the order having executed. Caught only during this session's own close protocol,
+meaning it sat wrong in the live register for a real stretch of the session, not caught
+immediately.
+Rule: when reading any Orders-tab screenshot, the fill-quantity column (e.g. "0/400",
+"250/250") and the Status column ("Submitted" vs "Filled") are the only two fields that
+determine whether a position is live. Price, stop, and limit correctness are separate
+questions from fill status and must never be allowed to stand in for it. Before writing
+"CONFIRMED FILLED" or "CONFIRMED LIVE" anywhere in DECISION_REGISTER.md, TRACK_RECORD.csv, or
+any other state file, explicitly check the fill-quantity and Status fields for that specific
+row, not just that the order exists and its terms are correct. An order can be perfectly
+correct and still not have executed.
+
+Next journal: trading_journal104.jsx
+
+
+---
+
+## P76 — A closed position can sit in the record as open for a full session if the close itself was never re-verified against a primary source
+
+S97, 15 July 2026. NOW was entered and closed the same day, S96, 14 July 2026 — bought
+$104.21, sold across four fills same session, blended $106.481, realized +$227.10. The
+S96 close reconciliation and journal103 both carried it forward as HELD, unrealized
++$280 at a $107.01 last price, and DECISION_REGISTER.md repeated that framing into the
+S97 open. It sat that way through a full session's worth of open-protocol reads and at
+least one direct reference in conversation before James supplied a live Trades tab
+screenshot that showed the actual four sell fills, dated the same day as the buy.
+
+This is the mirror image of P75. P75 was about not reading "0/400, Submitted" as filled.
+This is a case where a position that genuinely was closed got carried as still open,
+because the close happened late in a long session and the final reconciliation pass
+captured the Positions/Orders tabs but not the Trades tab specifically, so a same-day
+round trip was invisible to the check that was actually run.
+
+Rule: a position's open/closed status as written in DECISION_REGISTER.md, TRACK_RECORD.csv,
+and the journal is only as current as the last screenshot it was checked against. Positions
+and Orders tabs show what is live right now, they will not show a position that was opened
+and fully closed within the same session unless the Trades tab (or an explicit fill
+confirmation at the time of the exit) was also checked. On any session with a same-day
+entry, do not assume the position is still open just because it isn't flagged as stopped
+out; if a same-day exit is even plausible, check the Trades tab specifically before writing
+HELD/unrealized language into the close.
+
+Next journal: trading_journal105.jsx
+
+
+---
+
+## P77 — A STOP-LEVEL CLAIM MUST BE CHECKED AGAINST THE COST BASIS STATED IN THE SAME NOTE, NOT ASSERTED BY DIRECTION ALONE
+
+17 July 2026 (ad hoc, reconciliation session, see trading_journal105.jsx). RKLB's S96
+register note described a stop raise from $65.00 to $75.02 as "a large raise tightly
+trailing the $79.67 last price, locking in a substantial real profit floor well above the
+$76.708 cost basis." That claim is arithmetically wrong: $75.02 is below $76.708, not
+above it. A stop at $75.02 locks in a small loss relative to cost, not a profit. This sat
+uncorrected in the register for the life of the position. The stop fired 15 July at
+$75.0105 and the outcome confirmed the error directly — realized LOSS $170.92, not the
+gain the note's own language implied.
+
+The likely mechanism: the note was written while a genuine, favorable pattern was being
+described across several names at once (CEG, CODA, KTOS, RKLB, UAMY, NOW all had stops
+trailed up the same window), and "raised, therefore locking in profit" was applied as a
+general description without checking the specific two numbers against each other for this
+particular name. This is a close cousin of P75/P76 (order-status fields and open/closed
+status must be read literally, not inferred from an adjacent correct-sounding fact) —
+here the adjacent correct-sounding fact was "stops have been trailing up across the book,"
+and it stood in for actually checking whether $75.02 exceeded $76.708.
+
+RULE: any claim that a stop level sits "above cost," "locks in a profit," "locks in a
+loss," or similar, must show the two numbers being compared in the same sentence or
+immediately adjacent, not merely assert the direction. Before publishing language like
+"raised to $X, above the $Y cost basis" anywhere in DECISION_REGISTER.md, FUND_SESSION_
+STATE.md, or a journal, do the subtraction and state which number is larger. This applies
+especially when multiple names are being updated in the same pass under a shared
+descriptive pattern ("stops trailing up across the book") — a shared narrative across
+several names does not mean every individual name's numbers were actually checked against
+that narrative, and each one needs its own arithmetic confirmed, not inherited from the
+group description.
+
+Next journal: trading_journal106.jsx
+
+
+---
+
+## P78 — A GENUINE LONG-TERM FUNDAMENTAL CASE IS NOT AN ANSWER TO A NEAR-TERM TACTICAL TRADE QUESTION
+
+20 August 2026, ad hoc. James asked, independent of fund mandate, whether there was an
+argument to short MRNA after it surged 177% in a single session on real Phase 3 melanoma
+data (intismeran/Keytruda, genuine platform validation, not hype). The answer given was
+no — citing OBV holding through a consolidation, a real underlying catalyst rather than
+manufactured hype, and squeeze/borrow risk given the stock had just inflicted a $5B loss
+on short sellers. The next session MRNA fell roughly 12-13% intraday on profit-taking and
+valuation concern, no new negative data, a move that would have been genuinely profitable
+to short from the open. James's own framing, stated after the fact but describing his
+reasoning at the time: the rally was huge, the hurdles to the payoff becoming real revenue
+remained significant (no hazard ratios/OS data yet, a future medical-conference readout
+still pending, years to monetization even if the data holds), and profit-taking into that
+combination was the more obvious near-term read.
+
+The mechanism: the question asked was "is there a trade here now" — a near-term, tactical
+question. The answer given was built mostly from a long-term framework — is the underlying
+science real, is the platform validated. That framework produced a correct answer to a
+different question than the one asked. "The catalyst is real" and "the move is already
+larger than the next few sessions can sustain, given how far away the payoff still is" are
+two separate, both-legitimate questions, and a strong yes on the first was allowed to stand
+in for the second rather than being weighed alongside it. The OBV read (flat/elevated
+through a few hours of chop) was also over-extended into "confirmed stabilization" — OBV
+not making a fresh low over a short consolidation window is a coincident read of the last
+few hours, not a forward signal that a much larger giveback isn't still coming, particularly
+on a name documented elsewhere the same day as having 51 moves >5% in the past year.
+
+RULE: for any single-session move of roughly 50%+ in either direction, when asked whether a
+near-term trade exists, answer TWO separate questions explicitly, not one standing in for
+the other: (1) is the underlying catalyst genuine — this determines the long-term direction
+and whether a durable re-rating is justified at all; (2) given how far away the actual
+payoff still is (pending data, regulatory steps, years to revenue, execution risk), has
+TODAY'S move already priced in more optimism than the next few sessions can sustain,
+independent of whether the long-term case is real. A "yes" on (1) does not answer (2), and
+should never be allowed to override a genuine, separate assessment of (2). Magnitude of the
+move itself, and distance-to-payoff, are inputs on their own, not proxies for catalyst
+quality. Apply this before any future assessment of a large single-session mover, long or
+short side, real news or not.
+
+Next journal: trading_journal107.jsx

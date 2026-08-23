@@ -1,5 +1,47 @@
 # SESSION OPEN PROTOCOL — CLAUDE FUND
-# Last updated: S80 | 26 June 2026 — V1 Conviction Verification Loop added to Step 6
+## STANDING RULE, ADDED 21 AUGUST 2026 — DAILY WATCHLIST SCAN + PARAGRAPH CONFIRMATION, PERMANENT
+James's explicit instruction: every core and background watchlist name (DECISION_REGISTER.md)
+gets scanned each session open, and a short paragraph per name is delivered confirming the scan
+ran and flagging anything that actually needs investigation. Silence on a name's substance means
+nothing new was found, not that the scan was skipped — the paragraph is itself the confirmation,
+so it still gets written even when there's nothing to report. Runs alongside the Step 7-PRE core
+watchlist read and the ANALYST_WATCH.md five-name batch, same open, not deferred to later in the
+session. See DECISION_REGISTER.md 21 Aug entry for the originating instruction and first example
+(IONQ, XSG, NNE, CRCL, PYPL, AVAV/KTOS/ONDS, BWXT).
+
+## STANDING RULE, ADDED 20 AUGUST 2026 — PRICING/RESEARCH CONNECTOR USAGE, PERMANENT
+James's explicit instruction: pricing and market-data connectors (Alpha Vantage, Finnhub, EODHD)
+are confirmed working (tested directly 20 Aug, not assumed) and are to be used proactively for
+price confirmation, fundamentals research, and market analysis. Do NOT ask permission to check a
+price or run a data pull — this is read-only, informational, and covered by the same standing
+rule already in place for other mechanical checks. Use these connectors the same way web_search
+is already used in this fund's process: silently, as needed, woven into the analysis rather than
+announced or requested as a separate step.
+
+CONNECTOR HIERARCHY: Alpha Vantage and Finnhub are primary — both tested reliable. EODHD is
+fallback only — it failed with a 401 Unauthorized twice in a row on 20 Aug before working again
+on a third attempt with no configuration change, treat it as less reliable than the other two
+until it's shown stable across multiple sessions. If a connector fails, try the next one in the
+hierarchy before reporting a data gap to James — do not surface a single connector's failure as
+a blocker if another one can answer the same query.
+
+WHAT THIS DOES NOT REPLACE: these connectors give price, volume, and fundamentals data. They do
+NOT replace James's own charts for Stage 2 work. OBV reads, base/reclaim signatures, and support/
+resistance structure all require James's own TradingView view, exactly as they have all session —
+continue requesting a chart from James whenever a Stage 2 assessment is needed, a live position's
+technical picture needs checking, or a new name needs the same treatment already given to KEYS,
+COHR, CRDO, LITE, NBIS, RARE, RKLB, ASTS, FISN, AEVA, and NNE this session. Connector data
+answers "what is the price and what are the fundamentals" — it does not answer "is there a real
+base forming," which stays a chart question.
+
+# Last updated: S89 | 8 July 2026 — Step 3F added: mandatory per-file open checklist,
+# matching the close-side completion checklist added the same session to
+# SESSION_CLOSE_PROTOCOL.md after S87 and S88 both silently skipped the journal at close.
+# The open side had no equivalent problem (files ARE being read correctly each session),
+# but the close-side fix works by forcing an explicit per-file YES/NO statement rather
+# than assuming completion — the same discipline is worth applying symmetrically at open,
+# so a skipped or unavailable file at open is stated, not silently absorbed into "read the
+# files" and then found missing three questions later.
 # ═══════════════════════════════════════════════════════════════════════════════════════
 
 ## THE OPERATING PHILOSOPHY
@@ -100,9 +142,10 @@ provide exact order parameters for James to enter manually.
 6. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\LESSONS_LEARNED.md            <- scan last 3 entries every session
 7. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\MARKET_HEALTH_CHECK.md     <- while status ELEVATED or CRISIS
 8. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\BTC_PLAYBOOK.md               <- Fridays + when BTC within 15% of $58K
-9. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\SESSION_BRIEF.md              <- skip if absent
-10. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\OPPORTUNITY_SCAN.md           <- skip if absent
+9. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\SESSION_BRIEF.md              <- MANDATORY, S90 — raw ChatGPT/external intake, read FIRST among state files
+10. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\OPPORTUNITY_SCAN.md           <- MANDATORY, S90 — verified outcome ledger, read after SESSION_BRIEF.md
 11. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\TRACK_RECORD_PROTOCOL.md  <- MANDATORY - SI-95, governs TRACK_RECORD.csv
+12. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\ANALYST_WATCH.md              <- MANDATORY, S90 — top tier analyst tracking, see Step 3G
 ```
 
 ### Why each file matters:
@@ -201,14 +244,105 @@ like this with no standing trigger: it sat untouched for two months. Do not let 
 that pattern.
 
 CHECK, run at every weekly StratB deep dive (STRATB_SOURCING_PROTOCOL.md), not every session:
-read both thesis files' watch-only and Stage 1 PASS names, check WATCHLIST_TICKERS.md's hourly
-scan groups for the same names are still current, and confirm no named candidate has had a
+read both thesis files' watch-only and Stage 1 PASS names, cross-check against James's ChatGPT
+alert coverage (see Step 3E below — Cowork's hourly scan is retired, WATCHLIST_TICKERS.md is
+reference-only now, not an active scan input), and confirm no named candidate has had a
 Stage 2 entry criterion trigger (e.g. Kraken's $4.70 confirmation level) without it being
 surfaced. If a candidate's entry criteria are met, surface it explicitly — do not let "watch
 only" quietly become "forgotten." Capital availability must be re-checked at that point too;
 James's S86W instruction was explicit that no capital is currently earmarked for new thematic
 entries regardless of how attractive any single candidate's setup becomes.
 ════════════════════════════════════════════════════════════════════
+
+## STEP 3E — ALERT SOURCE, RETIRED COWORK, MANUAL RELAY MODEL (ADDED S86W, UPDATED S90, PERMANENT)
+════════════════════════════════════════════════════════════════════
+UPDATE S90: Cowork is now fully scrapped, not just the hourly scan referenced below. The
+manual relay model this step already described is now formalised with dedicated files:
+James pastes into `state\SESSION_BRIEF.md`, Claude verifies and logs the outcome into
+`state\OPPORTUNITY_SCAN.md`. See "EXTERNAL SCAN INTAKE" section above for the full workflow.
+Everything below this line is the original S86W reasoning, still accurate, now executed
+through those two files instead of only through DECISION_REGISTER.md / intelligence\ files.
+
+Cowork's hourly WATCHLIST_TICKERS.md scan is RETIRED as of S86W, 4 July 2026. Direct
+comparison against James's existing ChatGPT alert system (Autonomous Defence Pre-Earnings
+Watch, dedicated CODA Operational Catalyst Watch, Critical Minerals Policy Watch, Cannabis
+Rescheduling Watch) found Cowork covered a materially smaller universe (missing KTOS, RCAT,
+ONDS, AVAV, BBAI, AIRJ, UAVS entirely, three of which are held positions), delivered via a
+silently-written file rather than push notification, and had no demonstrated track record of
+ever catching a real hit in this fund's operating history. No basis to keep a worse, narrower,
+less-observable system running once a working broader one exists. WATCHLIST_TICKERS.md is now
+reference-only — it documents why each name is tracked and what would matter if something
+fired, but is not an active scan input. Do not revive the old "one search per group" structure
+without a stated reason.
+
+NEW WORKFLOW: James forwards alerts manually, from any source, when he judges them worth
+acting on. He does not always disclose which system or source an alert, thesis, or tip came
+from — this is deliberate and does not change handling. On receipt: verify independent of
+stated source, same rigor regardless of provenance, cross-check against primary sources
+(not the alert system's own summary), and log the outcome (confirmed / rejected / needs more
+work) in DECISION_REGISTER.md or the relevant intelligence\ thesis file the same session.
+Verification is the job now, not scanning. The Kraken chart correction and the Hammerhead
+sourcing check (both S86W) are the model: an alert or thesis arriving is the START of the
+work, not the finding itself.
+
+KNOWN GAP, confirm don't assume: ChatGPT's system tracks operational and contract catalysts.
+It is not confirmed to track price-level triggers (e.g. OUST's 25-30% pullback alert in
+WATCHLIST_TICKERS.md). Do not assume ticker inclusion in James's alert system covers every
+trigger condition previously tracked for that name — confirm the trigger TYPE is covered, not
+just the ticker.
+════════════════════════════════════════════════════════════════════
+
+## STEP 3F — MANDATORY OPEN FILE-READ CHECKLIST (ADDED S89)
+═══════════════════════════════════════════════════════════════════
+Companion to the close-side completion checklist added the same session
+(SESSION_CLOSE_PROTOCOL.md Step 5). State this explicitly before moving to Step 4 —
+fill in each line, don't paraphrase or skip for time:
+
+  OPEN PROTOCOL FILE READ:
+    Journal (most recent, read in full): [filename stated / NO — state why]
+    SESSION_CLOSE_PROTOCOL.md: [YES / NO]
+    STRATEGY_FRAMEWORK.md: [YES / NO]
+    STRATB_SOURCING_PROTOCOL.md: [YES / NO]
+    DECISION_REGISTER.md: [YES / NO]
+    FUND_SESSION_STATE.md: [YES / NO]
+    LESSONS_LEARNED.md (last 3 entries): [YES / NO]
+    MARKET_HEALTH_CHECK.md (if ELEVATED/CRISIS, else N/A): [YES / NO / N/A]
+    BTC_PLAYBOOK.md (if Friday or BTC <15% of $58K, else N/A): [YES / NO / N/A]
+    SESSION_BRIEF.md: [YES / NO] — MANDATORY since S90, no longer skip-if-absent
+    OPPORTUNITY_SCAN.md: [YES / NO] — MANDATORY since S90, no longer skip-if-absent
+    ANALYST_WATCH.md: [YES / NO] — MANDATORY since S90, Step 3G
+    TRACK_RECORD_PROTOCOL.md: [YES / NO]
+
+If any mandatory line reads NO, read that file now before proceeding to Step 4 — do not
+continue the session open with a stated gap left unresolved. This exists to catch the same
+failure class as the S87/S88 journal gap, one step earlier: a file silently treated as read
+when it wasn't, discovered only when its absence causes a downstream error.
+═══════════════════════════════════════════════════════════════════
+
+## STEP 3G — TOP ANALYST WATCH (ADDED S90, PERMANENT, MUST STAY FAST)
+═══════════════════════════════════════════════════════════════════
+See state\ANALYST_WATCH.md for full detail, source table, and the running log. Summary:
+
+EVERY SESSION: one to two batched web searches covering the five TipRanks verified top
+analysts James named (Brian Brophy/Stifel, Asiya Merchant/Citi, Atif Malik/Citi, Keith
+Horowitz/Citi, Timothy Arcuri/UBS). Looking for any new rating since the last check. If
+nothing new, say so in one line and move on, this is not a deep dive by default.
+
+ONCE A WEEK: check Bert Hochfeld's recent Seeking Alpha output (seekingalpha.com/author/
+bert-hochfeld/analysis or a targeted web search). Track the last-checked date in
+ANALYST_WATCH.md, do not re-run more than once every seven days.
+
+Either track producing a hit on a name already in DECISION_REGISTER.md or the held book:
+update that name's entry same session, same rigor as any other verification, primary
+source check before acting on the rating itself, an analyst call is a lead not a fact.
+
+Either track producing a hit on a fresh name: log it in ANALYST_WATCH.md's table, treat
+it the same way an OPPORTUNITY_SCAN.md item gets treated, worth investigating is not the
+same as worth entering.
+
+This step exists to stay cheap. If it starts consuming meaningful search budget or time,
+that is a signal the method needs simplifying, not a reason to drop it silently.
+═══════════════════════════════════════════════════════════════════
 
 ## STEP 4 — SESSION TIMING (permanent facts — do not flag as errors)
 
@@ -375,6 +509,42 @@ violation, same class as a missing V1 table or a missing T71 chart review.
 
 ## STEP 7 — DECISION REGISTER PROXIMITY CHECK (SI-88) — Updated S67 P44/P45
 
+### SUB-STEP 7-PRE — CORE DAILY WATCHLIST CHECK (ADDED 20 AUGUST 2026, UPDATED SAME DATE
+AFTER FULL LEGACY-TABLE TRIAGE, PERMANENT, RUNS FIRST)
+Origin: James asked directly whether there is a core set of names actually being checked every
+morning, and the honest answer found this session was no — the mechanism below (7A/7B) exists
+and is designed to do this, but had not been run as an actual full proximity table output in
+recent sessions, and the DECISION_REGISTER WATCHLIST — ACTIVE table it points to had grown to
+dozens of entries spanning June through August, many stale or superseded, which made "what are
+we actually watching" genuinely hard to answer. James's follow-up instruction, same session:
+triage the full legacy table, cap the core list at 20 (currently 15), cap a background list at
+20 (currently 20), and define what happens to each tier every morning.
+
+TWO-TIER DAILY BEHAVIOUR, now the standing rule:
+  CORE (DECISION_REGISTER.md, CORE DAILY WATCHLIST section, top of file): every session open,
+  state each core name's current price against its entry criteria/alert level, with genuine
+  chart context (OBV/base read) where one already exists on file. If fresh news breaks on a
+  core name during or between sessions that could plausibly move it toward its entry criteria,
+  request a fresh chart from James the same session rather than waiting for the next scheduled
+  check — this is the "immediate investigation" trigger James specified, it applies to core
+  names only, not the background list.
+  BACKGROUND (same section, second table): a surface scan only — current price and any
+  obvious headline, no OBV/chart work, no Stage 2 refresh, at every session open. A background
+  name gets promoted to core (and gets the full treatment above) the moment something material
+  actually develops — a real catalyst firing, a Stage 2 becoming genuinely current, or James
+  naming it a priority. Promotion is a same-session decision, stated explicitly, not assumed.
+  ARCHIVED names get neither check — they are a record of why a name was dropped, re-entering
+  active tracking only via a fresh sourcing hit (category 20 stale-register logic or a new
+  StratB find), not by inertia.
+
+MAINTENANCE RULE: core list size is capped at 20, background at 20. Adding a name to core
+happens the same session it earns a live, current entry criteria (Stage 1 complete at minimum,
+ideally Stage 2, or a James-declared priority). If core would exceed 20, the oldest/lowest-
+conviction name gets demoted to background or archived in the same edit, stated explicitly —
+the cap is enforced actively, not left to drift back to the 40+ name sprawl this fix was built
+to solve. A name goes stale (no update in 3+ weeks per category 20 discipline) gets flagged for
+a decision at the next session open, not silently kept at its old status.
+
 ### SUB-STEP 7A — STAGE 2 IN-ZONE MANDATORY DECISION (P44 — RUNS BEFORE ALL ELSE)
 
 Before the proximity table, identify every name where Stage 2 is complete AND current
@@ -453,6 +623,7 @@ STOP FLAGS: [positions <5% from stop]
 STRATEGY B ACTIVE: [names, stop levels, hard exit dates]
 STRATEGY B CATALYST HUNT: [any named catalyst in next 7 days?]
 DECISION REGISTER: [names in zone or approaching]
+TOP ANALYST WATCH: [any new hit from the five named analysts this session, Hochfeld if due this week, else "none"]
 LESSONS SCAN: [last 3 lessons confirmed active — V1/V1-S/V1-GO always listed]
 PENDING BUY ORDERS: [list — confirm keep or cancel]
 MANDATORY FIRST ACTIONS: [from journal and FUND_SESSION_STATE]
@@ -498,31 +669,35 @@ NET LIQ / P&L: Final numbers at close
 
 ---
 
-## COWORK WATCHLIST SCAN — MAINTENANCE STEP (ADDED S85)
+## EXTERNAL SCAN INTAKE — SESSION_BRIEF.md / OPPORTUNITY_SCAN.md (RETITLED S90, was "COWORK
+WATCHLIST SCAN", ADDED S85)
 
-An hourly Cowork scheduled task exists, independent of this chat session, scanning for
-undated event-driven catalysts (contract awards, regulatory rulings, product launches)
-against names in `state\WATCHLIST_TICKERS.md`. It writes hits to `state\OPPORTUNITY_SCAN.md`,
-already in the mandatory Step 0 reading list at the top of every session.
+Cowork is fully scrapped as of S90, 9 July 2026. The hourly scheduled task that used to scan
+`state\WATCHLIST_TICKERS.md` and write hits to `state\OPPORTUNITY_SCAN.md` was already
+retired S86W once James's ChatGPT based alert system (Autonomous Defence Pre-Earnings Watch,
+dedicated CODA Operational Catalyst Watch, Critical Minerals Policy Watch, Cannabis
+Rescheduling Watch) proved broader and more reliable. S90 removes Cowork from the picture
+entirely, not just this one task. ChatGPT is now the sole external scanning source, and it
+feeds this project, it does not run inside it.
 
-This infrastructure goes stale silently if not maintained. At every session open, as part
-of Decision Register review:
-1. Any name newly added to DECISION_REGISTER.md's WATCHLIST with an UNDATED, event-driven
-   catalyst (not a known earnings date — those stay in the Forward Catalyst Calendar only)
-   gets added to WATCHLIST_TICKERS.md as a new GROUP line.
-2. Any group in WATCHLIST_TICKERS.md whose triggering event has resolved (ruling landed,
-   launch confirmed, contract awarded or definitively lost) gets removed or re-scoped —
-   do not leave a resolved group running, it burns search budget for nothing.
-3. WATCHLIST_TICKERS.md groups searches by shared event, not one search per ticker.
-   Before adding a new name, check whether it shares an underlying event with an existing
-   group (e.g. multiple names all waiting on the same regulatory ruling) rather than
-   creating a redundant group.
-4. Cost discipline is explicit fund policy, not a one-off preference: James flagged token
-   usage as a live constraint twice at setup (S85). Default to NOT adding a name unless its
-   catalyst is genuinely undated — a known earnings date needs a calendar entry, not an
-   hourly search.
+CURRENT WORKFLOW, S90 onward:
+1. James pastes whatever ChatGPT (or any other source) surfaces into `state\SESSION_BRIEF.md`,
+   any time, any format, unverified.
+2. At session open, Claude reads SESSION_BRIEF.md first among the state files, before
+   DECISION_REGISTER.md.
+3. Each item gets verified against primary sources, same rigor regardless of provenance
+   (Step 3E below governs this).
+4. Outcome logged the same session in `state\OPPORTUNITY_SCAN.md`, the permanent append only
+   ledger: confirmed, rejected, or needs more work, with the primary source used and where
+   the resulting decision lives.
+5. SESSION_BRIEF.md is cleared back to template at session close so it never carries stale,
+   already processed content forward. OPPORTUNITY_SCAN.md is never cleared.
 
-Full design rationale and current group list: `state\WATCHLIST_TICKERS.md` header.
+`state\WATCHLIST_TICKERS.md` is retained as REFERENCE ONLY, not an active scan input, per its
+own S86W header. It still documents why each name is tracked and which ChatGPT watch (if any)
+covers it, useful context when an item lands in SESSION_BRIEF.md for one of these tickers. If a
+name on it gains or loses ChatGPT coverage, or its triggering event resolves, update the line,
+the same light maintenance discipline as before, just no scan to keep synced against.
 
 ---
 
