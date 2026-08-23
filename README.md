@@ -68,10 +68,25 @@ part of the routine session-open read.
 - Session close pushes via `session-close.bat` (all changes)
 - If push fails: files are committed locally, push manually via GitHub Desktop
 
-## Price Hierarchy
+## Current-Price Hierarchy
 
-MMD (current session) → EODHD extended quotes (52wk range) → Yahoo Finance (EU/UK)
-IBKR screenshot = ground truth for position prices always
+For any current security price (research/analysis use, not execution):
+
+1. Fresh user/broker evidence when supplied (screenshot, explicit broker data).
+2. A verified available market-data connector that returns a timestamp.
+3. A second verified connector if needed for fallback or cross-check.
+4. A reputable current web source.
+5. Previous close, only when explicitly labelled as such.
+6. Repository-stored prices (journals, DECISION_REGISTER, FUND_SESSION_STATE,
+   research/thesis files) are historical/contextual only — never a current quote.
+
+See the fund-research skill's Market Data Freshness Rule for the full standard
+(timestamp verification, REALTIME/DELAYED/PREVIOUS CLOSE/HISTORICAL labelling,
+and market-state resolution). No specific connector is fixed at position 2 or 3
+— use whichever verified source is actually operational in the session.
+
+Live execution-sensitive pricing and order placement remain on ChatGPT/IBKR by
+design; Claude does not require live IBKR access for research-grade pricing.
 
 ## Exit Trigger (SI-25)
 

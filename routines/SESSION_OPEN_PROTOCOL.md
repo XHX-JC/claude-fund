@@ -9,30 +9,32 @@ watchlist read and the ANALYST_WATCH.md five-name batch, same open, not deferred
 session. See DECISION_REGISTER.md 21 Aug entry for the originating instruction and first example
 (IONQ, XSG, NNE, CRCL, PYPL, AVAV/KTOS/ONDS, BWXT).
 
-## STANDING RULE, ADDED 20 AUGUST 2026 — PRICING/RESEARCH CONNECTOR USAGE, PERMANENT
-James's explicit instruction: pricing and market-data connectors (Alpha Vantage, Finnhub, EODHD)
-are confirmed working (tested directly 20 Aug, not assumed) and are to be used proactively for
-price confirmation, fundamentals research, and market analysis. Do NOT ask permission to check a
-price or run a data pull — this is read-only, informational, and covered by the same standing
-rule already in place for other mechanical checks. Use these connectors the same way web_search
-is already used in this fund's process: silently, as needed, woven into the analysis rather than
-announced or requested as a separate step.
+## STANDING RULE, ADDED 20 AUGUST 2026, REVISED 23 AUGUST 2026 — PRICING/RESEARCH CONNECTOR USAGE, PERMANENT
+Pricing and market-data connectors (Alpha Vantage, Finnhub, EODHD) are available and are
+to be used proactively for price confirmation, fundamentals research, and market analysis.
+Do NOT ask permission to check a price or run a data pull — this is read-only, informational,
+and covered by the same standing rule already in place for other mechanical checks. Use these
+connectors the same way web_search is already used in this fund's process: silently, as
+needed, woven into the analysis rather than announced or requested as a separate step.
 
-CONNECTOR HIERARCHY: Alpha Vantage and Finnhub are primary — both tested reliable. EODHD is
-fallback only — it failed with a 401 Unauthorized twice in a row on 20 Aug before working again
-on a third attempt with no configuration change, treat it as less reliable than the other two
-until it's shown stable across multiple sessions. If a connector fails, try the next one in the
-hierarchy before reporting a data gap to James — do not surface a single connector's failure as
-a blocker if another one can answer the same query.
+SOURCING STANDARD: which connector to use, how to verify freshness, how to label a quote
+(REALTIME/DELAYED INTRADAY/PREVIOUS CLOSE/HISTORICAL), and what to do if the preferred
+source fails is governed by the fund-research skill's Market Data Freshness Rule — read
+that, not a fixed hierarchy restated here. No connector is permanently first; use whichever
+verified source is actually operational this session, and try another verified connector
+before reporting a data gap to James.
 
-WHAT THIS DOES NOT REPLACE: these connectors give price, volume, and fundamentals data. They do
-NOT replace James's own charts for Stage 2 work. OBV reads, base/reclaim signatures, and support/
-resistance structure all require James's own TradingView view, exactly as they have all session —
-continue requesting a chart from James whenever a Stage 2 assessment is needed, a live position's
-technical picture needs checking, or a new name needs the same treatment already given to KEYS,
-COHR, CRDO, LITE, NBIS, RARE, RKLB, ASTS, FISN, AEVA, and NNE this session. Connector data
-answers "what is the price and what are the fundamentals" — it does not answer "is there a real
-base forming," which stays a chart question.
+WHAT THIS DOES NOT REPLACE: these connectors give price, volume, and fundamentals data. They
+do NOT replace James's own charts for Stage 2 work. OBV reads, base/reclaim signatures, and
+support/resistance structure all require James's own TradingView view — continue requesting
+a chart from James whenever a Stage 2 assessment is needed, a live position's technical
+picture needs checking, or a new name needs the same treatment already given to prior names
+this session. Connector data answers "what is the price and what are the fundamentals" — it
+does not answer "is there a real base forming," which stays a chart question.
+
+Live IBKR execution access is intentionally on ChatGPT, not Claude — this is not a gap to
+fix. Claude's job is reliable research-grade pricing (realtime where available, otherwise
+labelled delayed/previous-close), not tick-perfect execution data.
 
 # Last updated: S89 | 8 July 2026 — Step 3F added: mandatory per-file open checklist,
 # matching the close-side completion checklist added the same session to
@@ -57,6 +59,17 @@ The journal number increments by one each session. Never skip. Never overwrite.
 ---
 
 ## STEP ZERO — DATE AND TIME (mandatory — execute before any statement)
+
+GENERAL RULE (ADDED 23 AUGUST 2026, applies beyond this step): whenever a response depends
+materially on today/tomorrow/yesterday, premarket/regular-session/after-hours/market-closed,
+earnings timing, "in X days/hours," a named trading date, or whether a market quote is
+current — establish the actual current machine/device date and time FIRST, and convert to
+US Eastern Time for anything concerning US market state. This applies to ad-hoc research
+questions during a session, not only to this formal session-open check. Do not rely on a
+UAE-hour band alone when the question concerns US market state — the script below computes
+UAE time and LSE/NYSE open-vs-closed for session-open purposes; for a standalone question
+about premarket/after-hours/market state, convert explicitly to ET rather than inferring it
+from the UAE band.
 
 Run this bash command. Do not state any date, time, or market status before running it.
 
