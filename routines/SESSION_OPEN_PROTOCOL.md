@@ -139,7 +139,7 @@ provide exact order parameters for James to enter manually.
 3. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\STRATB_SOURCING_PROTOCOL.md <- MANDATORY — SI-91, Strategy B catalyst sourcing method
 4. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md          <- MANDATORY — watchlist + register
 5. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\FUND_SESSION_STATE.md         <- current snapshot
-6. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\LESSONS_LEARNED.md            <- MANDATORY, permanent-index lessons (listed below, always active) + recent narrative (last 2-3 sessions); single unsplit file pending Stage 3b
+6. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\LESSONS_LEARNED.md            <- MANDATORY, permanent-index lessons (listed below, always active) + recent narrative (last 1-2 sessions). Historical session-by-session lessons live in state\LESSONS_LEARNED_ARCHIVE.md (S110 split) — read only if a specific historical lesson needs retrieving, not every session.
 7. C:\Users\James Cadbury\Dropbox\Claude-Fund\routines\MARKET_HEALTH_CHECK.md     <- while status AMBER, RED, or CRISIS (S110: reconciled from legacy "ELEVATED" wording)
 8. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\SESSION_BRIEF.md              <- MANDATORY, S90 — raw ChatGPT/external intake, read FIRST among state files
 9. C:\Users\James Cadbury\Dropbox\Claude-Fund\state\OPPORTUNITY_SCAN.md           <- MANDATORY, S90 — verified outcome ledger, read after SESSION_BRIEF.md
@@ -185,14 +185,15 @@ Two layers, both mandatory every session:
   T67: Every exit requires one of four stated conditions
   E30: Journal written at close only, never mid-session
   E31: Journal never overwritten — always new file
-  (2) RECENT NARRATIVE — skim the most recent entries in LESSONS_LEARNED.md (currently at
-      the top of the file, reverse-chronological) covering roughly the last 2-3 sessions,
-      for anything newly relevant not yet reflected in the permanent index above.
-NOTE: LESSONS_LEARNED.md is currently a single unsplit file — both layers live inside it
-today. Once the Stage 3b archive split is implemented, this step will point at a dedicated
-permanent-index file plus a separate recent-narrative section; until then, this instruction
-operates against the current, single file exactly as it exists now. Do not assume the split
-has happened.
+  (2) RECENT NARRATIVE — skim the most recent entries in LESSONS_LEARNED.md (at the top of
+      the file, reverse-chronological) covering roughly the last 1-2 sessions, for anything
+      newly relevant not yet reflected in the permanent index above.
+ARCHITECTURE (S110, Stage 3 split complete): LESSONS_LEARNED.md is now a compact live file
+containing only the permanent index plus the recent narrative described above — it is not
+the full historical record. Every earlier session's lessons/amendments have moved verbatim,
+in original order, to state\LESSONS_LEARNED_ARCHIVE.md. Read the archive only when a specific
+historical lesson, session, or piece of past reasoning needs to be retrieved (e.g. via
+fund-history) — it is not part of the mandatory every-session read.
 
 **MARKET_HEALTH_CHECK.md** — Current market regime score. Read while status is AMBER, RED, or
 CRISIS (S110: reconciled from the legacy "ELEVATED" term to this file's own current GREEN/

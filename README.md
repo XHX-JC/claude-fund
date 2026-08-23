@@ -7,9 +7,25 @@
 ```
 claude-fund/
 ├── journal/          ← trading_journalNN.jsx (versioned per session)
-├── state/            ← Session state, briefs, and lesson files
-│   ├── FUND_SESSION_STATE.md     ← Primary portfolio state (written each session)
-│   ├── LESSONS_LEARNED.md        ← Error taxonomy + standing instructions (single file; permanent-index + recent-narrative read model, S110)
+├── state/            ← Session state, decisions, briefs, and lesson files
+│   ├── FUND_SESSION_STATE.md          ← LIVE. Sole authoritative source for current holdings,
+│   │                                    cash, and orders. Overwritten in place at each session
+│   │                                    close (S110) — always exactly one current snapshot, not
+│   │                                    a running log.
+│   ├── FUND_SESSION_STATE_ARCHIVE.md  ← HISTORICAL. One-time Stage 3B migration archive of the
+│   │                                    pre-restructure snapshot history. Not routinely written to
+│   │                                    at close — Git history, journals, and TRACK_RECORD.csv
+│   │                                    cover ongoing history instead.
+│   ├── DECISION_REGISTER.md           ← LIVE. Current decisions, active watchlist, live catalyst
+│   │                                    dates, standing operational rules. Does NOT hold current
+│   │                                    positions/cash — see FUND_SESSION_STATE.md for that.
+│   ├── DECISION_REGISTER_ARCHIVE.md   ← HISTORICAL. Completed decisions, resolved catalysts,
+│   │                                    superseded plans, and past research narrative, moved here
+│   │                                    verbatim from DECISION_REGISTER.md (S110 split).
+│   ├── LESSONS_LEARNED.md             ← LIVE. Permanent-index lessons (always active) + recent
+│   │                                    narrative (last 1-2 sessions).
+│   ├── LESSONS_LEARNED_ARCHIVE.md     ← HISTORICAL. Full session-by-session lesson history prior
+│   │                                    to the S110 split, moved here verbatim.
 │   ├── SESSION_BRIEF.md          ← AUTO-GENERATED 05:30 UAE daily (macro)
 │   ├── OPPORTUNITY_SCAN.md       ← AUTO-GENERATED 06:00 UAE daily (signals)
 │   └── CRASH_HEDGE_ACTION_PLAN.md ← Read only while MARKET_HEALTH_CHECK.md regime is AMBER/RED/CRISIS (S110)
@@ -23,6 +39,13 @@ claude-fund/
 ├── research/         ← AI thesis, sector deep-dives
 └── session-close.bat ← Run at end of every session (commits journal + state)
 ```
+
+**Live vs. historical, at a glance:** `FUND_SESSION_STATE.md` and `DECISION_REGISTER.md` are
+the only files Claude should treat as current at session open; both are kept deliberately
+compact. `FUND_SESSION_STATE_ARCHIVE.md`, `DECISION_REGISTER_ARCHIVE.md`, and
+`LESSONS_LEARNED_ARCHIVE.md` hold the full historical record moved out of those live files
+during the S110 restructure — read them only when retrieving specific past material, not as
+part of the routine session-open read.
 
 ## Daily Routine Schedule (UAE time)
 

@@ -88,9 +88,23 @@ update the just-written journal file's content accordingly before Step 5 verific
 do not leave the journal stale relative to the files written after it.
 ═══════════════════════════════════════════════════════════════════
 
-## STEP 2B — UPDATE DECISION_REGISTER.md (MANDATORY — added S55)
+## STEP 2B — UPDATE DECISION_REGISTER.md (MANDATORY — added S55, ARCHITECTURE REVISED S110)
 ═══════════════════════════════════════════════════════════════════
-File: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md
+Live file: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER.md
+Archive file: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\DECISION_REGISTER_ARCHIVE.md
+
+ARCHITECTURE (S110): DECISION_REGISTER.md is now a compact, current-decisions-only file —
+current decisions, active watch/decision states, live catalyst dates, and standing
+operational rules. It does NOT contain a portfolio-position table and does NOT hold a
+completed-decisions archive section within itself. Historical/completed decision material
+(closed-out ENTER/PASS/DEFER outcomes, resolved catalysts, superseded plans, past session
+narrative) belongs in DECISION_REGISTER_ARCHIVE.md, moved there verbatim, not summarised.
+
+CURRENT HOLDINGS AND CASH: DECISION_REGISTER.md must NOT be used to track current
+positions, cost basis, shares, or cash. state\FUND_SESSION_STATE.md is the SOLE
+authoritative current-portfolio source — see Step 2E below. If a decision-register update
+would otherwise restate a position's shares/cost/cash, point to FUND_SESSION_STATE.md
+instead of duplicating the figures here.
 
 This file MUST be updated at every session close. The journal (Step 2A) is now written
 before this step, not after — update DECISION_REGISTER.md here, and if anything here
@@ -101,14 +115,18 @@ For each name in the register, update:
   - Last session decision (what was discussed or decided today)
   - Current price vs entry zone
   - Status: ORDER REQUIRED / DEFERRED [condition + deadline] / ALERT SET
-  - If a decision was made today (enter/pass/defer): move to ARCHIVE section
+  - If a decision was made today (enter/pass/defer): move the completed entry, verbatim,
+    to DECISION_REGISTER_ARCHIVE.md's COMPLETED DECISIONS table — do not leave it in the
+    live file and do not create a competing in-file archive section.
 
 For any new name where Stage 2 was completed this session:
   - Add immediately to the register with all required fields
   - Do not wait for the next session to add it
 
 For any name where an order was placed this session:
-  - Mark as ENTERED and move to ARCHIVE
+  - Mark as ENTERED in DECISION_REGISTER.md for this session, then move the completed
+    decision to DECISION_REGISTER_ARCHIVE.md once resolved — live holding detail (shares,
+    cost, stop) belongs in FUND_SESSION_STATE.md, not in either register file.
 
 Failure to update DECISION_REGISTER.md at session close is an error class
 violation equivalent to E30 (journal not written). Log in LESSONS_LEARNED.md.
@@ -157,6 +175,33 @@ OPPORTUNITY_SCAN.md itself is append only and is never cleared or rewritten at c
 step only confirms today's items made it in before SESSION_BRIEF.md is wiped.
 ═══════════════════════════════════════════════════════════════════
 
+## STEP 2E — UPDATE FUND_SESSION_STATE.md (MANDATORY — ARCHITECTURE REVISED S110)
+═══════════════════════════════════════════════════════════════════
+Live file: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\FUND_SESSION_STATE.md
+Migration archive: C:\Users\James Cadbury\Dropbox\Claude-Fund\state\FUND_SESSION_STATE_ARCHIVE.md
+
+FUND_SESSION_STATE.md is the SOLE authoritative source for current holdings, cash, and
+orders. DECISION_REGISTER.md does not compete with it (see Step 2B) — any current-position
+figure belongs here and only here.
+
+CLOSE BEHAVIOUR (S110, changed from prior append-a-dated-snapshot practice): at every
+session close, OVERWRITE the existing current-state snapshot in FUND_SESSION_STATE.md IN
+PLACE with tonight's close. Do not append a new dated section below the previous one and
+do not leave the previous snapshot in the file. After this step, FUND_SESSION_STATE.md
+should contain exactly ONE current-state snapshot — tonight's — not a running log of past
+snapshots.
+
+NO ROUTINE ROTATION TO THE ARCHIVE: this overwrite behaviour does NOT require rotating the
+outgoing snapshot into FUND_SESSION_STATE_ARCHIVE.md at each close. Git history, the
+journal directory, and TRACK_RECORD.csv already provide the ongoing historical record of
+how the portfolio looked at any past close — that is sufficient, and is why this step does
+not ask for a rotation step every session. FUND_SESSION_STATE_ARCHIVE.md itself is the
+one-time Stage 3B migration archive (the pre-restructure snapshot history moved there when
+this file was split) — it is not a destination this step writes to routinely. Only revisit
+that file if a deliberate future cleanup is explicitly requested; that is a separate,
+deliberate decision, not part of this close step.
+═══════════════════════════════════════════════════════════════════
+
 ## STEP 3 — VERIFY THE JOURNAL WRITE FROM STEP 2A
 Re-read the journal file just written (Step 2A) and confirm it reflects anything that
 changed during Steps 2B/2C. If DECISION_REGISTER or TRACK_RECORD reconciliation surfaced
@@ -184,7 +229,7 @@ makes that check unavoidable rather than assumed.
     Journal written: [trading_journalNN.jsx — YES, filename stated / NO — state why]
     DECISION_REGISTER.md updated: [YES / NO — state why]
     TRACK_RECORD.csv reconciled: [YES / NO — state why]
-    FUND_SESSION_STATE.md updated: [YES / NO — state why]
+    FUND_SESSION_STATE.md overwritten with tonight's single current-state snapshot (Step 2E): [YES / NO — state why]
     LESSONS_LEARNED.md — new lesson logged if applicable: [YES / NO / N/A]
     SESSION_BRIEF.md cleared / OPPORTUNITY_SCAN.md current (Step 2D): [YES / NO / N/A — nothing pasted this session]
     IBKR reconciliation completed or explicitly noted as unavailable: [YES / NO]
